@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Fortnite D6">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>Fortnite: Zero Build D6 · v6.2</title>
+<title>Fortnite: Zero Build D6 · v6.3</title>
 <style>:root{
   --bg0:#0b0820;--bg1:#151036;--bg2:#1f1850;--line:rgba(255,255,255,.10);--txt:#f4f2ff;--mut:#a9a3cf;
   --c1:#f5b301;--c2:#a855f7;--c3:#38bdf8;--c4:#f1f5f9;--c5:#22c55e;--c6:#94a3b8;--red:#ef4444;--gold:#fde047;
@@ -1330,6 +1330,43 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 #app.wide .card .pt{width:calc(var(--ch,80px) * .9)}
 #app.wide .card .nm{font-size:19px;max-width:100%!important;white-space:normal!important;overflow:visible;text-overflow:clip}
 #app.wide .thrpanel .lanewrap{min-height:0}
+
+/* ===== v6.3 compact phone: slimmer top chrome + smaller storm tiles -> taller threat zone ===== */
+#app.compact .hud2{min-height:38px;padding:2px 4px 2px 8px;border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 3px 0 rgba(4,6,28,.5)}
+#app.compact .hchip{height:30px;border-radius:8px}
+#app.compact .hchip small{font-size:6.5px}
+#app.compact .hchip b{font-size:13px;margin-top:1px}
+#app.compact .hbtns .icon-btn{height:30px;border-radius:8px;font-size:14px}
+#app.compact .poi{height:34px;padding:2px 6px 2px 2px;border-radius:11px;gap:6px}
+#app.compact .poiart{width:28px;height:28px;border-radius:8px;border-width:1.5px}
+#app.compact .poinm{font-size:15px}
+#app.compact .poisub{margin-top:1px;font-size:9px}
+#app.compact #hBars{height:24px;font-size:14px;padding:0 7px 0 5px}
+#app.compact #hBars .ico.gb{width:17px;height:17px}
+#app.compact .xpstrip{height:16px;gap:6px}
+#app.compact .xplv{height:16px;padding:0 7px;font-size:11px;line-height:13px;border-radius:5px}
+#app.compact .xpbar{height:9px}
+#app.compact .xptxt{font-size:10px}
+#app.compact .storm{height:34px!important;gap:4px;padding-top:4px}
+#app.compact .storm .chip em{top:-6px!important;right:-4px!important;font-size:10px!important;line-height:11px!important;padding:0 3px!important}
+#app.compact .storm .chip em small{font-size:6px}
+#app.compact .storm::before{font-size:7.5px;letter-spacing:1px}
+#app.compact .thrpanel{padding:4px 5px 3px;gap:2px;min-height:190px}
+#app.compact .panelhd{height:16px}
+#app.compact .logmini{display:none!important}
+/* chest wildcard: one slim bar; the duplicate hint in the stations row is hidden while it is up */
+#app.compact .picker{min-height:40px;padding:3px 6px;border-radius:12px}
+#app.compact .stations{min-height:38px}
+#app.compact .stations .tray-slot{min-height:38px}
+#app.compact:has(.picker.on) .stations .hint{visibility:hidden}
+/* short rows (3 threats on a tight phone): name on line 1, HP pips + target avatar share line 2 */
+.opz.short .card .mid{flex-direction:row;flex-wrap:wrap;align-content:center;align-items:center;justify-content:flex-start;column-gap:5px;row-gap:3px;padding:2px 3px 2px 5px}
+.opz.short .card .nm{flex:0 0 100%;font-size:14px;line-height:1.05}
+.opz.short .card .sub{margin:0}
+.opz.short .card .tgt,.opz.short .card .tgt img{width:18px!important;height:18px!important}
+.opz.short .card .dm{display:none}
+.opz.short .card .vbf{height:14px;font-size:9px;line-height:11px}
+@media (max-height:740px){#app.compact .thrpanel{min-height:150px}#app.compact .storm{height:30px!important}}
 </style>
 </head><body>
 <div id="app" class="compact">
@@ -2253,8 +2290,8 @@ function renderLane() {
   lane.className = 'lane tz';
   if (!s.board.length) lane.innerHTML = `<div class="empty">${s.deck.length ? `Board clear! ${ico('crosshair')} Next threat drops at END TURN.` : 'Last threat down!'}</div>`;
   else {
-    const H = lane.clientHeight, cap = app.classList.contains('wide') ? 112 : 108, rh = Math.max(72, Math.min(cap, Math.floor((H - 18) / Math.max(2, Math.min(s.board.length, 3)))));
-    lane.innerHTML = `<div class="opwrap"><div class="opz list cards${rh < 80 ? ' compact' : ''}" id="opz" style="--ch:${rh}px;--hh:48px">${hz.map(hzChipHTML).join('')}${opps.map(cardHTML).join('')}</div><div class="sbar"><i></i></div><div class="morepill" aria-hidden="true"></div></div>`;
+    const H = lane.clientHeight, cap = app.classList.contains('wide') ? 112 : 108, rh = Math.max(app.classList.contains('wide') ? 72 : 54, Math.min(cap, Math.floor((H - 12 - 6 * (Math.min(s.board.length, 3) - 1)) / Math.max(app.classList.contains('wide') ? 2 : 1, Math.min(s.board.length, 3)))));
+    lane.innerHTML = `<div class="opwrap"><div class="opz list cards${rh < 80 ? ' compact' : ''}${rh < 66 ? ' short' : ''}" id="opz" style="--ch:${rh}px;--hh:48px">${hz.map(hzChipHTML).join('')}${opps.map(cardHTML).join('')}</div><div class="sbar"><i></i></div><div class="morepill" aria-hidden="true"></div></div>`;
     const e = $('#opz'); e.scrollTop = keepTop; updList(e);
     e.addEventListener('scroll', () => { const n = performance.now(); if (U.lTouch || n - (U.lEnd || -1e9) < 1200) U.scrollAt = n; updList(e); }, { passive: true });
     e.addEventListener('touchstart', () => { U.lTouch = true; }, { passive: true });
