@@ -1,9 +1,9 @@
 /* Fortnite D6 offline cache for Home Screen */
-const CACHE = 'fd6-v6.3';
+const CACHE = 'fd6-v6.5';
 const PRECACHE = [
   './',
   './index.html',
-  './Fortnite_D6_6.3.html',
+  './Fortnite_D6_6.5.html',
   './manifest.webmanifest',
   './icon-180.png',
   './icon-192.png',
