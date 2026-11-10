@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Fortnite D6">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>Fortnite: Zero Build D6 · v7.0</title>
+<title>Fortnite: Zero Build D6 · v7.3</title>
 <style>:root{
   --bg0:#0b0820;--bg1:#151036;--bg2:#1f1850;--line:rgba(255,255,255,.10);--txt:#f4f2ff;--mut:#a9a3cf;
   --c1:#f5b301;--c2:#a855f7;--c3:#38bdf8;--c4:#f1f5f9;--c5:#22c55e;--c6:#94a3b8;--red:#ef4444;--gold:#fde047;
@@ -1479,6 +1479,86 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 .sr b u{text-decoration:none;font-weight:800;color:#f1f5f9}
 .sr b u.dd{color:#64748b;font-weight:600}
 .sr b u.yl{color:#fde047;font-size:10px;letter-spacing:.4px;margin-right:2px}
+
+/* ===== v7.2 enemy tile: action table ===== */
+.tz .opz.list>.card.v72{--ch:108px}
+.card.v72 .pt{width:calc(var(--ch,108px) * .84)}
+.card.v72 .omid{flex:1;min-width:0;display:flex;flex-direction:column;padding:5px 7px 5px 3px;gap:3px;justify-content:center}
+.card.v72 .onr{display:flex;align-items:center;gap:5px;min-width:0;height:20px}
+.card.v72 .onm{flex:1;min-width:0;font-family:var(--hdr);font-size:16px;line-height:20px;text-transform:uppercase;letter-spacing:.3px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 2px #000}
+.card.v72 .onr .tgt{position:static;flex:none;width:20px;height:20px;margin:0;border-width:1.5px}
+.card.v72 .otag{flex:none;display:inline-flex;align-items:center;gap:2px;height:14px;padding:0 4px;border-radius:4px;font:900 8px/14px var(--hdr);letter-spacing:.5px;color:#fff;white-space:nowrap}
+.card.v72 .otag.top{background:linear-gradient(90deg,#ff3d55,#ff7a2e)}
+.card.v72 .otag.top .ico{width:9px;height:9px}
+.card.v72 .otag.el{background:linear-gradient(90deg,#b8860b,#facc15);color:#3b2a00}
+.card.v72 .obody{display:flex;gap:6px;align-items:stretch;min-width:0}
+.card.v72 .oleft{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:4px;justify-content:center}
+.card.v72 .oleft .pips{margin-top:0}
+.card.v72 .oleft .lockp{height:19px;padding:0 3px 0 4px;gap:2px}
+.card.v72 .oleft .lockp .q{font-size:11px;margin-right:1px}
+.card.v72 .oleft .lockp i{width:13px;height:13px;background-size:9px;border-radius:4px}
+.card.v72 .oleft .lockp .ico.lk{width:10px;height:10px}
+.card.v72 .oleft .xwrap{display:flex;flex-direction:column;gap:1px}
+.card.v72 .drow{display:flex;flex-direction:column;gap:3px}
+.card.v72 .drow .dbno b{font:900 9px/11px var(--hdr);color:#fecaca;letter-spacing:.3px}
+.pchips{display:flex;flex-wrap:wrap;gap:3px}
+.pchip{font:900 8px/11px var(--hdr);letter-spacing:.3px;padding:0 4px;border-radius:4px;border:1.3px solid #b66bff;background:rgba(52,22,128,.8);color:#fff;white-space:nowrap}
+.pchip.pc{border-color:#ff9a3e;background:rgba(110,50,0,.85)}
+.pchip.sh{border-color:#f87171;background:rgba(110,20,20,.85)}
+.pchip.kn{border-color:#facc15;background:rgba(90,70,0,.85)}
+.pchip.cd{border-color:#7dd3fc;background:rgba(10,60,100,.85)}
+.atab{flex:none;display:flex;flex-direction:column;gap:2px;justify-content:center;padding:3px 4px;border-radius:7px;background:rgba(4,7,22,.62);border:1px solid rgba(140,160,220,.22);min-width:0}
+.arow{display:flex;align-items:center;gap:3px;height:17px;min-width:0}
+.arow .ai{flex:none;width:12px;height:12px;fill:var(--ac,#fff);filter:drop-shadow(0 0 2px rgba(0,0,0,.8))}
+.arow .al{flex:1;min-width:0;font:900 9px/12px var(--hdr);letter-spacing:.3px;color:var(--ac,#fff);white-space:nowrap;text-shadow:0 1px 1px #000}
+.arow .al u{text-decoration:none;color:#fdba74;margin-left:1px}
+.arow .an{flex:none;display:flex;gap:1.5px;justify-content:flex-end;min-width:30px}
+.arow .an .stile{display:block;width:13px;height:14px;background:center/contain no-repeat}
+.arow .an .end{font:900 8px/13px var(--hdr);padding:0 4px;border-radius:4px;border:1.3px solid #b66bff;background:rgba(52,22,128,.8);color:#fff}
+.arow.off{opacity:.38;filter:saturate(.4)}
+.atab.dn{opacity:.4}
+.card.dangerS{box-shadow:0 0 0 2px rgba(56,189,248,.95),0 0 16px rgba(56,189,248,.55);animation:dpulse .6s ease-in-out infinite alternate}
+.card.actpop{animation:apop .5s ease-out}
+@keyframes apop{0%{transform:scale(1)}30%{transform:scale(1.025);box-shadow:0 0 0 2px #fff,0 0 22px rgba(255,255,255,.6)}100%{transform:scale(1)}}
+.alist{margin:2px 0 8px 16px;padding:0;font-size:12.5px;line-height:1.35}
+.alist li{margin:2px 0}
+@media (max-width:374px){.arow .al{font-size:8.5px}.arow .an .stile{width:12px;height:13px}.card.v72 .onm{font-size:15px}.card.v72 .oleft .lockp i{width:12px;height:12px}}
+@media (prefers-reduced-motion:reduce){.card.actpop,.card.dangerS{animation:none!important}}
+
+/* ===== v7.3 bigger enemy action tables (target avatar removed) ===== */
+.card.v72 .pt{width:calc(var(--ch,108px) * .78)}
+.card.v72 .omid{padding:4px 6px 4px 3px;gap:2px}
+.card.v72 .onr{height:18px}
+.card.v72 .onm{font-size:16px;line-height:18px}
+.card.v72 .obody{gap:5px;flex:1;min-height:0}
+.card.v72 .oleft{gap:4px}
+.card.v72 .oleft .pips i{width:17px;height:12px}
+.card.v72 .oleft .lockp{height:22px;padding:0 4px 0 5px;gap:2px}
+.card.v72 .oleft .lockp .q{font-size:12.5px}
+.card.v72 .oleft .lockp i{width:16px;height:16px;background-size:11px}
+.card.v72 .oleft .lockp .ico.lk{width:11px;height:11px}
+.pchip{font-size:9.5px;line-height:14px;padding:0 5px;border-width:1.5px;border-radius:5px}
+.atab{padding:2px 4px;gap:1px;justify-content:space-between;border-radius:8px}
+.arow{height:18px;gap:4px}
+.arow .ai{width:15px;height:15px}
+.arow .al{font-size:10.5px;line-height:14px}
+.arow .an{gap:2px;min-width:34px}
+.arow .an .stile{width:16px;height:17px}
+.arow .an .end{font-size:9.5px;line-height:15px;padding:0 5px}
+@media (max-width:374px){
+ .card.v72 .oleft .lockp{gap:1.5px;padding:0 3px 0 4px}
+ .card.v72 .oleft .lockp i{width:13px;height:13px;background-size:9px}
+ .card.v72 .oleft .lockp .q{font-size:11px}
+ .card.v72 .oleft .lockp .ico.lk{width:9px;height:9px}
+ .arow{gap:3px}.arow .ai{width:14px;height:14px}
+ .arow .al{font-size:9.5px}.arow .an .stile{width:15px;height:16px}.arow .an{gap:1.5px}
+ .card.v72 .oleft .pips i{width:15px}
+ .pchip{font-size:9px;padding:0 4px}
+}
+/* ===== v7.3 compact kill feed ===== */
+#feed{gap:1px}
+.kf{font-size:10px;line-height:12px;padding:0 7px;border-radius:4px;max-width:64%;border-left-width:2.5px}
+.kf.ko{border-left-color:var(--red)}
 </style>
 </head><body>
 <div id="app" class="compact">
@@ -1510,7 +1590,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   const CFG = {
     memberHp: 4, shieldMax: 4, reviveHp: 2,
     deckOpp: 12, deckHaz: 5, startBoard: 2,
-    /* v6.6 trios + POI rounds */ infight: 0.45, teamCap: 2, oppReviveHp: 1, reviveTurns: 2, stormMax: 2, stormGrow: 3,
+    /* v6.6 trios + POI rounds · v7.1: one enemy per turn, no board trio cap */ infight: 0.45, oppReviveHp: 1, reviveTurns: 2, stormMax: 2, stormGrow: 3,
     /* v6.7 off-POI lobby feed */ lobbyChance: 0.85, lobbyIdle: 0.2, lobbyBurstMax: 3, lobbyTurnCap: 0.85,
     /* v6.8 V-Bucks economy */ vbElim: 100, vbWipe: 200, vbChest: 100, vbChestChance: 0.25,
     /* v6.8 elite */ eliteVb: 900, eliteBars: 500,
@@ -1522,7 +1602,8 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
       { id: 'recon', name: 'Recon Drone', icon: '🔭', cost: 200, desc: 'Scout the next threat in the deck before it drops.' }
     ]
   };
-  const OPPS = [{"hp":4,"a":[4,5,6],"d":3},{"hp":3,"a":[1,2,3,4,5],"d":1},{"hp":3,"a":[],"d":1,"cond":"took_damage"},{"hp":2,"a":[4,6],"d":2,"byp":1},{"hp":4,"a":[3,4],"d":2,"cov":[[3],[5]]},{"hp":2,"a":[4,6],"d":2,"byp":1},{"hp":2,"a":[1,4],"d":2,"byp":1},{"hp":1,"a":[2,4,6],"d":1},{"hp":4,"a":[1,2],"d":1,"shred":1},{"hp":3,"a":[3,4],"d":1,"knock":1},{"hp":2,"a":[3,6],"d":2},{"hp":3,"a":[1,2,3],"d":1,"cov":[[1],[5],[5]]},{"hp":2,"a":[3,6],"d":2},{"hp":1,"a":[3,5],"d":1},{"hp":4,"a":[4,5],"d":2,"cov":[[1],[1]]},{"hp":2,"a":[4,5,6],"d":2},{"hp":3,"a":[],"d":2,"cond":"no_threats_activated"},{"hp":3,"a":[4,5],"d":2,"cov":[[4],[1],[3]]},{"hp":2,"a":[2,4],"d":2,"knock":1},{"hp":4,"a":[1,2],"d":2,"cov":[[3],[3],[5]]},{"hp":2,"a":[2,4],"d":1,"knock":1},{"hp":3,"a":[1,2],"d":1,"cov":[[1],[1],[4]]},{"hp":2,"a":[5,6],"d":2,"byp":1},{"hp":4,"a":[2,3,4],"d":1,"cov":[[4]]},{"hp":4,"a":[6],"d":3,"cov":[[3],[4],[5]]},{"hp":3,"a":[1,3,5],"d":1,"knock":1},{"hp":2,"a":[2,4,6],"d":2},{"hp":4,"a":[1,2,3,4,5],"d":1,"cov":[[1],[3],[3]]},{"hp":1,"a":[3],"d":1},{"hp":4,"a":[4,5,6],"d":2,"byp":1},{"hp":3,"a":[2,5],"d":1,"cov":[[1],[1]]},{"hp":2,"a":[1,6],"d":1,"shred":1},{"hp":4,"a":[3,4],"d":2,"cov":[[4],[1]]},{"hp":3,"a":[],"d":2,"cond":"shields_empty"},{"hp":3,"a":[1,4],"d":1,"knock":1,"cov":[[1],[3],[5]]},{"hp":2,"a":[5],"d":3,"byp":1},{"hp":4,"a":[2,3],"d":2,"cov":[[3]]},{"hp":4,"a":[1,2,3,4,5],"d":2},{"hp":3,"a":[4,6],"d":1,"cov":[[1]]}];
+  /* v7.2: a = DAMAGE numbers, x = extra actions [kind,[numbers]] (Heal / Cover / Revive / Push / Retreat) */
+  const OPPS = [{"hp":4,"a":[5,6],"d":3,"x":[["cover",[2]],["push",[3]]]},{"hp":3,"a":[1,3,5],"d":1,"x":[["heal",[2]],["revive",[4]]]},{"hp":3,"a":[],"d":1,"cond":"took_damage","x":[["heal",[1]],["retreat",[6]]]},{"hp":2,"a":[4,6],"d":2,"byp":1,"x":[["cover",[1]],["push",[2]]]},{"hp":4,"a":[3,4],"d":2,"cov":[[3],[5]],"x":[["push",[5]]]},{"hp":2,"a":[4,6],"d":2,"byp":1,"x":[["heal",[2]],["retreat",[1]]]},{"hp":2,"a":[1,4],"d":2,"byp":1,"x":[["cover",[2]],["push",[5]]]},{"hp":1,"a":[2,4,6],"d":1,"x":[["heal",[1]],["revive",[5]]]},{"hp":4,"a":[1,2],"d":1,"shred":1,"x":[["cover",[4]],["push",[5]]]},{"hp":3,"a":[3,4],"d":1,"knock":1,"x":[["revive",[5]]]},{"hp":2,"a":[3,6],"d":2,"x":[["heal",[1]],["retreat",[4]]]},{"hp":3,"a":[1,2,3],"d":1,"cov":[[1],[5],[5]],"x":[["push",[4]],["heal",[5]]]},{"hp":2,"a":[3,6],"d":2,"x":[["heal",[2]],["retreat",[5]]]},{"hp":1,"a":[3,5],"d":1,"x":[["heal",[1]],["revive",[2]]]},{"hp":4,"a":[4,5],"d":2,"cov":[[1],[1]],"x":[["push",[1]],["cover",[2]]]},{"hp":2,"a":[4,6],"d":2,"x":[["heal",[1]],["cover",[2]]]},{"hp":3,"a":[],"d":2,"cond":"no_threats_activated","x":[["cover",[1]],["push",[3]]]},{"hp":3,"a":[4,5],"d":2,"cov":[[4],[1],[3]],"x":[["push",[1]],["cover",[2]]]},{"hp":2,"a":[2,4],"d":2,"knock":1,"x":[["heal",[1]],["retreat",[6]]]},{"hp":4,"a":[1,2],"d":2,"cov":[[3],[3],[5]],"x":[["push",[3]],["revive",[5]]]},{"hp":2,"a":[2,4],"d":1,"knock":1,"x":[["cover",[1]],["push",[6]]]},{"hp":3,"a":[1,2],"d":1,"cov":[[1],[1],[4]],"x":[["heal",[3]],["push",[5]],["revive",[6]]]},{"hp":2,"a":[5,6],"d":2,"byp":1,"x":[["heal",[1]],["cover",[3]]]},{"hp":4,"a":[2,4],"d":1,"cov":[[4]],"x":[["heal",[1]],["push",[5]]]},{"hp":4,"a":[6],"d":3,"cov":[[3],[4],[5]],"x":[["heal",[1]],["push",[3]],["revive",[4]]]},{"hp":3,"a":[1,3,5],"d":1,"knock":1,"x":[["heal",[2]],["revive",[4]]]},{"hp":2,"a":[2,6],"d":2,"x":[["cover",[3]],["heal",[4]]]},{"hp":4,"a":[1,3,5],"d":1,"cov":[[1],[3],[3]],"x":[["push",[2]],["heal",[4]]]},{"hp":1,"a":[3],"d":1,"x":[["heal",[1]],["revive",[2]]]},{"hp":4,"a":[4,6],"d":2,"byp":1,"x":[["cover",[1]],["push",[2]]]},{"hp":3,"a":[2,5],"d":1,"cov":[[1],[1]],"x":[["push",[3]],["revive",[1]]]},{"hp":2,"a":[1,6],"d":1,"shred":1,"x":[["cover",[3]],["retreat",[5]]]},{"hp":4,"a":[3,4],"d":2,"cov":[[4],[1]],"x":[["push",[1]],["heal",[5]]]},{"hp":3,"a":[],"d":2,"cond":"shields_empty","x":[["heal",[2]],["revive",[4]],["retreat",[6]]]},{"hp":3,"a":[1,4],"d":1,"knock":1,"cov":[[1],[3],[5]],"x":[["push",[2]],["heal",[3]]]},{"hp":2,"a":[5],"d":3,"byp":1,"x":[["cover",[2]],["push",[3]],["retreat",[1]]]},{"hp":4,"a":[2,3],"d":2,"cov":[[3]],"x":[["push",[5]],["retreat",[1]]]},{"hp":4,"a":[1,3,5],"d":2,"x":[["cover",[2]],["push",[4]]]},{"hp":3,"a":[4,6],"d":1,"cov":[[1]],"x":[["push",[2]],["revive",[5]]]}];
   const HAZ = [
     { name: 'Storm Surge', ico: '⚡', a: [2], surge: 4, cov: [[3]], desc: 'When the Storm rolls 2: 4 damage to the squad, then it fades. Brace with a Shield die to defuse it.' },
     { name: 'Trap Door', ico: '🚪', hp: 3, a: [1, 3], d: 2, desc: 'Shoot it down. Deals 2 damage on 1 or 3.' },
@@ -1578,10 +1659,11 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
       const trios = [], hz = [];
       for (let k = 0; k < p.trios; k++) { const t = teams[ti++]; trios.push(t.members.map(nm => mkCard(s, Object.assign({ kind: 'opp', name: nm, img: nm, team: t.id, tname: t.name }, OPPS[oppPool[op++ % oppPool.length]])))); }
       for (let k = 0; k < p.haz; k++) hz.push(mkCard(s, Object.assign({ kind: 'haz', img: null }, HAZ[hazPool[hp++ % hazPool.length]])));
-      // drop order: the first trio lands with you, then hazard / trio alternate
-      const cards = []; let open = 0;
-      if (trios.length) { const t = trios.shift(); cards.push(...t); open += t.length; }
+      // v7.1: one enemy opens; openHaz (if any) land with it; remaining trio members + other units drop one per turn
+      const cards = []; let open = 0; let restFirst = [];
+      if (trios.length) { const t = trios.shift(); cards.push(t[0]); open = 1; restFirst = t.slice(1); }
       for (let k = 0; k < (p.openHaz || 0); k++) { const j = hz.findIndex(c => !c.instant && !c.surge); if (j >= 0) { cards.push(hz.splice(j, 1)[0]); open++; } }
+      cards.push(...restFirst);
       if (hz.length && (hz[0].instant || hz[0].surge)) { const j = hz.findIndex(c => !c.instant && !c.surge); if (j > 0) hz.unshift(hz.splice(j, 1)[0]); }
       while (trios.length || hz.length) { if (hz.length) cards.push(hz.shift()); if (trios.length) cards.push(...trios.shift()); }
       s.pois.push({ name: (opts.pois && opts.pois[pi % opts.pois.length]) || ('POI ' + (pi + 1)), trios: p.trios, haz: p.haz, open });
@@ -1590,8 +1672,8 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     });
     // v6.8: one Elite (last match's winner) drops last at the final POI
     if (opts.elite && opts.elite.name) {
-      const ea = shuffle([1, 2, 3, 4, 5, 6], rr).slice(0, 3).sort((a, b) => a - b);
-      const ec = mkCard(s, { kind: 'opp', name: opts.elite.name, img: opts.elite.name, team: 900, tname: opts.elite.name, hp: 4, a: ea, d: 3, cov: [[F.SHOOT], [F.SHIELD], [F.HEAL], [F.REBOOT]] }); // v6.9: 4 cover dice, hits for 3
+      const esh = shuffle([1, 2, 3, 4, 5, 6], rr), ea = esh.slice(0, 3).sort((a, b) => a - b);
+      const ec = mkCard(s, { kind: 'opp', name: opts.elite.name, img: opts.elite.name, team: 900, tname: opts.elite.name, hp: 4, a: ea, d: 3, cov: [[F.SHOOT], [F.SHIELD], [F.HEAL], [F.REBOOT]], x: [['cover', [esh[3]]], ['push', [esh[4]]]], covMax: 4, pbMax: 1 }); // v7.2: Damage + Cover + Push // v6.9: 4 cover dice, hits for 3
       ec.elite = 1; ec.etag = opts.elite.tag || 'WON LAST MATCH'; ec.vb = CFG.eliteVb; ec.hp = ec.maxHp = 4;
       (s.future.length ? s.future[s.future.length - 1] : s.deck).push(ec); s.field++;
     }
@@ -1697,7 +1779,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   function vbHash(seed, uid) { let t = (Math.imul((seed | 0) ^ 0x9E3779B9, 31) + Math.imul(uid, 0x85EBCA6B)) | 0; t = Math.imul(t ^ t >>> 15, 1 | t); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }
   function mkCard(s, t) {
     const c = { uid: s.uid++, kind: t.kind, name: t.name, img: t.img, ico: t.ico || null, hp: t.hp || 0, maxHp: t.hp || 0, a: (t.a || []).slice(), d: t.d || 0,
-      byp: !!t.byp, shred: !!t.shred, knock: t.knock || 0, cond: t.cond || null, cov: (t.cov || []).map(x => ({ need: x.slice(), filled: 0 })), evade: 0, target: 0, desc: t.desc || '' };
+      byp: !!t.byp, shred: !!t.shred, knock: t.knock || 0, cond: t.cond || null, acts: (t.x || []).map(x => ({ k: x[0], n: x[1].slice() })), pb: 0, covMax: t.covMax || 3, pbMax: t.pbMax || 2, cov: (t.cov || []).map(x => ({ need: x.slice(), filled: 0 })), evade: 0, target: 0, desc: t.desc || '' };
     ['surge', 'tick', 'boom', 'instant', 'noShield', 'emp', 'twice', 'mend', 'block', 'boogie', 'lag', 'stink', 'shrink', 'immune'].forEach(k => { if (t[k]) c[k] = t[k]; });
     if (t.team != null) { c.team = t.team; c.tname = t.tname; }
     if (c.kind === 'opp' && c.maxHp < 4) c.maxHp = 4;
@@ -1706,10 +1788,72 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   }
   function cardText(c) {
     if (c.kind === 'haz') return c.desc;
-    let t = c.cond ? COND_TEXT[c.cond] : (c.d + ' damage' + (c.byp ? ', ignores shields' : ''));
+    let t = c.cond ? COND_TEXT[c.cond] : ((c.d + (c.pb || 0)) + ' damage' + (c.byp ? ', ignores shields' : ''));
     if (c.shred) t = 'Wipes shields, then ' + t;
     if (c.knock) t += ' + knocks ' + c.knock + ' die';
     return t + '.';
+  }
+  /* ---- v7.2 enemy actions ----
+     Resolution order when one Storm number triggers several actions on the same enemy (templates avoid overlaps, but the engine is safe):
+     REVIVE -> HEAL -> COVER -> PUSH -> DAMAGE -> RETREAT. Evade cancels all of them. A downed enemy never acts. */
+  const ACT_ORDER = ['revive', 'heal', 'cover', 'push', 'dmg', 'retreat'];
+  const ACT_INFO = {
+    dmg: { name: 'DAMAGE', desc: 'Hits your squad (shields first, unless it pierces). With 2+ squads on the board it may shoot a rival squad instead.' },
+    heal: { name: 'HEAL', desc: 'Recovers 1 HP on herself first if she is hurt; otherwise on one hurt teammate on the board. Nothing if nobody is hurt.' },
+    cover: { name: 'COVER', desc: 'Adds one ??? cover slot (max 3 unfilled). While any ??? slot is unfilled she can\u2019t be damaged. You fill it with a die face.' },
+    revive: { name: 'REVIVE', desc: 'Instantly picks up a downed teammate on the board at 1 HP. Nothing if no teammate is downed.' },
+    push: { name: 'PUSH', desc: 'Only works while she has a ??? slot: removes one and gives her +1 damage (stacks up to +2, lasts while she is on the board). With no ??? slot it does nothing.' },
+    retreat: { name: 'RETREAT', desc: 'Leaves the board and goes to the back of this POI\u2019s queue (keeps her HP, cover and Push bonus). The Storm waits for her. Can\u2019t retreat once the Storm is in.' }
+  };
+  const unfilledCov = c => c.cov.filter(x => !x.filled).length;
+  const oppTeam = (s, c) => s.board.filter(o => o.kind === 'opp' && o !== c && o.team === c.team);
+  const hurtTeammate = (s, c) => oppTeam(s, c).find(o => !o.down && o.hp < o.maxHp);
+  function canAct(s, c, k) {
+    if (c.down) return false;
+    switch (k) {
+      case 'dmg': return true;
+      case 'heal': return c.hp < c.maxHp || !!hurtTeammate(s, c);
+      case 'cover': return unfilledCov(c) < (c.covMax || 3);
+      case 'revive': return oppTeam(s, c).some(o => o.down);
+      case 'push': return unfilledCov(c) > 0 && (c.pb || 0) < (c.pbMax || 2);
+      case 'retreat': return !c.elite && !s.board.some(o => o.kind === 'storm');
+    }
+    return false;
+  }
+  // which actions this card performs on Storm number v, in resolution order
+  function actsOn(c, v) {
+    const out = [];
+    if (c.a.includes(v)) out.push('dmg');
+    (c.acts || []).forEach(x => { if (x.n.includes(v) && !out.includes(x.k)) out.push(x.k); });
+    return ACT_ORDER.filter(k => out.includes(k));
+  }
+  function supportAct(s, c, k) {
+    if (!canAct(s, c, k)) { s.ev.push({ t: 'enoop', uid: c.uid, k }); return; }
+    switch (k) {
+      case 'heal': { const t = c.hp < c.maxHp ? c : hurtTeammate(s, c); t.hp++; s.ev.push({ t: 'eheal', uid: c.uid, tgt: t.uid, self: t === c ? 1 : 0, hp: t.hp }); break; }
+      case 'cover': {
+        const ok = [1, 3, 4, 5].filter(f => !blocked(s, f)), pool = ok.length ? ok : [1, 3, 4, 5], face = pool[Math.floor(nextRand(s) * pool.length)];
+        c.cov = c.cov.filter(x => !x.filled); c.cov.push({ need: [face], filled: 0 });
+        s.ev.push({ t: 'ecover', uid: c.uid, face, n: c.cov.length }); break; }
+      case 'revive': { const t = oppTeam(s, c).find(o => o.down); t.down = 0; t.rev = 0; t.hp = CFG.oppReviveHp; s.ev.push({ t: 'erevive', uid: t.uid, by: c.uid }); break; }
+      case 'push': { const i = c.cov.findIndex(x => !x.filled); c.cov.splice(i, 1); c.pb = (c.pb || 0) + 1; s.ev.push({ t: 'epush', uid: c.uid, pb: c.pb, exposed: coverDone(c) ? 1 : 0 }); break; }
+      case 'retreat': { const i = s.board.indexOf(c); s.board.splice(i, 1); c.evade = 0; c.ret = 1; s.deck.push(c); s.ev.push({ t: 'eretreat', uid: c.uid, card: c }); break; }
+    }
+  }
+  function attackOpp(s, c) {
+    if (!c.elite && s.board.some(o => o.kind === 'opp' && o.team !== c.team && !lockedE(o) && !o.elite) && nextRand(s) < CFG.infight) { s.activatedAny = true; s.ev.push({ t: 'act', uid: c.uid }); infight(s, c); return; }
+    s.activatedAny = true;
+    s.ev.push({ t: 'act', uid: c.uid });
+    if (c.shred) s.shield = 0;
+    const dm = (c.d || 0) + (c.pb || 0);
+    if (dm) damageSquad(s, dm, { byp: c.byp, target: c.target, src: c.uid });
+    if (c.knock) knockDice(s, c.knock, c);
+  }
+  function runActs(s, c, v) {
+    for (const k of actsOn(c, v)) {
+      if (c.down || !s.board.includes(c)) break;
+      if (k === 'dmg') attackOpp(s, c); else supportAct(s, c, k);
+    }
   }
   function alive(s) { return s.squad.filter(m => m.hp > 0); }
   function pickTarget(s) { const a = alive(s); return a.length ? a[Math.floor(nextRand(s) * a.length)].i : 0; }
@@ -1720,32 +1864,31 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     if (c.emp) s.shield = 0;
     s.ev.push({ t: 'draw', uid: c.uid });
   }
-  /* v6.6: a draw is one unit: a whole trio drops together, or one hazard. Max CFG.teamCap trios on the board at once. */
+  /* v7.1: a draw is exactly one card (one enemy OR one hazard). Teammates share a colour stripe; no trio board cap. */
   function teamsOnBoard(s) { return [...new Set(s.board.filter(c => c.kind === 'opp').map(c => c.team))]; }
   function teamUp(s, team, not) { return s.board.some(o => o.kind === 'opp' && o.team === team && !o.down && o !== not); }
   function drawUnit(s) {
     if (!s.deck.length || s.poiClear) return null;
-    let idx = 0; const c0 = s.deck[0], tob = teamsOnBoard(s);
-    if (c0.kind === 'opp' && !tob.includes(c0.team) && tob.length >= CFG.teamCap) {
-      idx = s.deck.findIndex(c => c.kind !== 'opp');
-      if (idx < 0) { s.ev.push({ t: 'hold', tname: c0.tname }); return null; }
-    }
-    const first = s.deck[idx]; let out;
+    const first = s.deck.shift(); let out;
     if (first.kind === 'opp') {
-      out = s.deck.filter(c => c.kind === 'opp' && c.team === first.team);
-      s.deck = s.deck.filter(c => !out.includes(c));
-      const used = new Set(s.board.filter(c => c.kind === 'opp').map(c => c.tc));
-      let tc = s.tcN % 6; for (let k = 0; k < 6; k++) { const x = (s.tcN + k) % 6; if (!used.has(x)) { tc = x; break; } }
-      s.tcN = tc + 1;
-      const el = out[0].elite ? 1 : 0; if (el) s.tcN = tc; // v6.8: the Elite wears its own gold colour
-      out.forEach(c => { c.tc = el ? 6 : tc; placeCard(s, c); });
-      s.ev.push({ t: 'teamDrop', team: first.team, tname: first.tname, tc: el ? 6 : tc, n: out.length, uids: out.map(c => c.uid), elite: el });
-    } else { s.deck.splice(idx, 1); placeCard(s, first); out = [first]; }
+      const mate = s.board.find(c => c.kind === 'opp' && c.team === first.team);
+      const el = first.elite ? 1 : 0;
+      let tc;
+      if (mate) tc = mate.tc;
+      else if (el) tc = 6;
+      else {
+        const used = new Set(s.board.filter(c => c.kind === 'opp').map(c => c.tc));
+        tc = s.tcN % 6; for (let k = 0; k < 6; k++) { const x = (s.tcN + k) % 6; if (!used.has(x)) { tc = x; break; } }
+        s.tcN = tc + 1;
+      }
+      first.tc = tc; placeCard(s, first); out = [first];
+      s.ev.push({ t: 'teamDrop', team: first.team, tname: first.tname, tc, n: 1, uids: [first.uid], elite: el, solo: 1 });
+    } else { placeCard(s, first); out = [first]; }
     stormCheck(s);
     return out;
   }
   function drawCard(s) { const u = drawUnit(s); return u ? u[0] : null; }
-  /* v6.6 The Storm: once a POI has dropped everything it closes in. Immune; leaves when every other threat is neutralized. */
+  /* v7.1 The Storm: enters as soon as the last threat of this POI has spawned (same turn). Immune; leaves when every other threat is neutralized. */
   function stormCheck(s) {
     if (s.poiClear || s.deck.length || s.board.some(c => c.kind === 'storm') || !s.board.some(c => c.kind !== 'storm')) return;
     const c = mkCard(s, { kind: 'storm', name: 'The Storm', ico: '🌩️', a: [1, 2, 3, 4, 5, 6], d: s.poiIx >= 3 ? 2 : 1, immune: 1, desc: 'The zone is closing. It hits on every Storm roll and grows by 1 every 3 turns (max 2). It cannot be shot or evaded, and it leaves once every other threat at this POI is neutralized.' });
@@ -1755,7 +1898,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   }
   /* v6.6 DBNO: enemy players at 0 HP are downed, not eliminated. by = attacking card (another trio) or null (your squad). */
   function downOpp(s, t, by) {
-    t.hp = 1; t.down = 1; t.evade = 0; t.rev = s.phase === 'storm' ? CFG.reviveTurns + 1 : CFG.reviveTurns;
+    t.hp = 1; t.down = 1; t.evade = 0; t.rev = CFG.reviveTurns; // v7.1: timer ticks at start of next END TURN (before the draw)
     if (!by) s.stats.knocks++;
     s.ev.push({ t: 'edown', uid: t.uid, by: by ? by.uid : null, byName: by ? by.name : null });
     checkWipe(s, t.team, by);
@@ -1783,7 +1926,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   function infight(s, c) {
     const foes = s.board.filter(o => o.kind === 'opp' && o.team !== c.team && !lockedE(o) && !o.elite);
     const up = foes.filter(o => !o.down), pool = up.length ? up : foes;
-    const t = pool[Math.floor(nextRand(s) * pool.length)], amt = c.d || 1;
+    const t = pool[Math.floor(nextRand(s) * pool.length)], amt = (c.d || 1) + (c.pb || 0);
     s.ev.push({ t: 'infight', uid: c.uid, tgt: t.uid, amt, tc: c.tc, thirst: t.down ? 1 : 0 });
     if (t.down) { xElim(s, t, c); return; }
     t.hp = Math.max(0, t.hp - amt);
@@ -1869,7 +2012,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
       case F.SHOOT: s.board.forEach(c => { if (c.down || (c.hp > 0 && coverDone(c))) out.push({ kind: 'shoot', uid: c.uid }); }); break;
       case F.SHIELD:
         if (!shieldsLocked(s) && s.shield < s.shieldMax) out.push({ kind: 'shield' });
-        s.board.forEach(c => { if (!c.evade && !c.down && !c.immune && (c.a.length || c.cond || c.shrink)) out.push({ kind: 'evade', uid: c.uid }); });
+        s.board.forEach(c => { if (!c.evade && !c.down && !c.immune && (c.a.length || c.cond || c.shrink || (c.acts && c.acts.length))) out.push({ kind: 'evade', uid: c.uid }); });
         break;
       case F.HEAL: s.squad.forEach(m => { if (m.hp > 0 && m.hp < m.max) out.push({ kind: 'heal', member: m.i }); }); break;
       case F.REBOOT:
@@ -2013,6 +2156,14 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     s.dice.forEach(d => { if (d.st === 'rolled' || d.st === 'used') { d.st = 'ready'; d.face = null; } });
     // streak bookkeeping
     if (s.turnElims > 0) { s.streak++; s.stats.longestStreak = Math.max(s.stats.longestStreak, s.streak); } else s.streak = 0;
+    // v7.1: DBNO timer ticks BEFORE the next threat drops, so a teammate still in the deck cannot save a bleed-out
+    s.board.slice().forEach(c => {
+      if (c.kind !== 'opp' || !c.down || !s.board.includes(c)) return;
+      if (c.rev > 0) c.rev--;
+      if (c.rev > 0) return;
+      if (teamUp(s, c.team, c)) { c.down = 0; c.rev = 0; c.hp = CFG.oppReviveHp; s.ev.push({ t: 'erevive', uid: c.uid }); }
+      else { s._killer = s._killer || (s.squad[0] && s.squad[0].name); clearCard(s, c, 'bleed'); }
+    });
     const c = s.poiClear ? null : drawCard(s);
     return { drew: c, clear: s.poiClear };
   }
@@ -2020,14 +2171,14 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   function stormRolls(s) { return s.poiClear ? 0 : hasEffect(s, 'twice') ? 2 : 1; }
   // which cards activate on value v (in board order)
   function activations(s, v) {
-    return s.board.filter(c => !c.cond && !c.down && c.a.includes(v)).map(c => c.uid);
+    return s.board.filter(c => !c.down && (c.a.includes(v) || (c.acts || []).some(x => x.n.includes(v)))).map(c => c.uid);
   }
   function activate(s, uid, v) { activate0(s, uid, v); checkWin(s); }
   function activate0(s, uid, v) {
     const c = s.board.find(x => x.uid === uid); if (!c || c.down) return;
     if (c.evade) { s.ev.push({ t: 'evaded', uid }); return; } // one-turn Evade: stays on for the rest of this Storm phase
     // v6.6: with 2+ trios on the board, enemies sometimes shoot another trio instead of you
-    if (c.kind === 'opp' && !c.elite && s.board.some(o => o.kind === 'opp' && o.team !== c.team && !lockedE(o) && !o.elite) && nextRand(s) < CFG.infight) { s.activatedAny = true; s.ev.push({ t: 'act', uid }); infight(s, c); return; }
+    if (c.kind === 'opp') { runActs(s, c, v); return; } // v7.2: every enemy action on this number, in fixed order
     s.activatedAny = true;
     s.ev.push({ t: 'act', uid });
     if (c.surge) { damageSquad(s, c.surge, { src: uid }); s.board.splice(s.board.indexOf(c), 1); s.ev.push({ t: 'fade', uid, card: c }); return; }
@@ -2047,13 +2198,12 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
       if (!fire) return;
       if (c.evade) { s.ev.push({ t: 'evaded', uid: c.uid }); return; }
       s.ev.push({ t: 'act', uid: c.uid });
-      damageSquad(s, c.cond === 'took_damage' ? 1 : c.d, { target: c.target, src: c.uid, byp: c.byp });
+      damageSquad(s, (c.cond === 'took_damage' ? 1 : c.d) + (c.pb || 0), { target: c.target, src: c.uid, byp: c.byp });
     });
     s.board.forEach(c => { if (c.shrink && s.board.includes(c)) { if (c.evade) { s.ev.push({ t: 'evaded', uid: c.uid }); return; } s.ev.push({ t: 'act', uid: c.uid }); damageSquad(s, 1, { byp: 1, src: c.uid }); } });
     // v6.1 one-turn Evade: every Evade expires at the end of the Storm phase, whether or not the threat triggered
     s.board.forEach(c => { if (c.evade) { c.evade = 0; s.ev.push({ t: 'evadeEnd', uid: c.uid }); } });
-    // v6.6: downed enemies tick toward a revive; a teammate who is still up picks them back up
-    s.board.forEach(c => { if (c.kind !== 'opp' || !c.down) return; if (c.rev > 0) c.rev--; if (c.rev <= 0 && teamUp(s, c.team, c)) { c.down = 0; c.rev = 0; c.hp = CFG.oppReviveHp; s.ev.push({ t: 'erevive', uid: c.uid }); } });
+    // v7.1: DBNO timer moved to endTurnBegin (before draw)
     { const st = s.board.find(c => c.kind === 'storm'); if (st) { st.age = (st.age || 0) + 1; if (st.age % CFG.stormGrow === 0 && st.d < CFG.stormMax) { st.d++; s.ev.push({ t: 'stormGrow', uid: st.uid, d: st.d }); } } }
     if (!s.over) lobbyTick(s);
     if (!checkWin(s)) { if (s.poiClear) nextPoi(s); s.turn++; s.phase = 'roll'; if (!rollableCount(s)) { s.over = 'loss'; s.overReason = 'pinned'; s.phase = 'over'; s.ev.push({ t: 'over' }); } }
@@ -2066,11 +2216,11 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   }
   function danger(s, v) { // preview: total raw damage if the Storm rolls v
     let dmg = 0, hits = 0, pierce = 0;
-    s.board.forEach(c => { if (c.cond || c.down || !c.a.includes(v) || c.evade) return; hits++; const x = c.surge || (c.tick && c.hp <= c.tick ? c.boom : 0) || c.d || (c.stink ? 1 : 0); dmg += x; if (c.byp || c.stink) pierce += x; });
+    s.board.forEach(c => { if (c.cond || c.down || !c.a.includes(v) || c.evade) return; hits++; let x = c.surge || (c.tick && c.hp <= c.tick ? c.boom : 0) || c.d || (c.stink ? 1 : 0); if (c.kind === 'opp') x = (c.d || 0) + (c.pb || 0) + (actsOn(c, v).includes('push') && canAct(s, c, 'push') ? 1 : 0); dmg += x; if (c.byp || c.stink) pierce += x; });
     return { dmg, hits, pierce, hp: pierce + Math.max(0, dmg - pierce - s.shield) };
   }
 
-  const API = { F, FACE_INFO, CFG, OPPS, HAZ, COND_TEXT, newGame, roll, targetsFor, chestOptions, convertFaces, apply, undo, canUndo, endTurnBegin, stormRoll, stormRolls, activations, activate, endTurnFinish, endTurnAll, danger, cardText, canBuy, buy, rollableCount, coverDone, blocked, shieldsLocked, alive, hasEffect, teamsOnBoard, teamUp, checkWin, lobbyAlive, locked: lockedE, standings, aliveOpps: aliveOppsE, aliveTeams: oppTeamsAlive };
+  const API = { F, FACE_INFO, CFG, OPPS, HAZ, COND_TEXT, newGame, roll, targetsFor, chestOptions, convertFaces, apply, undo, canUndo, endTurnBegin, stormRoll, stormRolls, activations, activate, endTurnFinish, endTurnAll, danger, cardText, ACT_INFO, ACT_ORDER, actsOn, canAct, unfilledCov, canBuy, buy, rollableCount, coverDone, blocked, shieldsLocked, alive, hasEffect, teamsOnBoard, teamUp, checkWin, lobbyAlive, locked: lockedE, standings, aliveOpps: aliveOppsE, aliveTeams: oppTeamsAlive };
   if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.Engine = API;
 })(typeof window !== 'undefined' ? window : globalThis);
 </script>
@@ -2217,7 +2367,7 @@ function renderTitle() {
   const crew = pickN(CHARS, 3);
   $('#scr-title').innerHTML = `
     <div class="bgart" style="background-image:url(${poiImg(titlePoi)})"></div>
-    <div class="ver">v7.0</div>
+    <div class="ver">v7.3</div>
     <div class="title-top"><button class="icon-btn mute-btn" aria-label="Sound">${AU.muted ? '🔇' : '🔊'}</button></div>
     <div class="crew">${crew.map(n => `<img src="${portrait(n)}" alt="">`).join('')}</div>
     <div class="logo h"><div class="l0">FORTNITE:</div><div class="l1">ZERO BUILD</div><div class="l2">D6</div><div class="tag">Roll. Assign. Survive the Storm. Last squad standing.</div></div>
@@ -2317,18 +2467,19 @@ function startRun(squad, o) {
   U.seen = new Set(S.board.map(c => c.uid)); U.sel = null; U.conv = null; U.prevHp = {}; U.prevShield = null; U.busy = false; U.endArmed = false;
   show('scr-game'); renderGame();
   S.board.forEach(c => { const el = cardEl(c.uid); if (el) el.classList.add('enter'); });
-  feed(`Dropped into <b class="a">${esc(RUN.poi)}</b> · ${(DIFFS[RUN.diff] || DIFFS.standard).name}${RUN.daily ? ' · Daily' : ''}`, 'info');
+
   logAdd('Squad locked in. Prepare to drop!', 'info');
   logAdd(`Landed at <b>${esc(RUN.poi)}</b> (POI 1/${S.pois.length}): ${plural(S.pois[0].trios, 'enemy trio')} + ${plural(S.pois[0].haz, 'hazard')} here.`, 'alert');
   saveRun();
   if (!LS.get('fd5_tut', false)) setTimeout(() => startTutorial(), 500);
 }
-function resumeRun(r) { if (!r || !r.s || !r.s.pois || !r.s.lobby || !r.s.trk || !r.s.teams) { LS.del('fd5_run'); toast('That save is from an older version. Start a new run!'); renderTitle(); return; } RUN = r.run; S = r.s; S.ev = []; S.undo = S.undo || []; S.heals = S.heals || 0; U.prevHp = {}; U.conv = null; U.seen = new Set(S.board.map(c => c.uid)); U.sel = null; U.prevShield = null; U.busy = false; show('scr-game'); logReset(); renderGame(); logAdd(`Run resumed at <b>${esc(RUN.poi)}</b>.`, 'info'); toast('Run resumed'); }
+function resumeRun(r) { if (!r || !r.s || !r.s.pois || !r.s.lobby || !r.s.trk || !r.s.teams) { LS.del('fd5_run'); toast('That save is from an older version. Start a new run!'); renderTitle(); return; } RUN = r.run; S = r.s; [S.board, S.deck].concat(S.future || []).flat().forEach(c => { if (c && c.kind === 'opp' && !c.acts) { c.acts = []; c.pb = 0; c.covMax = 3; c.pbMax = 2; } }); S.ev = []; S.undo = S.undo || []; S.heals = S.heals || 0; U.prevHp = {}; U.conv = null; U.seen = new Set(S.board.map(c => c.uid)); U.sel = null; U.prevShield = null; U.busy = false; show('scr-game'); logReset(); renderGame(); logAdd(`Run resumed at <b>${esc(RUN.poi)}</b>.`, 'info'); toast('Run resumed'); }
 function saveRun() { if (!S || S.over || U.busy) return; LS.set('fd5_run', { run: RUN, s: Object.assign({}, S, { undo: [], ev: [] }) }); }
 
 
 /* ---------- v6.0: battle log, POI plate, layout ---------- */
 const LOG = { items: [] }, LOGN = {};
+const nm2 = u => { const c = S && S.board.find(x => x.uid === u); return c ? c.name : (LOGN[u] || 'An enemy'); };
 const logRow = it => `<div class="lg ${it.kind}"><i></i><span>${it.html}</span></div>`;
 function logMiniRender() { const m = $('#logMini'); if (m) m.innerHTML = LOG.items.slice(0, 2).map(logRow).join(''); }
 function logReset() { LOG.items = []; const el = $('#logList'); if (el) el.innerHTML = ''; logMiniRender(); }
@@ -2354,11 +2505,15 @@ function logEvents(evs) {
       case 'chestVb': logAdd(`Chest roll paid out <b>+${ev.amt} V-Bucks</b>!`, 'xp'); break;
       case 'lock': logAdd('Search die locked on the tracker.', 'search'); break;
       case 'searchFull': logAdd('Search complete! A new threat drops in.', 'alert'); break;
-      case 'teamDrop': if (ev.elite) { logAdd(`👑 <b>ELITE</b> ${esc(LOGN[ev.uids[0]] || (S.board.find(x => x.uid === ev.uids[0]) || {}).name || '')} dropped in: ${esc(((S.board.find(x => x.uid === ev.uids[0]) || {}).etag || '').toLowerCase())}!`, 'alert'); break; } logAdd(`Squad <b style="color:${tcOf(ev.tc)[1]}">${teamNames(ev.uids.map(u => LOGN[u] || (S.board.find(x => x.uid === u) || {}).name || ''))}</b> dropped in.`, 'alert'); break;
+      case 'teamDrop': { const nm0 = LOGN[ev.uids[0]] || (S.board.find(x => x.uid === ev.uids[0]) || {}).name || ''; if (ev.elite) { logAdd(`👑 <b>ELITE</b> ${esc(nm0)} dropped in: ${esc(((S.board.find(x => x.uid === ev.uids[0]) || {}).etag || '').toLowerCase())}!`, 'alert'); break; } logAdd(`<b style="color:${tcOf(ev.tc)[1]}">${esc(nm0)}</b> ${(S.board.find(x => x.uid === ev.uids[0]) || {}).ret ? 'came back into the fight' : 'dropped in'}.`, 'alert'); break; }
       case 'lobby': ev.kills.forEach(x => logAdd(`<b>${esc(x.k)}</b> eliminated <b>${esc(x.v)}</b> (elsewhere on the map).`, 'info')); break;
-      case 'hold': logAdd('Another trio is waiting to drop (max 2 trios here at once).', 'info'); break;
+      case 'hold': break;
       case 'edown': logAdd(ev.by == null ? `<b>${lastDie != null ? owner(lastDie) : 'Squad'}</b> knocked <b>${nm(ev.uid)}</b>! Hit again to eliminate.` : `<b>${esc(ev.byName || 'An enemy')}</b> knocked <b>${nm(ev.uid)}</b>.`, 'shot'); break;
-      case 'erevive': logAdd(`<b>${nm(ev.uid)}</b> was revived by a teammate!`, 'dmg'); break;
+      case 'erevive': logAdd(ev.by != null ? `<b>${nm(ev.by)}</b> revived <b>${nm(ev.uid)}</b> (1 HP).` : `<b>${nm(ev.uid)}</b> was revived by a teammate!`, 'dmg'); break;
+      case 'eheal': logAdd(ev.self ? `<b>${nm(ev.uid)}</b> healed herself +1.` : `<b>${nm(ev.uid)}</b> healed <b>${nm(ev.tgt)}</b> +1.`, 'dmg'); break;
+      case 'ecover': logAdd(`<b>${nm(ev.uid)}</b> took cover: a new ??? slot (needs ${FI[ev.face].name}).`, 'dmg'); break;
+      case 'epush': logAdd(`<b>${nm(ev.uid)}</b> pushed: a ??? slot is gone, +1 damage (now +${ev.pb})${ev.exposed ? '. She is EXPOSED!' : '.'}`, 'dmg'); break;
+      case 'eretreat': logAdd(`<b>${nm(ev.uid)}</b> retreated to the back of the queue.`, 'dmg'); break;
       case 'infight': logAdd(`<b>${nm(ev.uid)}</b> ${ev.thirst ? 'finished off' : 'shot'} <b>${nm(ev.tgt)}</b>${ev.thirst ? '' : ' for ' + ev.amt}.`, 'alert'); break;
       case 'xelim': logAdd(`<b>${esc(ev.byName || 'An enemy')}</b> eliminated <b>${esc(ev.card.name)}</b>.`, 'info'); break;
       case 'xwipe': logAdd(`${esc(ev.byName || 'A rival squad')} wiped out ${esc(ev.tname || 'a squad')}.`, 'info'); break;
@@ -2383,7 +2538,7 @@ function logEvents(evs) {
       case 'freeDice': logAdd('Knocked Out dice are back in play.', 'heal'); break;
       case 'clear': {
         const c = ev.card;
-        if (c.kind === 'opp') logAdd(`<b>${lastDie != null ? owner(lastDie) : 'Squad'}</b> eliminated <b>${esc(c.name)}</b>: +${ev.bars || 0} bars, +${ev.xp || 0} XP, +${ev.vb || 0} V-Bucks.`, 'xp');
+        if (c.kind === 'opp') logAdd(ev.how === 'bleed' ? `<b>${esc(c.name)}</b> bled out: +${ev.bars || 0} bars, +${ev.xp || 0} XP, +${ev.vb || 0} V-Bucks.` : `<b>${lastDie != null ? owner(lastDie) : 'Squad'}</b> eliminated <b>${esc(c.name)}</b>: +${ev.bars || 0} bars, +${ev.xp || 0} XP, +${ev.vb || 0} V-Bucks.`, 'xp');
         else logAdd(`Cleared <b>${esc(c.name)}</b>: +${ev.bars || 0} bars, +${ev.xp || 0} XP.`, 'xp');
         break;
       }
@@ -2421,7 +2576,7 @@ function ruleChips() {
   out.push(tw ? `<div class="rule storm"><b>${ico('warning')}STORM</b><span>Rolls twice while ${esc(tw.name)} is out</span></div>`
      : zs ? `<div class="rule storm"><b>${ico('warning')}STORM</b><span>Closing in: ${zs.d} dmg every roll until the POI is clear</span></div>`
      : s.poiClear ? `<div class="rule storm"><b>${ico('warning')}STORM</b><span>POI clear: END TURN to rotate</span></div>`
-              : `<div class="rule storm"><b>${ico('warning')}STORM</b><span>Each END TURN drops the next trio or hazard</span></div>`);
+              : `<div class="rule storm"><b>${ico('warning')}STORM</b><span>Each END TURN drops the next enemy or hazard</span></div>`);
   if (E.shieldsLocked(s)) { const sc = s.board.find(c => c.emp || c.noShield); out.push(`<div class="rule shield"><b>${ico('lock')}SHIELD</b><span>Refills locked by ${esc(sc ? sc.name : 'a hazard')}</span></div>`); }
   return out.join('');
 }
@@ -2557,7 +2712,59 @@ function shortText(c, badge) {
   let t = `${c.d} dmg`; if (c.byp) t += ' · pierce'; if (c.shred) t += ' · shred'; if (c.knock) t += ' · knock';
   return t;
 }
+/* ---------- v7.2 enemy tile: portrait + name/HP/cover/passives on the left, action table on the right ---------- */
+const ACTK = { dmg: ['DAMAGE', '#ff5468'], heal: ['HEAL', '#4ade80'], cover: ['COVER', '#7dd3fc'], revive: ['REVIVE', '#f472b6'], push: ['PUSH', '#fb923c'], retreat: ['RETREAT', '#c4b5fd'] };
+const ACTSVG = {
+  dmg: '<path d="M8 .8l1.9 4.4 4.7.5-3.5 3.2 1 4.7L8 11.2l-4.1 2.4 1-4.7L1.4 5.7l4.7-.5z"/>',
+  heal: '<path d="M5.8 1.5h4.4v4.3h4.3v4.4h-4.3v4.3H5.8v-4.3H1.5V5.8h4.3z"/>',
+  cover: '<path d="M8 1l5.8 2.1v4.5c0 3.3-2.4 5.9-5.8 7.4-3.4-1.5-5.8-4.1-5.8-7.4V3.1z"/>',
+  revive: '<path d="M8 14.6S1.4 10.6 1.4 6.2A3.3 3.3 0 0 1 8 4.7a3.3 3.3 0 0 1 6.6 1.5C14.6 10.6 8 14.6 8 14.6z"/>',
+  push: '<path d="M2.6 8.8L8 3.4l5.4 5.4-1.5 1.5L8 6.4l-3.9 3.9zM2.6 13.4L8 8l5.4 5.4-1.5 1.5L8 11l-3.9 3.9z"/>',
+  retreat: '<path d="M6.2 2.2L1.6 6.8l4.6 4.6V8.2h4.2a1.8 1.8 0 0 1 0 3.6H7.3v2.2h3.1a4 4 0 0 0 0-8H6.2z"/>'
+};
+const actIco = k => `<svg class="ai" viewBox="0 0 16 16" aria-hidden="true">${ACTSVG[k]}</svg>`;
+function actRows(c) {
+  const rows = [];
+  if (c.cond) rows.push({ k: 'dmg', n: null });
+  else if (c.a.length) rows.push({ k: 'dmg', n: c.a.slice().sort((x, y) => x - y) });
+  (c.acts || []).forEach(x => rows.push({ k: x.k, n: x.n.slice().sort((p, q) => p - q) }));
+  rows.forEach(r => { r.off = !c.down && !E.canAct(S, c, r.k); });
+  return rows;
+}
+function actTableHTML(c) {
+  return `<div class="atab${c.down ? ' dn' : ''}" aria-label="Actions">${actRows(c).map(r => {
+    const nm = ACTK[r.k], dm = r.k === 'dmg' ? ` ${c.d}${c.pb ? `<u>+${c.pb}</u>` : ''}` : '';
+    const tiles = r.n ? r.n.map(v => `<i class="stile t${v}"></i>`).join('') : '<b class="end">END</b>';
+    return `<div class="arow${r.off ? ' off' : ''}" style="--ac:${nm[1]}" aria-label="${nm[0]}${r.n ? ' on ' + r.n.join(', ') : ' at end of turn'}${r.off ? ', no effect right now' : ''}">${actIco(r.k)}<b class="al">${nm[0]}${dm}</b><span class="an">${tiles}</span></div>`;
+  }).join('')}</div>`;
+}
+function passiveChips(c) {
+  const p = [];
+  if (c.byp) p.push(['PIERCE', 'pc']); if (c.shred) p.push(['SHRED', 'sh']); if (c.knock) p.push([`KNOCK ${c.knock}`, 'kn']);
+  if (c.cond) p.push([{ took_damage: 'IF HIT +1', no_threats_activated: 'IF QUIET 2', shields_empty: 'NO SHIELD 2' }[c.cond], 'cd']);
+  return p.length ? `<div class="pchips">${p.map(x => `<span class="pchip ${x[1]}">${x[0]}</span>`).join('')}</div>` : '';
+}
+function oppHTML(c) {
+  const tgts = U.sel != null ? U.targets.filter(t => t.uid === c.uid) : [];
+  const cls = ['card', 'opp', 'v72', 'r-' + rarity(c)];
+  if (c.evade) cls.push('evade'); if (c.down) cls.push('down'); if (tgts.length) cls.push('tg');
+  if (U.dangerUids.has(c.uid)) cls.push(U.stormHit != null && c.a.includes(U.stormHit) ? 'danger' : 'dangerS');
+  if (U.topUid === c.uid) cls.push('top'); if (c.elite) cls.push('elite');
+  if (isLocked(c)) { cls.push('lockd'); if (U.sel != null && S.dice[U.sel].face === F.SHOOT && !U.targets.some(t => t.uid === c.uid)) cls.push('nogo'); }
+  if (U.exposed.has(c.uid) && performance.now() - U.exposed.get(c.uid) < 1400) cls.push('exposed');
+  const face = U.sel != null ? S.dice[U.sel].face : null, g = face ? FI[face].color : '', tcol = teamC(c);
+  let h = `<div class="${cls.join(' ')}" data-k="card" data-uid="${c.uid}" role="button" aria-label="${esc(c.name)}${c.tname ? ', squad ' + esc(c.tname) : ''}${c.down ? ', downed' : ''}" style="${g ? '--g:' + g + ';' : ''}--team:${tcol[1]};"><i class="tstr" aria-hidden="true"></i>`;
+  h += `<div class="pt" data-tn=""><img src="${portrait(c.img)}" alt="">${c.elite ? `<b class="ecrown" aria-label="Crown: ${esc(c.etag || '')}">${ico('crown', 'cr')}</b>` : ''}${c.down ? '<b class="dtag">DOWNED</b>' : ''}</div>`;
+  const tag = c.elite ? `<span class="otag el">👑 ELITE</span>` : U.topUid === c.uid ? `<span class="otag top">${ico('warning')}TOP</span>` : '';
+  let hp;
+  if (c.down) hp = `<div class="drow"><div class="pips" aria-label="1 HP, downed"><i class="on"></i></div><div class="dbno"><b>${teamUpUI(c) ? 'REVIVE IN ' + Math.min(2, Math.max(1, c.rev || 0)) : 'BLEEDING OUT'}</b></div></div>`;
+  else if (c.maxHp > 0 && c.cov.length) hp = hpHTML(c);
+  else hp = pipsHTML(c);
+  h += `<div class="omid"><div class="onr">${tag}<span class="onm">${esc(c.name)}</span></div><div class="obody"><div class="oleft">${hp}${passiveChips(c)}</div>${actTableHTML(c)}</div></div>`;
+  return h + `<i class="shine"></i>${vbFlair(c)}</div>`;
+}
 function cardHTML(c) {
+  if (c.kind === 'opp') return oppHTML(c);
   const tgts = U.sel != null ? U.targets.filter(t => t.uid === c.uid) : [];
   const cls = ['card', c.kind, 'r-' + rarity(c)];
   if (c.evade) cls.push('evade');
@@ -2654,7 +2861,7 @@ function threatScore(c) {
   const p = c.cond ? 0.5 : c.shrink ? 1 : c.a.length / 6;
   let dmg = c.surge || (c.tick ? c.boom / Math.max(1, c.hp) : 0) || c.d || (c.stink || c.shrink ? 1 : 0) || (c.knock ? 0.8 : 0) || (c.mend ? 0.6 : 0);
   if (c.cond) dmg = c.cond === 'took_damage' ? (c.d || 1) + 1 : 2;
-  if (c.byp) dmg += 0.3; if (c.shred) dmg += 0.3; if (c.emp) dmg += 0.5;
+  if (c.pb) dmg += c.pb; if (c.byp) dmg += 0.3; if (c.shred) dmg += 0.3; if (c.emp) dmg += 0.5;
   return p * dmg + 0.31;
 }
 function pipsHTML(c) {
@@ -2858,8 +3065,9 @@ function impact(p, color) { fxAdd('fx-impact', `left:${p.x}px;top:${p.y}px;--ic:
 function flash(kind) { fxAdd('fx-flash ' + kind, '', '', 400); }
 function shake(l) { if (RM()) return; const w = $('#shakeWrap'); if (!w) return; w.classList.remove('shake1', 'shake2', 'shake3'); void w.offsetWidth; w.classList.add('shake' + Math.min(3, l)); }
 function banner(t, n, kind) { fxAdd('fx-banner' + (kind ? ' ' + kind : ''), '', `<span class="t">${esc(t)}</span>${n ? `<span class="n">${esc(n)}</span>` : ''}`, 1300); }
-function placeFeed(f) { const st = $('.thrpanel'); if (!st) return; const a = app.getBoundingClientRect(), r = st.getBoundingClientRect(); if (!r.width) return; f.style.top = (r.top - a.top + 4) + 'px'; f.style.left = (r.left - a.left) + 'px'; f.style.right = (a.right - r.right) + 'px'; }
-function feed(html, kind) { const f = $('#feed'); placeFeed(f); const e = document.createElement('div'); e.className = 'kf ' + (kind || ''); e.innerHTML = html; f.prepend(e); while (f.children.length > 4) f.lastChild.remove(); setTimeout(() => e.remove(), kind === 'lobby' ? 2400 : 3300); }
+function placeFeed(f) { const st = $('.thrpanel'); if (!st) return; const a = app.getBoundingClientRect(), r = st.getBoundingClientRect(); if (!r.width) return; f.style.top = (r.top - a.top - 1) + 'px'; f.style.left = (r.left - a.left) + 'px'; f.style.right = (a.right - r.right) + 'px'; }
+/* v7.3: the kill feed shows ONLY downs and eliminations (kind 'ko' in-POI, 'lobby' off-POI), max 2 lines. Everything else lives in the battle log. */
+function feed(html, kind) { if (kind !== 'ko' && kind !== 'lobby') return; const f = $('#feed'); placeFeed(f); const e = document.createElement('div'); e.className = 'kf ' + kind; e.innerHTML = html; f.prepend(e); while (f.children.length > 2) f.lastChild.remove(); setTimeout(() => e.remove(), kind === 'lobby' ? 2400 : 3000); }
 function toast(t) { const e = document.createElement('div'); e.className = 'toast'; e.textContent = t; app.appendChild(e); setTimeout(() => e.remove(), 2000); }
 
 /* ---------- v5.5 JUICE: eliminations, XP, coin orbs, rings (ported + fixed from JUICE v1) ---------- */
@@ -3010,7 +3218,7 @@ function elimFX(ev, r, pre, who) {
     const W = app.clientWidth, sx = Math.max(118, Math.min(W - 118, p.x));
     fxAdd('fx-elim' + (n >= 2 ? ' multi' : ''), `left:${sx}px;top:${p.y}px`, `<span class="k">ELIMINATED</span><span class="nm">${esc(c.name)}</span>`, 950);
     punch(1.018 + Math.min(3, n) * 0.008); shake(Math.min(3, 1 + n)); sfx('glass'); sfx('elimChime', n);
-    feed(`<b class="a">${esc(who)}</b> 🎯 eliminated <b class="v">${esc(c.name)}</b> <span style="color:#fde68a">+${ev.bars || 0}🪙</span> <span style="color:#7dd3fc">+${ev.xp || 0} XP</span>`);
+    feed(`<b class="a">${esc(who)}</b> 🎯 eliminated <b class="v">${esc(c.name)}</b>`, 'ko');
   }, RM() ? 0 : 75);
   setTimeout(() => coinOrbs(p, ev.bars || 0, pre), 260);
   xpPop({ x: Math.max(60, Math.min(app.clientWidth - 60, p.x)), y: p.y + 6 }, ev.xp || 0, pre, 300);
@@ -3030,11 +3238,11 @@ function playEvents(evs, pre) {
         if (ev.xp) { const i0 = ev.chests[0], k0 = order.indexOf(i0); setTimeout(() => { const r = rectOf('d' + i0); if (r.w) xpPop({ x: Math.max(60, Math.min(app.clientWidth - 60, r.x + r.w / 2)), y: r.y - 30 }, ev.xp, null, 0); }, k0 * 50 + 260); }
         break; }
       case 'chestVb': { const k0 = (evs.find(e => e.t === 'roll') || { dice: [] }).dice.slice().sort((a, b) => a - b).indexOf(ev.die); setTimeout(() => { const r = rectOf('d' + ev.die); if (!r.w) return; const p = ctr(r);
-          fxAdd('fx-num g vbpop chestvb', `left:${Math.max(56, Math.min(app.clientWidth - 56, p.x))}px;top:${p.y - 8}px`, `${ico('vbucks')} +${ev.amt}`, 1200); ring(p, '#38bdf8', 3); particles(p, 14, ['#7dd3fc', '#e0f2fe', '#fff', '#fde047'], 70); sfx('coin', 2); sfx('sparkle'); buzz([10, 20, 30]); popEl('#hVb', 'bump'); feed(`${ico('vbucks')} Chest roll: <b class="a">+${ev.amt} V-Bucks</b>`, 'bonus'); }, Math.max(0, k0) * 50 + 420); delay = Math.max(delay, 600); break; }
+          fxAdd('fx-num g vbpop chestvb', `left:${Math.max(56, Math.min(app.clientWidth - 56, p.x))}px;top:${p.y - 8}px`, `${ico('vbucks')} +${ev.amt}`, 1200); ring(p, '#38bdf8', 3); particles(p, 14, ['#7dd3fc', '#e0f2fe', '#fff', '#fde047'], 70); sfx('coin', 2); sfx('sparkle'); buzz([10, 20, 30]); popEl('#hVb', 'bump'); }, Math.max(0, k0) * 50 + 420); delay = Math.max(delay, 600); break; }
       case 'lock': { const r = rectOf('search', pre); fxAdd('fx-radar', `left:${ctr(r).x}px;top:${ctr(r).y}px;width:90px;height:90px`, '', 700); sfx('ping'); break; }
       case 'searchFull': setTimeout(() => { banner('SEARCH COMPLETE', 'A new threat drops in', 'hz'); sfx('whoosh'); }, 80); delay = Math.max(delay, 300); break;
       case 'teamDrop': if (ev.elite) { const ec = S.board.find(x => x.uid === ev.uids[0]); setTimeout(() => { banner('👑 ELITE INBOUND', `${ec ? ec.name : ''} · ${ec && ec.etag ? ec.etag.toLowerCase() : ''}`, 'team elb'); sfx('stormLand'); sfx('chime'); buzz([20, 30, 20, 30, 60]); }, 120); delay = Math.max(delay, 500); }
-        else if (S.phase !== 'assign' && S.phase !== 'roll') { banner('SQUAD INBOUND', ev.tname || `${ev.n} players`, 'team'); sfx('whoosh'); buzz([10, 20, 10]); } break;
+        else if (S.phase !== 'assign' && S.phase !== 'roll') { const ec = S.board.find(x => x.uid === ev.uids[0]); setTimeout(() => { banner('ENEMY SPOTTED', ec ? ec.name : 'Enemy', ''); sfx('whoosh'); }, 80); delay = Math.max(delay, 280); } break;
       case 'hold': break;
       case 'lobby': {
         if (ev.flush || S.over) break;
@@ -3046,10 +3254,14 @@ function playEvents(evs, pre) {
         const c = S.board.find(x => x.uid === ev.uid); if (!c) break; // knocked and wiped in one go: the elim shows instead
         const r = rectOf('c' + ev.uid, pre), p = ctr(r), who = lastDie != null ? ownerOf(lastDie).name : 'Squad';
         setTimeout(() => { ring(p, '#ef4444', 3); particles(p, 12, ['#ef4444', '#fff', '#fca5a5'], 70); fxAdd('fx-elim knock', `left:${Math.max(110, Math.min(app.clientWidth - 110, p.x))}px;top:${p.y}px`, `<span class="k">KNOCKED!</span><span class="nm">${esc(c.name)}</span>`, 900); sfx('down'); shake(ev.by == null ? 2 : 1); buzz([20, 30, 20]); }, ev.by == null ? 90 : 160);
-        feed(ev.by == null ? `<b class="a">${esc(who)}</b> knocked <b class="v">${esc(c.name)}</b> · hit again to eliminate` : `<b class="v">${esc(ev.byName || '')}</b> knocked <b class="v">${esc(c.name)}</b>`);
+        feed(ev.by == null ? `<b class="a">${esc(who)}</b> knocked <b class="v">${esc(c.name)}</b>` : `<b class="v">${esc(ev.byName || '')}</b> knocked <b class="v">${esc(c.name)}</b>`, 'ko');
         delay = Math.max(delay, 300); break;
       }
-      case 'erevive': { const r = rectOf('c' + ev.uid, pre), c = S.board.find(x => x.uid === ev.uid); fxAdd('fx-beam', `left:${r.x + 44}px;top:0;height:${r.y + r.h}px`, '', 800); num(ctr(r), 'REVIVED!', 'gr'); sfx('reboot'); buzz(15); if (c) feed(`<b class="v">${esc(c.name)}</b> was revived by a teammate`, 'info'); break; }
+      case 'erevive': { const r = rectOf('c' + ev.uid, pre), c = S.board.find(x => x.uid === ev.uid); if (ev.by != null) { const el = cardEl(ev.by); if (el) popEl(el, 'actpop'); } fxAdd('fx-beam', `left:${r.x + 44}px;top:0;height:${r.y + r.h}px`, '', 800); num(ctr(r), 'REVIVED!', 'gr'); sfx('reboot'); buzz(15); break; }
+      case 'eheal': { const r = rectOf('c' + ev.tgt, pre), p = ctr(r); ring(p, '#4ade80', 1.6); sfx('heal'); { const el = cardEl(ev.uid); if (el) popEl(el, 'actpop'); } delay = Math.max(delay, 300); break; }
+      case 'ecover': { const r = rectOf('c' + ev.uid, pre), p = ctr(r); ring(p, '#7dd3fc', 1.6); sfx('shield'); { const el = cardEl(ev.uid); if (el) popEl(el, 'actpop'); } delay = Math.max(delay, 300); break; }
+      case 'epush': { const r = rectOf('c' + ev.uid, pre), p = ctr(r); ring(p, '#fb923c', 1.6); sfx('whoosh'); if (ev.exposed) U.exposed.set(ev.uid, performance.now()); { const el = cardEl(ev.uid); if (el) popEl(el, 'actpop'); } delay = Math.max(delay, 300); break; }
+      case 'eretreat': { const r = rectOf('c' + ev.uid, pre), p = ctr(r); sfx('whoosh'); U.seen.delete(ev.uid); delay = Math.max(delay, 300); break; }
       case 'infight': {
         { const ea = cardEl(ev.uid), eb = cardEl(ev.tgt), z = $('#opz'); if (z && eb) { const top = Math.min(ea ? ea.offsetTop : eb.offsetTop, eb.offsetTop), bot = Math.max(ea ? ea.offsetTop + ea.offsetHeight : 0, eb.offsetTop + eb.offsetHeight); if (bot - top <= z.clientHeight) z.scrollTop = Math.max(0, top - (z.clientHeight - (bot - top)) / 2); else ensureVis(eb, false); } }
         const a = ctr(rectOf('c' + ev.uid, pre)), b = ctr(rectOf('c' + ev.tgt, pre)), col = tcOf(ev.tc)[1];
@@ -3060,16 +3272,16 @@ function playEvents(evs, pre) {
       case 'xelim': {
         const r = rectOf('c' + ev.card.uid, pre), p = ctr(r);
         setTimeout(() => { ring(p, '#38bdf8', 3.5); shatter(r, '#7dd3fc'); cubes(p, 16); sfx('glass'); sfx('elim'); shake(1); const W = app.clientWidth; fxAdd('fx-elim xe', `left:${Math.max(118, Math.min(W - 118, p.x))}px;top:${p.y}px`, `<span class="k">ELIMINATED</span><span class="nm">${esc(ev.card.name)} · by ${esc(ev.byName || 'enemy')}</span>`, 950); }, 120);
-        feed(`<b class="v">${esc(ev.byName || '')}</b> 🎯 eliminated <b class="v">${esc(ev.card.name)}</b>`); delay = Math.max(delay, 320); break;
+        feed(`<b class="v">${esc(ev.byName || '')}</b> 🎯 eliminated <b class="v">${esc(ev.card.name)}</b>`, 'ko'); delay = Math.max(delay, 320); break;
       }
-      case 'xwipe': feed(`💀 ${esc(ev.byName || 'A rival')} wiped out ${esc(ev.tname || 'a squad')}`, 'info'); break;
+      case 'xwipe': break; // v7.3: each member already shows its own elimination line
       case 'wipe': { const mid = { x: app.clientWidth / 2, y: app.clientHeight * 0.42 }; setTimeout(() => {
           fxAdd('fx-callout l4 wipe', '', `<span class="t h">TEAM<br>WIPE!</span><span class="b">${esc(ev.tname || '')} · +${ev.bonus} 🪙 · +${(ev.xp || 0).toLocaleString('en-US')} XP${ev.vb ? ` · ${ico('vbucks')}+${ev.vb}` : ''}</span>`, 1500); popEl('#hVb', 'bump'); sfx('combo', 4); shake(3); buzz([30, 30, 30, 30, 90]);
           if (!RM()) { fxAdd('fx-vign', '--vc:#ef4444', '', 1000); fxAdd('fx-speed', '', '', 700); ring(mid, '#fde047', 6); cubes(mid, 30); particles(mid, 30, ['#fde047', '#fff', '#38bdf8'], 170); punch(1.05); }
-          coinOrbs(mid, ev.bonus, pre); feed(`💀 TEAM WIPE! ${esc(ev.tname || '')} +${ev.bonus}🪙 +${ev.xp || 0} XP`, 'bonus'); }, 420); delay = Math.max(delay, 500); break; }
+          coinOrbs(mid, ev.bonus, pre); }, 420); delay = Math.max(delay, 500); break; }
       case 'stormIn': setTimeout(() => { banner('THE STORM IS CLOSING IN', 'It can’t be damaged · clear the POI to escape', 'zst'); sfx('stormLand'); shake(1); buzz([30, 40, 30]); }, 140); delay = Math.max(delay, 450); break;
       case 'stormGrow': num(ctr(rectOf('c' + ev.uid, pre)), `🌩️ STORM ${ev.d} DMG`, 'r'); sfx('stormLand'); break;
-      case 'stormOut': feed('🌩️ The Storm moves on', 'info'); break;
+      case 'stormOut': break;
       case 'poiClear': setTimeout(() => { banner(ev.last ? 'FINAL ZONE CLEAR' : 'POI CLEARED', ev.last ? '' : ev.storm ? 'Rotating to the next POI' : 'END TURN to rotate', 'hz'); sfx('chime'); buzz([20, 30, 20]); }, 450); delay = Math.max(delay, 600); break;
       case 'rotate': { const pz = S.pois[ev.ix] || { trios: 0, haz: 0 }; fxAdd('fx-rotate', `--pa:url(${poiImg(ev.poi)})`, `<span class="k">ROTATING TO</span><span class="n">${esc(ev.poi)}</span><span class="s">POI ${ev.ix + 1}/${S.pois.length} · ${plural(pz.trios, 'trio')} · ${plural(pz.haz, 'hazard')}</span>`, 1750); sfx('whoosh'); setTimeout(() => sfx('stormLand'), 250); buzz([20, 40, 20]); delay = Math.max(delay, 1500); break; }
       case 'draw': if (S.phase !== 'assign' && S.phase !== 'roll') { const c = S.board.find(x => x.uid === ev.uid); if (c && !(c.kind === 'opp' && c.team != null)) { banner(c.kind === 'opp' ? 'ENEMY SPOTTED' : 'HAZARD', c.name, c.kind === 'haz' ? 'hz' : ''); sfx('whoosh'); } } break;
@@ -3084,7 +3296,7 @@ function playEvents(evs, pre) {
       case 'shield': { const r = rectOf('squad', pre), sq = $('#squad').getBoundingClientRect(), a = app.getBoundingClientRect(); fxAdd('fx-bubble', `left:${sq.left - a.left - 4}px;top:${sq.top - a.top - 4}px;width:${sq.width + 8}px;height:${sq.height + 8}px`, '', 700); num(ctr(rectOf('shield', pre)), 'SHIELDS FULL', 'b'); sfx('shield'); buzz(12); void r; break; }
       case 'evade': { const p = ctr(rectOf('c' + ev.uid, pre)); impact(p, '#7dd3fc'); num(p, '💨 EVADE', 'b'); sfx('evade'); buzz(10); break; }
       case 'heal': { const r = rectOf('m' + ev.member, pre); for (let k = 0; k < (RM() ? 1 : 3 + ev.amt * 2); k++) fxAdd('fx-plus', `left:${r.x + 10 + rnd(Math.max(1, r.w - 30))}px;top:${r.y + 10 + rnd(30)}px;animation-delay:${k * 35}ms`, '+', 900); num(ctr(r), '+' + ev.amt + ' HP', 'gr'); ring(ctr(r), '#ffffff', 3); sfx('heal'); buzz(10); break; }
-      case 'revive': { const r = rectOf('m' + ev.member, pre); fxAdd('fx-beam', `left:${r.x + r.w / 2}px;top:0;height:${r.y + r.h}px`, '', 800); num(ctr(r), 'REBOOTED!', 'b'); xpPop({ x: Math.max(60, Math.min(app.clientWidth - 60, r.x + r.w / 2)), y: r.y + 20 }, ev.xp || 0, pre, 350); sfx('reboot'); buzz([20, 40, 20]); feed(`<b class="a">${esc(S.squad[ev.member].name)}</b> is back in the fight`, 'info'); break; }
+      case 'revive': { const r = rectOf('m' + ev.member, pre); fxAdd('fx-beam', `left:${r.x + r.w / 2}px;top:0;height:${r.y + r.h}px`, '', 800); num(ctr(r), 'REBOOTED!', 'b'); xpPop({ x: Math.max(60, Math.min(app.clientWidth - 60, r.x + r.w / 2)), y: r.y + 20 }, ev.xp || 0, pre, 350); sfx('reboot'); buzz([20, 40, 20]); break; }
       case 'freeDice': { const r = ev.from === 'search' && ev.dice.length === 1 ? rectOf('d' + ev.dice[0]) : rectOf(ev.from === 'search' ? 'search' : 'infirm', pre); fxAdd('fx-beam', `left:${r.x + r.w / 2}px;top:0;height:${r.y + r.h}px`, '', 800); num(ctr(r), ev.from === 'search' ? '🔓 FREED' : `+${ev.dice.length} dice`, 'b'); sfx('reboot'); buzz(15); break; }
       case 'clear': {
         const r = rectOf('c' + ev.card.uid, pre), p = ctr(r), isOpp = ev.card.kind === 'opp';
@@ -3093,15 +3305,14 @@ function playEvents(evs, pre) {
         else setTimeout(() => {
           fxAdd('fx-rays', `left:${p.x}px;top:${p.y}px`, '', 800); particles(p, 24, ['#7dd3fc', '#fff', '#fde047'], 110); impact(p, '#fde047'); ring(p, '#7dd3fc', 3);
           num({ x: p.x, y: p.y - 10 }, 'CLEARED', 'g'); shake(1); sfx('elim'); buzz([20, 30, 40]); coinOrbs(p, ev.bars || 0, pre); xpPop(p, ev.xp || 0, pre, 0);
-          feed(`<b class="a">${esc(who)}</b> cleared ${ev.card.ico || ''} <b class="v">${esc(ev.card.name)}</b>`);
         }, 60);
         delay = Math.max(delay, 250); break;
       }
-      case 'combo': { const n = ev.n, w = n >= 4 ? 'QUAD' : n === 3 ? 'TRIPLE' : 'DOUBLE', col = n >= 4 ? '#ef4444' : n === 3 ? '#a855f7' : '#38bdf8'; if (hasWipe) { setTimeout(() => { coinOrbs({ x: app.clientWidth / 2, y: app.clientHeight * 0.42 }, ev.bonus, pre); feed(`🔥 ${w} ELIM bonus +${ev.bonus}🪙 +${ev.xp || 0} XP`, 'bonus'); }, 500); break; } setTimeout(() => {
+      case 'combo': { const n = ev.n, w = n >= 4 ? 'QUAD' : n === 3 ? 'TRIPLE' : 'DOUBLE', col = n >= 4 ? '#ef4444' : n === 3 ? '#a855f7' : '#38bdf8'; if (hasWipe) { setTimeout(() => { coinOrbs({ x: app.clientWidth / 2, y: app.clientHeight * 0.42 }, ev.bonus, pre); }, 500); break; } setTimeout(() => {
           fxAdd('fx-callout l' + Math.min(4, n), '', `<span class="t h">${w}<br>ELIM!</span><span class="b">+${ev.bonus} 🪙 · +${ev.xp || 0} XP</span>`, 1300); sfx('combo', n); shake(Math.min(3, n)); buzz([30, 30, 30, 30, 60]);
           if (!RM()) { fxAdd('fx-vign', `--vc:${col}`, '', 1000); fxAdd('fx-speed', '', '', 700); const mid = { x: app.clientWidth / 2, y: app.clientHeight * 0.4 }; ring(mid, col, 6); particles(mid, 14 + n * 8, [col, '#fff', '#7dd3fc'], 150 + n * 30); punch(1.02 + n * 0.008); }
           coinOrbs({ x: app.clientWidth / 2, y: app.clientHeight * 0.42 }, ev.bonus, pre);
-          feed(`🔥 ${w} ELIM bonus +${ev.bonus}🪙 +${ev.xp || 0} XP`, 'bonus'); }, 380); delay = Math.max(delay, 350); break; }
+          }, 380); delay = Math.max(delay, 350); break; }
       case 'hit': {
         const m = rectOf('m' + ev.member, pre), sb = rectOf('shield', pre);
         if (ev.absorbed) num(ctr(sb), '-' + ev.absorbed + ' 🛡', 'b');
@@ -3110,10 +3321,10 @@ function playEvents(evs, pre) {
         if (ev.src != null) { const c = rectOf('c' + ev.src, pre); if (c.w) tracer(ctr(c), ctr(ev.lost ? m : sb), '#f87171'); }
         break;
       }
-      case 'down': { const m = S.squad[ev.member]; setTimeout(() => { banner('KNOCKED DOWN', m.name + ' needs a Reboot', ''); sfx('down'); buzz([80, 40, 80]); }, 80); feed(`<b class="v">${esc(m.name)}</b> was knocked down`); delay = Math.max(delay, 350); break; }
+      case 'down': { const m = S.squad[ev.member]; setTimeout(() => { banner('KNOCKED DOWN', m.name + ' needs a Reboot', ''); sfx('down'); buzz([80, 40, 80]); }, 80); feed(`<b class="v">${esc(m.name)}</b> was knocked down`, 'ko'); delay = Math.max(delay, 350); break; }
       case 'act': { const el = cardEl(ev.uid); if (el) { ensureVis(el, true); el.classList.remove('act'); void el.offsetWidth; el.classList.add('act'); } break; }
       case 'evaded': { const p = ctr(rectOf('c' + ev.uid, pre)); num(p, '💨 EVADED', 'b'); sfx('evade'); break; }
-      case 'fade': feed(`${ev.card.ico || ''} ${esc(ev.card.name)} blew over`, 'info'); break;
+      case 'fade': break;
       case 'boom': { const p = ctr(rectOf('c' + ev.uid, pre)); particles(p, 26, ['#f97316', '#fde047', '#ef4444']); banner('KABOOM!', ev.card.name + ' exploded', ''); flash('white'); break; }
       case 'buy': { const it = E.CFG.shop.find(x => x.id === ev.id); num(ctr(rectOf('bars', pre)), it.icon + ' ' + it.name, 'g'); sfx('chime'); buzz(20); break; }
       case 'undo': break;
@@ -3264,8 +3475,8 @@ async function stormSequence() {
     const v = E.stormRoll(S); S.ev.splice(0);
     die.classList.remove('spin'); void die.offsetWidth; die.classList.add('land'); die.textContent = v; sfx('stormLand'); buzz(30);
     const acts = E.activations(S, v);
-    logAdd(`Storm die rolled <b>${v}</b>: ${acts.length ? acts.length + ' threat' + (acts.length > 1 ? 's' : '') + ' attack!' : 'nothing triggers.'}`, 'sroll');
-    sub.textContent = acts.length ? `${acts.length} threat${acts.length > 1 ? 's' : ''} attack!` : 'Nothing triggers. Phew!';
+    logAdd(`Storm die rolled <b>${v}</b>: ${acts.length ? acts.length + ' threat' + (acts.length > 1 ? 's' : '') + ' act!' : 'nothing triggers.'}`, 'sroll');
+    sub.textContent = acts.length ? `${acts.length} threat${acts.length > 1 ? 's' : ''} act!` : 'Nothing triggers. Phew!';
     U.stormHit = v; U.dangerUids = new Set(acts); renderGame();
     await wait(acts.length ? 260 : 300);
     ov.classList.remove('on');
@@ -3275,7 +3486,7 @@ async function stormSequence() {
       U.dying = new Set(evs.filter(e => e.t === 'xelim').map(e => e.card.uid));
       U.dangerUids.delete(uid); renderGame(); U.dying = null; const el = cardEl(uid); ensureVis(el); if (el && evs.some(e => e.t === 'act')) el.classList.add('act');
       playEvents(evs, pre);
-      await wait(evs.some(e => e.t === 'poiClear') ? 900 : evs.some(e => e.t === 'down' || e.t === 'edown' || e.t === 'xelim') ? 480 : evs.some(e => e.t === 'infight') ? 360 : 240);
+      await wait(evs.some(e => e.t === 'poiClear') ? 900 : evs.some(e => e.t === 'down' || e.t === 'edown' || e.t === 'xelim') ? 480 : evs.some(e => ['eheal', 'ecover', 'epush', 'erevive', 'eretreat'].includes(e.t)) ? 520 : evs.some(e => e.t === 'infight') ? 360 : 240);
       if (!E.alive(S).length) { S.over = 'loss'; S.overReason = 'wiped'; S.phase = 'over'; break; }
     }
     U.dangerUids = new Set();
@@ -3308,14 +3519,22 @@ function openInfo(el) {
   if (k === 'die') { const d = S.dice[+el.dataset.i], m = S.squad[d.owner]; const st = { ready: 'Ready to roll', rolled: d.face === F.CHEST ? 'Rolled Chest. Tap it, then tap ANOTHER die to change that die' : 'Rolled. Tap it, then a target', used: 'Used this turn', infirmary: 'Knocked Out. Free it with a Reboot', search: 'Locked on the Search track. Select a Reboot die, then tap this die to free it', down: `${m.name} is down. Revive them to get this die back` }[d.st]; openSheet(`${d.face ? FI[d.face].name : 'Die'} · ${esc(m.name)}`, `<p>${st}.</p><p style="color:var(--mut)">Every squad member rolls the same 6-sided die:</p>${faceList(d.face)}`); return; }
   if (k === 'card') { const c = S.board.find(x => x.uid === +el.dataset.uid); if (c) openCardInfo(c); return; }
   if (k === 'member') { const m = S.squad[+el.dataset.m]; openSheet(esc(m.name), `<div class="info-hero"><div class="big"><img src="${portrait(m.img)}" alt=""></div><div><div class="kv"><span>❤️ ${m.hp}/${m.max} HP</span><span>🛡️ squad ${S.shield}/${S.shieldMax}</span></div><p>${m.hp > 0 ? 'Rolls 2 dice each turn.' : 'Knocked down. Use a <b>Reboot</b> die (or a Reboot Card from the shop) to bring them back at 2 HP.'}</p></div></div>${faceList()}`); return; }
-  if (k === 'chip') { const v = +el.dataset.v, cs = S.board.filter(c => !c.down && c.a.includes(v)), dg = E.danger(S, v); openSheet(`Storm rolls ${v}`, cs.length ? `<p>${dg.dmg ? `<b>${dg.dmg}</b> damage incoming (about <b>${dg.hp}</b> HP lost after shields)` : 'No direct damage'} from ${cs.length} threat${cs.length > 1 ? 's' : ''}:</p><ul>${cs.map(c => `<li><b>${esc(c.name)}</b>${c.evade ? ' 💨 evading this turn' : ''}: ${esc(E.cardText(c))}</li>`).join('')}</ul><p style="color:var(--mut)">Make a threat Evade with a Shield die, or take it out.</p>` : '<p>Nothing on the board triggers on this number. Safe roll!</p>'); return; }
+  if (k === 'chip') { const v = +el.dataset.v, cs = S.board.filter(c => !c.down && (c.a.includes(v) || (c.acts || []).some(x => x.n.includes(v)))), dg = E.danger(S, v);
+    openSheet(`Storm rolls ${v}`, cs.length ? `<p>${dg.dmg ? `<b>${dg.dmg}</b> damage incoming (about <b>${dg.hp}</b> HP lost after shields)` : 'No direct damage'} from ${dg.hits} attacker${dg.hits === 1 ? '' : 's'}. On this number:</p><ul>${cs.map(c => `<li><b>${esc(c.name)}</b>${c.evade ? ' 💨 evading this turn' : ''}: ${E.actsOn(c, v).map(k => { const a = ACTK[k][0]; const x = k === 'dmg' ? ` ${c.cond ? '' : c.d + (c.pb ? '+' + c.pb : '')}` : ''; return esc(a + x) + (E.canAct(S, c, k) ? '' : ' (no effect now)'); }).join(' · ')}</li>`).join('')}</ul><p style="color:var(--mut)">Make a threat Evade with a Shield die, or take it out.</p>` : '<p>Nothing on the board triggers on this number. Safe roll!</p>'); return; }
   if (k === 'shield') { openSheet('🛡️ Squad shields', `<p>Shields soak damage before HP (except <b>pierce</b> attacks). They are shared by the whole squad: <b>${S.shield}/${S.shieldMax}</b>.</p><p>Refill with a <b>Shield</b> die${E.shieldsLocked(S) ? '. <b style="color:#f87171">Currently locked by a hazard!</b>' : '.'}</p>`); return; }
   if (k === 'search') { openSheet('🔍 Search track', '<p>Every Search you roll locks automatically (🔒 on the die). At 3 locks a new threat drops and the dice come back. To free one early: select a <b>Reboot</b> die, then tap the specific 🔒 locked die you want back.</p>'); return; }
   if (k === 'infirm') { openSheet(`${ico('crosshair', 'kox')} Knocked Out`, '<p>Knocked Out dice can’t roll. A Reboot die frees all of them at once.</p>'); return; }
   if (k === 'bars') { openShop(); return; }
   if (k === 'deck' && S.peek && S.deck[0] && S.peek === S.deck[0].uid) { openCardInfo(S.deck[0], true); return; }
-  if (k === 'deck') { openSheet(`${esc(RUN.poi)} · POI ${S.poiIx + 1}/${S.pois.length}`, `<p><b>${S.deck.length}</b> threats left to drop here, <b>${S.board.filter(c => c.kind !== 'storm').length}</b> on the board. Each END TURN drops the next unit: a whole enemy trio, or one hazard (max 2 trios here at once).</p><p>Once everything has dropped, <b>The Storm</b> closes in. It can't be damaged and hits every roll until every threat here is down. Then you rotate to the next POI. Clear all ${S.pois.length} POIs for the Victory Royale.</p>`); return; }
+  if (k === 'deck') { openSheet(`${esc(RUN.poi)} · POI ${S.poiIx + 1}/${S.pois.length}`, `<p><b>${S.deck.length}</b> threats left to drop here, <b>${S.board.filter(c => c.kind !== 'storm').length}</b> on the board. Each END TURN drops exactly <b>one</b> threat: one enemy or one hazard. Teammates share a colour stripe and can revive each other. An enemy that <b>Retreats</b> goes to the back of this queue, and the Storm waits for her.</p><p>Once everything has dropped, <b>The Storm</b> closes in. It can't be damaged and hits every roll until every threat here is down. Then you rotate to the next POI. Clear all ${S.pois.length} POIs for the Victory Royale.</p>`); return; }
   if (k === 'turn') { openSheet(`Turn ${S.turn}`, '<p>ROLL → assign dice → END TURN → the Storm die rolls and matching threats attack.</p>'); return; }
+}
+function actInfoHTML(c) {
+  if (c.kind !== 'opp') return '';
+  const rows = actRows(c), pc = [];
+  if (c.byp) pc.push('<b>PIERCE</b>: her Damage ignores shields.'); if (c.shred) pc.push('<b>SHRED</b>: her Damage wipes your shields first.'); if (c.knock) pc.push(`<b>KNOCK ${c.knock}</b>: her Damage also knocks out ${c.knock} die.`);
+  if (c.cond) pc.push(`<b>${{ took_damage: 'IF HIT', no_threats_activated: 'IF QUIET', shields_empty: 'NO SHIELD' }[c.cond]}</b>: ${esc(E.COND_TEXT[c.cond])} (end of turn)`);
+  return `<p style="margin-bottom:2px"><b>Actions</b> (when the Storm rolls her number):</p><ul class="alist">${rows.map(r => `<li><b style="color:${ACTK[r.k][1]}">${ACTK[r.k][0]}</b>${r.n ? ' on ' + r.n.join(', ') : ' at end of turn'}: ${esc(E.ACT_INFO[r.k].desc)}${r.off ? ' <i style="color:var(--mut)">(no effect right now)</i>' : ''}</li>`).join('')}</ul>${pc.length ? `<p style="margin-bottom:2px"><b>Passives</b></p><ul class="alist">${pc.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}`;
 }
 function openCardInfo(c, recon) {
   const art = c.kind === 'opp' ? `<img src="${portrait(c.img)}" alt="">` : `<span>${c.ico || '⚠️'}</span>`;
@@ -3323,16 +3542,17 @@ function openCardInfo(c, recon) {
   const kv = [];
   if (c.elite) kv.push(`👑 ELITE · ${esc(c.etag || '')} · pays ${fmtN(E.CFG.eliteVb + E.CFG.vbElim)} V-Bucks, ${E.CFG.eliteBars}+ bars and big XP · no teammates, so 0 HP = eliminated`);
   else if (c.kind === 'opp' && c.tname) kv.push(`👥 Squad: ${esc(c.tname)}`);
-  if (c.down) kv.push(teamUpUI(c) ? `DOWNED · revive in ${Math.min(2, Math.max(1, c.rev || 0))}` : 'DOWNED · bleeding out');
+  if (c.down) kv.push(teamUpUI(c) ? `DOWNED · revive in ${Math.min(2, Math.max(1, c.rev || 0))}` : 'DOWNED · bleeding out (no teammate up)');
   if (c.kind === 'storm') kv.push(`Immune · ${c.d} dmg every roll`);
   if (c.maxHp) kv.push(isLocked(c) ? '❤️ ??? · armored: can’t be damaged until exposed' : c.down ? '❤️ 1 HP (downed)' : `❤️ ${c.hp}/${c.maxHp}`);
-  if (c.vb) kv.push(`${ico('vbucks')} carries ${c.vb} V-Bucks`);
-  if (c.a.length) kv.push('🌩️ on ' + c.a.join(', '));
+  if (c.vb) kv.push(`💰 carries ${c.vb} V-Bucks`);
+  if (c.kind !== 'opp' && c.a.length) kv.push('🌩️ on ' + c.a.join(', '));
+  if (c.kind === 'opp' && c.pb) kv.push(`⏫ Push bonus +${c.pb} damage`);
   if (c.cond) kv.push('⏱ end of turn'); if (c.shrink) kv.push('⏱ every turn');
   if (c.kind === 'opp' && !c.down && S.squad[c.target]) kv.push('🎯 ' + S.squad[c.target].name);
   if (c.evade) kv.push('💨 evading this turn (skips its attacks, then Evade ends)');
   const cov = c.cov.length ? `<p><b>Cover:</b> fill ${c.cov.map(sl => `${sl.filled ? '✅' : '⬜'} ${sl.need.map(f => FI[f].name).join(' or ')}`).join(', ')} ${c.maxHp ? 'to outskill it — then its HP is EXPOSED and Shoot dice can hit it' : 'to clear it'}.</p>` : '';
-  openSheet((recon ? '🔭 Recon: ' : '') + esc(c.name), `<div class="info-hero"><div class="big" style="${bg}">${art}</div><div><div class="tag" style="font-size:11px;font-weight:900;color:var(--mut)">${c.kind === 'opp' ? 'ENEMY' : c.kind === 'storm' ? 'THE STORM' : 'HAZARD'}${recon ? ' · NEXT TO DROP' : ''}</div><div class="kv">${kv.map(x => `<span>${esc(x)}</span>`).join('')}</div></div></div><p>${esc(E.cardText(c))}</p>${c.down ? '<p><b>Downed:</b> one more hit eliminates. If a teammate is still up, they revive at 1 HP when the countdown ends. Down the whole trio for a <b>TEAM WIPE</b>.</p>' : ''}${c.kind === 'opp' && !c.down ? '<p style="color:var(--mut)">At 0 HP an enemy is <b>Downed</b>, not out: hit them once more to eliminate. Downing the last standing member wipes the whole trio.</p>' : ''}${cov}${c.maxHp ? '<p style="color:var(--mut)">Shoot: 1st shot each turn deals 1, then every next shot deals 2.</p>' : ''}`);
+  openSheet((recon ? '🔭 Recon: ' : '') + esc(c.name), `<div class="info-hero"><div class="big" style="${bg}">${art}</div><div><div class="tag" style="font-size:11px;font-weight:900;color:var(--mut)">${c.kind === 'opp' ? 'ENEMY' : c.kind === 'storm' ? 'THE STORM' : 'HAZARD'}${recon ? ' · NEXT TO DROP' : ''}</div><div class="kv">${kv.map(x => `<span>${esc(x)}</span>`).join('')}</div></div></div><p>${esc(E.cardText(c))}</p>${actInfoHTML(c)}${c.down ? '<p><b>Downed:</b> one more hit eliminates. A standing teammate already on the board revives them at 1 HP when the countdown ends; otherwise they bleed out. Teammates still waiting to drop do not save them. Wipe the trio only after all 3 have spawned and been eliminated.</p>' : ''}${c.kind === 'opp' && !c.down ? '<p style="color:var(--mut)">At 0 HP an enemy is <b>Downed</b>, not out: hit them once more to eliminate. Enemies drop in one per turn; wipe the trio only after every member has spawned and been taken out.</p>' : ''}${cov}${c.maxHp ? '<p style="color:var(--mut)">Shoot: 1st shot each turn deals 1, then every next shot deals 2.</p>' : ''}`);
   U.sheetTap = true;
 }
 function openLevels() {
@@ -3365,7 +3585,7 @@ function openHowTo() {
   <p>Your squad of 3 drops in. The run is a chain of <b>POIs</b>: each has its own enemy <b>trios</b> and hazards. Clear every POI to win the <b>Victory Royale</b>.</p>
   <h4>1 · Roll</h4><p>Each standing member rolls 2 dice. Everyone uses the same die:</p>${faceList()}
   <h4>2 · Assign</h4><ul><li>Tap a die, then tap a glowing target, or drag the die onto it.</li><li><b>Chest</b> is wild: tap it, then tap <b>another</b> rolled die and pick a new face for that die. The Chest is used up. Or reroll your other dice.</li><li><b>Shoot</b> and <b>Heal</b> stack: the 1st each turn is 1, every next one is 2.</li><li><b>Reboot</b> revives a downed member, frees all <b>Knocked Out</b> dice, or frees one locked Search die: select the Reboot, then tap the 🔒 die you want back.</li><li>A <b>Shield</b> die refills shields or makes a threat <b>Evade</b> (it skips its next attack).</li><li>Dashed slots on a card are <b>cover</b>. Fill them with matching dice before you can shoot it.</li><li>↶ Undo any assignment this turn. Long-press anything for details.</li></ul>
-  <h4>3 · Storm</h4><ul><li>END TURN: the next unit drops (a whole enemy trio or one hazard, max 2 trios at once), then the Storm die rolls. Every threat showing that number attacks.</li><li>Each threat's colored number tiles show which Storm rolls make it attack.</li><li>Once a POI has dropped everything, <b>The Storm</b> closes in: it can't be damaged and hits every roll until every other threat there is down. Then you rotate to the next POI.</li></ul>
+  <h4>3 · Storm</h4><ul><li>END TURN: exactly one threat drops (one enemy or one hazard), then the Storm die rolls. Every threat showing that number attacks.</li><li>Each enemy tile has an <b>action table</b>. Every line is one action with the colored Storm numbers that trigger it: <b>DAMAGE</b> hits your squad · <b>HEAL</b> recovers 1 HP (herself first, else a hurt teammate) · <b>COVER</b> adds a ??? slot (max 3) · <b>REVIVE</b> picks up a downed teammate · <b>PUSH</b> removes a ??? slot for +1 damage (only if she has one) · <b>RETREAT</b> goes to the back of the queue.</li><li>Small chips under her HP are passives: PIERCE, SHRED, KNOCK, IF HIT, IF QUIET, NO SHIELD. A dimmed line means it would do nothing right now.</li><li>Teammates share a colour stripe.</li><li>Once a POI has dropped everything, <b>The Storm</b> closes in: it can't be damaged and hits every roll until every other threat there is down. Then you rotate to the next POI.</li></ul>
   <h4>Item Shop &amp; V-Bucks</h4><p>Buy your 3-player squad in the Item Shop each match: Uncommon 800, Rare 1,200, Epic 1,500, Legendary 2,000 V-Bucks. The shop rotates every match. Earn V-Bucks from eliminations (+100, carriers pay more), team wipes (+200), Chest rolls (25% chance of +100) and your placement payout (200 to 1,000, +500 for a Victory Royale). Broke? A Supply Drop always tops you up enough for 3 picks.</p>
   <h4>👑 The Elite</h4><p>Near the end of every match, at the final POI, one Elite drops: last match's winner, wearing a gold crown. Armored (4 cover dice: Shoot, Shield, Heal, Reboot), 4 HP, hits for 3, no teammates (0 HP = eliminated). Taking them out pays 1,000 V-Bucks, 500+ gold bars and huge XP.</p>
   <h4>The lobby</h4><p>99 players drop as 33 squads of 3: your squad plus 32 opponent squads. Most fight elsewhere on the map; their eliminations scroll in the kill feed. A squad's place is set when its last member falls, and the #X/33 in the header counts squads left. Outlast every squad for #1.</p>
