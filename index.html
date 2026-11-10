@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Fortnite D6">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>Fortnite: Zero Build D6 · v7.4</title>
+<title>Fortnite: Zero Build D6 · v7.5</title>
 <style>:root{
   --bg0:#0b0820;--bg1:#151036;--bg2:#1f1850;--line:rgba(255,255,255,.10);--txt:#f4f2ff;--mut:#a9a3cf;
   --c1:#f5b301;--c2:#a855f7;--c3:#38bdf8;--c4:#f1f5f9;--c5:#22c55e;--c6:#94a3b8;--red:#ef4444;--gold:#fde047;
@@ -1562,6 +1562,25 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 
 /* ===== v7.4 danger button (New Account) ===== */
 .btn.danger{background:linear-gradient(180deg,#ff6b6b,#c81e2e);color:#fff;border:2px solid #5b0a12;box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 4px 0 #6b0f19;text-shadow:0 1px 0 rgba(0,0,0,.35)}
+
+/* ===== v7.5 feel pass ===== */
+.fx-hitm{width:0;height:0;z-index:9}
+.fx-hitm i{position:absolute;left:-1.5px;top:-15px;width:3px;height:9px;border-radius:1px;background:#fff;box-shadow:0 0 6px #fff,0 0 2px #000;transform-origin:1.5px 15px;transform:rotate(var(--r));animation:hmk .36s ease-out forwards}
+.fx-hitm i:nth-child(1){--r:45deg}.fx-hitm i:nth-child(2){--r:135deg}.fx-hitm i:nth-child(3){--r:225deg}.fx-hitm i:nth-child(4){--r:315deg}
+.fx-hitm.big i{height:13px;background:#fde047;box-shadow:0 0 9px #f59e0b,0 0 2px #000}
+@keyframes hmk{0%{opacity:1;transform:rotate(var(--r)) translateY(5px) scale(1.5)}100%{opacity:0;transform:rotate(var(--r)) translateY(-7px) scale(.9)}}
+/* low-HP tension: red heartbeat vignette */
+#scr-game.crit::after{content:'';position:absolute;inset:0;z-index:6;pointer-events:none;box-shadow:inset 0 0 70px 14px rgba(239,68,68,.55);animation:critBeat 1.5s ease-in-out infinite}
+@keyframes critBeat{0%,100%{opacity:.25}12%{opacity:.95}24%{opacity:.35}36%{opacity:.8}60%{opacity:.25}}
+/* idle nudge: ping the best die after a few quiet seconds */
+.die.nudge{animation:dieNudge 1s ease-in-out infinite}
+@keyframes dieNudge{50%{transform:translateY(-6px) scale(1.1);box-shadow:0 0 0 3px #fff,0 0 20px rgba(255,255,255,.85),0 6px 0 rgba(0,0,0,.35)}}
+/* victory royale rays */
+.end-hero.win{position:relative}
+.end-hero.win::before{content:'';position:absolute;left:50%;top:-30px;width:560px;height:560px;margin-left:-280px;pointer-events:none;z-index:0;background:repeating-conic-gradient(from 0deg,rgba(253,224,71,.26) 0 7deg,transparent 7deg 22deg);-webkit-mask-image:radial-gradient(circle,#000 14%,transparent 66%);mask-image:radial-gradient(circle,#000 14%,transparent 66%);animation:raySpin 26s linear infinite}
+.end-hero.win>*{position:relative;z-index:1}
+@keyframes raySpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){#scr-game.crit::after{animation:none;opacity:.5}.die.nudge,.end-hero.win::before{animation:none}.fx-hitm{display:none}}
 </style>
 </head><body>
 <div id="app" class="compact">
@@ -2502,7 +2521,8 @@ function startRun(squad, o) {
   logAdd('Squad locked in. Prepare to drop!', 'info');
   logAdd(`Landed at <b>${esc(RUN.poi)}</b> (POI 1/${S.pois.length}): ${plural(S.pois[0].trios, 'enemy trio')} + ${plural(S.pois[0].haz, 'hazard')} here.`, 'alert');
   saveRun();
-  if (!LS.get('fd5_tut', false)) setTimeout(() => startTutorial(), 500);
+  dropIntro();
+  if (!LS.get('fd5_tut', false)) setTimeout(() => startTutorial(), RM() ? 500 : 1900);
 }
 function resumeRun(r) { if (!r || !r.s || !r.s.pois || !r.s.lobby || !r.s.trk || !r.s.teams) { LS.del('fd5_run'); toast('That save is from an older version. Start a new run!'); renderTitle(); return; } RUN = r.run; S = r.s; [S.board, S.deck].concat(S.future || []).flat().forEach(c => { if (c && c.kind === 'opp' && !c.acts) { c.acts = []; c.pb = 0; c.covMax = 3; c.pbMax = 2; } }); S.ev = []; S.undo = S.undo || []; S.heals = S.heals || 0; U.prevHp = {}; U.conv = null; U.seen = new Set(S.board.map(c => c.uid)); U.sel = null; U.prevShield = null; U.busy = false; show('scr-game'); logReset(); renderGame(); logAdd(`Run resumed at <b>${esc(RUN.poi)}</b>.`, 'info'); toast('Run resumed'); }
 function saveRun() { if (!S || S.over || U.busy) return; LS.set('fd5_run', { run: RUN, s: Object.assign({}, S, { undo: [], ev: [] }) }); }
@@ -2879,6 +2899,7 @@ function renderGame() {
   document.body.classList.toggle('aiming', U.sel != null);
   renderPicker(); renderHint(); renderActions();
   U.tumble.clear();
+  critCheck(); U.opp = s.board.filter(c => c.kind === 'opp').length;
   U.prevHp = {}; s.board.forEach(c => { U.prevHp['c' + c.uid] = c.hp; }); s.squad.forEach(m => { U.prevHp['m' + m.i] = m.hp; });
 }
 function sizeDome() {
@@ -3112,6 +3133,50 @@ Object.assign(SFX, {
   lvl: () => { [784, 1046, 1318, 1568].forEach((f, i) => tone(f, 0.14, 'triangle', 0.09, i * 0.045)); noise(0.2, 0.08, 0.1, 4000, 9000, 'highpass'); },
   hitmark: () => tone(2200, 0.03, 'square', 0.04, 0.01)
 });
+
+/* ===== v7.5 feel pass: hit markers, roll rattle, drop-in, heartbeat, idle nudge ===== */
+Object.assign(SFX, {
+  hitmark: (big) => { noise(0.025, 0.16, 0, 8000, 5000, 'highpass'); tone(big ? 3300 : 2500, big ? 0.14 : 0.05, big ? 'triangle' : 'square', big ? 0.07 : 0.05, 0.005); },
+  rattle: () => { for (let k = 0; k < 7; k++) { noise(0.03, 0.12 + (k % 2) * 0.05, k * 0.034, 3200 + (k % 3) * 500, 900); tone(520 + (k % 3) * 90, 0.02, 'square', 0.025, k * 0.034); } },
+  heartbeat: () => { tone(70, 0.13, 'sine', 0.5, 0, 44); tone(64, 0.16, 'sine', 0.4, 0.17, 40); }
+});
+function hitmarker(p, big) { if (RM()) { sfx('hitmark', big); return; } fxAdd('fx-hitm' + (big ? ' big' : ''), `left:${p.x}px;top:${p.y}px`, '<i></i><i></i><i></i><i></i>', 380); sfx('hitmark', big); }
+function dropIntro() {
+  if (RM() || !S) return;
+  const s0 = S; U.busy = true; renderActions();
+  fxAdd('fx-rotate fx-drop', `--pa:url(${poiImg(RUN.poi)})`, `<span class="k">DROPPING INTO</span><span class="n">${esc(RUN.poi)}</span><span class="s">POI 1/${S.pois.length} · ${S.pois.length} to clear</span>`, 1750);
+  sfx('whoosh'); setTimeout(() => sfx('whoosh'), 520);
+  setTimeout(() => { if (S !== s0) return; sfx('stormLand'); shake(2); punch(1.03); buzz([30, 40, 60]); fxAdd('fx-wflash', '', '', 220); U.busy = false; renderGame(); }, 1480);
+}
+function rollFlair(evs) {
+  const r = evs.find(e => e.t === 'roll'); if (!r) return;
+  setTimeout(() => sfx('rattle'), 0); buzz([8, 18, 8, 18, 8]);
+  if (RM()) return;
+  const cnt = {}; r.dice.forEach(i => { const d = S.dice[i]; if (d && d.st === 'rolled') cnt[d.face] = (cnt[d.face] || 0) + 1; });
+  let bf = 0, bn = 0; for (const f in cnt) if (cnt[f] > bn) { bn = cnt[f]; bf = +f; }
+  if (bn < 4 || !FI[bf]) return;
+  setTimeout(() => { if (!S || S.over) return;
+    fxAdd('fx-callout l' + (bn >= 5 ? 3 : 2), '', `<span class="t h">STACKED<br>ROLL!</span><span class="b">${bn}× ${esc(FI[bf].name)}</span>`, 1200);
+    sfx('combo', bn >= 5 ? 3 : 2); shake(1); buzz([20, 30, 20, 30, 50]);
+    const mid = { x: app.clientWidth / 2, y: app.clientHeight * 0.42 }; ring(mid, FI[bf].color, 5); particles(mid, 14, [FI[bf].color, '#fff', '#fde047'], 120);
+  }, r.dice.length * 50 + 340);
+}
+function quickTarget() { const t = U.targets; if (t.length === 1) return ['convert', 'reroll'].includes(t[0].kind) ? null : t[0]; const sh = t.filter(x => x.kind === 'shield'); return sh.length === 1 ? sh[0] : null; }
+function critCheck() {
+  const g = $('#scr-game'); if (!g || !S) return;
+  const crit = !S.over && S.squad.some(m => m.hp > 0 && m.hp <= 1);
+  g.classList.toggle('crit', crit);
+  if (crit && (!U.wasCrit || U.critTurn !== S.turn) && S.phase !== 'over') { sfx('heartbeat'); buzz([40, 90, 40]); U.critTurn = S.turn; }
+  U.wasCrit = crit;
+}
+window.addEventListener('pointerdown', () => { U.lastInput = performance.now(); $$('.die.nudge').forEach(e => e.classList.remove('nudge')); }, true);
+setInterval(() => {
+  if (!S || S.over || U.busy || U.sel != null || S.phase !== 'assign' || (typeof tut !== 'undefined' && tut.on)) return;
+  if (!$('#scr-game').classList.contains('on') || performance.now() - (U.lastInput || 0) < 7000) return;
+  if ($('.die.nudge')) return;
+  const el = $$('#squad .die.live').find(e => { const i = +e.dataset.i; return usable(i) && E.targetsFor(S, i).length; });
+  if (el) { el.classList.add('nudge'); sfx('tick', 3); }
+}, 1000);
 const XP_MAX = 80000; // v6.4: every level bar fills at 80,000 XP
 const xpNeed = l => XP_MAX * l; // cumulative XP to finish level l: 80k, 160k…
 function xpInfo(t) { t = Math.max(0, t); let l = 1; while (t >= xpNeed(l)) l++; const lo = l > 1 ? xpNeed(l - 1) : 0; return { t, l, pct: (t - lo) / (xpNeed(l) - lo), cur: t - lo, span: xpNeed(l) - lo }; }
@@ -3324,7 +3389,7 @@ function playEvents(evs, pre) {
       case 'cover': { const p = ctr(rectOf('c' + ev.uid, pre)); impact(p, FI[ev.face].color); const c = S.board.find(x => x.uid === ev.uid);
         if (c && c.kind === 'opp' && c.maxHp > 0 && !isLocked(c)) { U.exposed.set(c.uid, performance.now()); particles(p, 12, ['#e0f2fe', '#a5f3fc', '#fff']); sfx('expose'); buzz([12, 30, 25]); renderLane(); setTimeout(() => { if (S && S.board.includes(c)) renderLane(); }, 1450); }
         else { num(p, '✓ COVER', 'gr'); sfx('beep'); buzz(10); } break; }
-      case 'shot': { const a = ctr(dieRect(ev.die)), b = ctr(rectOf('c' + ev.uid, pre)); tracer(a, b, '#c084fc'); setTimeout(() => { impact(b, '#e879f9'); hitSpark(b); ring(b, ev.amt >= 2 ? '#fde047' : '#e879f9', ev.amt >= 2 ? 3.4 : 2.6); fxAdd('fx-dmg', `left:${b.x + 26}px;top:${b.y - 8}px`, '-' + ev.amt, 700); particles(b, 6 + ev.amt * 3, ['#e9d5ff', '#a855f7', '#fff']); pipOut(ev.uid); sfx('pip'); sfx('hitmark'); }, 70); sfx('shoot'); shake(1); buzz(15); break; }
+      case 'shot': { const a = ctr(dieRect(ev.die)), b = ctr(rectOf('c' + ev.uid, pre)); tracer(a, b, '#c084fc'); setTimeout(() => { impact(b, '#e879f9'); hitSpark(b); hitmarker(b, ev.amt >= 2); ring(b, ev.amt >= 2 ? '#fde047' : '#e879f9', ev.amt >= 2 ? 3.4 : 2.6); fxAdd('fx-dmg', `left:${b.x + 26}px;top:${b.y - 8}px`, '-' + ev.amt, 700); particles(b, 6 + ev.amt * 3, ['#e9d5ff', '#a855f7', '#fff']); pipOut(ev.uid); sfx('pip'); sfx('hitmark'); }, 70); sfx('shoot'); shake(1); buzz(15); break; }
       case 'shield': { const r = rectOf('squad', pre), sq = $('#squad').getBoundingClientRect(), a = app.getBoundingClientRect(); fxAdd('fx-bubble', `left:${sq.left - a.left - 4}px;top:${sq.top - a.top - 4}px;width:${sq.width + 8}px;height:${sq.height + 8}px`, '', 700); num(ctr(rectOf('shield', pre)), 'SHIELDS FULL', 'b'); sfx('shield'); buzz(12); void r; break; }
       case 'evade': { const p = ctr(rectOf('c' + ev.uid, pre)); impact(p, '#7dd3fc'); num(p, '💨 EVADE', 'b'); sfx('evade'); buzz(10); break; }
       case 'heal': { const r = rectOf('m' + ev.member, pre); for (let k = 0; k < (RM() ? 1 : 3 + ev.amt * 2); k++) fxAdd('fx-plus', `left:${r.x + 10 + rnd(Math.max(1, r.w - 30))}px;top:${r.y + 10 + rnd(30)}px;animation-delay:${k * 35}ms`, '+', 900); num(ctr(r), '+' + ev.amt + ' HP', 'gr'); ring(ctr(r), '#ffffff', 3); sfx('heal'); buzz(10); break; }
@@ -3379,6 +3444,8 @@ function afterAction(pre) {
   if (hb && !RM()) { U.holdBars = (U.holdBars || 0) + hb; setTimeout(() => { U.holdBars = Math.max(0, (U.holdBars || 0) - hb); xpHud(); }, 2400); }
   renderGame(); U.dying = null;
   const d = playEvents(evs, pre);
+  rollFlair(evs); U.lastInput = performance.now();
+  { const nb = S.board.filter(c => c.kind === 'opp').length; if (!S.over && U.opp > 1 && nb === 1 && !S.deck.length && !RM()) setTimeout(() => { if (S && !S.over) { banner('LAST ENEMY', 'Clear the POI!', ''); sfx('ping'); buzz([15, 25, 15]); } }, d + 150); }
   if (U.xpBoost) { const b = U.xpBoost; U.xpBoost = 0; setTimeout(() => { const r = rectOf('xp'); if (!r.w) return; fxAdd('fx-lvq xpboost', `left:${Math.max(96, Math.min(app.clientWidth - 96, r.x + r.w / 2))}px;top:${r.y + r.h + 16}px`, `⚡ XP BOOST <b>×${b}</b>`, 900); popEl('#xpbar', 'pulse'); sfx('sparkle'); }, 380); }
   if (S.over) { U.busy = true; renderActions(); LS.del('fd5_run'); setTimeout(() => showEnd(), Math.max(600, d + 300)); }
   else saveRun();
@@ -3393,9 +3460,9 @@ function selectDie(i) {
   if (U.sel != null && U.sel !== i && S.dice[U.sel].face === F.CHEST) {
     if (U.targets.some(t => t.kind === 'convert' && t.die2 === i)) { U.conv = U.conv === i ? null : i; U.pickAt = 0; sfx('sparkle'); buzz(8); renderGame(); if (tut.on) tutHook([{ t: 'select' }]); return; }
   }
-  if (U.sel === i) { deselect(); renderGame(); return; }
+  if (U.sel === i) { if (performance.now() - (U.dieTapAt || 0) < 420 && d.face !== F.CHEST) { const qt = quickTarget(); if (qt) { U.dieTapAt = 0; doAct(qt); return; } } deselect(); renderGame(); return; }
   if (E.blocked(S, d.face)) { const c = S.board.find(x => x.block === d.face); toast(`${FI[d.face].name} blocked by ${c ? c.name : 'a hazard'}`); sfx('err'); buzz([10, 30, 10]); return; }
-  U.sel = i; U.conv = null; U.targets = E.targetsFor(S, i);
+  U.sel = i; U.conv = null; U.targets = E.targetsFor(S, i); U.dieTapAt = performance.now();
   if (d.face !== F.CHEST && !U.targets.length) { toast(`No target for ${FI[d.face].name} right now`); sfx('err'); buzz([10, 30, 10]); }
   else { sfx('tap'); buzz(8); }
   renderGame();
@@ -3482,7 +3549,7 @@ function bindPointer(root) {
 }
 function onMain() {
   if (U.busy) return;
-  if (S.phase === 'roll') { const pre = snapRects(); deselect(); E.roll(S); afterAction(pre); return; }
+  if (S.phase === 'roll') { const pre = snapRects(); deselect(); E.roll(S); U.lastInput = performance.now(); afterAction(pre); return; }
   if (S.phase === 'assign') {
     const n = S.dice.filter(d => usable(d.i)).length;
     if (n && !U.endArmed && !tut.on) { U.endArmed = true; sfx('tick'); buzz(10); renderHint(); renderActions(); setTimeout(() => { if (U.endArmed) { U.endArmed = false; if (S.phase === 'assign') { renderHint(); renderActions(); } } }, 3000); return; }
@@ -3685,7 +3752,7 @@ function showEnd() {
   $('#eAgain').onclick = () => startDraft();
   show('scr-end'); U.endAt = performance.now();
   { const l = $('#stList'), y = l && $('.sr.you', l); if (y) l.scrollTop = Math.max(0, y.offsetTop - l.clientHeight / 2 + y.offsetHeight / 2); }
-  sfx(win ? 'win' : 'lose'); buzz(win ? [50, 50, 50, 50, 200] : [200, 100, 300]);
+  sfx(win ? 'win' : 'lose'); if (win) { setTimeout(() => { sfx('chime'); sfx('lvl'); buzz([30, 40, 30]); }, 1100); } buzz(win ? [50, 50, 50, 50, 200] : [200, 100, 300]);
   if (win && !RM()) for (let k = 0; k < 60; k++) { const c = document.createElement('div'); c.className = 'confetti'; c.style.cssText = `left:${rnd(100)}%;background:${['#fde047', '#a855f7', '#38bdf8', '#22c55e', '#f1f5f9'][k % 5]};animation-duration:${1.8 + Math.random() * 1.8}s;animation-delay:${Math.random() * .6}s`; el.appendChild(c); setTimeout(() => c.remove(), 4500); }
 }
 
