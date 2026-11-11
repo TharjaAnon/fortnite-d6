@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Fortnite D6">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>Fortnite: Zero Build D6 · v7.7</title>
+<title>Fortnite: Zero Build D6 · v8.0</title>
 <style>:root{
   --bg0:#0b0820;--bg1:#151036;--bg2:#1f1850;--line:rgba(255,255,255,.10);--txt:#f4f2ff;--mut:#a9a3cf;
   --c1:#f5b301;--c2:#a855f7;--c3:#38bdf8;--c4:#f1f5f9;--c5:#22c55e;--c6:#94a3b8;--red:#ef4444;--gold:#fde047;
@@ -52,7 +52,7 @@ img{-webkit-user-drag:none;user-select:none}
 .ver{position:absolute;top:calc(var(--sat) + 18px);left:calc(var(--sal) + 14px);font-size:12px;color:rgba(255,255,255,.6);font-weight:800;z-index:3}
 
 /* ---------- draft ---------- */
-#scr-draft,#scr-locker{gap:10px}
+#scr-draft,#scr-locker,#scr-shop{gap:8px}
 .draft-head{text-align:center}.draft-head .h{font-size:26px}.draft-head p{margin:2px 0 0;color:var(--mut);font-size:14px}
 .picked{display:flex;gap:8px;justify-content:center}
 .picked .slot{width:31%;aspect-ratio:1;border-radius:18px;border:2px dashed rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:28px;overflow:hidden;position:relative;background:rgba(255,255,255,.03)}
@@ -871,7 +871,7 @@ body.aiming .tz .card.nogo .lockp{filter:brightness(1.6)}
 .btn.pri{color:#2a1600}
 
 /* ---------- screens other than the game stay in a centred column on wide displays ---------- */
-#app.wide #scr-title,#app.wide #scr-draft,#app.wide #scr-locker,#app.wide #scr-end{left:max(0px,calc(50% - 260px));right:auto;width:min(100%,520px)}
+#app.wide #scr-title,#app.wide #scr-draft,#app.wide #scr-locker,#app.wide #scr-shop,#app.wide #scr-end{left:max(0px,calc(50% - 260px));right:auto;width:min(100%,520px)}
 #app.wide{max-width:1360px}
 #app.compact{max-width:480px}
 
@@ -1438,6 +1438,105 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 .pool button.eq .pr.own,.picked .slot.fill .pr.own{background:rgba(5,46,22,.92)}
 .locker-empty{grid-column:1/-1;text-align:center;color:var(--mut);font-size:14px;padding:30px 12px}
 .draft-head .lk{position:absolute;left:0;top:2px}
+/* ===== v7.9 Item Shop + Locker: the game's own look (same cards, pills, headers and buttons as the v7.7 shop and the in-game HUD) ===== */
+.sqhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex:none;min-height:16px;font-size:12px;color:var(--mut)}
+.sqhead b{font-family:var(--hdr);font-style:italic;font-weight:900;font-size:13px;color:#ffd23f;letter-spacing:.8px;white-space:nowrap}
+.sqhead span{text-align:right;min-width:0;line-height:1.15}.sqhead span b{font:inherit;font-weight:900;color:#fde68a;letter-spacing:0}
+.sqbar{display:flex;gap:8px;flex:none}
+.sqbar .sq{position:relative;flex:1;min-width:0;height:86px;border-radius:12px;overflow:hidden;border:2px dashed rgba(255,255,255,.25);background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center;color:var(--mut);font-size:28px;cursor:pointer}
+.sqbar .sq.fill{border:2.5px solid transparent;background:linear-gradient(#000,#000) padding-box,linear-gradient(150deg,#fff,var(--tc) 30%,#3d4560 55%,var(--tc) 80%) border-box;box-shadow:0 0 14px color-mix(in srgb,var(--tc) 55%,transparent)}
+.sqbar .sq img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 14%;border-radius:9px}
+.sqbar .sq.fill::before{content:'';position:absolute;top:6px;left:6px;z-index:4;width:9px;height:9px;transform:rotate(45deg);background:linear-gradient(135deg,#fff,var(--tc));box-shadow:0 0 8px var(--tc)}
+.sqbar .sq.fill>span{position:absolute;left:0;right:0;bottom:0;padding:12px 3px 3px;text-align:center;color:#fff;font-family:var(--hdr);font-size:10.5px;line-height:1.1;text-transform:uppercase;letter-spacing:.3px;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sqbar .sq .x{position:absolute;top:3px;right:3px;z-index:5;width:24px;height:24px;border-radius:50%;background:rgba(6,10,30,.88);border:1.5px solid #fff;color:#fff;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;padding:0}
+.sqbar .sq.sel{box-shadow:0 0 0 2px #ffd21c,0 0 22px rgba(255,210,28,.85)}
+.sqbar .sq .sw{position:absolute;inset:0;z-index:3;background:rgba(255,210,28,.34);color:#fff;font-family:var(--hdr);font-size:14px;font-style:italic;letter-spacing:1px;display:flex;align-items:center;justify-content:center;text-shadow:0 2px 4px #000,0 0 8px #000}
+.sqbar .sq.swap{animation:swPulse 1s ease-in-out infinite}
+@keyframes swPulse{50%{box-shadow:0 0 20px rgba(255,210,28,.95)}}
+.pool button.gc{--tc2:#1f8a3a}
+.pool button.gc>span{display:flex;flex-direction:column;align-items:center;gap:2px;padding-top:16px;padding-bottom:5px}
+.pool button.gc>span>b{font:inherit;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pool button.gc>span>small{font-family:var(--hdr);font-size:8px;letter-spacing:.5px;color:rgba(255,255,255,.8);white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.pool button.gc .pr.eqd{background:linear-gradient(180deg,#fff27a,#f5b400);border-color:#fff;color:#2a1600;box-shadow:0 0 8px rgba(255,210,28,.8)}
+.pool button.gc.sel .pr{top:5px;bottom:auto}
+.pool button.gc.sel::after{content:none}
+.pool button.gc .pr.cant{background:rgba(60,8,16,.92)}
+.pool button.gc.na{filter:grayscale(.55) brightness(.66)}
+.pool button.gc.na>span>small{color:#fecaca}
+.pool button.gc.st-owned>span>small{color:#bbf7d0}
+.pool button.gc.st-equipped>span>small{color:#fde68a}
+.pool button.gc.buying{background:linear-gradient(#000,#000) padding-box,linear-gradient(150deg,#fff,var(--tc) 30%,#fff 50%,var(--tc) 70%,#fff) border-box!important;box-shadow:0 0 0 2px #fff,0 0 28px var(--tc);transform:translateY(-3px) scale(1.03);animation:buyGlow 1.1s ease-in-out infinite}
+@keyframes buyGlow{50%{box-shadow:0 0 0 2px #fff,0 0 12px var(--tc)}}
+.pool button.gc.buying>span>small{color:#fff}
+.pool button.gc.pend{box-shadow:0 0 0 2px #ffd21c,0 0 22px rgba(255,210,28,.8)}
+.pool button.gc.pop,.sqbar .sq.pop{animation:eqPop .46s cubic-bezier(.2,1.5,.4,1)}
+.sqbar .sq.pop::after{content:'';position:absolute;inset:-2px;border-radius:12px;border:3px solid #fff7b0;z-index:6;pointer-events:none;animation:eqRing .5s ease-out forwards}
+@keyframes eqPop{0%{transform:scale(.84);filter:brightness(2.2)}55%{transform:scale(1.1);filter:brightness(1.3)}100%{transform:none;filter:none}}
+@keyframes eqRing{from{opacity:.95;transform:scale(.9)}to{opacity:0;transform:scale(1.18)}}
+.diffrow.lkf .dchip small{opacity:.8;font-size:11px;margin-left:2px}
+.draft-actions .btn small{margin-left:4px;font-family:var(--hdr);font-size:12px;background:rgba(255,255,255,.16);border-radius:8px;padding:1px 6px}
+#scr-draft .draft-actions .btn,#scr-locker .draft-actions .btn,#scr-shop .draft-actions .btn{min-width:0;padding:0 8px}
+#dBack{flex:.5}#dLocker{flex:1.3;font-size:15px;white-space:nowrap;gap:6px}
+#dGo{flex:1.7!important;font-size:clamp(13px,4.1vw,19px)!important}
+#scr-draft .draft-head .h,#scr-locker .draft-head .h,#scr-shop .draft-head .h{font-size:clamp(21px,6.4vw,26px)}
+/* hold the card to purchase (v8.0): no dock, the portrait itself fills */
+.pool button.gc{touch-action:pan-y;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+.pool button.gc img{pointer-events:none;-webkit-user-drag:none}
+.pool button.gc .hfill{position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(0deg,color-mix(in srgb,var(--tc) 80%,transparent) 0%,color-mix(in srgb,var(--tc) 40%,rgba(255,255,255,.55)) 100%);transform-origin:50% 100%;transform:scaleY(var(--p,0));border-top:3px solid #fff;box-shadow:0 -6px 16px #fff}
+.pool button.gc.rel .hfill{transition:transform .22s ease-out}
+.pool button.gc.holding{z-index:6;background:linear-gradient(#000,#000) padding-box,linear-gradient(150deg,#fff,var(--tc) 30%,#fff 50%,var(--tc) 70%,#fff) border-box!important;box-shadow:0 0 0 2px #fff,0 0 30px var(--tc),0 0 60px color-mix(in srgb,var(--tc) 70%,transparent)}
+#scr-shop .pool button.gc.holding{animation:holdShake .11s linear infinite!important;transform:scale(1.07)}
+@keyframes holdShake{0%{transform:scale(1.07) translate(0,0)}25%{transform:scale(1.07) translate(-1.2px,.6px)}50%{transform:scale(1.075) translate(0,-.6px)}75%{transform:scale(1.07) translate(1.2px,.6px)}100%{transform:scale(1.07) translate(0,0)}}
+#scr-shop .pool button.gc.nope{animation:nopeShake .34s!important}
+@keyframes nopeShake{0%,100%{transform:none}20%{transform:translateX(-7px)}45%{transform:translateX(7px)}70%{transform:translateX(-4px)}}
+#scr-shop .pool button.gc.nudge{animation:hintPulse .35s!important}
+@keyframes hintPulse{0%{transform:none}40%{transform:scale(1.045)}100%{transform:none}}
+.pool button.gc.holding>span>small{color:#fff}
+.pool button.gc.owned{filter:saturate(.85)}
+.pool button.gc.owned .pr.own{background:rgba(5,46,22,.92)}
+.draft-head p .hl{color:#fde68a}
+/* Ready to Drop */
+.loadout{flex:1;min-height:0;display:flex;gap:10px;align-items:center;justify-content:center}
+.loadout .sq{flex:none;width:30%;height:auto;aspect-ratio:3/4;font-size:34px;cursor:pointer}
+.loadout .sq>span{font-size:11.5px}
+.ready-note{flex:none;text-align:center;font-size:13px;color:var(--mut);padding:0 8px;line-height:1.25}
+.ready-note.ok{color:#86efac;font-family:var(--hdr);font-style:italic;letter-spacing:.8px;text-transform:uppercase}
+.ready-note.warn{color:#fecaca}
+.draft-actions.menu2 .btn{min-height:46px;font-size:15px}
+#dGo.notready{filter:grayscale(.55) brightness(.85)}
+.title-row.menu2 .btn{min-height:54px;font-size:17px}
+#sBack{flex:.5}#sLocker{flex:1.7;font-size:clamp(14px,4.4vw,19px);white-space:nowrap}
+#sLocker small{background:rgba(0,0,0,.18);color:#2a1600}
+/* purchase moment */
+.bfx{position:fixed;inset:0;z-index:70;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(circle at 50% 42%,rgba(5,8,32,.9),rgba(2,3,14,.97));overflow:hidden;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;animation:bfxIn .2s ease-out}
+.bfx.out{animation:bfxOut .24s ease-in forwards}
+.bfx.can{cursor:pointer}
+@keyframes bfxIn{from{opacity:0}}@keyframes bfxOut{to{opacity:0}}
+.b-flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;animation:bFlash .6s ease-out}
+@keyframes bFlash{0%{opacity:.95}100%{opacity:0}}
+.b-rays{position:absolute;left:50%;top:42%;width:150vmax;height:150vmax;margin:-75vmax 0 0 -75vmax;background:repeating-conic-gradient(from 0deg,color-mix(in srgb,var(--tc) 85%,#fff) 0 7deg,transparent 7deg 20deg);-webkit-mask-image:radial-gradient(circle,#000 0,rgba(0,0,0,.55) 9%,transparent 24%);mask-image:radial-gradient(circle,#000 0,rgba(0,0,0,.55) 9%,transparent 24%);opacity:0;animation:bRays 14s linear infinite,bRaysIn .5s .05s ease-out forwards}
+@keyframes bRays{to{transform:rotate(360deg)}}@keyframes bRaysIn{to{opacity:.8}}
+.b-sparks{position:absolute;left:50%;top:42%;width:0;height:0}
+.b-sparks i{position:absolute;left:0;top:0;width:var(--z);height:var(--z);margin:calc(var(--z)/-2);border-radius:50%;background:#fff;box-shadow:0 0 10px 2px var(--tc),0 0 4px #fff;opacity:0;animation:bSpark .9s var(--t) cubic-bezier(.1,.7,.3,1) forwards}
+@keyframes bSpark{0%{opacity:1;transform:rotate(var(--a)) translateX(0) scale(1.4)}100%{opacity:0;transform:rotate(var(--a)) translateX(var(--d)) scale(.2)}}
+.b-card{position:relative;z-index:2;width:min(46vw,190px);aspect-ratio:3/4;margin-top:-6vh;border-radius:16px;overflow:hidden;border:3px solid transparent;background:linear-gradient(#000,#000) padding-box,linear-gradient(150deg,#fff,var(--tc) 25%,#fff 50%,var(--tc) 75%,#fff) border-box;box-shadow:0 0 36px var(--tc),0 0 90px color-mix(in srgb,var(--tc) 70%,transparent);animation:bCard .62s .04s cubic-bezier(.2,1.5,.4,1) both,bFloat 2.4s .7s ease-in-out infinite}
+.b-card::before{content:'';position:absolute;top:8px;left:8px;z-index:4;width:13px;height:13px;transform:rotate(45deg);background:linear-gradient(135deg,#fff,var(--tc));box-shadow:0 0 10px var(--tc)}
+.b-card img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.b-card span{position:absolute;left:0;right:0;bottom:0;padding:22px 4px 7px;text-align:center;color:#fff;font-family:var(--hdr);font-size:15px;text-transform:uppercase;letter-spacing:.3px;background:linear-gradient(0deg,rgba(0,0,0,.92),transparent)}
+@keyframes bCard{0%{transform:scale(.25) rotate(-9deg);opacity:0;filter:brightness(4)}60%{transform:scale(1.14) rotate(1.5deg);opacity:1;filter:brightness(1.5)}100%{transform:none;filter:none}}
+@keyframes bFloat{50%{transform:translateY(-6px)}}
+.b-t{position:relative;z-index:2;font-family:var(--hdr);font-style:italic;font-size:42px;line-height:1.05;text-transform:uppercase;background:linear-gradient(180deg,#fff,#fde047 45%,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:1.5px #3b1d00;filter:drop-shadow(0 4px 0 rgba(0,0,0,.6)) drop-shadow(0 0 16px rgba(250,204,21,.6));animation:bT .5s .28s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes bT{0%{transform:scale(2.6);opacity:0}100%{transform:none;opacity:1}}
+.b-tier{position:relative;z-index:2;font-family:var(--hdr);font-style:italic;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--tc);text-shadow:0 1px 3px #000;animation:bFade .3s .55s both}
+.b-vb{position:relative;z-index:2;display:inline-flex;align-items:center;gap:6px;padding:5px 16px 5px 10px;border-radius:999px;background:linear-gradient(180deg,#1e3a8a,#0b1a4a);border:2px solid #7dd3fc;box-shadow:0 0 14px rgba(56,189,248,.65);font-family:var(--hdr);font-size:22px;color:#e0f2ff;animation:bFade .3s .6s both}
+.b-vb .ico{width:26px;height:26px}
+.b-vb.bump{animation:none}.b-vb.bump b{display:inline-block;animation:vbBump .08s}
+@keyframes vbBump{0%{transform:translateY(-3px) scale(1.12)}100%{transform:none}}
+.b-vb.fin{border-color:#fff;box-shadow:0 0 22px #7dd3fc,0 0 6px #fff}
+.b-hint{position:relative;z-index:2;font-size:12px;color:var(--mut);opacity:0;animation:bFade .3s 1.2s both}
+@keyframes bFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.b-rays{animation:bRaysIn .3s forwards}.b-card{animation:none}.b-sparks{display:none}.b-flash{animation-duration:.2s}.holdbtn.holding{animation:none}}
+
 .pool button.na .pr{border-color:#f87171;color:#fecaca}
 #dGo{white-space:nowrap;font-size:clamp(15px,4.6vw,19px)}
 #dGo .ico{width:16px;height:16px;vertical-align:-3px;margin:0 1px 0 4px}
@@ -1591,6 +1690,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 <div id="app" class="compact">
   <section class="screen" id="scr-title"></section>
   <section class="screen" id="scr-draft"></section>
+  <section class="screen" id="scr-shop"></section>
   <section class="screen" id="scr-locker"></section>
   <section class="screen" id="scr-game"></section>
   <section class="screen" id="scr-end"></section>
@@ -1657,6 +1757,10 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   const COND_TEXT = { took_damage: 'If the squad took damage this turn: +1 hit.', no_threats_activated: 'If nothing else attacked this turn: 2 damage.', shields_empty: 'If shields are empty: 2 damage.' };
 
   function rngFrom(seed) { let a = seed >>> 0; return function () { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  /* v7.8: an enemy template only fixes HOW MANY numbers each action has. The numbers themselves are rolled per enemy (seeded), independently for
+     every action, so they may repeat across actions (e.g. DAMAGE 1,4 / HEAL 4 / COVER 1,2) and some of 1-6 may be uncovered. Inside one action they are distinct. */
+  function rollNums(s, n) { const p = [1, 2, 3, 4, 5, 6]; for (let i = 5; i > 0; i--) { const j = Math.floor(nextRand(s) * (i + 1)); [p[i], p[j]] = [p[j], p[i]]; } return p.slice(0, n).sort((a, b) => a - b); }
+  function randOpp(s, t) { const o = Object.assign({}, t); if (t.a && t.a.length) o.a = rollNums(s, t.a.length); o.x = (t.x || []).map(x => [x[0], rollNums(s, x[1].length)]); return o; }
   function shuffle(arr, r) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
 
   /* v6.6: the run is a chain of POIs. Each POI has a fixed roster of enemy trios + hazards.
@@ -1685,7 +1789,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     let op = 0, hp = 0, ti = 0;
     plan.forEach((p, pi) => {
       const trios = [], hz = [];
-      for (let k = 0; k < p.trios; k++) { const t = teams[ti++]; trios.push(t.members.map(nm => mkCard(s, Object.assign({ kind: 'opp', name: nm, img: nm, team: t.id, tname: t.name }, OPPS[oppPool[op++ % oppPool.length]])))); }
+      for (let k = 0; k < p.trios; k++) { const t = teams[ti++]; trios.push(t.members.map(nm => mkCard(s, Object.assign({ kind: 'opp', name: nm, img: nm, team: t.id, tname: t.name }, randOpp(s, OPPS[oppPool[op++ % oppPool.length]]))))); }
       for (let k = 0; k < p.haz; k++) {
         if (k < (p.openHaz != null ? p.openHaz : 1)) { for (let q = 0; q < hazPool.length; q++) { const ix = (hp + q) % hazPool.length, h = HAZ[hazPool[ix]]; if (!h.instant && !h.surge) { if (q) { const a = hp % hazPool.length; [hazPool[a], hazPool[ix]] = [hazPool[ix], hazPool[a]]; } break; } } }
         hz.push(mkCard(s, Object.assign({ kind: 'haz', img: null }, HAZ[hazPool[hp++ % hazPool.length]])));
@@ -1710,7 +1814,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     // v6.8: one Elite (last match's winner) drops last at the final POI
     if (opts.elite && opts.elite.name) {
       const esh = shuffle([1, 2, 3, 4, 5, 6], rr), ea = esh.slice(0, 3).sort((a, b) => a - b);
-      const ec = mkCard(s, { kind: 'opp', name: opts.elite.name, img: opts.elite.name, team: 900, tname: opts.elite.name, hp: 4, a: ea, d: 3, cov: [[F.SHOOT], [F.SHIELD], [F.HEAL], [F.REBOOT]], x: [['cover', [esh[3]]], ['push', [esh[4]]]], covMax: 4, pbMax: 1 }); // v7.2: Damage + Cover + Push // v6.9: 4 cover dice, hits for 3
+      const ec = mkCard(s, { kind: 'opp', name: opts.elite.name, img: opts.elite.name, team: 900, tname: opts.elite.name, hp: 4, a: ea, d: 3, cov: [[F.SHOOT], [F.SHIELD], [F.HEAL], [F.REBOOT]], x: [['cover', [1 + Math.floor(rr() * 6)]], ['push', [1 + Math.floor(rr() * 6)]]], covMax: 4, pbMax: 1 }); // v7.2: Damage + Cover + Push // v6.9: 4 cover dice, hits for 3
       ec.elite = 1; ec.etag = opts.elite.tag || 'WON LAST MATCH'; ec.vb = CFG.eliteVb; ec.hp = ec.maxHp = 4;
       (s.future.length ? s.future[s.future.length - 1] : s.deck).push(ec); s.field++;
     }
@@ -1832,6 +1936,8 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   /* ---- v7.2 enemy actions ----
      Resolution order when one Storm number triggers several actions on the same enemy (templates avoid overlaps, but the engine is safe):
      REVIVE -> HEAL -> COVER -> PUSH -> KNOCK -> DAMAGE -> RETREAT. Evade cancels all of them. A downed enemy never acts. */
+  /* v7.8: when ONE Storm number matches several of an enemy's actions, they all fire in this fixed order: REVIVE, HEAL, COVER, PUSH, KNOCK, DAMAGE, RETREAT
+     (support first so Cover/Push are in place before she shoots; Retreat last so she gets her shot off before leaving). */
   const ACT_ORDER = ['revive', 'heal', 'cover', 'push', 'knock', 'dmg', 'retreat'];
   const ACT_INFO = {
     dmg: { name: 'DAMAGE', desc: 'Hits your squad (shields first, unless it pierces). With 2+ squads on the board it may shoot a rival squad instead.' },
@@ -1864,6 +1970,24 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     if (c.a.includes(v)) out.push('dmg');
     (c.acts || []).forEach(x => { if (x.n.includes(v) && !out.includes(x.k)) out.push(x.k); });
     return ACT_ORDER.filter(k => out.includes(k));
+  }
+  /* v8.0: what each action on number v will really do, in firing order, taking the earlier actions of the SAME roll into account
+     (a Cover on the roll makes a Push work; a Revive brings a hurt teammate a Heal can use). Used by the danger preview and the Storm-number sheet. */
+  function previewActs(s, c, v) {
+    const ks = actsOn(c, v), mates = oppTeam(s, c);
+    let cov = unfilledCov(c), pb = c.pb || 0, hp = c.hp, down = mates.filter(o => o.down).length, hurt = mates.filter(o => !o.down && o.hp < o.maxHp).length;
+    return ks.map(k => {
+      let ok = !c.down;
+      switch (k) {
+        case 'knock': ok = ok && canAct(s, c, 'knock'); break;
+        case 'revive': ok = ok && down > 0; if (ok) { const t = mates.find(o => o.down); down--; if (CFG.oppReviveHp < t.maxHp) hurt++; } break;
+        case 'heal': ok = ok && (hp < c.maxHp || hurt > 0); if (ok) { if (hp < c.maxHp) hp++; else hurt--; } break;
+        case 'cover': ok = ok && cov < (c.covMax || 3); if (ok) cov++; break;
+        case 'push': ok = ok && cov > 0 && pb < (c.pbMax || 2); if (ok) { cov--; pb++; } break;
+        case 'retreat': ok = ok && canAct(s, c, 'retreat'); break;
+      }
+      return { k, ok };
+    });
   }
   function supportAct(s, c, k) {
     if (!canAct(s, c, k)) { s.ev.push({ t: 'enoop', uid: c.uid, k }); return; }
@@ -2285,11 +2409,11 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   }
   function danger(s, v) { // preview: total raw damage if the Storm rolls v
     let dmg = 0, hits = 0, pierce = 0;
-    s.board.forEach(c => { if (c.cond || c.down || !c.a.includes(v) || c.evade) return; hits++; let x = c.surge || (c.tick && c.hp <= c.tick ? c.boom : 0) || c.d || (c.stink ? 1 : 0); if (c.kind === 'opp') x = (c.d || 0) + (c.pb || 0) + (actsOn(c, v).includes('push') && canAct(s, c, 'push') ? 1 : 0); if (c.kind === 'storm') x = (c.d || 0) * alive(s).length; dmg += x; if (c.byp || c.stink) pierce += x; });
+    s.board.forEach(c => { if (c.cond || c.down || !c.a.includes(v) || c.evade) return; hits++; let x = c.surge || (c.tick && c.hp <= c.tick ? c.boom : 0) || c.d || (c.stink ? 1 : 0); if (c.kind === 'opp') x = (c.d || 0) + (c.pb || 0) + (previewActs(s, c, v).some(x => x.k === 'push' && x.ok) ? 1 : 0); if (c.kind === 'storm') x = (c.d || 0) * alive(s).length; dmg += x; if (c.byp || c.stink) pierce += x; });
     return { dmg, hits, pierce, hp: pierce + Math.max(0, dmg - pierce - s.shield) };
   }
 
-  const API = { F, FACE_INFO, CFG, OPPS, HAZ, COND_TEXT, newGame, roll, targetsFor, chestOptions, convertFaces, apply, undo, canUndo, endTurnBegin, stormRoll, stormRolls, activations, activate, endTurnFinish, endTurnAll, danger, cardText, ACT_INFO, ACT_ORDER, actsOn, canAct, unfilledCov, canBuy, buy, rollableCount, coverDone, blocked, shieldsLocked, alive, hasEffect, teamsOnBoard, teamUp, checkWin, lobbyAlive, locked: lockedE, standings, aliveOpps: aliveOppsE, aliveTeams: oppTeamsAlive };
+  const API = { F, FACE_INFO, CFG, OPPS, HAZ, COND_TEXT, newGame, roll, targetsFor, chestOptions, convertFaces, apply, undo, canUndo, endTurnBegin, stormRoll, stormRolls, activations, activate, endTurnFinish, endTurnAll, danger, cardText, ACT_INFO, ACT_ORDER, actsOn, previewActs, canAct, unfilledCov, canBuy, buy, rollableCount, coverDone, blocked, shieldsLocked, alive, hasEffect, teamsOnBoard, teamUp, checkWin, lobbyAlive, locked: lockedE, standings, aliveOpps: aliveOppsE, aliveTeams: oppTeamsAlive };
   if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.Engine = API;
 })(typeof window !== 'undefined' ? window : globalThis);
 </script>
@@ -2436,7 +2560,7 @@ function renderTitle() {
   const crew = pickN(CHARS, 3);
   $('#scr-title').innerHTML = `
     <div class="bgart" style="background-image:url(${poiImg(titlePoi)})"></div>
-    <div class="ver">v7.7</div>
+    <div class="ver">v8.0</div>
     <div class="title-top"><button class="icon-btn mute-btn" aria-label="Sound">${AU.muted ? '🔇' : '🔊'}</button></div>
     <div class="crew">${crew.map(n => `<img src="${portrait(n)}" alt="">`).join('')}</div>
     <div class="logo h"><div class="l0">FORTNITE:</div><div class="l1">ZERO BUILD</div><div class="l2">D6</div><div class="tag">Roll. Assign. Survive the Storm. Last squad standing.</div></div>
@@ -2444,12 +2568,14 @@ function renderTitle() {
     <div class="title-actions">
       ${LS.get('fd5_run', null) ? '<button class="btn blue" id="tContinue">▶ CONTINUE RUN</button>' : ''}
       <button class="btn pri h" id="tPlay">PLAY</button>
-      <div class="title-row"><button class="btn ghost" id="tHow">📖 How to play</button><button class="btn ghost" id="tBest">${ico('crown', 'cr')} Best runs</button><button class="btn ghost" id="tLocker">🎒 Locker</button></div>
+      <div class="title-row menu2"><button class="btn ghost" id="tShop">🛒 Item Shop</button><button class="btn ghost" id="tLocker">🎒 Locker</button></div>
+      <div class="title-row"><button class="btn ghost" id="tHow">📖 How to play</button><button class="btn ghost" id="tBest">${ico('crown', 'cr')} Best runs</button></div>
     </div>`;
   $('#tPlay').onclick = () => { sfx('beep'); buzz(10); startDraft(); };
   $('#tHow').onclick = () => openHowTo();
   $('#tBest').onclick = () => openBest();
-  $('#tLocker').onclick = () => openLocker();
+  $('#tShop').onclick = () => openSkinShop('title');
+  $('#tLocker').onclick = () => openLocker('title');
   const c = $('#tContinue'); if (c) c.onclick = () => { const r = LS.get('fd5_run', null); if (r) resumeRun(r); };
   $('.mute-btn', $('#scr-title')).onclick = () => setMuted(!AU.muted);
 }
@@ -2491,56 +2617,188 @@ function shopRotation() {
   return r;
 }
 const placePay = p => VB_PLACE.find(t => p <= t[0])[1];
-function startDraft() {
-  D.pool = shopRotation(); D.picked = eqGet(); D.anim = true; D.pity = 0; // v7.6: equipped skins come pre-loaded
-  const w = walletGet(), need = cheap3(D.pool);
-  if (w < need) { walletSet(need); D.pity = need - w; } // never soft-lock: top up to the 3 cheapest in this rotation
-  renderDraft(); show('scr-draft');
-  if (D.pity) setTimeout(() => { toast(`Supply Drop: +${fmtN(D.pity)} V-Bucks so you can drop`); sfx('chime'); }, 500);
-}
-function renderDraft() {
-  const el = $('#scr-draft'); const df = DIFFS[D.diff] || DIFFS.standard;
-  const wl = walletGet(), cost = D.picked.reduce((n, x) => n + costOf(x), 0), left = wl - cost;
-  el.innerHTML = `
-    <div class="draft-head"><div class="h">Item Shop</div><div class="wallet" id="dWallet">${ico('vbucks')}<b>${fmtN(wl - cost)}</b>${cost ? `<s>${fmtN(wl)}</s>` : ''}</div><p>Buy 3 · new rotation every match · ${df.plan.length} POIs · ${df.trios} trios + ${df.haz} hazards${D.daily ? ' · seed ' + dayNum() : ''}</p></div>
-    <div class="diffrow" role="radiogroup" aria-label="Difficulty">${Object.keys(DIFFS).map(k => `<button class="dchip ${D.diff === k ? 'on' : ''}" data-d="${k}" role="radio" aria-checked="${D.diff === k}">${DIFFS[k].name}</button>`).join('')}<button class="dchip daily ${D.daily ? 'on' : ''}" id="dDaily" aria-pressed="${D.daily}" title="Everyone gets the same deck and Storm today">📅 Daily</button></div>
-    <div class="picked">${[0, 1, 2].map(k => { const n = D.picked[k]; return n ? `<div class="slot fill r-${tierOf(n)}" data-n="${esc(n)}"><img src="${portrait(n)}" alt=""><em class="pr${isOwned(n) ? ' own' : ''}">${isOwned(n) ? 'OWNED' : ico('vbucks') + fmtN(priceOf(n))}</em><span>${esc(n)}</span></div>` : `<div class="slot">${k + 1}</div>`; }).join('')}</div>
-    <div class="pool ${D.anim ? 'reveal' : ''}">${D.pool.map((n, k) => `<button data-n="${esc(n)}" class="gc r-${tierOf(n)} ${D.picked.includes(n) ? 'sel' : costOf(n) > left || D.picked.length >= 3 ? 'na' : ''}" style="--k:${k}" aria-label="${esc(n)}, ${isOwned(n) ? 'owned' : fmtN(priceOf(n)) + ' V-Bucks'}"><img src="${portrait(n)}" alt=""><i class="shine"></i><em class="pr${isOwned(n) ? ' own' : ''}">${isOwned(n) ? 'OWNED' : ico('vbucks') + fmtN(priceOf(n))}</em><span>${esc(n)}</span></button>`).join('')}</div>
-    <div class="draft-actions"><button class="btn ghost" id="dBack" aria-label="Back">←</button><button class="btn pri h" id="dGo" ${D.picked.length === 3 ? '' : 'disabled'}>${D.picked.length === 3 ? `${cost ? 'BUY &amp; DROP ' + ico('vbucks') + fmtN(cost) : 'DROP'}` : `PICK ${3 - D.picked.length} MORE`}</button></div>`;
-  $$('.pool button', el).forEach(b => b.onclick = () => {
-    const n = b.dataset.n, k = D.picked.indexOf(n);
-    if (k >= 0) D.picked.splice(k, 1); else if (D.picked.length >= 3) { sfx('err'); return; } else if (costOf(n) > left) { sfx('err'); buzz([10, 30, 10]); toast(`Not enough V-Bucks for ${n}`); return; } else { D.picked.push(n); sfx('click'); buzz(8); }
-    renderDraft();
-  });
-  $$('.picked .slot.fill', el).forEach(b => b.onclick = () => { const k = D.picked.indexOf(b.dataset.n); if (k >= 0) { D.picked.splice(k, 1); sfx('click'); buzz(8); renderDraft(); } });
-  $$('.dchip[data-d]', el).forEach(b => b.onclick = () => { D.diff = b.dataset.d; LS.set('fd6_diff', D.diff); sfx('tap'); renderDraft(); });
-  $('#dDaily').onclick = () => { D.daily = !D.daily; sfx('tap'); renderDraft(); };
-  $('#dBack').onclick = () => { renderTitle(); show('scr-title'); };
-  D.anim = false;
-  $('#dGo').onclick = () => { if (D.picked.length !== 3) return; const c = D.picked.reduce((n, x) => n + costOf(x), 0), w = walletGet(); if (c > w) { sfx('err'); toast('Not enough V-Bucks'); return; }
-    walletSet(w - c); LS.set('fd8_own', Array.from(new Set(ownGet().concat(D.picked)))); LS.set('fd8_eq', D.picked.slice()); LS.del('fd8_rot'); sfx('chime'); buzz([10, 30, 20]); startRun(D.picked.slice()); RUN.spent = c; saveRun(); };
-}
-
-
-/* ---------- v7.6 Locker: owned skins, tap to equip (max 3). The equipped squad is the one pre-loaded when you drop. ---------- */
-function openLocker() { renderLocker(); show('scr-locker'); sfx('tap'); }
-function renderLocker() {
-  const el = $('#scr-locker'), own = ownGet().sort((a, b) => priceOf(b) - priceOf(a) || a.localeCompare(b)), eq = eqGet();
-  el.innerHTML = `
-    <div class="draft-head"><div class="h">Locker</div><div class="wallet" id="lWallet">${ico('vbucks')}<b>${fmtN(walletGet())}</b></div><p>${own.length ? `${own.length} skin${own.length === 1 ? '' : 's'} owned · tap to equip (${eq.length}/3)` : 'Skins you buy in the Item Shop live here'}</p></div>
-    <div class="picked">${[0, 1, 2].map(k => { const n = eq[k]; return n ? `<div class="slot fill r-${tierOf(n)}" data-n="${esc(n)}"><img src="${portrait(n)}" alt=""><em class="pr own">EQUIPPED</em><span>${esc(n)}</span></div>` : `<div class="slot">${k + 1}</div>`; }).join('')}</div>
-    <div class="pool">${own.length ? own.map((n, k) => `<button data-n="${esc(n)}" class="gc r-${tierOf(n)} ${eq.includes(n) ? 'sel eq' : ''}" style="--k:${k}" aria-label="${esc(n)}, ${eq.includes(n) ? 'equipped' : 'owned'}"><img src="${portrait(n)}" alt=""><i class="shine"></i><em class="pr own">${eq.includes(n) ? 'EQUIPPED' : 'OWNED'}</em><span>${esc(n)}</span></button>`).join('') : '<div class="locker-empty">Your Locker is empty.<br>Buy skins with V-Bucks in the Item Shop and they stay here for good.</div>'}</div>
-    <div class="draft-actions"><button class="btn ghost" id="lBack" aria-label="Back">←</button><button class="btn pri h" id="lPlay">PLAY</button></div>`;
-  const toggle = n => {
-    let e = eqGet();
-    if (e.includes(n)) e = e.filter(x => x !== n); else if (e.length >= 3) { sfx('err'); buzz([10, 30, 10]); toast('3 skins equipped. Tap one to unequip first'); return; } else e.push(n);
-    LS.set('fd8_eq', e); sfx('click'); buzz(8); renderLocker();
-  };
-  $$('.pool button', el).forEach(b => b.onclick = () => toggle(b.dataset.n));
-  $$('.picked .slot.fill', el).forEach(b => b.onclick = () => toggle(b.dataset.n));
-  $('#lBack').onclick = () => { renderTitle(); show('scr-title'); };
-  $('#lPlay').onclick = () => { sfx('beep'); buzz(10); startDraft(); };
-}
+/* ---------- v8.0 menus: Item Shop (buy only: HOLD the skin card), Locker (equip / swap / filters) and the pre-match "Ready to Drop" screen ----------
+    Storage (fd8_ prefix, wiped by New Account): fd8_own = every skin you bought, fd8_eq = the squad you drop with (max 3), fd8_vb = V-Bucks.
+    Item Shop: press and HOLD a skin card (HOLD_MS) to buy it. Release early / move > MOVE_PX / scroll cancels. The purchase (V-Bucks, ownership, auto-equip into a free slot)
+    is saved the instant the hold completes. Locker: tap to equip / unequip / swap. PLAY -> Ready to Drop (difficulty, Daily, equipped squad) -> DROP. */
+ const SK = { swapSkin: null, swapSlot: null, filter: 'all', pop: null, back: 'title' };
+ const HOLD_MS = 1300, ARM_MS = 110, MOVE_PX = 10;
+ const eqSave = e => LS.set('fd8_eq', e.slice(0, 3));
+ const tierName = n => PRICE_TIERS.find(t => t[0] === priceOf(n))[2];
+ function skinState(n, wl) { if (eqGet().includes(n)) return 'equipped'; if (isOwned(n)) return 'owned'; return priceOf(n) <= wl ? 'afford' : 'cant'; }
+ const goBack = () => { sfx('tap'); if (SK.back === 'load') openLoadout(); else { renderTitle(); show('scr-title'); } };
+ /* ---- Locker: equip / unequip / swap ---- */
+ function equipSkin(n) {
+   const e = eqGet(); if (e.includes(n) || !isOwned(n)) return;
+   if (SK.swapSlot != null && e[SK.swapSlot]) { e[SK.swapSlot] = n; SK.swapSlot = null; SK.swapSkin = null; toast(`${n} equipped`); }
+   else if (e.length < 3) { e.push(n); SK.swapSkin = null; }
+   else { SK.swapSkin = SK.swapSkin === n ? null : n; sfx('tap'); renderLocker(); return; }
+   eqSave(e); SK.pop = n; sfx('click'); sfx('land', 2); buzz(10); renderLocker();
+ }
+ function unequipAt(i) { const e = eqGet(); if (!e[i]) return; e.splice(i, 1); eqSave(e); SK.swapSlot = null; SK.swapSkin = null; sfx('click'); buzz(8); renderLocker(); }
+ function slotTap(i) {
+   const e = eqGet();
+   if (SK.swapSkin && isOwned(SK.swapSkin)) { const n = SK.swapSkin; if (e[i]) e[i] = n; else e.push(n); toast(`${n} equipped`); SK.pop = n; SK.swapSkin = null; SK.swapSlot = null; eqSave(e); sfx('click'); sfx('land', 2); buzz(10); }
+   else if (e[i]) { SK.swapSlot = SK.swapSlot === i ? null : i; sfx('tap'); }
+   else { sfx('err'); toast('Tap an owned skin to equip it'); return; }
+   renderLocker();
+ }
+ function skinTap(n) { const st = skinState(n, walletGet()); if (st === 'equipped') unequipAt(eqGet().indexOf(n)); else if (st === 'owned') equipSkin(n); }
+ /* ---- purchase moment ---- */
+ function purchase(n) {
+   const w = walletGet(), p = priceOf(n); if (p > w || isOwned(n)) { renderShop(); return; }
+   walletSet(w - p); LS.set('fd8_own', Array.from(new Set(ownGet().concat([n]))));
+   const e = eqGet(), free = e.length < 3; if (free) { e.push(n); eqSave(e); }
+   SK.pop = n;
+   celebrate(n, w, w - p, free, () => { renderShop(); if (!free) toast(`${n} is in your Locker. Equip it there to swap it into the squad`); });
+ }
+ function celebrate(n, from, to, free, after) {
+   const tc = tierOf(n), root = document.body, el = document.createElement('div'); el.className = `bfx r-${tc}`;
+   const sparks = Array.from({ length: 18 }, (_, i) => `<i style="--a:${Math.round(i * 20 + (i % 3) * 7)}deg;--d:${110 + (i * 37) % 90}px;--z:${5 + (i * 7) % 8}px;--t:${(i % 5) * 40}ms"></i>`).join('');
+   el.innerHTML = `<div class="b-flash"></div><div class="b-rays"></div><div class="b-sparks">${sparks}</div>
+     <div class="b-card"><img src="${portrait(n)}" alt=""><span>${esc(n)}</span></div>
+     <div class="b-t">PURCHASED!</div><div class="b-tier">${esc(tierName(n))} skin · ${free ? 'added to your squad' : 'added to your Locker'}</div>
+     <div class="b-vb">${ico('vbucks')}<b>${fmtN(from)}</b></div><div class="b-hint">Tap to continue</div>`;
+   root.appendChild(el); sfx('chime'); setTimeout(() => sfx('sparkle'), 260); sfx('land', 3); buzz([12, 40, 24]);
+   const vb = $('.b-vb b', el), steps = 14; let i = 0, closed = false;
+   const tick = () => { if (closed) return; i++; vb.textContent = fmtN(i >= steps ? to : from - Math.round((from - to) * i / steps)); const pill = vb.parentNode; pill.classList.remove('bump'); void pill.offsetWidth; pill.classList.add('bump'); sfx('tick', i % 8);
+     if (i < steps) setTimeout(tick, 42); else { pill.classList.add('fin'); sfx('ping'); } };
+   setTimeout(tick, 720);
+   const close = () => { if (closed) return; closed = true; el.classList.add('out'); setTimeout(() => { el.remove(); after(); }, 240); };
+   setTimeout(() => { el.classList.add('can'); el.onclick = close; }, 900); setTimeout(close, 2900);
+ }
+ /* ---- cards ---- */
+ function squadBar() {
+   const e = eqGet(), pend = SK.swapSkin;
+   const hint = pend ? `Tap a slot to swap in <b>${esc(pend)}</b>` : SK.swapSlot != null ? 'Tap a skin to put it in this slot' : e.length < 3 ? `Equip ${3 - e.length} more to drop` : 'Ready · tap a slot to swap';
+   return `<div class="sqhead"><b>YOUR SQUAD ${e.length}/3</b><span>${hint}</span></div><div class="sqbar">${[0, 1, 2].map(i => { const n = e[i];
+     return n ? `<div class="sq fill r-${tierOf(n)}${SK.swapSlot === i ? ' sel' : ''}${pend ? ' swap' : ''}" data-i="${i}" role="button" aria-label="Squad slot ${i + 1}: ${esc(n)}${pend ? ', tap to swap in ' + esc(pend) : ''}"><img src="${portrait(n)}" alt=""><span>${esc(n)}</span><button class="x" data-x="${i}" aria-label="Unequip ${esc(n)}">✕</button>${pend ? '<i class="sw">SWAP</i>' : ''}</div>`
+       : `<div class="sq${pend ? ' swap' : ''}" data-i="${i}" role="button" aria-label="Empty squad slot ${i + 1}">${i + 1}${pend ? '<i class="sw">EQUIP</i>' : ''}</div>`; }).join('')}</div>`;
+ }
+ function skinCard(n, k, mode) {
+   const wl = walletGet(), st = skinState(n, wl), full = eqGet().length >= 3, pend = SK.swapSkin === n;
+   let chip, cap, cls = '', txt, fill = '';
+   if (mode === 'shop') {
+     if (st === 'afford') { chip = `<em class="pr">${ico('vbucks')}${fmtN(priceOf(n))}</em>`; cap = 'HOLD TO PURCHASE'; txt = fmtN(priceOf(n)) + ' V-Bucks, press and hold to purchase'; fill = '<i class="hfill"></i>'; }
+     else if (st === 'cant') { chip = `<em class="pr cant">${ico('vbucks')}${fmtN(priceOf(n))}</em>`; cap = 'NEED ' + fmtN(priceOf(n) - wl) + ' MORE'; cls = 'na'; txt = "can't afford, " + fmtN(priceOf(n)) + ' V-Bucks'; }
+     else { chip = '<em class="pr own">✓ OWNED</em>'; cap = st === 'equipped' ? 'IN YOUR SQUAD' : 'IN YOUR LOCKER'; cls = 'owned'; txt = 'owned'; }
+   } else if (st === 'equipped') { chip = '<em class="pr eqd">✓ EQUIPPED</em>'; cap = 'TAP TO UNEQUIP'; cls = 'sel'; txt = 'equipped'; }
+   else { chip = '<em class="pr own">OWNED</em>'; cap = pend ? 'TAP A SLOT' : SK.swapSlot != null ? 'PUT IN SLOT' : full ? 'TAP TO SWAP IN' : 'TAP TO EQUIP'; txt = 'owned'; }
+   return `<button data-n="${esc(n)}" class="gc r-${tierOf(n)} st-${st} ${cls}${pend ? ' pend' : ''}" style="--k:${k}" aria-label="${esc(n)}, ${txt}"><img src="${portrait(n)}" alt="" draggable="false"><i class="shine"></i>${fill}${chip}<span><b>${esc(n)}</b><small>${cap}</small></span></button>`;
+ }
+ function popCards(el) {
+   if (!SK.pop) return; const pn = SK.pop; SK.pop = null;
+   $$('.pool button[data-n]', el).forEach(b => { if (b.dataset.n === pn) b.classList.add('pop'); });
+   const sl = $$('.sqbar .sq', el)[eqGet().indexOf(pn)]; if (sl) sl.classList.add('pop');
+ }
+ /* ---- Item Shop: hold the card ---- */
+ function bindShopHold(el) {
+   $$('.pool button[data-n]', el).forEach(b => {
+     const n = b.dataset.n, st = skinState(n, walletGet()), cap = $('small', b), capTxt = cap ? cap.textContent : '';
+     let t0 = 0, raf = 0, arm = 0, sx = 0, sy = 0, tk = 0, done = false, held = 0;
+     const setP = p => b.style.setProperty('--p', Math.max(0, Math.min(1, p)).toFixed(3));
+     ['contextmenu', 'dragstart', 'selectstart'].forEach(t => b.addEventListener(t, e => e.preventDefault()));
+     const end = () => {
+       clearTimeout(arm); arm = 0; cancelAnimationFrame(raf); raf = 0; if (!t0) return;
+       held = performance.now() - t0; t0 = 0; b.classList.remove('holding'); b.classList.add('rel'); setP(0); if (cap) cap.textContent = capTxt;
+       if (!done) { sfx('err'); }
+     };
+     const loop = now => {
+       if (!t0) return; const p = (now - t0) / HOLD_MS; setP(p);
+       while (tk < 8 && p >= (tk + 1) / 8) { sfx('tick', tk); if (tk % 2) buzz(5); tk++; }
+       if (p >= 1) { done = true; t0 = 0; b.classList.remove('holding'); setP(1); if (cap) cap.textContent = capTxt; purchase(n); return; }
+       raf = requestAnimationFrame(loop);
+     };
+     const start = () => { arm = 0; if (t0 || done) return; t0 = performance.now(); tk = 0; held = 0; b.classList.remove('rel', 'nope', 'nudge'); b.classList.add('holding'); if (cap) cap.textContent = 'KEEP HOLDING…'; sfx('tap'); buzz(6); raf = requestAnimationFrame(loop); };
+     const notEnough = () => { b.classList.remove('nope'); void b.offsetWidth; b.classList.add('nope'); sfx('err'); buzz([10, 30, 10]); toast('Not enough V-Bucks'); if (cap) { cap.textContent = 'NOT ENOUGH V-BUCKS'; setTimeout(() => { if (cap.isConnected) cap.textContent = capTxt; }, 1300); } };
+     b.addEventListener('pointerdown', e => {
+       if (e.pointerType === 'mouse' && e.button !== 0) return;
+       if (st === 'cant') { notEnough(); return; }
+       if (st !== 'afford') return;
+       sx = e.clientX; sy = e.clientY; held = 0; done = false; clearTimeout(arm); arm = setTimeout(start, ARM_MS);
+     });
+     b.addEventListener('pointermove', e => { if ((arm || t0) && Math.hypot(e.clientX - sx, e.clientY - sy) > MOVE_PX) { end(); held = 0; } });
+     ['pointerup', 'pointercancel', 'pointerleave'].forEach(t => b.addEventListener(t, () => { if (arm || t0) end(); }));
+     b.addEventListener('keydown', e => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat && st === 'afford') { e.preventDefault(); done = false; start(); } });
+     b.addEventListener('keyup', e => { if ((e.key === ' ' || e.key === 'Enter') && t0) end(); });
+     b.addEventListener('blur', () => { if (t0 || arm) end(); });
+     b.addEventListener('click', () => {
+       if (st === 'cant' || done) return;
+       if (held >= 350) { held = 0; return; } // it was a cancelled hold, not a tap
+       sfx('tap'); b.classList.remove('nudge'); void b.offsetWidth; b.classList.add('nudge');
+       toast(st === 'afford' ? 'Hold to purchase' : `${n} is yours. Equip it in the Locker`);
+     });
+   });
+ }
+ function pityDrop() { // never soft-lock: with fewer than 3 skins owned, keep enough V-Bucks for the cheapest ones in this rotation
+   const own = ownGet(), k = Math.max(0, 3 - own.length); if (!k) return 0;
+   const need = D.pool.filter(n => !own.includes(n)).map(priceOf).sort((a, b) => a - b).slice(0, k).reduce((a, b) => a + b, 0), w = walletGet();
+   if (w < need) { walletSet(need); return need - w; } return 0;
+ }
+ function openSkinShop(from) {
+   SK.back = from || 'title'; D.pool = shopRotation(); D.anim = true;
+   const gift = pityDrop(); renderShop(); show('scr-shop'); sfx('tap');
+   if (gift) setTimeout(() => { toast(`Supply Drop: +${fmtN(gift)} V-Bucks so you can buy your squad`); sfx('chime'); }, 500);
+ }
+ function renderShop() {
+   const el = $('#scr-shop'), sc = $('#scr-shop .pool') ? $('#scr-shop .pool').scrollTop : 0, nOwn = ownGet().length, eqN = eqGet().length;
+   el.innerHTML = `
+     <div class="draft-head"><div class="h">Item Shop</div><div class="wallet" id="sWallet" aria-label="V-Bucks balance">${ico('vbucks')}<b>${fmtN(walletGet())}</b></div><p>Fresh rotation every match · <b class="hl">press and hold</b> a skin to buy it</p></div>
+     <div class="pool ${D.anim ? 'reveal' : ''}">${D.pool.map((n, k) => skinCard(n, k, 'shop')).join('')}</div>
+     <div class="draft-actions"><button class="btn ghost" id="sBack" aria-label="Back">←</button><button class="btn pri h" id="sLocker" aria-label="Open Locker">🎒 LOCKER <small>${eqN}/3</small></button></div>`;
+   const p = $('.pool', el); if (sc) p.scrollTop = sc;
+   if (D.anim) setTimeout(() => { const q = $('#scr-shop .pool'); if (q) q.classList.remove('reveal'); }, 1600);
+   D.anim = false;
+   $('#sBack').onclick = goBack; $('#sLocker').onclick = () => openLocker(SK.back);
+   bindShopHold(el); popCards(el);
+ }
+ /* ---- Ready to Drop: difficulty / mode + the equipped squad, then DROP ---- */
+ function openLoadout() { SK.back = 'load'; renderLoadout(); show('scr-draft'); }
+ function startDraft() { openLoadout(); }
+ function renderLoadout() {
+   const el = $('#scr-draft'), df = DIFFS[D.diff] || DIFFS.standard, eq = eqGet(), ready = eq.length === 3;
+   el.innerHTML = `
+     <div class="draft-head"><div class="h">Ready to Drop</div><div class="wallet" aria-label="V-Bucks balance">${ico('vbucks')}<b>${fmtN(walletGet())}</b></div><p>${df.plan.length} POIs · ${df.trios} trios + ${df.haz} hazards${D.daily ? ' · seed ' + dayNum() : ''}</p></div>
+     <div class="diffrow" role="radiogroup" aria-label="Difficulty">${Object.keys(DIFFS).map(k => `<button class="dchip ${D.diff === k ? 'on' : ''}" data-d="${k}" role="radio" aria-checked="${D.diff === k}">${DIFFS[k].name}</button>`).join('')}<button class="dchip daily ${D.daily ? 'on' : ''}" id="dDaily" aria-pressed="${D.daily}" title="Everyone gets the same deck and Storm today">📅 Daily</button></div>
+     <div class="sqhead"><b>YOUR SQUAD ${eq.length}/3</b><span>${ready ? 'From your Locker' : `Equip ${3 - eq.length} more to drop`}</span></div>
+     <div class="sqbar loadout">${[0, 1, 2].map(i => { const n = eq[i]; return n ? `<div class="sq fill r-${tierOf(n)}" data-i="${i}" role="button" aria-label="Slot ${i + 1}: ${esc(n)}. Open the Locker"><img src="${portrait(n)}" alt=""><span>${esc(n)}</span></div>` : `<div class="sq" data-i="${i}" role="button" aria-label="Empty slot ${i + 1}. Open the Locker">${i + 1}</div>`; }).join('')}</div>
+     <div class="ready-note ${ready ? 'ok' : 'warn'}">${ready ? '✓ Squad ready' : 'You need 3 equipped skins. Open the Locker to equip, or the Item Shop to buy.'}</div>
+     <div class="draft-actions menu2"><button class="btn ghost" id="dLocker">🎒 Locker</button><button class="btn ghost" id="dShop">🛒 Item Shop</button></div>
+     <div class="draft-actions"><button class="btn ghost" id="dBack" aria-label="Back">←</button><button class="btn pri h${ready ? '' : ' notready'}" id="dGo">${ready ? 'DROP' : `EQUIP ${3 - eq.length} MORE`}</button></div>`;
+   $$('.dchip[data-d]', el).forEach(b => b.onclick = () => { D.diff = b.dataset.d; LS.set('fd6_diff', D.diff); sfx('tap'); renderLoadout(); });
+   $('#dDaily').onclick = () => { D.daily = !D.daily; sfx('tap'); renderLoadout(); };
+   $$('.loadout .sq', el).forEach(b => b.onclick = () => openLocker('load'));
+   $('#dBack').onclick = () => { sfx('tap'); renderTitle(); show('scr-title'); };
+   $('#dLocker').onclick = () => openLocker('load'); $('#dShop').onclick = () => openSkinShop('load');
+   $('#dGo').onclick = () => {
+     const e = eqGet();
+     if (e.length !== 3) { sfx('err'); buzz([10, 30, 10]); openSheet('Squad not ready', `<p>You need <b>3 equipped skins</b> to drop, and you have <b>${e.length}</b>. Equip skins you own in the Locker, or buy new ones in the Item Shop.</p>`,
+       [{ label: '🛒 Item Shop', cls: 'ghost', fn: () => openSkinShop('load') }, { label: '🎒 Locker', cls: 'pri', fn: () => openLocker('load') }]); return; }
+     LS.del('fd8_rot'); sfx('chime'); buzz([10, 30, 20]); startRun(e.slice()); RUN.spent = 0; saveRun();
+   };
+ }
+ /* ---------- Locker: all your skins, filter All / Equipped / Owned, squad bar, one-tap equip / unequip / swap ---------- */
+ function openLocker(from) { SK.back = from || 'title'; SK.swapSkin = SK.swapSlot = null; renderLocker(); show('scr-locker'); sfx('tap'); }
+ function renderLocker() {
+   const el = $('#scr-locker'), sc = $('#scr-locker .pool') ? $('#scr-locker .pool').scrollTop : 0;
+   const eq = eqGet(), all = ownGet().sort((a, b) => (eq.includes(b) - eq.includes(a)) || priceOf(b) - priceOf(a) || a.localeCompare(b));
+   const counts = { all: all.length, eq: all.filter(n => eq.includes(n)).length, own: all.filter(n => !eq.includes(n)).length };
+   const f = SK.filter, list = f === 'eq' ? all.filter(n => eq.includes(n)) : f === 'own' ? all.filter(n => !eq.includes(n)) : all;
+   const empty = !all.length ? 'Your Locker is empty.<br>Buy skins in the Item Shop and they stay here for good.' : f === 'eq' ? 'No skin equipped.<br>Tap a skin in ALL or OWNED to equip it.' : 'Every skin you own is equipped.';
+   el.innerHTML = `
+     <div class="draft-head"><div class="h">Locker</div><div class="wallet" id="lWallet" aria-label="V-Bucks balance">${ico('vbucks')}<b>${fmtN(walletGet())}</b></div><p>${all.length ? `${all.length} skin${all.length === 1 ? '' : 's'} owned` : 'Nothing owned yet'}</p></div>
+     <div class="diffrow lkf" role="tablist" aria-label="Filter">${[['all', 'All'], ['eq', 'Equipped'], ['own', 'Owned']].map(([k, l]) => `<button class="dchip ${f === k ? 'on' : ''}" data-f="${k}" role="tab" aria-selected="${f === k}">${l} <small>${counts[k]}</small></button>`).join('')}</div>
+     ${squadBar()}
+     <div class="pool">${list.length ? list.map((n, k) => skinCard(n, k, 'locker')).join('') : `<div class="locker-empty">${empty}</div>`}</div>
+     <div class="draft-actions"><button class="btn ghost" id="lBack" aria-label="Back">←</button><button class="btn pri h" id="lShop">🛒 ITEM SHOP</button></div>`;
+   $$('.dchip[data-f]', el).forEach(b => b.onclick = () => { SK.filter = b.dataset.f; sfx('tap'); renderLocker(); });
+   $$('.pool button[data-n]', el).forEach(b => b.onclick = () => skinTap(b.dataset.n));
+   $$('.sqbar .sq', el).forEach(b => b.onclick = () => slotTap(+b.dataset.i));
+   $$('.sqbar .x', el).forEach(b => b.onclick = ev => { ev.stopPropagation(); unequipAt(+b.dataset.x); });
+   const p = $('.pool', el); if (p && sc) p.scrollTop = sc;
+   $('#lBack').onclick = goBack; $('#lShop').onclick = () => openSkinShop(SK.back);
+   popCards(el);
+ }
 
 /* ---------- game state ---------- */
 let S = null, RUN = null;
@@ -3175,7 +3433,7 @@ function banner(t, n, kind) { fxAdd('fx-banner' + (kind ? ' ' + kind : ''), '', 
 function placeFeed(f) { const st = $('.thrpanel'); if (!st) return; const a = app.getBoundingClientRect(), r = st.getBoundingClientRect(); if (!r.width) return; f.style.top = (r.top - a.top - 1) + 'px'; f.style.left = (r.left - a.left) + 'px'; f.style.right = (a.right - r.right) + 'px'; }
 /* v7.3: the kill feed shows ONLY downs and eliminations (kind 'ko' in-POI, 'lobby' off-POI), max 2 lines. Everything else lives in the battle log. */
 function feed(html, kind) { if (kind !== 'ko' && kind !== 'lobby') return; const f = $('#feed'); placeFeed(f); const e = document.createElement('div'); e.className = 'kf ' + kind; e.innerHTML = html; f.prepend(e); while (f.children.length > 2) f.lastChild.remove(); setTimeout(() => e.remove(), kind === 'lobby' ? 2400 : 3000); }
-function toast(t) { const e = document.createElement('div'); e.className = 'toast'; e.textContent = t; app.appendChild(e); setTimeout(() => e.remove(), 2000); }
+function toast(t) { $$('.toast').forEach(x => x.remove()); const e = document.createElement('div'); e.className = 'toast'; e.textContent = t; app.appendChild(e); setTimeout(() => e.remove(), 2000); }
 
 /* ---------- v5.5 JUICE: eliminations, XP, coin orbs, rings (ported + fixed from JUICE v1) ---------- */
 Object.assign(SFX, {
@@ -3674,7 +3932,7 @@ function openInfo(el) {
   if (k === 'card') { const c = S.board.find(x => x.uid === +el.dataset.uid); if (c) openCardInfo(c); return; }
   if (k === 'member') { const m = S.squad[+el.dataset.m]; openSheet(esc(m.name), `<div class="info-hero"><div class="big"><img src="${portrait(m.img)}" alt=""></div><div><div class="kv"><span>❤️ ${m.hp}/${m.max} HP</span><span>🛡️ squad ${S.shield}/${S.shieldMax}</span></div><p>${m.hp > 0 ? 'Rolls 2 dice each turn.' : 'Knocked down. Use a <b>Reboot</b> die (or a Reboot Card from the shop) to bring them back at 2 HP.'}</p></div></div>${faceList()}`); return; }
   if (k === 'chip') { const v = +el.dataset.v, cs = S.board.filter(c => !c.down && (c.a.includes(v) || (c.acts || []).some(x => x.n.includes(v)))), dg = E.danger(S, v);
-    openSheet(`Storm rolls ${v}`, cs.length ? `<p>${dg.dmg ? `<b>${dg.dmg}</b> damage incoming (about <b>${dg.hp}</b> HP lost after shields)` : 'No direct damage'} from ${dg.hits} attacker${dg.hits === 1 ? '' : 's'}. On this number:</p><ul>${cs.map(c => `<li><b>${esc(c.name)}</b>${c.evade ? ' 💨 evading this turn' : ''}: ${E.actsOn(c, v).map(k => { const a = ACTK[k][0]; const x = k === 'dmg' ? ` ${c.cond ? '' : c.d + (c.pb ? '+' + c.pb : '')}` : ''; return esc(a + x) + (E.canAct(S, c, k) ? '' : ' (no effect now)'); }).join(' · ')}</li>`).join('')}</ul><p style="color:var(--mut)">Make a threat Evade with a Shield die, or take it out.</p>` : '<p>Nothing on the board triggers on this number. Safe roll!</p>'); return; }
+    openSheet(`Storm rolls ${v}`, cs.length ? `<p>${dg.dmg ? `<b>${dg.dmg}</b> damage incoming (about <b>${dg.hp}</b> HP lost after shields)` : 'No direct damage'} from ${dg.hits} attacker${dg.hits === 1 ? '' : 's'}. On this number:</p><ul>${cs.map(c => `<li><b>${esc(c.name)}</b>${c.evade ? ' 💨 evading this turn' : ''}: ${E.previewActs(S, c, v).map(({ k, ok }) => { const a = ACTK[k][0]; const x = k === 'dmg' ? ` ${c.cond ? '' : c.d + (c.pb ? '+' + c.pb : '')}` : ''; return esc(a + x) + (ok ? '' : ' (no effect)'); }).join(' → ')}</li>`).join('')}</ul><p style="color:var(--mut)">Make a threat Evade with a Shield die, or take it out.</p>` : '<p>Nothing on the board triggers on this number. Safe roll!</p>'); return; }
   if (k === 'shield') { openSheet('🛡️ Squad shields', `<p>Shields soak damage before HP (except <b>pierce</b> attacks). They are shared by the whole squad: <b>${S.shield}/${S.shieldMax}</b>.</p><p>Refill with a <b>Shield</b> die${E.shieldsLocked(S) ? '. <b style="color:#f87171">Currently locked by a hazard!</b>' : '.'}</p>`); return; }
   if (k === 'search') { openSheet('🔍 Search track', '<p>Every Search you roll locks automatically (🔒 on the die). At 3 locks a new threat drops and the dice come back. To free one early: select a <b>Reboot</b> die, then tap the specific 🔒 locked die you want back.</p>'); return; }
   if (k === 'infirm') { openSheet(`${ico('crosshair', 'kox')} Knocked Out`, '<p>Knocked Out dice can’t roll. A Reboot die frees all of them at once.</p>'); return; }
@@ -3688,7 +3946,9 @@ function actInfoHTML(c) {
   const rows = actRows(c), pc = [];
   if (c.byp) pc.push('<b>PIERCE</b>: her Damage ignores shields.'); if (c.shred) pc.push('<b>SHRED</b>: when her Damage triggers on the Storm die, it removes ALL your shields first, then the hit lands on HP.');
   if (c.cond) pc.push(`<b>${{ took_damage: 'FOLLOW-UP', no_threats_activated: 'AMBUSH', shields_empty: 'FINISHER' }[c.cond]}</b>: ${esc(E.COND_TEXT[c.cond])} (end of turn)`);
-  return `<p style="margin-bottom:2px"><b>Actions</b> (when the Storm rolls her number):</p><ul class="alist">${rows.map(r => `<li><b style="color:${ACTK[r.k][1]}">${ACTK[r.k][0]}</b>${r.n ? ' on ' + r.n.join(', ') : ' at end of turn'}: ${esc(E.ACT_INFO[r.k].desc)}${r.off ? ' <i style="color:var(--mut)">(no effect right now)</i>' : ''}</li>`).join('')}</ul>${pc.length ? `<p style="margin-bottom:2px"><b>Passives</b></p><ul class="alist">${pc.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}`;
+  const ord = E.ACT_ORDER; rows.sort((p, q) => ord.indexOf(p.k) - ord.indexOf(q.k));
+  const note = rows.length > 1 ? `<p style="margin:6px 0 2px;color:var(--mut);font-size:13px">Numbers can repeat. If the Storm die matches several actions, they all fire, in the order listed here: <b>REVIVE, HEAL, COVER, PUSH, KNOCK, DAMAGE, RETREAT</b>.</p>` : '';
+  return note + `<p style="margin-bottom:2px"><b>Actions</b> (when the Storm rolls her number, top to bottom):</p><ul class="alist">${rows.map(r => `<li><b style="color:${ACTK[r.k][1]}">${ACTK[r.k][0]}</b>${r.n ? ' on ' + r.n.join(', ') : ' at end of turn'}: ${esc(E.ACT_INFO[r.k].desc)}${r.off ? ' <i style="color:var(--mut)">(no effect right now)</i>' : ''}</li>`).join('')}</ul>${pc.length ? `<p style="margin-bottom:2px"><b>Passives</b></p><ul class="alist">${pc.map(x => `<li>${x}</li>`).join('')}</ul>` : ''}`;
 }
 function openCardInfo(c, recon) {
   const art = c.kind === 'opp' ? `<img src="${portrait(c.img)}" alt="">` : `<span>${c.ico || '⚠️'}</span>`;
@@ -3739,8 +3999,8 @@ function openHowTo() {
   <p>Your squad of 3 drops in. The run is a chain of <b>POIs</b>: each has its own enemy <b>trios</b> and hazards. Clear every POI to win the <b>Victory Royale</b>.</p>
   <h4>1 · Roll</h4><p>Each standing member rolls 2 dice. Everyone uses the same die:</p>${faceList()}
   <h4>2 · Assign</h4><ul><li>Tap a die, then tap a glowing target, or drag the die onto it.</li><li><b>Chest</b> is wild: tap it, then tap <b>another</b> rolled die and pick a new face for that die. The Chest is used up. Or reroll your other dice.</li><li><b>Shoot</b> and <b>Heal</b> stack: the 1st each turn is 1, every next one is 2.</li><li><b>Reboot</b> revives a downed member, frees all <b>Knocked Out</b> dice, or frees one locked Search die: select the Reboot, then tap the 🔒 die you want back.</li><li>A <b>Shield</b> die refills shields or makes a threat <b>Evade</b> (it skips its next attack).</li><li>Dashed slots on a card are <b>cover</b>. Fill them with matching dice before you can shoot it.</li><li>↶ Undo any assignment this turn. Long-press anything for details.</li></ul>
-  <h4>3 · Storm</h4><ul><li>Every POI opens with <b>3 threats</b> on the board. END TURN: exactly one more drops (one enemy or one hazard), then the Storm die rolls. Every threat showing that number acts.</li><li>Each enemy tile has an <b>action table</b>. Every line is one action with the colored Storm numbers that trigger it: <b>DAMAGE</b> hits your squad · <b>KNOCK</b> knocks out 1 of your dice (no damage) · <b>HEAL</b> recovers 1 HP (herself first, else a hurt teammate) · <b>COVER</b> adds a ??? slot (max 3) · <b>REVIVE</b> picks up a downed teammate · <b>PUSH</b> removes a ??? slot for +1 damage (only if she has one) · <b>RETREAT</b> goes to the back of the queue.</li><li>Small chips under her HP are passives: <b>PIERCE</b> (her Damage ignores shields), <b>SHRED</b> (her Damage on the Storm die wipes all your shields first), <b>FOLLOW-UP</b> (+1 hit if your squad took damage), <b>AMBUSH</b> (2 damage if nothing else attacked), <b>FINISHER</b> (2 damage if your shields are empty). A dimmed line means it would do nothing right now.</li><li>Teammates share a colour stripe.</li><li><b>A few turns after a POI's last threat drops</b> (the Storm tile counts them down: 5, 4, 3 turns at the first POIs, fewer later), <b>The Storm</b> closes in (clear the POI before that and it never comes). It can't be damaged. Each roll it <b>strikes first</b>, ignoring shields and cover, for <b>1 damage to each of your 3 squad members</b> and to every enemy (no kill credit for you). It stays until every other threat there is down. Then you rotate to the next POI.</li></ul>
-  <h4>Item Shop &amp; V-Bucks</h4><p>Buy your 3-player squad in the Item Shop each match (skins you buy stay in your 🎒 Locker for good; equip them there and they come pre-loaded): Uncommon 800, Rare 1,200, Epic 1,500, Legendary 2,000 V-Bucks. The shop rotates every match. Earn V-Bucks from eliminations (+100, carriers pay more), team wipes (+200), Chest rolls (25% chance of +100) and your placement payout (200 to 1,000, +500 for a Victory Royale). Broke? A Supply Drop always tops you up enough for 3 picks.</p>
+  <h4>3 · Storm</h4><ul><li>Every POI opens with <b>3 threats</b> on the board. END TURN: exactly one more drops (one enemy or one hazard), then the Storm die rolls. Every threat showing that number acts.</li><li>Each enemy tile has an <b>action table</b>. Every line is one action with the colored Storm numbers that trigger it. Numbers are random per enemy and <b>can repeat across lines</b> (for example DAMAGE 1 4 · HEAL 4 · COVER 1 2). When the Storm die matches several lines, <b>all of them fire</b>, in this fixed order: <b>REVIVE → HEAL → COVER → PUSH → KNOCK → DAMAGE → RETREAT</b>. Lines: <b>DAMAGE</b> hits your squad · <b>KNOCK</b> knocks out 1 of your dice (no damage) · <b>HEAL</b> recovers 1 HP (herself first, else a hurt teammate) · <b>COVER</b> adds a ??? slot (max 3) · <b>REVIVE</b> picks up a downed teammate · <b>PUSH</b> removes a ??? slot for +1 damage (only if she has one) · <b>RETREAT</b> goes to the back of the queue.</li><li>Small chips under her HP are passives: <b>PIERCE</b> (her Damage ignores shields), <b>SHRED</b> (her Damage on the Storm die wipes all your shields first), <b>FOLLOW-UP</b> (+1 hit if your squad took damage), <b>AMBUSH</b> (2 damage if nothing else attacked), <b>FINISHER</b> (2 damage if your shields are empty). A dimmed line means it would do nothing right now.</li><li>Teammates share a colour stripe.</li><li><b>A few turns after a POI's last threat drops</b> (the Storm tile counts them down: 5, 4, 3 turns at the first POIs, fewer later), <b>The Storm</b> closes in (clear the POI before that and it never comes). It can't be damaged. Each roll it <b>strikes first</b>, ignoring shields and cover, for <b>1 damage to each of your 3 squad members</b> and to every enemy (no kill credit for you). It stays until every other threat there is down. Then you rotate to the next POI.</li></ul>
+  <h4>Item Shop &amp; V-Bucks</h4><p>Buy skins in the dedicated 🛒 Item Shop (open it from the title or from the Ready to Drop screen): press and HOLD a skin's card until it fills to buy it; let go early or scroll to cancel. A skin you buy stays in your 🎒 Locker for good and is equipped if a squad slot is free. Open the Locker to equip, unequip or swap skins (squad full? tap the skin, then the slot) and filter All / Equipped / Owned. PLAY takes you to Ready to Drop, where you pick the difficulty or Daily and DROP with the 3 skins you equipped. Prices: Uncommon 800, Rare 1,200, Epic 1,500, Legendary 2,000 V-Bucks. The shop rotates every match. Earn V-Bucks from eliminations (+100, carriers pay more), team wipes (+200), Chest rolls (25% chance of +100) and your placement payout (200 to 1,000, +500 for a Victory Royale). Short on V-Bucks with fewer than 3 skins? A Supply Drop tops you up enough to buy your squad.</p>
   <h4>👑 The Elite</h4><p>Near the end of every match, at the final POI, one Elite drops: last match's winner, wearing a gold crown. Armored (4 cover dice: Shoot, Shield, Heal, Reboot), 4 HP, hits for 3, no teammates (0 HP = eliminated). Taking them out pays 1,000 V-Bucks, 500+ gold bars and huge XP.</p>
   <h4>The lobby</h4><p>99 players drop as 33 squads of 3: your squad plus 32 opponent squads. Most fight elsewhere on the map; their eliminations scroll in the kill feed. A squad's place is set when its last member falls, and the #X/33 in the header counts squads left. Outlast every squad for #1.</p>
   <h4>Trios</h4><ul><li>Every enemy belongs to a trio (the colored stripe). Rival trios sometimes shoot each other instead of you.</li><li>An enemy at 0 HP is <b>Downed</b>: hit them once more to eliminate. A teammate who is still up revives them after 2 turns.</li><li>Down the last standing member and the whole trio is out: <b>TEAM WIPE</b> bonus bars and XP.</li></ul>
