@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Fortnite D6">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>Fortnite: Zero Build D6 · v8.2</title>
+<title>Fortnite: Zero Build D6 · v8.3</title>
 <style>:root{
   --bg0:#0b0820;--bg1:#151036;--bg2:#1f1850;--line:rgba(255,255,255,.10);--txt:#f4f2ff;--mut:#a9a3cf;
   --c1:#f5b301;--c2:#a855f7;--c3:#38bdf8;--c4:#f1f5f9;--c5:#22c55e;--c6:#94a3b8;--red:#ef4444;--gold:#fde047;
@@ -1675,6 +1675,33 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 .end-hero.win>*{position:relative;z-index:1}
 @keyframes raySpin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){#scr-game.crit::after{animation:none;opacity:.5}.die.nudge,.end-hero.win::before{animation:none}.fx-hitm{display:none}}
+
+/* ===== v8.3 feel pass ===== */
+#stormVig{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .8s;background:radial-gradient(120% 90% at 50% 50%,transparent 52%,rgba(126,34,206,.55) 100%)}
+#scr-game.stormwarn #stormVig{opacity:.55}
+#scr-game.stormon #stormVig{opacity:1;animation:stormPulse 2.4s ease-in-out infinite}
+@keyframes stormPulse{50%{opacity:.62}}
+.endcine{position:absolute;inset:0;z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 45%,rgba(30,14,84,.96),rgba(5,3,15,.99));animation:ecIn .22s ease-out;cursor:pointer;overflow:hidden}
+.endcine::after{content:'';position:absolute;inset:0;background:#fff;pointer-events:none;animation:ecFlash .55s ease-out forwards}
+.endcine.out{animation:ecOut .36s ease-in forwards;pointer-events:none}
+.endcine>*{position:relative;z-index:1}
+.endcine .t{font-size:60px;line-height:.92;animation:ecSlam .5s cubic-bezier(.2,1.4,.4,1) both}
+.endcine.win .t{background:linear-gradient(180deg,#fff,#fde047 45%,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-stroke:2px #3b1d00;filter:drop-shadow(0 6px 0 #3b1d00) drop-shadow(0 0 28px rgba(250,204,21,.7))}
+.endcine.loss .t{font-size:44px;color:#f87171;-webkit-text-stroke:1.5px #450a0a;text-shadow:0 5px 0 #450a0a;animation-delay:.12s}
+.endcine .n{font-family:var(--hdr);font-style:italic;font-size:92px;line-height:1;margin-top:8px;color:#fff;-webkit-text-stroke:2px #1d0b4d;text-shadow:0 6px 0 #1d0b4d;animation:ecSlam .5s .22s cubic-bezier(.2,1.4,.4,1) both}
+.endcine.win .n{color:#fde047;-webkit-text-stroke:2px #3b1d00;text-shadow:0 6px 0 #3b1d00}
+.endcine .k{font-family:var(--hdr);font-style:italic;letter-spacing:3px;font-size:15px;color:#7dd3fc;margin:8px 0;animation:ecSlam .45s .3s cubic-bezier(.2,1.4,.4,1) both}
+.endcine small{position:absolute;bottom:calc(var(--sab) + 28px);left:0;right:0;font-weight:900;letter-spacing:2px;font-size:12px;color:rgba(255,255,255,.55);animation:ecBlink 1.4s 1s infinite both}
+.endcine .rays{position:absolute;left:50%;top:50%;width:900px;height:900px;margin:-450px 0 0 -450px;background:repeating-conic-gradient(from 0deg,rgba(253,224,71,.24) 0 7deg,transparent 7deg 22deg);-webkit-mask-image:radial-gradient(circle,#000 5%,transparent 68%);mask-image:radial-gradient(circle,#000 5%,transparent 68%);animation:raySpin 24s linear infinite;z-index:0}
+@keyframes ecIn{from{opacity:0}}@keyframes ecOut{to{opacity:0;transform:scale(1.06)}}
+@keyframes ecFlash{from{opacity:.9}to{opacity:0}}
+@keyframes ecSlam{0%{transform:scale(2.6) rotate(-5deg);opacity:0}60%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes ecBlink{50%{opacity:.2}}
+#scr-end.payoff-wait .end-stats>div,#scr-end.payoff-wait .end-vb{opacity:0}
+#scr-end.payoff-go .end-stats>div{animation:statIn .38s cubic-bezier(.2,1.3,.4,1) both}
+#scr-end.payoff-go .end-vb{animation:statIn .4s .7s both}
+@keyframes statIn{0%{opacity:0;transform:translateY(14px) scale(.9)}100%{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#stormVig{animation:none!important}.endcine{display:none}}
 </style>
 </head><body>
 <div id="app" class="compact">
@@ -2428,7 +2455,7 @@ const E = window.Engine, F = E.F, FI = E.FACE_INFO;
 const $ = (q, r) => (r || document).querySelector(q), $$ = (q, r) => Array.from((r || document).querySelectorAll(q));
 const app = $('#app');
 const RM = () => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } };
-const wait = ms => new Promise(r => setTimeout(r, RM() ? Math.min(ms, 220) : ms));
+const wait = ms => new Promise(r => setTimeout(r, RM() ? Math.min(ms, 220) : (typeof U !== 'undefined' && U.ff) ? Math.min(ms, 80) : ms));
 const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const LS = { get(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }, set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }, del(k) { try { localStorage.removeItem(k); } catch (e) {} } };
 
@@ -2471,7 +2498,15 @@ const ordinal = n => { const v = n % 100; return n + (v >= 11 && v <= 13 ? 'th' 
 function aliveTeams(s) { return E.aliveTeams(s); }
 function alivePlayers(s) { return aliveOpps(s) + s.squad.filter(m => m.hp > 0).length; }
 function aliveOpps(s) { return s.board.filter(c => c.kind === 'opp').length + s.deck.filter(c => c.kind === 'opp').length + (s.future || []).reduce((n, d) => n + d.filter(c => c.kind === 'opp').length, 0) + (s.lobby || []).filter(o => o.a).length; }
-function placeHud() { const pl = $('#hPlace'); if (pl && S) pl.innerHTML = `#${S.over === 'win' ? 1 : placeOf(S) + (U.holdPlace || 0)}<small>/${fieldOf(S)}</small><u>${Math.max(0, alivePlayers(S) + (U.holdAlive || 0))} alive</u>`; }
+function placeHud() { const pl = $('#hPlace'); if (pl && S) pl.innerHTML = `#${S.over === 'win' ? 1 : placeOf(S) + (U.holdPlace || 0)}<small>/${fieldOf(S)}</small><u>${Math.max(0, alivePlayers(S) + (U.holdAlive || 0))} alive</u>`; try { milestone(); } catch (e) {} }
+function milestone() {
+  if (!S || S.over || RM()) return;
+  if (U.mileS !== S) { U.mileS = S; U.mile = {}; }
+  const sq = placeOf(S) + (U.holdPlace || 0), hit = [20, 10, 5, 3, 2].filter(t => sq <= t && !U.mile[t]);
+  if (!hit.length) return; hit.forEach(t => { U.mile[t] = 1; });
+  const t = Math.min(...hit), s0 = S;
+  setTimeout(() => { if (S !== s0 || S.over) return; banner('TOP ' + t, t <= 3 ? 'Almost there. Stay alive!' : `${t} squads left`, 'team'); sfx('chime'); sfx('ping'); buzz([20, 30, 20, 30, 50]); popEl('#hPlace', 'bump'); }, 900);
+}
 function placeOf(s) { if (s.over === 'win') return 1; if (s.final) { const m = s.final.find(r => r.you); if (m) return m.pl; } return aliveTeams(s) + 1; }
 function fieldOf(s) { return s.field || 33; }
 /* v6.6: 26 fixed trios (all 78 portraits). Enemy trios never include a member of your drafted squad. */
@@ -2509,7 +2544,7 @@ const pickN = (arr, n) => { const a = arr.slice(); for (let i = a.length - 1; i 
 const AU = { muted: LS.get('fd5_muted', false), ctx: null, master: null };
 function unlockAudio() {
   if (AU.ctx) { if (AU.ctx.state === 'suspended') AU.ctx.resume().catch(() => {}); return; }
-  try { const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return; AU.ctx = new AC(); AU.master = AU.ctx.createGain(); AU.master.gain.value = 0.32; AU.master.connect(AU.ctx.destination); } catch (e) { AU.ctx = null; }
+  try { const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return; AU.ctx = new AC(); AU.master = AU.ctx.createGain(); AU.master.gain.value = 0.42; { const cp = AU.ctx.createDynamicsCompressor(); cp.threshold.value = -16; cp.knee.value = 12; cp.ratio.value = 7; cp.attack.value = 0.003; cp.release.value = 0.2; AU.master.connect(cp); cp.connect(AU.ctx.destination); } } catch (e) { AU.ctx = null; }
 }
 ['pointerdown', 'touchend', 'keydown'].forEach(ev => window.addEventListener(ev, unlockAudio, { capture: true, passive: true }));
 const ac = () => (AU.muted || !AU.ctx) ? null : AU.ctx;
@@ -2525,10 +2560,10 @@ const SFX = {
   tap: () => tone(900, 0.03, 'square', 0.04),
   click: (i = 0) => { tone(1500 + i * 90 + Math.random() * 300, 0.035, 'square', 0.07, i * 0.045); noise(0.045, 0.16, i * 0.045, 3500, 900); },
   chime: () => [1046, 1318, 1568, 2093].forEach((f, i) => tone(f, 0.32, 'triangle', 0.16, i * 0.055)),
-  shoot: () => { noise(0.14, 0.55, 0, 3000, 300); tone(150, 0.12, 'sine', 0.45, 0, 45); },
+  shoot: (i = 0) => { const m = Math.pow(2, Math.min(5, i) * 1.6 / 12); noise(0.14, 0.55, 0, 3000 * m, 300 * m); tone(150 * m, 0.12, 'sine', 0.45, 0, 45 * m); if (i > 0) tone(1800 * m, 0.09, 'triangle', 0.05 + Math.min(i, 4) * 0.012, 0.03); },
   shield: () => { tone(260, 0.38, 'sine', 0.22, 0, 900); [1500, 1900, 2400].forEach((f, i) => tone(f, 0.18, 'triangle', 0.06, 0.12 + i * 0.06)); noise(0.3, 0.06, 0.05, 4000, 8000, 'highpass'); },
   evade: () => { [2400, 2000, 2800].forEach((f, i) => tone(f, 0.2, 'sine', 0.08, i * 0.05)); noise(0.25, 0.1, 0, 6000, 9000, 'highpass'); },
-  heal: () => { tone(660, 0.2, 'sine', 0.22); tone(880, 0.26, 'sine', 0.2, 0.09); tone(1320, 0.32, 'triangle', 0.08, 0.17); },
+  heal: (i = 0) => { const m = Math.pow(2, Math.min(5, i) * 2 / 12); tone(660 * m, 0.2, 'sine', 0.22); tone(880 * m, 0.26, 'sine', 0.2, 0.09); tone(1320 * m, 0.32, 'triangle', 0.08, 0.17); },
   reboot: () => { noise(0.45, 0.3, 0, 300, 3500, 'bandpass'); tone(180, 0.42, 'sawtooth', 0.05, 0, 1300); tone(1760, 0.15, 'sine', 0.08, 0.35); },
   beep: () => { tone(1250, 0.07, 'square', 0.08); tone(1650, 0.09, 'square', 0.08, 0.1); },
   ping: () => tone(1900, 0.35, 'sine', 0.14, 0, 1500),
@@ -2548,7 +2583,9 @@ const SFX = {
   lose: () => { [392, 349, 311, 262].forEach((f, i) => tone(f, 0.4, 'triangle', 0.14, i * 0.18)); }
 };
 const sfx = (n, a) => { try { SFX[n] && SFX[n](a); } catch (e) {} };
-const buzz = p => { try { if (navigator.vibrate && !LS.get('fd5_nohaptic', false)) navigator.vibrate(p); } catch (e) {} };
+const HAP = { el: null, ios: typeof navigator.vibrate !== 'function' && ('ontouchstart' in window || navigator.maxTouchPoints > 0) };
+function hapTick() { try { if (!HAP.el) { const l = document.createElement('label'); l.setAttribute('aria-hidden', 'true'); l.style.cssText = 'position:fixed;left:-40px;top:-40px;width:24px;height:24px;opacity:.01;pointer-events:none'; const i = document.createElement('input'); i.type = 'checkbox'; i.setAttribute('switch', ''); i.tabIndex = -1; l.appendChild(i); document.body.appendChild(l); HAP.el = l; } HAP.el.click(); } catch (e) {} }
+const buzz = p => { try { if (LS.get('fd5_nohaptic', false)) return; if (!HAP.ios) { if (navigator.vibrate) navigator.vibrate(p); return; } const a = Array.isArray(p) ? p : [p]; let t = 0; a.forEach((v, i) => { if (i % 2 === 0) { setTimeout(hapTick, t); if (v >= 60) setTimeout(hapTick, t + 45); } t += v; }); } catch (e) {} };
 function setMuted(m) { AU.muted = m; LS.set('fd5_muted', m); $$('.mute-btn').forEach(b => b.textContent = m ? '🔇' : '🔊'); if (!m) { unlockAudio(); setTimeout(() => sfx('beep'), 30); } }
 
 /* ---------- screens ---------- */
@@ -2564,7 +2601,7 @@ function renderTitle() {
   const crew = pickN(CHARS, 3);
   $('#scr-title').innerHTML = `
     <div class="bgart" style="background-image:url(${poiImg(titlePoi)})"></div>
-    <div class="ver">v8.2</div>
+    <div class="ver">v8.3</div>
     <div class="title-top"><button class="icon-btn mute-btn" aria-label="Sound">${AU.muted ? '🔇' : '🔊'}</button></div>
     <div class="crew">${crew.map(n => `<img src="${portrait(n)}" alt="">`).join('')}</div>
     <div class="logo h"><div class="l0">FORTNITE:</div><div class="l1">ZERO BUILD</div><div class="l2">D6</div><div class="tag">Roll. Assign. Survive the Storm. Last squad standing.</div></div>
@@ -2970,7 +3007,7 @@ const ARROW_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5l7 7
 /* ---------- game screen skeleton ---------- */
 function buildGame() {
   $('#scr-game').innerHTML = `
-  <div id="gameBg"></div>
+  <div id="gameBg"></div><div id="stormVig"></div>
   <div id="shakeWrap" class="gw">
     <header class="hud2">
       <div class="logo2" aria-label="Fortnite Zero Build D6"><b>FORTNITE:</b><span>ZERO BUILD D6</span></div>
@@ -3481,10 +3518,12 @@ function critCheck() {
   const g = $('#scr-game'); if (!g || !S) return;
   const crit = !S.over && S.squad.some(m => m.hp > 0 && m.hp <= 1);
   g.classList.toggle('crit', crit);
+  g.classList.toggle('stormwarn', !S.over && S.stormCd != null && S.stormCd > 0 && S.stormCd <= 2);
+  g.classList.toggle('stormon', !S.over && S.board.some(c => c.kind === 'storm'));
   if (crit && (!U.wasCrit || U.critTurn !== S.turn) && S.phase !== 'over') { sfx('heartbeat'); buzz([40, 90, 40]); U.critTurn = S.turn; }
   U.wasCrit = crit;
 }
-window.addEventListener('pointerdown', () => { U.lastInput = performance.now(); $$('.die.nudge').forEach(e => e.classList.remove('nudge')); }, true);
+window.addEventListener('pointerdown', () => { if (U.stormRun) U.ff = true; U.lastInput = performance.now(); $$('.die.nudge').forEach(e => e.classList.remove('nudge')); }, true);
 setInterval(() => {
   if (!S || S.over || U.busy || U.sel != null || S.phase !== 'assign') return;
   if (!$('#scr-game').classList.contains('on') || performance.now() - (U.lastInput || 0) < 7000) return;
@@ -3704,10 +3743,10 @@ function playEvents(evs, pre) {
       case 'cover': { const p = ctr(rectOf('c' + ev.uid, pre)); impact(p, FI[ev.face].color); const c = S.board.find(x => x.uid === ev.uid);
         if (c && c.kind === 'opp' && c.maxHp > 0 && !isLocked(c)) { U.exposed.set(c.uid, performance.now()); particles(p, 12, ['#e0f2fe', '#a5f3fc', '#fff']); sfx('expose'); buzz([12, 30, 25]); renderLane(); setTimeout(() => { if (S && S.board.includes(c)) renderLane(); }, 1450); }
         else { num(p, '✓ COVER', 'gr'); sfx('beep'); buzz(10); } break; }
-      case 'shot': { const a = ctr(dieRect(ev.die)), b = ctr(rectOf('c' + ev.uid, pre)); tracer(a, b, '#c084fc'); setTimeout(() => { impact(b, '#e879f9'); hitSpark(b); hitmarker(b, ev.amt >= 2); ring(b, ev.amt >= 2 ? '#fde047' : '#e879f9', ev.amt >= 2 ? 3.4 : 2.6); fxAdd('fx-dmg', `left:${b.x + 26}px;top:${b.y - 8}px`, '-' + ev.amt, 700); particles(b, 6 + ev.amt * 3, ['#e9d5ff', '#a855f7', '#fff']); pipOut(ev.uid); sfx('pip'); sfx('hitmark'); }, 70); sfx('shoot'); shake(1); buzz(15); break; }
+      case 'shot': { const a = ctr(dieRect(ev.die)), b = ctr(rectOf('c' + ev.uid, pre)); tracer(a, b, '#c084fc'); setTimeout(() => { impact(b, '#e879f9'); hitSpark(b); hitmarker(b, ev.amt >= 2); ring(b, ev.amt >= 2 ? '#fde047' : '#e879f9', ev.amt >= 2 ? 3.4 : 2.6); fxAdd('fx-dmg', `left:${b.x + 26}px;top:${b.y - 8}px`, '-' + ev.amt, 700); particles(b, 6 + ev.amt * 3, ['#e9d5ff', '#a855f7', '#fff']); pipOut(ev.uid); sfx('pip'); sfx('hitmark'); }, 70); sfx('shoot', Math.max(0, (S.shots || 1) - 1)); shake(1); buzz(ev.amt >= 2 ? [18, 14, 22] : 15); break; }
       case 'shield': { const r = rectOf('squad', pre), sq = $('#squad').getBoundingClientRect(), a = app.getBoundingClientRect(); fxAdd('fx-bubble', `left:${sq.left - a.left - 4}px;top:${sq.top - a.top - 4}px;width:${sq.width + 8}px;height:${sq.height + 8}px`, '', 700); num(ctr(rectOf('shield', pre)), 'SHIELDS FULL', 'b'); sfx('shield'); buzz(12); void r; break; }
       case 'evade': { const p = ctr(rectOf('c' + ev.uid, pre)); impact(p, '#7dd3fc'); num(p, '💨 EVADE', 'b'); sfx('evade'); buzz(10); break; }
-      case 'heal': { const r = rectOf('m' + ev.member, pre); for (let k = 0; k < (RM() ? 1 : 3 + ev.amt * 2); k++) fxAdd('fx-plus', `left:${r.x + 10 + rnd(Math.max(1, r.w - 30))}px;top:${r.y + 10 + rnd(30)}px;animation-delay:${k * 35}ms`, '+', 900); num(ctr(r), '+' + ev.amt + ' HP', 'gr'); ring(ctr(r), '#ffffff', 3); sfx('heal'); buzz(10); break; }
+      case 'heal': { const r = rectOf('m' + ev.member, pre); for (let k = 0; k < (RM() ? 1 : 3 + ev.amt * 2); k++) fxAdd('fx-plus', `left:${r.x + 10 + rnd(Math.max(1, r.w - 30))}px;top:${r.y + 10 + rnd(30)}px;animation-delay:${k * 35}ms`, '+', 900); num(ctr(r), '+' + ev.amt + ' HP', 'gr'); ring(ctr(r), '#ffffff', 3); sfx('heal', Math.max(0, (S.heals || 1) - 1)); buzz(10); break; }
       case 'revive': { const r = rectOf('m' + ev.member, pre); fxAdd('fx-beam', `left:${r.x + r.w / 2}px;top:0;height:${r.y + r.h}px`, '', 800); num(ctr(r), 'REBOOTED!', 'b'); xpPop({ x: Math.max(60, Math.min(app.clientWidth - 60, r.x + r.w / 2)), y: r.y + 20 }, ev.xp || 0, pre, 350); sfx('reboot'); buzz([20, 40, 20]); break; }
       case 'freeDice': { const r = ev.from === 'search' && ev.dice.length === 1 ? rectOf('d' + ev.dice[0]) : rectOf(ev.from === 'search' ? 'search' : 'infirm', pre); fxAdd('fx-beam', `left:${r.x + r.w / 2}px;top:0;height:${r.y + r.h}px`, '', 800); num(ctr(r), ev.from === 'search' ? '🔓 FREED' : `+${ev.dice.length} dice`, 'b'); sfx('reboot'); buzz(15); break; }
       case 'clear': {
@@ -3872,6 +3911,7 @@ function onMain() {
 
 /* ---------- storm ---------- */
 async function stormSequence() {
+  U.ff = false; U.stormRun = true; if (!LS.get('fd83_fftip', 0)) { LS.set('fd83_fftip', 1); setTimeout(() => { if (U.stormRun) toast('Tap anywhere to fast-forward the Storm'); }, 900); }
   U.busy = true; renderGame(); sfx('whoosh'); buzz(10);
   const mb = $('#endBtn'); if (mb) { mb.classList.remove('whoosh'); void mb.offsetWidth; mb.classList.add('whoosh'); }
   let pre = snapRects();
@@ -3910,8 +3950,8 @@ async function stormSequence() {
     if (!S.over) logAdd(`Turn <b>${S.turn}</b>: roll your squad.`, 'info');
     const d = playEvents(evs, pre); if (evs.some(e => e.t === 'rotate')) await wait(1650); else if (evs.length) await wait(Math.min(350, Math.max(150, d)));
   }
-  if (S.over) { renderGame(); LS.del('fd5_run'); await wait(550); showEnd(); return; }
-  U.busy = false; renderGame();
+  if (S.over) { U.stormRun = false; U.ff = false; renderGame(); LS.del('fd5_run'); await wait(550); showEnd(); return; }
+  U.busy = false; U.stormRun = false; U.ff = false; renderGame();
   if (S.streak >= 2) { const st = $('#hStreak'); st.classList.remove('bump'); void st.offsetWidth; st.classList.add('bump'); }
   saveRun();
 }
@@ -4036,6 +4076,39 @@ function mvpHTML() {
   return `<div class="end-mvp"><img src="${portrait(S.squad[best].img)}" alt=""><div><small>${ico('crown', 'cr')} SQUAD MVP</small><b>${esc(S.squad[best].name)}</b></div><span>${n} elim${n > 1 ? 's' : ''}</span></div>`;
 }
 function showEnd() {
+  showEndCore();
+  const win = S.over === 'win', scr = $('#scr-end');
+  if (RM() || !scr) return;
+  const pl = win ? 1 : placeOf(S), by = !win && S.lastHit && S.lastHit !== 'The Storm' ? S.lastHit : null;
+  scr.classList.add('payoff-wait');
+  const ov = document.createElement('div'); ov.className = 'endcine ' + (win ? 'win' : 'loss');
+  ov.innerHTML = win ? `<i class="rays"></i><div class="k">YOUR SQUAD</div><div class="t h">VICTORY<br>ROYALE</div><div class="n">#1</div><small>TAP TO CONTINUE</small>`
+    : `<div class="n">#${pl}</div><div class="t h">ELIMINATED</div><div class="k">${by ? 'BY ' + esc(by.toUpperCase()) : 'BY THE STORM'}</div><small>TAP TO CONTINUE</small>`;
+  if (win) for (let k = 0; k < 40; k++) { const c = document.createElement('div'); c.className = 'confetti'; c.style.cssText = `left:${rnd(100)}%;background:${['#fde047', '#a855f7', '#38bdf8', '#22c55e', '#f1f5f9'][k % 5]};animation-duration:${1.6 + Math.random() * 1.6}s;animation-delay:${Math.random() * .5}s`; ov.appendChild(c); }
+  app.appendChild(ov); sfx('stormLand'); shake(win ? 3 : 2); buzz(win ? [60, 40, 120] : [120, 60, 120]);
+  const t0 = performance.now(); let done = false;
+  const go = () => { if (done) return; done = true; ov.classList.add('out'); setTimeout(() => ov.remove(), 380); endPayoff(scr); };
+  ov.addEventListener('pointerdown', () => { if (performance.now() - t0 > (win ? 700 : 350)) go(); });
+  setTimeout(go, win ? 2800 : 1700);
+  setTimeout(() => scr.classList.remove('payoff-wait'), 6000);
+}
+function countUp(el) {
+  const tn = [...el.childNodes].find(n => n.nodeType === 3 && /\d/.test(n.nodeValue)); if (!tn || /\//.test(tn.nodeValue)) return;
+  const m = tn.nodeValue.match(/^(\s*\+?)([\d,]+)(.*)$/); if (!m) return;
+  const target = parseInt(m[2].replace(/,/g, ''), 10); if (!target || target < 5) return;
+  const t0 = performance.now() + 120, dur = Math.min(1200, 520 + Math.log10(target + 1) * 130); let last = -1;
+  tn.nodeValue = m[1] + '0' + m[3];
+  const step = now => { if (now < t0) { requestAnimationFrame(step); return; } const u = Math.min(1, (now - t0) / dur), v = Math.round(target * (1 - Math.pow(1 - u, 3))); tn.nodeValue = m[1] + v.toLocaleString('en-US') + m[3]; const k = Math.floor(u * 9); if (k !== last) { last = k; sfx('xptick', k); } if (u < 1) requestAnimationFrame(step); else tn.nodeValue = m[1] + target.toLocaleString('en-US') + m[3]; };
+  requestAnimationFrame(step);
+}
+function endPayoff(scr) {
+  try {
+    scr.classList.remove('payoff-wait'); scr.classList.add('payoff-go');
+    $$('.end-stats > div', scr).forEach((d, i) => { d.style.animationDelay = (i * 70) + 'ms'; const b = $('b', d); if (b) setTimeout(() => countUp(b), i * 70); });
+    const vb = $('.vbst', scr); if (vb) setTimeout(() => { sfx('coin', 3); buzz([12, 30, 20]); }, 9 * 70 + 500);
+  } catch (e) { scr.classList.remove('payoff-wait'); }
+}
+function showEndCore() {
   closeSheet(); { const fd = $('#feed'); if (fd) fd.innerHTML = ''; } U.holdPlace = 0; U.holdAlive = 0; placeHud();
   const win = S.over === 'win', st = S.stats, prev = getBest(), b = recordRun(win);
   if (!S.vbPaid) { const pl = win ? 1 : placeOf(S), loot = S.vbucks || 0, pp = placePay(pl), vw = win ? VB_WIN : 0; S.vbPaid = { loot, place: pp, win: vw, total: loot + pp + vw }; walletSet(walletGet() + S.vbPaid.total); S.vbucks = 0; }
