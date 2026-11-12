@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Fortnite D6">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>Fortnite: Zero Build D6 · v8.3</title>
+<title>Fortnite: Zero Build D6 · v8.5</title>
 <style>:root{
   --bg0:#0b0820;--bg1:#151036;--bg2:#1f1850;--line:rgba(255,255,255,.10);--txt:#f4f2ff;--mut:#a9a3cf;
   --c1:#f5b301;--c2:#a855f7;--c3:#38bdf8;--c4:#f1f5f9;--c5:#22c55e;--c6:#94a3b8;--red:#ef4444;--gold:#fde047;
@@ -1702,6 +1702,91 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 #scr-end.payoff-go .end-vb{animation:statIn .4s .7s both}
 @keyframes statIn{0%{opacity:0;transform:translateY(14px) scale(.9)}100%{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){#stormVig{animation:none!important}.endcine{display:none}}
+
+/* ===== v8.4 ===== */
+.die.tumble{animation:toss .36s var(--td,0ms) cubic-bezier(.25,.9,.35,1.12) both}
+@keyframes toss{0%{transform:translateY(54px) rotate(-280deg) scale(.35);opacity:0;filter:brightness(2.2)}55%{transform:translateY(-18px) rotate(16deg) scale(1.24);opacity:1;filter:brightness(1.5)}78%{transform:translateY(3px) rotate(-5deg) scale(.95);filter:none}100%{transform:none;filter:none}}
+#medals{position:absolute;right:6px;bottom:calc(var(--sab) + 44%);z-index:141;display:flex;flex-direction:column;align-items:flex-end;gap:4px;pointer-events:none;width:230px}
+.medal{display:flex;align-items:center;gap:7px;padding:5px 11px 5px 7px;background:linear-gradient(90deg,rgba(8,10,30,.2),rgba(8,10,30,.9) 25%);border-right:4px solid var(--mc);transform:skewX(-9deg);animation:mIn .28s cubic-bezier(.2,1.3,.4,1) both;box-shadow:0 0 16px -4px var(--mc)}
+.medal.out{animation:mOut .3s ease-in forwards}
+.medal>*{transform:skewX(9deg)}
+.medal i{font-style:normal;font-size:17px;filter:drop-shadow(0 0 6px var(--mc))}
+.medal b{font-family:var(--hdr);font-style:italic;font-size:13px;letter-spacing:.5px;color:#fff;white-space:nowrap}
+.medal em{font-style:normal;font-weight:900;font-size:13px;color:var(--mc)}
+@keyframes mIn{from{transform:skewX(-9deg) translateX(120%);opacity:0}}
+@keyframes mOut{to{transform:skewX(-9deg) translateX(40%);opacity:0}}
+.elchip{flex:none;display:flex;align-items:center;gap:4px;padding:2px 9px;border-radius:999px;background:rgba(8,12,34,.75);border:1px solid rgba(255,255,255,.18);font-weight:900;font-size:13px;margin-left:6px}
+.elchip i{font-style:normal;color:#f87171}.elchip b{font-family:var(--hdr);min-width:1ch}
+.elchip.bump{animation:vbBump .4s}
+#scr-title .crew img{animation:crewFloat 3.4s ease-in-out infinite}
+#scr-title .crew img:nth-child(1){animation-delay:-.7s}#scr-title .crew img:nth-child(3){animation-delay:-1.5s}
+@keyframes crewFloat{50%{translate:0 -9px}}
+#scr-title .logo .l2{animation:logoPulse 2.4s ease-in-out infinite}
+@keyframes logoPulse{50%{transform:scale(1.045)}}
+#tPlay{animation:btnPulse2 1.5s ease-in-out infinite}
+.qcard{position:relative;background:rgba(8,12,34,.74);border:1px solid var(--line);border-radius:14px;padding:6px 8px;display:flex;flex-direction:column;gap:4px}
+.qh{display:flex;justify-content:space-between;font-family:var(--hdr);font-style:italic;font-size:12px;letter-spacing:1px;color:#a5b4fc;padding:0 2px}
+.qr{position:relative;display:flex;align-items:center;gap:6px;padding:4px 8px;border-radius:8px;background:rgba(255,255,255,.07);overflow:hidden;font-size:12px;font-weight:800}
+.qr i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,rgba(168,85,247,.55),rgba(56,189,248,.5));z-index:0}
+.qr>*:not(i){position:relative;z-index:1}.qr span{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qr em{font-style:normal;color:#e0e7ff}.qr u{text-decoration:none;color:#7dd3fc;display:flex;align-items:center;gap:2px}.qr u .ico{display:inline-block;flex:none;width:.95em;height:.95em;position:static;vertical-align:middle}
+.qr.dn{opacity:.75}.qr.dn em{color:#86efac}
+@media (max-height:760px){.qr{padding:2px 8px}.qcard{gap:2px}}
+
+@media (prefers-reduced-motion:reduce){#scr-title .crew img,#scr-title .logo .l2,#tPlay{animation:none}}
+/* ===== v8.5 Fortnite look ===== */
+@property --zr{syntax:'<number>';inherits:false;initial-value:92}
+.poiart{position:relative;border-radius:50%!important;overflow:hidden;border:2.5px solid #fff!important;box-shadow:0 0 0 2px #1a1440,0 0 14px rgba(168,85,247,.6)!important;transition:--zr .9s ease-out}
+.poiart::after{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle closest-side at 50% 50%,transparent calc(var(--zr)*1%),#fff calc(var(--zr)*1%),#fff calc(var(--zr)*1% + 3%),rgba(126,34,206,.7) calc(var(--zr)*1% + 3%))}
+.poiart::before{content:'';position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff;z-index:2;animation:mapDot 1.2s ease-in-out infinite}
+@keyframes mapDot{50%{transform:scale(1.7);opacity:.6}}
+.hchip{transform:skewX(-9deg);border-radius:6px;border-color:rgba(253,224,71,.55);background:linear-gradient(180deg,rgba(10,16,60,.92),rgba(5,8,32,.95))}
+.hchip>*{transform:skewX(9deg)}
+.elchip{transform:skewX(-9deg);border-radius:6px;border-color:rgba(248,113,113,.6)}.elchip>*{transform:skewX(9deg)}
+#squad{counter-reset:slot}
+#squad .die{border-radius:9px;box-shadow:inset 0 -6px 0 rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.6),0 3px 0 rgba(0,0,0,.45)}
+#squad .die:not(.blocked)::before{content:counter(slot);counter-increment:slot;position:absolute;left:5px;top:2px;font:900 11px/1 var(--hdr);font-style:italic;color:#fff;text-shadow:0 1px 0 #000,0 0 4px #000;z-index:2;pointer-events:none}
+#squad .die.f4:not(.blocked)::before{color:#334155;text-shadow:none}
+#squad .die.live::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.6) 50%,transparent 62%);background-size:260% 100%;animation:sheen 2.2s linear infinite;pointer-events:none}
+@keyframes sheen{from{background-position:160% 0}to{background-position:-60% 0}}
+#squad .die.sel{box-shadow:0 0 0 3px #fde047,0 0 24px rgba(253,224,71,.85),0 8px 0 rgba(0,0,0,.35)}
+.ret{position:absolute;inset:3px;pointer-events:none;z-index:4;animation:retPulse .7s ease-in-out infinite alternate}
+.ret b{position:absolute;width:15px;height:15px;border:3px solid #fde047;filter:drop-shadow(0 0 4px #fde047)}
+.ret b:nth-child(1){left:0;top:0;border-right:0;border-bottom:0}.ret b:nth-child(2){right:0;top:0;border-left:0;border-bottom:0}.ret b:nth-child(3){left:0;bottom:0;border-right:0;border-top:0}.ret b:nth-child(4){right:0;bottom:0;border-left:0;border-top:0}
+@keyframes retPulse{from{transform:scale(1.04);opacity:.75}to{transform:scale(.97);opacity:1}}
+#stormVig::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(233,213,255,.9) 0 1.4px,transparent 2px),radial-gradient(circle,rgba(192,132,252,.8) 0 1.8px,transparent 2.5px);background-size:84px 120px,131px 170px;background-position:0 0,40px 60px;animation:motes 7s linear infinite}
+@keyframes motes{to{background-position:0 -480px,40px -340px}}
+#scr-game.stormon #stormVig{animation:stormPulse 2.4s ease-in-out infinite,stormFlash 7s linear infinite}
+@keyframes stormFlash{0%,90%,100%{filter:none}92%{filter:brightness(2.4)}94%{filter:none}96%{filter:brightness(1.8)}}
+/* ===== v8.5 effects ===== */
+.fx-bolt{position:absolute;inset:0;pointer-events:none;animation:boltFlick .46s steps(1) both}
+.fx-bolt svg{filter:drop-shadow(0 0 12px #c084fc)}
+@keyframes boltFlick{0%{opacity:1}14%{opacity:.1}28%{opacity:1}46%{opacity:.5}64%{opacity:.9}100%{opacity:0}}
+.fx-muzzle{position:absolute;width:0;height:0;pointer-events:none;z-index:3}
+.fx-muzzle b{position:absolute;left:-30px;top:-30px;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,#fff 0,#fde047 28%,rgba(251,146,60,.6) 52%,transparent 70%);animation:mzB .23s ease-out forwards}
+.fx-muzzle i{position:absolute;left:-1.5px;top:-34px;width:3px;height:34px;background:linear-gradient(#fff,rgba(253,224,71,0));transform-origin:50% 100%;transform:rotate(var(--a));animation:mzI .23s ease-out forwards}
+@keyframes mzB{0%{transform:scale(.3);opacity:1}100%{transform:scale(1.5);opacity:0}}
+@keyframes mzI{0%{transform:rotate(var(--a)) scaleY(.2);opacity:1}100%{transform:rotate(var(--a)) scaleY(1.2);opacity:0}}
+.fx-casing{position:absolute;width:4px;height:9px;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:1px;pointer-events:none;animation:casing .64s cubic-bezier(.3,.1,.6,1) forwards}
+@keyframes casing{0%{transform:translate(0,0) rotate(0);opacity:1}100%{transform:translate(var(--dx),80px) rotate(var(--r));opacity:0}}
+.fx-dmg.crit{color:#fde047!important;font-size:1.55em;-webkit-text-stroke:2px #3b1d00;text-shadow:0 0 14px rgba(253,224,71,.9)}
+.fx-crit{position:absolute;transform:translate(-50%,0);font-family:var(--hdr);font-style:italic;font-weight:900;font-size:26px;letter-spacing:1px;color:#fde047;-webkit-text-stroke:2px #3b1d00;text-shadow:0 4px 0 #3b1d00,0 0 18px rgba(253,224,71,.8);pointer-events:none;animation:critPop .85s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes critPop{0%{transform:translate(-50%,10px) scale(.3) rotate(-8deg);opacity:0}25%{transform:translate(-50%,0) scale(1.25) rotate(3deg);opacity:1}100%{transform:translate(-50%,-26px) scale(1) rotate(0);opacity:0}}
+.fx-lbeam{position:absolute;width:0;height:0;pointer-events:none;z-index:2}
+.fx-lbeam i{position:absolute;left:-17px;bottom:0;width:34px;height:380px;background:linear-gradient(0deg,var(--lc),rgba(255,255,255,0));filter:blur(2px);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(0deg,#000 30%,transparent);mask-image:linear-gradient(0deg,#000 30%,transparent);animation:lbeam 1.2s ease-out forwards}
+.fx-lbeam b{position:absolute;left:-38px;bottom:-9px;width:76px;height:18px;border-radius:50%;background:radial-gradient(var(--lc),transparent 70%);animation:lbase 1.2s ease-out forwards}
+@keyframes lbeam{0%{transform:scaleY(0);opacity:1}22%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1.05) scaleX(.3);opacity:0}}
+@keyframes lbase{0%{transform:scale(.3);opacity:1}100%{transform:scale(1.6);opacity:0}}
+.fx-hex{position:absolute;width:34px;height:38px;margin:-19px 0 0 -17px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:radial-gradient(circle,rgba(125,211,252,.1) 40%,rgba(186,230,253,.95) 46%,rgba(56,189,248,.4) 100%);pointer-events:none;animation:hexOut .7s ease-out forwards}
+@keyframes hexOut{0%{transform:scale(.5);opacity:1}100%{transform:scale(3.6) rotate(30deg);opacity:0}}
+.fx-dirhit{position:absolute;left:0;right:0;top:0;height:32%;pointer-events:none;background:linear-gradient(180deg,rgba(239,68,68,.7),transparent);animation:dirhit .7s ease-out forwards}
+@keyframes dirhit{0%{opacity:1}100%{opacity:0}}
+.fx-letter{position:absolute;inset:0;pointer-events:none;z-index:150}
+.fx-letter i{position:absolute;left:0;right:0;height:8%;background:#000;animation:lbox 1.25s cubic-bezier(.3,0,.2,1) forwards}
+.fx-letter i:first-child{top:0}.fx-letter i:last-child{bottom:0;animation-name:lboxB}
+@keyframes lbox{0%{transform:translateY(-100%)}22%,70%{transform:none}100%{transform:translateY(-100%)}}
+@keyframes lboxB{0%{transform:translateY(100%)}22%,70%{transform:none}100%{transform:translateY(100%)}}
+@media (prefers-reduced-motion:reduce){.ret,.poiart::before,#squad .die.live::after,#stormVig::after{animation:none!important}}
 </style>
 </head><body>
 <div id="app" class="compact">
@@ -2588,6 +2673,106 @@ function hapTick() { try { if (!HAP.el) { const l = document.createElement('labe
 const buzz = p => { try { if (LS.get('fd5_nohaptic', false)) return; if (!HAP.ios) { if (navigator.vibrate) navigator.vibrate(p); return; } const a = Array.isArray(p) ? p : [p]; let t = 0; a.forEach((v, i) => { if (i % 2 === 0) { setTimeout(hapTick, t); if (v >= 60) setTimeout(hapTick, t + 45); } t += v; }); } catch (e) {} };
 function setMuted(m) { AU.muted = m; LS.set('fd5_muted', m); $$('.mute-btn').forEach(b => b.textContent = m ? '🔇' : '🔊'); if (!m) { unlockAudio(); setTimeout(() => sfx('beep'), 30); } }
 
+/* hit-stop: freeze every running animation for a few ms on big impacts */
+function hitstop(ms) { if (RM() || U.hs) return; U.hs = 1; try { const a = document.getAnimations().filter(x => x.playState === 'running'); a.forEach(x => x.pause()); setTimeout(() => { a.forEach(x => { try { x.play(); } catch (e) {} }); U.hs = 0; }, ms); } catch (e) { U.hs = 0; } }
+/* Fortnite-style XP medals on the right */
+function medal(txt, xp, col, icon) {
+  if (RM()) return; let c = $('#medals'); if (!c) { c = document.createElement('div'); c.id = 'medals'; app.appendChild(c); }
+  const e = document.createElement('div'); e.className = 'medal'; e.style.setProperty('--mc', col || '#fde047');
+  e.innerHTML = `<i>${icon || '★'}</i><b>${esc(txt)}</b>${xp ? `<em>+${fmtN(xp)}</em>` : ''}`; c.appendChild(e);
+  while (c.children.length > 4) c.firstChild.remove();
+  setTimeout(() => { e.classList.add('out'); setTimeout(() => e.remove(), 300); }, 2200); sfx('medal');
+}
+function elimHud() { const e = $('#hElims'); if (!e || !S) return; const n = S.stats.elims || 0; const b = $('b', e); if (b.textContent !== String(n)) { b.textContent = n; if (U.elShown != null && n > U.elShown) popEl(e, 'bump'); } U.elShown = n; }
+/* daily quests */
+const QPOOL = [
+  { id: 'e5', k: 'elims', n: 5, vb: 300, t: 'Eliminate 5 enemies' }, { id: 'e10', k: 'elims', n: 10, vb: 600, t: 'Eliminate 10 enemies' },
+  { id: 'rv2', k: 'revives', n: 2, vb: 300, t: 'Reboot 2 teammates' }, { id: 'wp1', k: 'wipes', n: 1, vb: 400, t: 'Wipe out a full trio' },
+  { id: 'po2', k: 'poisCleared', n: 2, vb: 400, t: 'Clear 2 POIs' }, { id: 'mu2', k: 'multi', n: 2, vb: 400, t: 'Land 2 multi-eliminations' },
+  { id: 'w1', k: 'win', n: 1, vb: 800, t: 'Win a match' }
+];
+function qGet() {
+  let q = LS.get('fd84_q', null); const d = dayNum();
+  if (!q || q.day !== d || !Array.isArray(q.ids)) { let a = d >>> 0; const r = () => { a = (Math.imul(a, 1664525) + 1013904223) >>> 0; return a / 4294967296; }; const p = QPOOL.map(x => x.id); for (let i = p.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [p[i], p[j]] = [p[j], p[i]]; } q = { day: d, ids: p.slice(0, 3), p: {}, done: [] }; LS.set('fd84_q', q); }
+  return q;
+}
+const qStat = k => !S ? 0 : k === 'multi' ? (S.stats.doubles + S.stats.triples + S.stats.quads) : k === 'win' ? (S.over === 'win' ? 1 : 0) : (S.stats[k] || 0);
+function questCheck() {
+  if (!S || !S.stats) return; const q = qGet();
+  if (!S.qb) { S.qb = {}; q.ids.forEach(id => { const d = QPOOL.find(x => x.id === id); S.qb[id] = Math.max(0, (q.p[id] || 0) - qStat(d.k)); }); }
+  let ch = false;
+  q.ids.forEach(id => {
+    const d = QPOOL.find(x => x.id === id), pr = Math.min(d.n, (S.qb[id] || 0) + qStat(d.k));
+    if (pr > (q.p[id] || 0)) { q.p[id] = pr; ch = true; }
+    if (pr >= d.n && !q.done.includes(id)) { q.done.push(id); ch = true; walletSet(walletGet() + d.vb); setTimeout(() => { banner('QUEST COMPLETE', d.t + ' · +' + d.vb + ' V-Bucks', 'team'); medal('QUEST COMPLETE', 0, '#a855f7', '📜'); sfx('lvl'); sfx('chime'); buzz([30, 30, 30, 30, 80]); popEl('#hVb', 'bump'); }, 700); }
+  });
+  if (ch) LS.set('fd84_q', q);
+}
+function questsHTML() {
+  const q = qGet();
+  return `<div class="qcard"><div class="qh"><b>DAILY QUESTS</b><span>${q.done.length}/3</span></div>${q.ids.map(id => { const d = QPOOL.find(x => x.id === id), p = Math.min(d.n, q.p[id] || 0), dn = q.done.includes(id); return `<div class="qr${dn ? ' dn' : ''}"><i style="width:${(100 * p / d.n).toFixed(0)}%"></i><span>${dn ? '✓ ' : ''}${esc(d.t)}</span><em>${dn ? 'DONE' : p + '/' + d.n}</em><u>${ico('vbucks')}${d.vb}</u></div>`; }).join('')}</div>`;
+}
+
+/* ===== v8.5: Fortnite look + effects + haptics ===== */
+Object.assign(SFX, {
+  medal: () => { tone(1318, 0.08, 'square', 0.05); tone(1976, 0.18, 'triangle', 0.07, 0.06); },
+  bolt: () => { noise(0.5, 0.5, 0, 6000, 200); tone(70, 0.5, 'sawtooth', 0.22, 0, 30); tone(2400, 0.06, 'square', 0.06); },
+  hexpop: () => { tone(1500, 0.12, 'triangle', 0.1); tone(900, 0.2, 'sine', 0.12, 0.03); noise(0.1, 0.2, 0, 7000, 2000); },
+  crit: () => { tone(1760, 0.08, 'square', 0.08); tone(2349, 0.2, 'triangle', 0.1, 0.05); },
+  lbeam: () => { tone(880, 0.35, 'sine', 0.1); tone(1320, 0.5, 'triangle', 0.08, 0.08); tone(1760, 0.6, 'sine', 0.05, 0.16); }
+});
+function lightning() {
+  if (RM()) return; const W = app.clientWidth, H = app.clientHeight; let x = 40 + rnd(Math.max(1, W - 80)), y = 0, d = `M${x} 0`;
+  while (y < H * 0.66) { y += 28 + rnd(44); x += rnd(80) - 40; d += ` L${x} ${y}`; }
+  fxAdd('fx-bolt', '', `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" aria-hidden="true"><path d="${d}" fill="none" stroke="#c084fc" stroke-width="16" opacity=".55" stroke-linejoin="round"/><path d="${d}" fill="none" stroke="#fff" stroke-width="4.5" stroke-linejoin="round"/></svg>`, 460);
+  fxAdd('fx-vign', '--vc:#a855f7', '', 700); sfx('bolt'); shake(2); buzz([24, 16, 12, 22, 40]);
+}
+function muzzle(p) {
+  if (RM()) return; fxAdd('fx-muzzle', `left:${p.x}px;top:${p.y}px`, '<i style="--a:0deg"></i><i style="--a:60deg"></i><i style="--a:120deg"></i><i style="--a:180deg"></i><i style="--a:240deg"></i><i style="--a:300deg"></i><b></b>', 230);
+  for (let k = 0; k < 3; k++) fxAdd('fx-casing', `left:${p.x}px;top:${p.y}px;--dx:${14 + rnd(46)}px;--r:${rnd(540)}deg;animation-delay:${k * 22}ms`, '', 640);
+}
+function critFX(b) { if (RM()) return; fxAdd('fx-crit', `left:${Math.max(70, Math.min(app.clientWidth - 70, b.x))}px;top:${b.y - 40}px`, 'CRIT!', 850); fxAdd('fx-rays', `left:${b.x}px;top:${b.y}px`, '', 520); sfx('crit'); buzz([12, 14, 24]); }
+function lbeam(p, col, ms) { if (RM()) return; fxAdd('fx-lbeam', `left:${p.x}px;top:${p.y}px;--lc:${col}`, '<i></i><b></b>', ms || 1200); sfx('lbeam'); }
+function shieldPop(p) { if (RM()) return; ring(p, '#38bdf8', 3); fxAdd('fx-hex', `left:${p.x}px;top:${p.y}px`, '', 700); particles(p, 10, ['#7dd3fc', '#e0f2fe', '#38bdf8'], 80); sfx('hexpop'); buzz([10, 14, 18]); }
+function letterbox() { if (RM()) return; fxAdd('fx-letter', '', '<i></i><i></i>', 1250); }
+function addReticles() { $$('#scr-game .card.tg, #scr-game .member.tg').forEach(el => { if (!el.querySelector(':scope > .ret')) el.insertAdjacentHTML('beforeend', '<i class="ret"><b></b><b></b><b></b><b></b></i>'); }); }
+function zoneHud() {
+  if (!S) return; const pa = $('#poiArt'); if (!pa) return; const sOn = S.board.some(c => c.kind === 'storm');
+  let zr = Math.max(48, 96 - (S.turn || 1) * 3); if (S.stormCd != null && S.stormCd > 0) zr = Math.min(zr, 44 + S.stormCd * 14); if (sOn) zr = 26; if (S.over) zr = 94;
+  pa.style.setProperty('--zr', zr);
+}
+function feelFor(ev, pre) {
+  switch (ev.t) {
+    case 'clear': if (ev.card.kind === 'opp') {
+        medal(ev.card.elite ? 'ELITE ELIMINATION' : 'ELIMINATION', ev.xp, ev.card.elite ? '#fde047' : '#38bdf8', ev.card.elite ? '👑' : '🎯');
+        { const r = rectOf('c' + ev.card.uid, pre); if (r.w) setTimeout(() => lbeam(ctr(r), ev.card.elite ? '#fde047' : (ev.card.maxHp >= 3 ? '#c084fc' : '#38bdf8'), 1300), 140); }
+        [330, 400, 470].forEach(t => setTimeout(() => buzz(4), t));
+      } else medal('HAZARD CLEARED', ev.xp, '#a3e635', '🧹'); break;
+    case 'combo': medal(ev.n >= 4 ? 'QUAD ELIMINATION' : ev.n === 3 ? 'TRIPLE ELIMINATION' : 'DOUBLE ELIMINATION', ev.xp, '#a855f7', '🔥'); setTimeout(() => hitstop(80), 380); break;
+    case 'wipe': medal('SQUAD WIPE', ev.xp, '#ef4444', '💀'); setTimeout(() => { hitstop(120); letterbox(); }, 420); break;
+    case 'revive': medal('REBOOT', ev.xp, '#22c55e', '🚐'); break;
+    case 'chestVb': medal('CHEST OPENED', 0, '#fde047', '🧰'); break;
+    case 'roll': {
+      const order = ev.dice.slice().sort((a, b) => a - b);
+      (ev.chests || []).forEach(i => { const k = order.indexOf(i); setTimeout(() => { const r = rectOf('d' + i); if (r.w) lbeam(ctr(r), '#fde047', 1300); }, k * 50 + 240); });
+      setTimeout(() => buzz(22), order.length * 50 + 260);
+      if (ev.chests && ev.chests.length) medal('CHEST FOUND', ev.xp, '#f59e0b', '🧰'); break; }
+    case 'edown': medal('ENEMY KNOCKED', 0, '#fb923c', '⚡'); break;
+    case 'poiClear': medal(ev.last ? 'FINAL ZONE CLEARED' : 'POI CLEARED', 0, '#fde047', '🏁'); break;
+    case 'shot': {
+      const a = ctr(rectOf('d' + ev.die, pre)); if (a.x) muzzle(a);
+      if (ev.amt >= 2) { const b = ctr(rectOf('c' + ev.uid, pre)); setTimeout(() => { critFX(b); hitstop(46); }, 75); }
+      break; }
+    case 'hit':
+      if (ev.absorbed) { const sb = rectOf('shield', pre); if (sb.w) shieldPop(ctr(sb)); }
+      if (ev.lost) fxAdd('fx-dirhit', '', '', 700);
+      break;
+    case 'stormIn': case 'stormGrow': lightning(); break;
+    case 'infight': if (ev.storm && Math.random() < 0.6) lightning(); break;
+    case 'down': setTimeout(() => hitstop(90), 80); break;
+  }
+}
+
 /* ---------- screens ---------- */
 function show(id) { $$('.screen').forEach(s => s.classList.toggle('on', s.id === id)); closeSheet(); }
 
@@ -2601,11 +2786,12 @@ function renderTitle() {
   const crew = pickN(CHARS, 3);
   $('#scr-title').innerHTML = `
     <div class="bgart" style="background-image:url(${poiImg(titlePoi)})"></div>
-    <div class="ver">v8.3</div>
+    <div class="ver">v8.5</div>
     <div class="title-top"><button class="icon-btn mute-btn" aria-label="Sound">${AU.muted ? '🔇' : '🔊'}</button></div>
     <div class="crew">${crew.map(n => `<img src="${portrait(n)}" alt="">`).join('')}</div>
     <div class="logo h"><div class="l0">FORTNITE:</div><div class="l1">ZERO BUILD</div><div class="l2">D6</div><div class="tag">Roll. Assign. Survive the Storm. Last squad standing.</div></div>
     <div class="best-line" id="bestLine">${esc(bestLine())}</div>
+    ${questsHTML()}
     <div class="title-actions">
       ${LS.get('fd5_run', null) ? '<button class="btn blue" id="tContinue">▶ CONTINUE RUN</button>' : ''}
       <button class="btn pri h" id="tPlay">PLAY</button>
@@ -2674,7 +2860,7 @@ const placePay = p => VB_PLACE.find(t => p <= t[0])[1];
    if (SK.swapSlot != null && e[SK.swapSlot]) { e[SK.swapSlot] = n; SK.swapSlot = null; SK.swapSkin = null; toast(`${n} equipped`); }
    else if (e.length < 3) { e.push(n); SK.swapSkin = null; }
    else { SK.swapSkin = SK.swapSkin === n ? null : n; sfx('tap'); renderLocker(); return; }
-   eqSave(e); SK.pop = n; sfx('click'); sfx('land', 2); buzz(10); renderLocker();
+   eqSave(e); SK.pop = n; sfx('click'); sfx('land', 2); buzz([12, 20, 22]); renderLocker();
  }
  function unequipAt(i) { const e = eqGet(); if (!e[i]) return; e.splice(i, 1); eqSave(e); SK.swapSlot = null; SK.swapSkin = null; sfx('click'); buzz(8); renderLocker(); }
  function slotTap(i) {
@@ -2700,10 +2886,10 @@ const placePay = p => VB_PLACE.find(t => p <= t[0])[1];
      <div class="b-card"><img src="${portrait(n)}" alt=""><span>${esc(n)}</span></div>
      <div class="b-t">PURCHASED!</div><div class="b-tier">${esc(tierName(n))} skin · ${free ? 'added to your squad' : 'added to your Locker'}</div>
      <div class="b-vb">${ico('vbucks')}<b>${fmtN(from)}</b></div><div class="b-hint">Tap to continue</div>`;
-   root.appendChild(el); sfx('chime'); setTimeout(() => sfx('sparkle'), 260); sfx('land', 3); buzz([12, 40, 24]);
+   root.appendChild(el); sfx('chime'); setTimeout(() => sfx('sparkle'), 260); sfx('land', 3); buzz([45, 30, 45, 30, 70, 60, 130]);
    const vb = $('.b-vb b', el), steps = 14; let i = 0, closed = false;
-   const tick = () => { if (closed) return; i++; vb.textContent = fmtN(i >= steps ? to : from - Math.round((from - to) * i / steps)); const pill = vb.parentNode; pill.classList.remove('bump'); void pill.offsetWidth; pill.classList.add('bump'); sfx('tick', i % 8);
-     if (i < steps) setTimeout(tick, 42); else { pill.classList.add('fin'); sfx('ping'); } };
+   const tick = () => { if (closed) return; i++; vb.textContent = fmtN(i >= steps ? to : from - Math.round((from - to) * i / steps)); const pill = vb.parentNode; pill.classList.remove('bump'); void pill.offsetWidth; pill.classList.add('bump'); sfx('tick', i % 8); if (i % 2) buzz(4);
+     if (i < steps) setTimeout(tick, 42); else { pill.classList.add('fin'); sfx('ping'); buzz([22, 30, 40]); } };
    setTimeout(tick, 720);
    const close = () => { if (closed) return; closed = true; el.classList.add('out'); setTimeout(() => { el.remove(); after(); }, 240); };
    setTimeout(() => { el.classList.add('can'); el.onclick = close; }, 900); setTimeout(close, 2900);
@@ -2742,11 +2928,11 @@ const placePay = p => VB_PLACE.find(t => p <= t[0])[1];
      const end = () => {
        clearTimeout(arm); arm = 0; cancelAnimationFrame(raf); raf = 0; if (!t0) return;
        held = performance.now() - t0; t0 = 0; b.classList.remove('holding'); b.classList.add('rel'); setP(0); if (cap) cap.textContent = capTxt;
-       if (!done) { sfx('err'); }
+       if (!done) { sfx('err'); buzz([6, 24, 6]); }
      };
      const loop = now => {
        if (!t0) return; const p = (now - t0) / HOLD_MS; setP(p);
-       while (tk < 8 && p >= (tk + 1) / 8) { sfx('tick', tk); if (tk % 2) buzz(5); tk++; }
+       while (tk < 8 && p >= (tk + 1) / 8) { sfx('tick', tk); buzz(tk < 3 ? 5 : tk < 6 ? [8, 14, 8] : [11, 9, 11, 9, 11]); tk++; }
        if (p >= 1) { done = true; t0 = 0; b.classList.remove('holding'); setP(1); if (cap) cap.textContent = capTxt; purchase(n); return; }
        raf = requestAnimationFrame(loop);
      };
@@ -2859,7 +3045,7 @@ function startRun(squad, o) {
   if (seed != null) { let a = seed >>> 0; const r = () => { a = (Math.imul(a, 1664525) + 1013904223) >>> 0; return a / 4294967296; }; const x = POIS.slice(); for (let i = x.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [x[i], x[j]] = [x[j], x[i]]; } poiSeq = x.slice(0, df.plan.length); }
   else poiSeq = pickN(POIS, df.plan.length);
   S = E.newGame({ squad: squad.map(n => ({ name: n, img: n })), enemyNames: enemies, teams, pois: poiSeq, plan: df.plan, seed, expTurns: df.expT, elite: { name: eName, tag: eTag }, allTeams, lobby: enemies.map(n => ({ name: n })).concat(FILLERS.map(n => ({ name: n, filler: 1 }))) });
-  U.holdPlace = 0; U.holdAlive = 0;
+  U.holdPlace = 0; U.holdAlive = 0; try { questCheck(); } catch (e) {}
   RUN = { squad, poi: S.pois[0].name, diff, daily: !!o.daily };
   RUN.deckTotal = S.deck.length + S.board.length; logReset();
   U.seen = new Set(S.board.map(c => c.uid)); U.sel = null; U.conv = null; U.prevHp = {}; U.prevShield = null; U.busy = false; U.endArmed = false;
@@ -3025,7 +3211,7 @@ function buildGame() {
     <div class="xpstrip">
       <div class="xplv" id="xplv" aria-label="Squad level">LVL <span id="xpLv">1</span> ★</div>
       <div class="xpbar" id="xpbar" data-k="xp" aria-hidden="true"><i></i></div>
-      <div class="xptxt" id="xpTxt"></div>
+      <div class="xptxt" id="xpTxt"></div><div class="elchip" id="hElims" aria-label="Eliminations"><i>☠</i><b>0</b></div>
     </div>
     <div class="colL">
       <section class="poi" id="poiPlate">
@@ -3201,7 +3387,7 @@ function renderGame() {
   $('#hDeck span').textContent = s.deck.length + '/' + deckTotal() + (s.peek && s.deck[0] && s.peek === s.deck[0].uid ? ' 🔭' : '');
   $('#hShield span').textContent = s.shield + '/' + s.shieldMax;
   $('#hBars span').textContent = Math.max(0, s.bars - (U.holdBars || 0)); xpHud();
-  placeHud();
+  placeHud(); elimHud();
   { const vb = $('#hVb'); if (vb) { vb.querySelector('span').textContent = fmtVb(walletGet() + (s.vbucks || 0)); vb.classList.add('on'); } }
   const st = $('#hStreak'); st.classList.toggle('on', s.streak >= 2); st.textContent = `🔥 ${s.streak}`; st.dataset.heat = s.streak >= 6 ? 3 : s.streak >= 4 ? 2 : s.streak >= 2 ? 1 : 0;
   poiHud();
@@ -3502,7 +3688,7 @@ function dropIntro() {
 }
 function rollFlair(evs) {
   const r = evs.find(e => e.t === 'roll'); if (!r) return;
-  setTimeout(() => sfx('rattle'), 0); buzz([8, 18, 8, 18, 8]);
+  setTimeout(() => sfx('rattle'), 0); buzz([7, 23, 7, 23, 7, 23, 7, 23, 7, 23, 7, 23, 7]);
   if (RM()) return;
   const cnt = {}; r.dice.forEach(i => { const d = S.dice[i]; if (d && d.st === 'rolled') cnt[d.face] = (cnt[d.face] || 0) + 1; });
   let bf = 0, bn = 0; for (const f in cnt) if (cnt[f] > bn) { bn = cnt[f]; bf = +f; }
@@ -3521,7 +3707,7 @@ function critCheck() {
   g.classList.toggle('stormwarn', !S.over && S.stormCd != null && S.stormCd > 0 && S.stormCd <= 2);
   g.classList.toggle('stormon', !S.over && S.board.some(c => c.kind === 'storm'));
   if (crit && (!U.wasCrit || U.critTurn !== S.turn) && S.phase !== 'over') { sfx('heartbeat'); buzz([40, 90, 40]); U.critTurn = S.turn; }
-  U.wasCrit = crit;
+  U.wasCrit = crit; try { zoneHud(); addReticles(); } catch (e) {}
 }
 window.addEventListener('pointerdown', () => { if (U.stormRun) U.ff = true; U.lastInput = performance.now(); $$('.die.nudge').forEach(e => e.classList.remove('nudge')); }, true);
 setInterval(() => {
@@ -3658,7 +3844,7 @@ function elimFX(ev, r, pre, who) {
   try { vbPop(ev, r); } catch (e) {}
   if (ev.card && ev.card.elite) eliteFX(ev, ctr(r));
   const p = ctr(r), n = ev.n || 1, c = ev.card;
-  U.lastElim = performance.now();
+  U.lastElim = performance.now(); hitstop(55);
   sfx('thump'); buzz(n >= 2 ? [20, 20, 40, 25, 70, 25, 90] : [18, 25, 40, 25, 70]);
   ring(p, '#ffffff', 2.4);
   setTimeout(() => {
@@ -3683,9 +3869,10 @@ function playEvents(evs, pre) {
   const ownerOf = i => S.squad[S.dice[i] ? S.dice[i].owner : 0];
   let lastDie = null;
   evs.forEach(ev => {
+    try { feelFor(ev, pre); } catch (e) {}
     if (ev.die != null && ev.t !== 'knock' && ev.t !== 'lag' && ev.t !== 'lock') lastDie = ev.die;
     switch (ev.t) {
-      case 'roll': { const order = ev.dice.slice().sort((a, b) => a - b); order.forEach((i, k) => setTimeout(() => { sfx('land', k); buzz(6); const el = $(`[data-k="die"][data-i="${i}"]`); if (!el) return; const r = rectOf('d' + i), p = ctr(r); fxAdd('fx-land', `left:${p.x}px;top:${p.y}px`, '', 260); if (S.dice[i] && S.dice[i].face === F.CHEST) { particles(p, 8, ['#fde047', '#fff', '#f59e0b'], 40); fxAdd('fx-spark', `left:${p.x}px;top:${p.y}px`, '✦', 380); sfx('sparkle'); } }, k * 50 + 110)); delay = Math.max(delay, order.length * 52 + 140);
+      case 'roll': { const order = ev.dice.slice().sort((a, b) => a - b); order.forEach((i, k) => setTimeout(() => { sfx('land', k); buzz(S.dice[i] && S.dice[i].face === F.CHEST ? [12, 16, 26] : S.dice[i] && S.dice[i].face === F.SHOOT ? 11 : 8); const el = $(`[data-k="die"][data-i="${i}"]`); if (!el) return; const r = rectOf('d' + i), p = ctr(r); fxAdd('fx-land', `left:${p.x}px;top:${p.y}px`, '', 260); if (S.dice[i] && S.dice[i].face === F.CHEST) { particles(p, 8, ['#fde047', '#fff', '#f59e0b'], 40); fxAdd('fx-spark', `left:${p.x}px;top:${p.y}px`, '✦', 380); sfx('sparkle'); } }, k * 50 + 205)); delay = Math.max(delay, order.length * 52 + 140);
         if (ev.xp) { const i0 = ev.chests[0], k0 = order.indexOf(i0); setTimeout(() => { const r = rectOf('d' + i0); if (r.w) xpPop({ x: Math.max(60, Math.min(app.clientWidth - 60, r.x + r.w / 2)), y: r.y - 30 }, ev.xp, null, 0); }, k0 * 50 + 260); }
         break; }
       case 'chestVb': { const k0 = (evs.find(e => e.t === 'roll') || { dice: [] }).dice.slice().sort((a, b) => a - b).indexOf(ev.die); setTimeout(() => { const r = rectOf('d' + ev.die); if (!r.w) return; const p = ctr(r);
@@ -3743,7 +3930,7 @@ function playEvents(evs, pre) {
       case 'cover': { const p = ctr(rectOf('c' + ev.uid, pre)); impact(p, FI[ev.face].color); const c = S.board.find(x => x.uid === ev.uid);
         if (c && c.kind === 'opp' && c.maxHp > 0 && !isLocked(c)) { U.exposed.set(c.uid, performance.now()); particles(p, 12, ['#e0f2fe', '#a5f3fc', '#fff']); sfx('expose'); buzz([12, 30, 25]); renderLane(); setTimeout(() => { if (S && S.board.includes(c)) renderLane(); }, 1450); }
         else { num(p, '✓ COVER', 'gr'); sfx('beep'); buzz(10); } break; }
-      case 'shot': { const a = ctr(dieRect(ev.die)), b = ctr(rectOf('c' + ev.uid, pre)); tracer(a, b, '#c084fc'); setTimeout(() => { impact(b, '#e879f9'); hitSpark(b); hitmarker(b, ev.amt >= 2); ring(b, ev.amt >= 2 ? '#fde047' : '#e879f9', ev.amt >= 2 ? 3.4 : 2.6); fxAdd('fx-dmg', `left:${b.x + 26}px;top:${b.y - 8}px`, '-' + ev.amt, 700); particles(b, 6 + ev.amt * 3, ['#e9d5ff', '#a855f7', '#fff']); pipOut(ev.uid); sfx('pip'); sfx('hitmark'); }, 70); sfx('shoot', Math.max(0, (S.shots || 1) - 1)); shake(1); buzz(ev.amt >= 2 ? [18, 14, 22] : 15); break; }
+      case 'shot': { const a = ctr(dieRect(ev.die)), b = ctr(rectOf('c' + ev.uid, pre)); tracer(a, b, '#c084fc'); setTimeout(() => { impact(b, '#e879f9'); hitSpark(b); hitmarker(b, ev.amt >= 2); ring(b, ev.amt >= 2 ? '#fde047' : '#e879f9', ev.amt >= 2 ? 3.4 : 2.6); fxAdd('fx-dmg' + (ev.amt >= 2 ? ' crit' : ''), `left:${b.x + 26}px;top:${b.y - 8}px`, '-' + ev.amt, 700); particles(b, 6 + ev.amt * 3, ['#e9d5ff', '#a855f7', '#fff']); pipOut(ev.uid); sfx('pip'); sfx('hitmark'); }, 70); sfx('shoot', Math.max(0, (S.shots || 1) - 1)); shake(1); buzz(ev.amt >= 2 ? [18, 14, 22] : 15); break; }
       case 'shield': { const r = rectOf('squad', pre), sq = $('#squad').getBoundingClientRect(), a = app.getBoundingClientRect(); fxAdd('fx-bubble', `left:${sq.left - a.left - 4}px;top:${sq.top - a.top - 4}px;width:${sq.width + 8}px;height:${sq.height + 8}px`, '', 700); num(ctr(rectOf('shield', pre)), 'SHIELDS FULL', 'b'); sfx('shield'); buzz(12); void r; break; }
       case 'evade': { const p = ctr(rectOf('c' + ev.uid, pre)); impact(p, '#7dd3fc'); num(p, '💨 EVADE', 'b'); sfx('evade'); buzz(10); break; }
       case 'heal': { const r = rectOf('m' + ev.member, pre); for (let k = 0; k < (RM() ? 1 : 3 + ev.amt * 2); k++) fxAdd('fx-plus', `left:${r.x + 10 + rnd(Math.max(1, r.w - 30))}px;top:${r.y + 10 + rnd(30)}px;animation-delay:${k * 35}ms`, '+', 900); num(ctr(r), '+' + ev.amt + ' HP', 'gr'); ring(ctr(r), '#ffffff', 3); sfx('heal', Math.max(0, (S.heals || 1) - 1)); buzz(10); break; }
@@ -3789,7 +3976,7 @@ function afterAction(pre) {
   evs.filter(e => e.t === 'roll').forEach(e => e.dice.forEach(i => U.tumble.add(i)));
   evs.filter(e => e.t === 'chest' && e.reroll).forEach(e => e.reroll.forEach(i => U.tumble.add(i)));
   if (U.tumble.size) { U.tumbleOrder = [...U.tumble].sort((a, b) => a - b); U.tumbleT0 = performance.now(); }
-  evs.filter(e => e.t === 'chest' && e.reroll).forEach(e => e.reroll.slice().sort((a, b) => a - b).forEach((i, k) => setTimeout(() => sfx('land', k), k * 50 + 110)));
+  evs.filter(e => e.t === 'chest' && e.reroll).forEach(e => e.reroll.slice().sort((a, b) => a - b).forEach((i, k) => setTimeout(() => sfx('land', k), k * 50 + 205)));
   U.endArmed = false;
   awardXp(evs);
   { let ld = null; evs.forEach(e => { if (e.die != null && e.t !== 'knock' && e.t !== 'lag' && e.t !== 'lock') ld = e.die; if (e.t === 'clear' && e.card.kind === 'opp' && ld != null && S.dice[ld]) { S.mvp = S.mvp || {}; const o = S.dice[ld].owner; S.mvp[o] = (S.mvp[o] || 0) + 1; } }); }
@@ -3798,6 +3985,7 @@ function afterAction(pre) {
   if (hb && !RM()) { U.holdBars = (U.holdBars || 0) + hb; setTimeout(() => { U.holdBars = Math.max(0, (U.holdBars || 0) - hb); xpHud(); }, 2400); }
   renderGame(); U.dying = null;
   const d = playEvents(evs, pre);
+  try { questCheck(); } catch (e) {}
   rollFlair(evs); U.lastInput = performance.now();
   { const nb = S.board.filter(c => c.kind === 'opp').length; if (!S.over && U.opp > 1 && nb === 1 && !S.deck.length && !RM()) setTimeout(() => { if (S && !S.over) { banner('LAST ENEMY', 'Clear the POI!', ''); sfx('ping'); buzz([15, 25, 15]); } }, d + 150); }
   if (U.xpBoost) { const b = U.xpBoost; U.xpBoost = 0; setTimeout(() => { const r = rectOf('xp'); if (!r.w) return; fxAdd('fx-lvq xpboost', `left:${Math.max(96, Math.min(app.clientWidth - 96, r.x + r.w / 2))}px;top:${r.y + r.h + 16}px`, `⚡ XP BOOST <b>×${b}</b>`, 900); popEl('#xpbar', 'pulse'); sfx('sparkle'); }, 380); }
@@ -3944,7 +4132,7 @@ async function stormSequence() {
     }
     U.dangerUids = new Set();
   }
-  U.stormHit = null;
+  U.stormHit = null; try { questCheck(); } catch (e) {}
   if (!S.over) {
     pre = snapRects(); E.endTurnFinish(S); evs = S.ev.splice(0); renderGame();
     if (!S.over) logAdd(`Turn <b>${S.turn}</b>: roll your squad.`, 'info');
@@ -4076,6 +4264,7 @@ function mvpHTML() {
   return `<div class="end-mvp"><img src="${portrait(S.squad[best].img)}" alt=""><div><small>${ico('crown', 'cr')} SQUAD MVP</small><b>${esc(S.squad[best].name)}</b></div><span>${n} elim${n > 1 ? 's' : ''}</span></div>`;
 }
 function showEnd() {
+  try { questCheck(); } catch (e) {}
   showEndCore();
   const win = S.over === 'win', scr = $('#scr-end');
   if (RM() || !scr) return;
@@ -4182,9 +4371,18 @@ document.addEventListener('dblclick', e => e.preventDefault(), { passive: false 
 document.addEventListener('gesturestart', e => e.preventDefault());
 $('#sheetWrap .scrim').onclick = () => { if (performance.now() - (U.sheetAt || 0) > 380) closeSheet(); };
 $('#sheetWrap .sheet').addEventListener('click', () => { if (U.sheetTap && performance.now() - (U.sheetAt || 0) > 380) closeSheet(); });
+window.addEventListener('pointerdown', e => {
+  const t = e.target && e.target.closest ? e.target : null; if (!t) return;
+  if (t.closest('#rollBtn')) { buzz([14, 22, 12]); return; }
+  if (t.closest('#endBtn')) { buzz([10, 40, 22]); return; }
+  if (t.closest('#bUndo')) { buzz([6, 24, 6]); return; }
+  if (t.closest('.die[data-k="die"]')) { buzz(5); return; }
+  if (t.closest('.tg')) { buzz([8, 14, 8]); return; }
+  if (t.closest('.btn,.icon-btn,.dchip,.act')) { sfx('tap'); buzz(6); }
+}, true);
 applyLayout();
 renderTitle(); show('scr-title');
-window.__fd5 = { playEvents: (evs, pre) => playEvents(evs, pre), stormSequence: () => stormSequence(), placeOf: s => placeOf(s || S), fieldOf: s => fieldOf(s || S), TRIOS, render: () => renderGame(), afterAction: () => afterAction(), showEnd: () => showEnd(), score: c => threatScore(c), locked: c => isLocked(c), cubes: (x, y) => cubes({ x, y }), xpInfo, ensureVis: el => ensureVis(el, false), get S() { return S; }, get busy() { return U.busy; }, get U() { return U; } };
+window.__fd5 = { medal, hitstop, questCheck, qGet, lightning, muzzle, critFX, lbeam, shieldPop, letterbox, playEvents: (evs, pre) => playEvents(evs, pre), stormSequence: () => stormSequence(), placeOf: s => placeOf(s || S), fieldOf: s => fieldOf(s || S), TRIOS, render: () => renderGame(), afterAction: () => afterAction(), showEnd: () => showEnd(), score: c => threatScore(c), locked: c => isLocked(c), cubes: (x, y) => cubes({ x, y }), xpInfo, ensureVis: el => ensureVis(el, false), get S() { return S; }, get busy() { return U.busy; }, get U() { return U; } };
 })();
 </script>
 
