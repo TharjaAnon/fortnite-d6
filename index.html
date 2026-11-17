@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Fortnite D6">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>Fortnite: Zero Build D6 · v8.5</title>
+<title>Fortnite: Zero Build D6 · v8.7</title>
 <style>:root{
   --bg0:#0b0820;--bg1:#151036;--bg2:#1f1850;--line:rgba(255,255,255,.10);--txt:#f4f2ff;--mut:#a9a3cf;
   --c1:#f5b301;--c2:#a855f7;--c3:#38bdf8;--c4:#f1f5f9;--c5:#22c55e;--c6:#94a3b8;--red:#ef4444;--gold:#fde047;
@@ -1679,7 +1679,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 /* ===== v8.3 feel pass ===== */
 #stormVig{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .8s;background:radial-gradient(120% 90% at 50% 50%,transparent 52%,rgba(126,34,206,.55) 100%)}
 #scr-game.stormwarn #stormVig{opacity:.55}
-#scr-game.stormon #stormVig{opacity:1;animation:stormPulse 2.4s ease-in-out infinite}
+#scr-game.stormon #stormVig{opacity:1}
 @keyframes stormPulse{50%{opacity:.62}}
 .endcine{position:absolute;inset:0;z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 45%,rgba(30,14,84,.96),rgba(5,3,15,.99));animation:ecIn .22s ease-out;cursor:pointer;overflow:hidden}
 .endcine::after{content:'';position:absolute;inset:0;background:#fff;pointer-events:none;animation:ecFlash .55s ease-out forwards}
@@ -1705,7 +1705,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 
 /* ===== v8.4 ===== */
 .die.tumble{animation:toss .36s var(--td,0ms) cubic-bezier(.25,.9,.35,1.12) both}
-@keyframes toss{0%{transform:translateY(54px) rotate(-280deg) scale(.35);opacity:0;filter:brightness(2.2)}55%{transform:translateY(-18px) rotate(16deg) scale(1.24);opacity:1;filter:brightness(1.5)}78%{transform:translateY(3px) rotate(-5deg) scale(.95);filter:none}100%{transform:none;filter:none}}
+@keyframes toss{0%{transform:translateY(54px) rotate(-280deg) scale(.35);opacity:0}55%{transform:translateY(-18px) rotate(16deg) scale(1.24);opacity:1}78%{transform:translateY(3px) rotate(-5deg) scale(.95)}100%{transform:none}}
 #medals{position:absolute;right:6px;bottom:calc(var(--sab) + 44%);z-index:141;display:flex;flex-direction:column;align-items:flex-end;gap:4px;pointer-events:none;width:230px}
 .medal{display:flex;align-items:center;gap:7px;padding:5px 11px 5px 7px;background:linear-gradient(90deg,rgba(8,10,30,.2),rgba(8,10,30,.9) 25%);border-right:4px solid var(--mc);transform:skewX(-9deg);animation:mIn .28s cubic-bezier(.2,1.3,.4,1) both;box-shadow:0 0 16px -4px var(--mc)}
 .medal.out{animation:mOut .3s ease-in forwards}
@@ -1723,7 +1723,6 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 @keyframes crewFloat{50%{translate:0 -9px}}
 #scr-title .logo .l2{animation:logoPulse 2.4s ease-in-out infinite}
 @keyframes logoPulse{50%{transform:scale(1.045)}}
-#tPlay{animation:btnPulse2 1.5s ease-in-out infinite}
 .qcard{position:relative;background:rgba(8,12,34,.74);border:1px solid var(--line);border-radius:14px;padding:6px 8px;display:flex;flex-direction:column;gap:4px}
 .qh{display:flex;justify-content:space-between;font-family:var(--hdr);font-style:italic;font-size:12px;letter-spacing:1px;color:#a5b4fc;padding:0 2px}
 .qr{position:relative;display:flex;align-items:center;gap:6px;padding:4px 8px;border-radius:8px;background:rgba(255,255,255,.07);overflow:hidden;font-size:12px;font-weight:800}
@@ -1734,33 +1733,23 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 @media (max-height:760px){.qr{padding:2px 8px}.qcard{gap:2px}}
 
 @media (prefers-reduced-motion:reduce){#scr-title .crew img,#scr-title .logo .l2,#tPlay{animation:none}}
-/* ===== v8.5 Fortnite look ===== */
-@property --zr{syntax:'<number>';inherits:false;initial-value:92}
-.poiart{position:relative;border-radius:50%!important;overflow:hidden;border:2.5px solid #fff!important;box-shadow:0 0 0 2px #1a1440,0 0 14px rgba(168,85,247,.6)!important;transition:--zr .9s ease-out}
+/* ===== v8.6 Fortnite look ===== */
+.poiart{position:relative;border-radius:50%!important;overflow:hidden;border:2.5px solid #fff!important;box-shadow:0 0 0 2px #1a1440,0 0 14px rgba(168,85,247,.6)!important}
 .poiart::after{content:'';position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle closest-side at 50% 50%,transparent calc(var(--zr)*1%),#fff calc(var(--zr)*1%),#fff calc(var(--zr)*1% + 3%),rgba(126,34,206,.7) calc(var(--zr)*1% + 3%))}
-.poiart::before{content:'';position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff;z-index:2;animation:mapDot 1.2s ease-in-out infinite}
-@keyframes mapDot{50%{transform:scale(1.7);opacity:.6}}
-.hchip{transform:skewX(-9deg);border-radius:6px;border-color:rgba(253,224,71,.55);background:linear-gradient(180deg,rgba(10,16,60,.92),rgba(5,8,32,.95))}
-.hchip>*{transform:skewX(9deg)}
-.elchip{transform:skewX(-9deg);border-radius:6px;border-color:rgba(248,113,113,.6)}.elchip>*{transform:skewX(9deg)}
+.poiart::before{content:'';position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff;z-index:2}
+.hchip{border-radius:7px;border-color:rgba(253,224,71,.55)}
+.elchip{border-radius:7px;border-color:rgba(248,113,113,.6)}.elchip.heat{border-color:#fb923c;box-shadow:0 0 12px rgba(251,146,60,.8);background:rgba(60,20,4,.85)}.elchip.heat2{border-color:#fde047;box-shadow:0 0 16px rgba(253,224,71,.95)}
 #squad{counter-reset:slot}
 #squad .die{border-radius:9px;box-shadow:inset 0 -6px 0 rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.6),0 3px 0 rgba(0,0,0,.45)}
 #squad .die:not(.blocked)::before{content:counter(slot);counter-increment:slot;position:absolute;left:5px;top:2px;font:900 11px/1 var(--hdr);font-style:italic;color:#fff;text-shadow:0 1px 0 #000,0 0 4px #000;z-index:2;pointer-events:none}
 #squad .die.f4:not(.blocked)::before{color:#334155;text-shadow:none}
-#squad .die.live::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.6) 50%,transparent 62%);background-size:260% 100%;animation:sheen 2.2s linear infinite;pointer-events:none}
-@keyframes sheen{from{background-position:160% 0}to{background-position:-60% 0}}
 #squad .die.sel{box-shadow:0 0 0 3px #fde047,0 0 24px rgba(253,224,71,.85),0 8px 0 rgba(0,0,0,.35)}
 .ret{position:absolute;inset:3px;pointer-events:none;z-index:4;animation:retPulse .7s ease-in-out infinite alternate}
-.ret b{position:absolute;width:15px;height:15px;border:3px solid #fde047;filter:drop-shadow(0 0 4px #fde047)}
+.ret b{position:absolute;width:15px;height:15px;border:3px solid #fde047;box-shadow:0 0 5px #fde047}
 .ret b:nth-child(1){left:0;top:0;border-right:0;border-bottom:0}.ret b:nth-child(2){right:0;top:0;border-left:0;border-bottom:0}.ret b:nth-child(3){left:0;bottom:0;border-right:0;border-top:0}.ret b:nth-child(4){right:0;bottom:0;border-left:0;border-top:0}
-@keyframes retPulse{from{transform:scale(1.04);opacity:.75}to{transform:scale(.97);opacity:1}}
-#stormVig::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(233,213,255,.9) 0 1.4px,transparent 2px),radial-gradient(circle,rgba(192,132,252,.8) 0 1.8px,transparent 2.5px);background-size:84px 120px,131px 170px;background-position:0 0,40px 60px;animation:motes 7s linear infinite}
-@keyframes motes{to{background-position:0 -480px,40px -340px}}
-#scr-game.stormon #stormVig{animation:stormPulse 2.4s ease-in-out infinite,stormFlash 7s linear infinite}
-@keyframes stormFlash{0%,90%,100%{filter:none}92%{filter:brightness(2.4)}94%{filter:none}96%{filter:brightness(1.8)}}
-/* ===== v8.5 effects ===== */
+@keyframes retPulse{from{opacity:.65}to{opacity:1}}
+/* ===== v8.6 effects ===== */
 .fx-bolt{position:absolute;inset:0;pointer-events:none;animation:boltFlick .46s steps(1) both}
-.fx-bolt svg{filter:drop-shadow(0 0 12px #c084fc)}
 @keyframes boltFlick{0%{opacity:1}14%{opacity:.1}28%{opacity:1}46%{opacity:.5}64%{opacity:.9}100%{opacity:0}}
 .fx-muzzle{position:absolute;width:0;height:0;pointer-events:none;z-index:3}
 .fx-muzzle b{position:absolute;left:-30px;top:-30px;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,#fff 0,#fde047 28%,rgba(251,146,60,.6) 52%,transparent 70%);animation:mzB .23s ease-out forwards}
@@ -1773,7 +1762,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 .fx-crit{position:absolute;transform:translate(-50%,0);font-family:var(--hdr);font-style:italic;font-weight:900;font-size:26px;letter-spacing:1px;color:#fde047;-webkit-text-stroke:2px #3b1d00;text-shadow:0 4px 0 #3b1d00,0 0 18px rgba(253,224,71,.8);pointer-events:none;animation:critPop .85s cubic-bezier(.2,1.4,.4,1) forwards}
 @keyframes critPop{0%{transform:translate(-50%,10px) scale(.3) rotate(-8deg);opacity:0}25%{transform:translate(-50%,0) scale(1.25) rotate(3deg);opacity:1}100%{transform:translate(-50%,-26px) scale(1) rotate(0);opacity:0}}
 .fx-lbeam{position:absolute;width:0;height:0;pointer-events:none;z-index:2}
-.fx-lbeam i{position:absolute;left:-17px;bottom:0;width:34px;height:380px;background:linear-gradient(0deg,var(--lc),rgba(255,255,255,0));filter:blur(2px);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(0deg,#000 30%,transparent);mask-image:linear-gradient(0deg,#000 30%,transparent);animation:lbeam 1.2s ease-out forwards}
+.fx-lbeam i{position:absolute;left:-17px;bottom:0;width:34px;height:380px;background:linear-gradient(0deg,var(--lc),transparent 85%);transform-origin:50% 100%;will-change:transform,opacity;animation:lbeam 1.2s ease-out forwards}
 .fx-lbeam b{position:absolute;left:-38px;bottom:-9px;width:76px;height:18px;border-radius:50%;background:radial-gradient(var(--lc),transparent 70%);animation:lbase 1.2s ease-out forwards}
 @keyframes lbeam{0%{transform:scaleY(0);opacity:1}22%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1.05) scaleX(.3);opacity:0}}
 @keyframes lbase{0%{transform:scale(.3);opacity:1}100%{transform:scale(1.6);opacity:0}}
@@ -1786,7 +1775,86 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 .fx-letter i:first-child{top:0}.fx-letter i:last-child{bottom:0;animation-name:lboxB}
 @keyframes lbox{0%{transform:translateY(-100%)}22%,70%{transform:none}100%{transform:translateY(-100%)}}
 @keyframes lboxB{0%{transform:translateY(100%)}22%,70%{transform:none}100%{transform:translateY(100%)}}
-@media (prefers-reduced-motion:reduce){.ret,.poiart::before,#squad .die.live::after,#stormVig::after{animation:none!important}}
+@media (prefers-reduced-motion:reduce){.ret,#stormVig i{animation:none!important}}
+#fx.hs *{animation-play-state:paused!important}
+#stormVig i{position:absolute;top:100%;width:3px;height:3px;border-radius:50%;background:#e9d5ff;opacity:.85;animation:moteUp 6s linear infinite;animation-play-state:paused;will-change:transform}
+#scr-game.stormwarn #stormVig i,#scr-game.stormon #stormVig i{animation-play-state:running}
+#stormVig i:nth-child(1){left:9%;animation-duration:5.2s}#stormVig i:nth-child(2){left:27%;animation-duration:7s;animation-delay:-2s}#stormVig i:nth-child(3){left:46%;animation-duration:6s;animation-delay:-4s}#stormVig i:nth-child(4){left:63%;animation-duration:7.5s;animation-delay:-1s}#stormVig i:nth-child(5){left:79%;animation-duration:5.6s;animation-delay:-3s}#stormVig i:nth-child(6){left:92%;animation-duration:6.6s;animation-delay:-5s}
+@keyframes moteUp{to{transform:translateY(-105vh)}}
+.fx-word{position:absolute;white-space:nowrap;font-family:var(--hdr);font-style:italic;font-weight:900;font-size:23px;color:var(--wc);-webkit-text-stroke:1.5px #0b0b1a;text-shadow:0 3px 0 #0b0b1a;pointer-events:none;animation:wordPop .95s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes wordPop{0%{transform:translate(-50%,8px) rotate(var(--wr)) scale(.2);opacity:0}22%{transform:translate(-50%,0) rotate(var(--wr)) scale(1.3);opacity:1}100%{transform:translate(-50%,-34px) rotate(var(--wr)) scale(1);opacity:0}}
+.drop{position:absolute;top:53%;z-index:142;width:84px;margin-left:-42px;text-align:center;touch-action:manipulation;cursor:pointer;animation:dropFall 1.25s cubic-bezier(.25,.7,.35,1) forwards}
+@keyframes dropFall{0%{transform:translateY(-72vh) rotate(-7deg)}55%{transform:translateY(-6vh) rotate(6deg)}100%{transform:translateY(0) rotate(0)}}
+.drop .chute{display:block;width:70px;height:36px;margin:0 auto -6px;border-radius:70px 70px 6px 6px;background:linear-gradient(90deg,#f97316 0 25%,#fff 25% 50%,#f97316 50% 75%,#fff 75%);border:2px solid #7c2d12;transition:transform .3s,opacity .3s}
+.drop.landed .chute{transform:translateY(24px) scaleY(.15);opacity:0}
+.drop b{display:block;font-size:40px;line-height:1.1;text-shadow:0 0 18px #38bdf8}
+.drop.llama b{text-shadow:0 0 20px #f472b6}
+.drop span{display:inline-block;margin-top:2px;padding:3px 9px;border-radius:999px;background:#0b1030;border:1.5px solid #fde047;color:#fde047;font:900 11px/1.2 var(--hdr);font-style:italic;letter-spacing:.5px;animation:ecBlink 1s infinite}
+.drop.landed{animation:dropBob .8s ease-in-out infinite alternate}
+@keyframes dropBob{to{transform:translateY(-5px)}}
+.drop.hit{animation:dropHit .2s ease-out!important}
+@keyframes dropHit{0%{transform:scale(1.18) rotate(-9deg)}50%{transform:scale(.92) rotate(7deg)}100%{transform:none}}
+.drop.open{animation:dropOpen .45s ease-out forwards!important;pointer-events:none}
+@keyframes dropOpen{0%{transform:scale(1)}35%{transform:scale(1.5)}100%{transform:scale(2.2);opacity:0}}
+
+/* ===== v8.7 Fortnite buttons (slanted, yellow confirm / blue close) ===== */
+.btn,.act{position:relative;isolation:isolate;background:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;font-family:var(--hdr)!important;font-weight:900;font-style:normal;text-transform:uppercase;letter-spacing:.5px;color:#fff;text-shadow:0 2px 0 rgba(4,22,84,.55)}
+.btn::before,.act::before{content:'';position:absolute;inset:0;z-index:-1;transform:skewX(-9deg);border-radius:5px;border:2.5px solid #0b3a9e;
+  background:repeating-linear-gradient(118deg,rgba(255,255,255,.075) 0 1px,transparent 1px 4px),repeating-linear-gradient(118deg,rgba(0,0,40,.07) 0 2px,transparent 2px 9px),linear-gradient(180deg,#3b82ff 0%,#1a5fe0 52%,#1449c2 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.38),inset 0 -4px 0 rgba(4,24,90,.35),0 4px 0 #082b72,0 8px 16px rgba(0,0,0,.35)}
+.btn.pri,.act.roll,.act.end.armed{color:#0e1433;text-shadow:0 1px 0 rgba(255,255,255,.35)}
+.btn.pri::before,.act.roll::before,.act.end.armed::before{border-color:#c9a80c;
+  background:repeating-linear-gradient(118deg,rgba(255,255,255,.16) 0 1px,transparent 1px 4px),repeating-linear-gradient(118deg,rgba(110,80,0,.07) 0 2px,transparent 2px 8px),linear-gradient(180deg,#fff27a 0%,#f5e03a 48%,#e4c51e 100%);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.65),inset 0 -4px 0 rgba(150,110,0,.28),0 4px 0 #8a6c00,0 8px 16px rgba(0,0,0,.35)}
+.btn.danger::before{border-color:#7a0f1b;background:repeating-linear-gradient(118deg,rgba(255,255,255,.08) 0 1px,transparent 1px 4px),linear-gradient(180deg,#ff6b6b,#d21f33 55%,#a3121f);box-shadow:inset 0 2px 0 rgba(255,255,255,.35),0 4px 0 #5e0a13,0 8px 16px rgba(0,0,0,.35)}
+.btn.danger{color:#fff}
+.btn:active::before,.act:active::before{box-shadow:inset 0 2px 0 rgba(255,255,255,.3),0 1px 0 rgba(0,0,0,.5)}
+.btn:active,.act:active{transform:translateY(3px) scale(.97)!important}
+.btn[disabled],.act[disabled]{filter:grayscale(.85) brightness(.55)}
+.act .col span{font-size:22px;letter-spacing:.6px}
+.act .col small{font-family:var(--hdr);text-transform:uppercase;letter-spacing:.3px;font-size:9.5px;font-weight:800}
+.act.roll .ic,.act.end.armed .ic{color:#0e1433}
+.btn{padding:0 20px}
+.title-actions .btn.pri,.btn.pri.h{font-size:26px;letter-spacing:1px}
+/* ===== v8.7 overflow ===== */
+.card.ovft{animation:ovfGlow .7s ease-in-out infinite alternate}
+@keyframes ovfGlow{from{box-shadow:0 0 0 2px #fde047,0 0 10px rgba(253,224,71,.5)}to{box-shadow:0 0 0 3px #fde047,0 0 24px rgba(253,224,71,.95)}}
+.ovfp{display:inline-block;padding:0 6px;margin-right:3px;background:#fde047;color:#0e1433!important;transform:skewX(-9deg);font-family:var(--hdr)}
+#ovfChip{position:absolute;left:50%;top:2px;z-index:25;display:none;transform:translateX(-50%) skewX(-9deg);padding:3px 12px 4px;text-align:center;background:linear-gradient(180deg,#fff27a,#f5e03a 50%,#e4c51e);border:2px solid #c9a80c;border-radius:4px;color:#0e1433;box-shadow:0 3px 0 #8a6c00,0 0 18px rgba(253,224,71,.7);pointer-events:none;white-space:nowrap}
+#ovfChip.on{display:block;animation:ovfIn .35s cubic-bezier(.2,1.5,.4,1)}
+#ovfChip b{display:block;font:900 16px/1.05 var(--hdr);letter-spacing:.6px}
+#ovfChip small{display:block;font:800 9px/1.1 var(--hdr);text-transform:uppercase;opacity:.8}
+@keyframes ovfIn{from{transform:translateX(-50%) skewX(-9deg) scale(.4);opacity:0}to{transform:translateX(-50%) skewX(-9deg) scale(1);opacity:1}}
+.thrpanel{position:relative}
+.fx-ovf{position:absolute;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;font-family:var(--hdr);font-weight:900;font-style:italic;font-size:22px;letter-spacing:.5px;color:#fde047;-webkit-text-stroke:1.5px #3b1d00;text-shadow:0 3px 0 #3b1d00,0 0 16px rgba(253,224,71,.8);animation:ovfPop 1.15s cubic-bezier(.2,1.4,.4,1) forwards}
+@keyframes ovfPop{0%{transform:translate(-50%,-30%) scale(.3) rotate(-6deg);opacity:0}20%{transform:translate(-50%,-50%) scale(1.25) rotate(-3deg);opacity:1}75%{opacity:1}100%{transform:translate(-50%,-140%) scale(1) rotate(-3deg);opacity:0}}
+/* ===== v8.7 last life ===== */
+.dtag.rtag{background:#fde047;color:#16204f;box-shadow:0 0 10px rgba(253,224,71,.85);top:auto;bottom:4px;transform:translate(-50%,0) rotate(-6deg);font-size:9px}
+.card.opp.restored .pt{box-shadow:inset 0 0 0 2px #fde047}
+/* ===== v8.7 downed ally icon (cross inside an oval) ===== */
+.member .frame .ico.dnx{position:absolute;left:50%;top:24%;width:46px;height:46px;margin-left:-23px;z-index:3;color:#ff4d5e;filter:drop-shadow(0 0 2px #000) drop-shadow(0 0 10px rgba(255,61,85,.8));animation:dnxP 1s ease-in-out infinite alternate}
+@keyframes dnxP{from{transform:scale(.94)}to{transform:scale(1.06)}}
+#app .member.down .frame::after{top:56%;font-size:14px}
+#app .member.down .hpb::before{content:'';display:inline-block;width:12px;height:12px;background-color:#ff4d5e;text-shadow:none;-webkit-mask:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIyLjMyNDcyaW4iIGhlaWdodD0iMi4zMzAwN2luIiB2ZXJzaW9uPSIxLjEiIHN0eWxlPSJzaGFwZS1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uOyB0ZXh0LXJlbmRlcmluZzpnZW9tZXRyaWNQcmVjaXNpb247IGltYWdlLXJlbmRlcmluZzpvcHRpbWl6ZVF1YWxpdHk7IGZpbGwtcnVsZTpldmVub2RkOyBjbGlwLXJ1bGU6ZXZlbm9kZCIgdmlld0JveD0iMCAwIDIzMjMuNzcgMjMyOS4xMiIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnhvZG09Imh0dHA6Ly93d3cuY29yZWwuY29tL2NvcmVsZHJhdy9vZG0vMjAwMyI+IDxkZWZzPiA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPiA8IVtDREFUQVsgLmZpbDAge2ZpbGw6IzM3MzQzNX0gXV0+IDwvc3R5bGU+IDwvZGVmcz4gPGcgaWQ9IkxheWVyX3gwMDIwXzEiPiA8cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTkwNS43MiAxOTYxLjc1bC0xMzkuNTQgMzY3LjM3IDUzOS44NyAtMzUwLjcxYzU3My42NiwtNjAuNjggMTAxNy43MiwtNDc4LjcgMTAxNy43MiwtOTg1LjQgMCwtNTQ4LjQyIC01MjAuMiwtOTkzLjAxIC0xMTYxLjg5LC05OTMuMDEgLTY0MS42OSwwIC0xMTYxLjg4LDQ0NC41OSAtMTE2MS44OCw5OTMuMDEgMCw0NzMuMTkgMzg3LjI5LDg2OS4wMyA5MDUuNzIsOTY4Ljc0em0yNTYuMDMgLTE3MzAuODhjNDkzLjM5LDAgODkzLjM3LDM0MS4xNCA4OTMuMzcsNzYxLjk2IDAsNDIwLjgyIC0zOTkuOTgsNzYxLjk2IC04OTMuMzcsNzYxLjk2IC00OTMuMzksMCAtODkzLjM3LC0zNDEuMTQgLTg5My4zNywtNzYxLjk2IDAsLTQyMC44MiAzOTkuOTgsLTc2MS45NiA4OTMuMzcsLTc2MS45NnptLTM5NS4wNCA2MDMuMjRsMjMxLjg2IDAgMCAtMjMxLjg1IDMxNy42OSAwIDAgMjMxLjg1IDIzMS44NSAwIDAgMzE3LjY5IC0yMzEuODUgMCAwIDIzMS44NiAtMzE3LjY5IDAgMCAtMjMxLjg2IC0yMzEuODYgMCAwIC0zMTcuNjl6Ii8+IDwvZz4gPC9zdmc+) center/contain no-repeat;mask:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIyLjMyNDcyaW4iIGhlaWdodD0iMi4zMzAwN2luIiB2ZXJzaW9uPSIxLjEiIHN0eWxlPSJzaGFwZS1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uOyB0ZXh0LXJlbmRlcmluZzpnZW9tZXRyaWNQcmVjaXNpb247IGltYWdlLXJlbmRlcmluZzpvcHRpbWl6ZVF1YWxpdHk7IGZpbGwtcnVsZTpldmVub2RkOyBjbGlwLXJ1bGU6ZXZlbm9kZCIgdmlld0JveD0iMCAwIDIzMjMuNzcgMjMyOS4xMiIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnhvZG09Imh0dHA6Ly93d3cuY29yZWwuY29tL2NvcmVsZHJhdy9vZG0vMjAwMyI+IDxkZWZzPiA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPiA8IVtDREFUQVsgLmZpbDAge2ZpbGw6IzM3MzQzNX0gXV0+IDwvc3R5bGU+IDwvZGVmcz4gPGcgaWQ9IkxheWVyX3gwMDIwXzEiPiA8cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTkwNS43MiAxOTYxLjc1bC0xMzkuNTQgMzY3LjM3IDUzOS44NyAtMzUwLjcxYzU3My42NiwtNjAuNjggMTAxNy43MiwtNDc4LjcgMTAxNy43MiwtOTg1LjQgMCwtNTQ4LjQyIC01MjAuMiwtOTkzLjAxIC0xMTYxLjg5LC05OTMuMDEgLTY0MS42OSwwIC0xMTYxLjg4LDQ0NC41OSAtMTE2MS44OCw5OTMuMDEgMCw0NzMuMTkgMzg3LjI5LDg2OS4wMyA5MDUuNzIsOTY4Ljc0em0yNTYuMDMgLTE3MzAuODhjNDkzLjM5LDAgODkzLjM3LDM0MS4xNCA4OTMuMzcsNzYxLjk2IDAsNDIwLjgyIC0zOTkuOTgsNzYxLjk2IC04OTMuMzcsNzYxLjk2IC00OTMuMzksMCAtODkzLjM3LC0zNDEuMTQgLTg5My4zNywtNzYxLjk2IDAsLTQyMC44MiAzOTkuOTgsLTc2MS45NiA4OTMuMzcsLTc2MS45NnptLTM5NS4wNCA2MDMuMjRsMjMxLjg2IDAgMCAtMjMxLjg1IDMxNy42OSAwIDAgMjMxLjg1IDIzMS44NSAwIDAgMzE3LjY5IC0yMzEuODUgMCAwIDIzMS44NiAtMzE3LjY5IDAgMCAtMjMxLjg2IC0yMzEuODYgMCAwIC0zMTcuNjl6Ii8+IDwvZz4gPC9zdmc+) center/contain no-repeat}
+/* ===== v8.7 Storm in play ===== */
+#stormFx{position:absolute;inset:0;z-index:30;pointer-events:none;opacity:0;transition:opacity 1s;overflow:hidden}
+#scr-game.stormcd #stormFx{opacity:var(--scd,.15)}
+#scr-game.stormon #stormFx{opacity:1}
+#stormFx i{position:absolute;display:block}
+#stormFx .sv{inset:0;box-shadow:inset 0 0 70px 22px rgba(126,34,206,.62),inset 0 0 16px 3px rgba(192,132,252,.6);animation:zvPulse 2.4s ease-in-out infinite;animation-play-state:paused;will-change:opacity}
+#stormFx .hz{inset:-25%;background:radial-gradient(38% 26% at 25% 35%,rgba(168,85,247,.2),transparent 70%),radial-gradient(34% 24% at 75% 70%,rgba(147,51,234,.18),transparent 70%),radial-gradient(30% 22% at 60% 15%,rgba(216,180,254,.12),transparent 70%);animation:zhDrift 16s ease-in-out infinite alternate;animation-play-state:paused;will-change:transform}
+#stormFx .lt{inset:0;opacity:0;background:radial-gradient(90% 45% at 65% -5%,rgba(237,220,255,.55),rgba(168,85,247,.18) 45%,transparent 75%);animation:zlFlick 7.5s linear infinite;animation-play-state:paused}
+#scr-game.stormcd #stormFx i,#scr-game.stormon #stormFx i{animation-play-state:running}
+#scr-game.stormcd #stormFx .lt{display:none}
+@keyframes zvPulse{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes zhDrift{from{transform:translate3d(-4%,2%,0) scale(1)}to{transform:translate3d(4%,-3%,0) scale(1.08)}}
+@keyframes zlFlick{0%,60%{opacity:0}61%{opacity:.9}62%{opacity:.15}63.5%{opacity:.75}66%{opacity:0}88%{opacity:0}88.6%{opacity:.5}90%,100%{opacity:0}}
+#scr-game.stormon .thrpanel{border-color:rgba(192,132,252,.9)!important;box-shadow:0 0 0 1px rgba(168,85,247,.55),0 0 22px rgba(147,51,234,.6)!important}
+#scr-game.stormon .lanewrap::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:3;border-radius:inherit;background:linear-gradient(180deg,rgba(126,34,206,.16),rgba(88,28,135,.1));box-shadow:inset 0 0 30px rgba(147,51,234,.5)}
+.fx-zflash{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 38%,rgba(237,220,255,.55),rgba(147,51,234,.45) 55%,rgba(59,7,100,.55));animation:zFlash .65s ease-out forwards}
+@keyframes zFlash{0%{opacity:0}12%{opacity:1}30%{opacity:.35}42%{opacity:.8}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){#stormFx i,.card.ovft,.member .frame .ico.dnx,#ovfChip.on{animation:none!important}.fx-zflash{animation-duration:.2s}}
+
 </style>
 </head><body>
 <div id="app" class="compact">
@@ -1819,7 +1887,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   const CFG = {
     memberHp: 4, shieldMax: 4, reviveHp: 2,
     deckOpp: 12, deckHaz: 5, startBoard: 2,
-    /* v6.6 trios + POI rounds · v7.1: one enemy per turn, no board trio cap */ infight: 0.45, oppReviveHp: 1, reviveTurns: 2, stormMax: 1, stormGrow: 3, stormDelay: 3,
+    /* v6.6 trios + POI rounds · v7.1: one enemy per turn, no board trio cap */ infight: 0.45, oppReviveHp: 1, reviveTurns: 3, stormMax: 1, stormGrow: 3, stormDelay: 3,
     /* v6.7 off-POI lobby feed */ lobbyChance: 0.85, lobbyIdle: 0.2, lobbyBurstMax: 3, lobbyTurnCap: 0.85,
     /* v6.8 V-Bucks economy */ vbElim: 100, vbWipe: 200, vbChest: 100, vbChestChance: 0.25,
     /* v6.8 elite */ eliteVb: 900, eliteBars: 500,
@@ -2059,7 +2127,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     dmg: { name: 'DAMAGE', desc: 'Hits your squad (shields first, unless it pierces). With 2+ squads on the board it may shoot a rival squad instead.' },
     heal: { name: 'HEAL', desc: 'Recovers 1 HP on herself first if she is hurt; otherwise on one hurt teammate on the board. Nothing if nobody is hurt.' },
     cover: { name: 'COVER', desc: 'Adds one ??? cover slot (max 3 unfilled). While any ??? slot is unfilled she can\u2019t be damaged. You fill it with a die face.' },
-    revive: { name: 'REVIVE', desc: 'Instantly picks up a downed teammate on the board at 1 HP. Nothing if no teammate is downed.' },
+    revive: { name: 'REVIVE', desc: 'Instantly picks up a downed teammate on the board at 1 HP. That uses up her one get-up: her next down eliminates her. Nothing if no teammate is downed.' },
     push: { name: 'PUSH', desc: 'Only works while she has a ??? slot: removes one and gives her +1 damage (stacks up to +2, lasts while she is on the board). With no ??? slot it does nothing.' },
     knock: { name: 'KNOCK', desc: 'Knocks out 1 of your dice (it can\u2019t roll until a Reboot frees it). Deals no damage.' },
     retreat: { name: 'RETREAT', desc: 'Leaves the board and goes to the back of this POI\u2019s queue (keeps her HP, cover and Push bonus). The Storm waits for her. Can\u2019t retreat once the Storm is in.' }
@@ -2113,7 +2181,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
         const ok = [1, 3, 4, 5].filter(f => !blocked(s, f)), pool = ok.length ? ok : [1, 3, 4, 5], face = pool[Math.floor(nextRand(s) * pool.length)];
         c.cov = c.cov.filter(x => !x.filled); c.cov.push({ need: [face], filled: 0 });
         s.ev.push({ t: 'ecover', uid: c.uid, face, n: c.cov.length }); break; }
-      case 'revive': { const t = oppTeam(s, c).find(o => o.down); t.down = 0; t.rev = 0; t.hp = CFG.oppReviveHp; s.ev.push({ t: 'erevive', uid: t.uid, by: c.uid }); break; }
+      case 'revive': { const t = oppTeam(s, c).find(o => o.down); t.down = 0; t.rev = 0; t.hp = CFG.oppReviveHp; t.restored = 1; s.ev.push({ t: 'erevive', uid: t.uid, by: c.uid }); break; }
       case 'push': { const i = c.cov.findIndex(x => !x.filled); c.cov.splice(i, 1); c.pb = (c.pb || 0) + 1; s.ev.push({ t: 'epush', uid: c.uid, pb: c.pb, exposed: coverDone(c) ? 1 : 0 }); break; }
       case 'knock': { s.activatedAny = true; s.ev.push({ t: 'act', uid: c.uid }); knockDice(s, 1, c); break; }
       case 'retreat': { const i = s.board.indexOf(c); s.board.splice(i, 1); c.evade = 0; c.ret = 1; s.deck.push(c); s.stormCd = null; s.ev.push({ t: 'eretreat', uid: c.uid, card: c }); break; }
@@ -2189,6 +2257,12 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   }
   /* v6.6 DBNO: enemy players at 0 HP are downed, not eliminated. by = attacking card (another trio) or null (your squad). */
   function downOpp(s, t, by) {
+    if (t.restored) { // v8.7: she already used her one get-up (self-restore or teammate revive) -> this down is final
+      s.ev.push({ t: 'efinal', uid: t.uid, by: by ? by.uid : null });
+      if (by) xElim(s, t, by); else clearCard(s, t, 'shot');
+      checkWipe(s, t.team, by);
+      return;
+    }
     t.hp = 1; t.down = 1; t.evade = 0; t.rev = CFG.reviveTurns; // v7.1: timer ticks at start of next END TURN (before the draw)
     if (!by) s.stats.knocks++;
     s.ev.push({ t: 'edown', uid: t.uid, by: by ? by.uid : null, byName: by ? by.name : null });
@@ -2270,7 +2344,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     if (hasEffect(s, 'lag') && ready.length > 1) { const skip = ready[ready.length - 1]; ready = ready.slice(0, -1); s.ev.push({ t: 'lag', die: skip.i }); }
     if (!ready.length) { s.over = 'loss'; s.overReason = 'pinned'; s.phase = 'over'; s.ev.push({ t: 'over' }); return true; }
     ready.forEach(d => { d.face = d6(s); d.st = 'rolled'; });
-    s.shots = 0; s.heals = 0; s.tookDmg = false; s.activatedAny = false; s.turnElims = 0; s.turnHp = 0; s.undo = [];
+    s.ovf = null; s.shots = 0; s.heals = 0; s.tookDmg = false; s.activatedAny = false; s.turnElims = 0; s.turnHp = 0; s.undo = [];
     const chests = ready.filter(d => d.face === F.CHEST).map(d => d.i);
     s.ev.push({ t: 'roll', dice: ready.map(d => d.i), chests });
     chests.forEach(i => { if (nextRand(s) < CFG.vbChestChance) { s.vbucks = (s.vbucks || 0) + CFG.vbChest; s.stats.vbucks = (s.stats.vbucks || 0) + CFG.vbChest; s.stats.chestVb = (s.stats.chestVb || 0) + CFG.vbChest; s.ev.push({ t: 'chestVb', die: i, amt: CFG.vbChest }); } }); // v6.8
@@ -2366,10 +2440,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
       case 'cover': c.cov[act.slot].filled = 1; s.ev.push({ t: 'cover', uid: c.uid, die: d.i, face });
         if (coverDone(c) && c.hp <= 0) clearCard(s, c, 'cover');
         break;
-      case 'shoot': { const amt = s.shots === 0 ? 1 : 2; s.shots++;
-        if (c.down) { s.ev.push({ t: 'shot', uid: c.uid, amt, die: d.i }); clearCard(s, c, 'shot'); break; }
-        c.hp = Math.max(0, c.hp - amt); s.ev.push({ t: 'shot', uid: c.uid, amt, die: d.i });
-        if (c.hp <= 0) { if (c.kind === 'opp' && !c.elite) downOpp(s, c, null); else clearCard(s, c, 'shot'); } break; }
+      case 'shoot': { const amt = s.shots === 0 ? 1 : 2; s.shots++; hitShot(s, c, amt, d.i, null); break; }
       case 'shield': s.shield = s.shieldMax; s.ev.push({ t: 'shield', die: d.i }); break;
       case 'evade': c.evade = 1; s.ev.push({ t: 'evade', uid: c.uid, die: d.i }); break;
       case 'heal': { const m = s.squad[act.member]; const before = m.hp; const amt = s.heals === 0 ? 1 : 2; s.heals++; m.hp = Math.min(m.max, m.hp + amt); s.ev.push({ t: 'heal', member: m.i, amt: m.hp - before, die: d.i }); break; }
@@ -2380,7 +2451,36 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     checkWin(s);
     return true;
   }
-  function pushUndo(s) { const st = s.undo || []; s.undo = []; const snap = snapshot(s); s.undo = st; st.push(snap); if (st.length > 12) st.shift(); }
+  /* v8.7 OVERFLOW: damage beyond the target's remaining HP (a downed enemy counts as 1 HP) carries to ANOTHER target.
+     Valid overflow targets = anything a Shoot could hit right now (downed enemies, or HP>0 with all cover filled; the Storm is immune).
+     0 valid targets: the leftover is lost. 1 valid target: it auto-applies. 2+: s.ovf waits for the player to tap one;
+     it is lost if they use another die, roll, or end the turn (pushUndo/endTurnBegin clear it), so the turn never blocks. Undo restores it. */
+  function ovfTargets(s, ex) { return s.board.filter(c => c.uid !== ex && !c.immune && (c.down || (c.hp > 0 && coverDone(c)))); }
+  function hitShot(s, c, amt, die, from, auto) {
+    const hp0 = c.down ? 1 : c.hp, ev = { t: 'shot', uid: c.uid, amt, die };
+    if (from != null) { ev.ovf = 1; ev.from = from; if (auto) ev.auto = 1; }
+    s.ev.push(ev);
+    if (c.down) clearCard(s, c, 'shot');
+    else { c.hp = Math.max(0, c.hp - amt); if (c.hp <= 0) { if (c.kind === 'opp' && !c.elite) downOpp(s, c, null); else clearCard(s, c, 'shot'); } }
+    const left = amt - hp0;
+    if (left <= 0) return;
+    const ts = ovfTargets(s, c.uid);
+    if (!ts.length) { s.ev.push({ t: 'ovfLost', amt: left, none: 1 }); return; }
+    s.stats.overflows = (s.stats.overflows || 0) + 1;
+    if (ts.length === 1) { s.ev.push({ t: 'ovf', amt: left, from: c.uid, auto: 1 }); hitShot(s, ts[0], left, die, c.uid, 1); return; }
+    s.ovf = { amt: left, from: c.uid, die };
+    s.ev.push({ t: 'ovf', amt: left, from: c.uid });
+  }
+  function overflow(s, uid) {
+    const o = s.ovf; if (!o || s.phase !== 'assign' || s.over) return false;
+    const c = ovfTargets(s, o.from).find(x => x.uid === uid); if (!c) return false;
+    pushUndo0(s); s.ovf = null;
+    hitShot(s, c, o.amt, o.die, o.from);
+    checkWin(s);
+    return true;
+  }
+  function pushUndo(s) { pushUndo0(s); if (s.ovf) { s.ev.push({ t: 'ovfLost', amt: s.ovf.amt }); s.ovf = null; } }
+  function pushUndo0(s) { const st = s.undo || []; s.undo = []; const snap = snapshot(s); s.undo = st; st.push(snap); if (st.length > 12) st.shift(); }
   function clearCard(s, c, how) {
     const idx = s.board.indexOf(c); if (idx < 0) return;
     if (c.kind === 'opp') rec(s, c.name, s._killer || (s.squad[0] && s.squad[0].name));
@@ -2443,7 +2543,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   // ---- storm phase (split into steps so the UI can animate each one) ----
   function endTurnBegin(s) {
     if (s.phase !== 'assign' || s.over) return false;
-    s.phase = 'storm'; s.undo = [];
+    s.phase = 'storm'; s.undo = []; if (s.ovf) { s.ev.push({ t: 'ovfLost', amt: s.ovf.amt }); s.ovf = null; }
     s.dice.forEach(d => { if (d.st === 'rolled' || d.st === 'used') { d.st = 'ready'; d.face = null; } });
     // streak bookkeeping
     if (s.turnElims > 0) { s.streak++; s.stats.longestStreak = Math.max(s.stats.longestStreak, s.streak); } else s.streak = 0;
@@ -2452,7 +2552,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
       if (c.kind !== 'opp' || !c.down || !s.board.includes(c)) return;
       if (c.rev > 0) c.rev--;
       if (c.rev > 0) return;
-      if (teamUp(s, c.team, c)) { c.down = 0; c.rev = 0; c.hp = CFG.oppReviveHp; s.ev.push({ t: 'erevive', uid: c.uid }); }
+      if (teamUp(s, c.team, c)) { c.down = 0; c.rev = 0; c.hp = CFG.oppReviveHp; c.restored = 1; s.ev.push({ t: 'erevive', uid: c.uid }); } // v8.7: marked restored, next down is final
       else { s._killer = s._killer || (s.squad[0] && s.squad[0].name); clearCard(s, c, 'bleed'); }
     });
     const c = s.poiClear ? null : drawCard(s);
@@ -2529,7 +2629,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     return { dmg, hits, pierce, hp: pierce + Math.max(0, dmg - pierce - s.shield) };
   }
 
-  const API = { F, FACE_INFO, CFG, OPPS, HAZ, COND_TEXT, newGame, roll, targetsFor, chestOptions, convertFaces, apply, undo, canUndo, endTurnBegin, stormRoll, stormRolls, activations, activate, endTurnFinish, endTurnAll, danger, cardText, ACT_INFO, ACT_ORDER, actsOn, previewActs, canAct, unfilledCov, canBuy, buy, rollableCount, coverDone, blocked, shieldsLocked, alive, hasEffect, teamsOnBoard, teamUp, checkWin, lobbyAlive, locked: lockedE, standings, aliveOpps: aliveOppsE, aliveTeams: oppTeamsAlive };
+  const API = { overflow, ovfTargets, F, FACE_INFO, CFG, OPPS, HAZ, COND_TEXT, newGame, roll, targetsFor, chestOptions, convertFaces, apply, undo, canUndo, endTurnBegin, stormRoll, stormRolls, activations, activate, endTurnFinish, endTurnAll, danger, cardText, ACT_INFO, ACT_ORDER, actsOn, previewActs, canAct, unfilledCov, canBuy, buy, rollableCount, coverDone, blocked, shieldsLocked, alive, hasEffect, teamsOnBoard, teamUp, checkWin, lobbyAlive, locked: lockedE, standings, aliveOpps: aliveOppsE, aliveTeams: oppTeamsAlive };
   if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.Engine = API;
 })(typeof window !== 'undefined' ? window : globalThis);
 </script>
@@ -2634,7 +2734,7 @@ function unlockAudio() {
 ['pointerdown', 'touchend', 'keydown'].forEach(ev => window.addEventListener(ev, unlockAudio, { capture: true, passive: true }));
 const ac = () => (AU.muted || !AU.ctx) ? null : AU.ctx;
 function tone(freq, dur, type = 'sine', vol = 0.2, when = 0, freqEnd = null) {
-  const c = ac(); if (!c) return;
+  const c = ac(); if (!c) return; const pv = AU.pv || 1; freq *= pv; if (freqEnd) freqEnd *= pv;
   try { const t = c.currentTime + when, o = c.createOscillator(), g = c.createGain(); o.type = type; o.frequency.setValueAtTime(freq, t); if (freqEnd) o.frequency.exponentialRampToValueAtTime(Math.max(20, freqEnd), t + dur); g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(vol, t + 0.008); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); o.connect(g); g.connect(AU.master); o.start(t); o.stop(t + dur + 0.02); } catch (e) {}
 }
 function noise(dur, vol = 0.2, when = 0, f0 = 2000, f1 = null, ft = 'lowpass') {
@@ -2667,14 +2767,34 @@ const SFX = {
   win: () => { [523, 659, 784, 1046, 784, 1046, 1318].forEach((f, i) => tone(f, 0.3, 'square', 0.08, i * 0.11)); tone(1568, 0.9, 'triangle', 0.14, 0.8); },
   lose: () => { [392, 349, 311, 262].forEach((f, i) => tone(f, 0.4, 'triangle', 0.14, i * 0.18)); }
 };
-const sfx = (n, a) => { try { SFX[n] && SFX[n](a); } catch (e) {} };
-const HAP = { el: null, ios: typeof navigator.vibrate !== 'function' && ('ontouchstart' in window || navigator.maxTouchPoints > 0) };
+const VARY = { hit: 1, shoot: 1, hitmark: 1, pip: 1, elimChime: 1, elim: 1, coin: 1, land: 1, medal: 1, crit: 1, thump: 1, chime: 1 };
+const sfx = (n, a) => { try { AU.pv = VARY[n] ? 0.93 + Math.random() * 0.14 : 1; SFX[n] && SFX[n](a); } catch (e) {} AU.pv = 1; };
+const HAP = { el: null, ios: typeof navigator.vibrate !== 'function' && ('ontouchstart' in window || navigator.maxTouchPoints > 0), next: 0, off: false, chk: 0 };
 function hapTick() { try { if (!HAP.el) { const l = document.createElement('label'); l.setAttribute('aria-hidden', 'true'); l.style.cssText = 'position:fixed;left:-40px;top:-40px;width:24px;height:24px;opacity:.01;pointer-events:none'; const i = document.createElement('input'); i.type = 'checkbox'; i.setAttribute('switch', ''); i.tabIndex = -1; l.appendChild(i); document.body.appendChild(l); HAP.el = l; } HAP.el.click(); } catch (e) {} }
-const buzz = p => { try { if (LS.get('fd5_nohaptic', false)) return; if (!HAP.ios) { if (navigator.vibrate) navigator.vibrate(p); return; } const a = Array.isArray(p) ? p : [p]; let t = 0; a.forEach((v, i) => { if (i % 2 === 0) { setTimeout(hapTick, t); if (v >= 60) setTimeout(hapTick, t + 45); } t += v; }); } catch (e) {} };
+function hapOff() { const n = performance.now(); if (n - HAP.chk > 1200) { HAP.chk = n; try { HAP.off = !!LS.get('fd5_nohaptic', false); } catch (e) { HAP.off = false; } } return HAP.off; }
+function hapFire(d) { try { if (HAP.ios) hapTick(); else if (navigator.vibrate) navigator.vibrate(d); } catch (e) {} }
+/* one haptic timeline: pulses never cancel each other (Android) or get dropped for firing too fast (iOS), and every pulse is snapped to a length a phone motor can actually render */
+const buzz = (p, prio = 1) => {
+  try {
+    if (hapOff() || (!HAP.ios && !navigator.vibrate)) return;
+    const a = Array.isArray(p) ? p : [p], now = performance.now(), gap = HAP.ios ? 52 : 22;
+    if (prio === 0 && HAP.next > now + 8) return;
+    if (HAP.next < now) HAP.next = now;
+    let t = 0;
+    for (let i = 0; i < a.length; i += 2) {
+      const d0 = a[i] || 0, off = a[i + 1] || 0; if (d0 <= 0) { t += off; continue; }
+      const d = d0 <= 8 ? 14 : d0 <= 12 ? 16 : d0 <= 20 ? 22 : d0 <= 35 ? 32 : Math.min(d0, 70), want = now + t, at = Math.max(want, HAP.next);
+      t += d0 + off; if (at - want > (prio ? 420 : 120)) continue;
+      HAP.next = at + d + gap; const delay = at - now;
+      if (delay < 2) hapFire(d); else setTimeout(() => hapFire(d), delay);
+      if (HAP.ios && d0 >= 60) { HAP.next = at + 120; setTimeout(hapTick, delay + 55); }
+    }
+  } catch (e) {}
+};
 function setMuted(m) { AU.muted = m; LS.set('fd5_muted', m); $$('.mute-btn').forEach(b => b.textContent = m ? '🔇' : '🔊'); if (!m) { unlockAudio(); setTimeout(() => sfx('beep'), 30); } }
 
 /* hit-stop: freeze every running animation for a few ms on big impacts */
-function hitstop(ms) { if (RM() || U.hs) return; U.hs = 1; try { const a = document.getAnimations().filter(x => x.playState === 'running'); a.forEach(x => x.pause()); setTimeout(() => { a.forEach(x => { try { x.play(); } catch (e) {} }); U.hs = 0; }, ms); } catch (e) { U.hs = 0; } }
+function hitstop(ms) { if (RM() || U.hs) return; const f = document.getElementById('fx'); if (!f) return; U.hs = 1; f.classList.add('hs'); setTimeout(() => { f.classList.remove('hs'); U.hs = 0; }, ms); }
 /* Fortnite-style XP medals on the right */
 function medal(txt, xp, col, icon) {
   if (RM()) return; let c = $('#medals'); if (!c) { c = document.createElement('div'); c.id = 'medals'; app.appendChild(c); }
@@ -2713,7 +2833,7 @@ function questsHTML() {
   return `<div class="qcard"><div class="qh"><b>DAILY QUESTS</b><span>${q.done.length}/3</span></div>${q.ids.map(id => { const d = QPOOL.find(x => x.id === id), p = Math.min(d.n, q.p[id] || 0), dn = q.done.includes(id); return `<div class="qr${dn ? ' dn' : ''}"><i style="width:${(100 * p / d.n).toFixed(0)}%"></i><span>${dn ? '✓ ' : ''}${esc(d.t)}</span><em>${dn ? 'DONE' : p + '/' + d.n}</em><u>${ico('vbucks')}${d.vb}</u></div>`; }).join('')}</div>`;
 }
 
-/* ===== v8.5: Fortnite look + effects + haptics ===== */
+/* ===== v8.6: Fortnite look + effects + haptics ===== */
 Object.assign(SFX, {
   medal: () => { tone(1318, 0.08, 'square', 0.05); tone(1976, 0.18, 'triangle', 0.07, 0.06); },
   bolt: () => { noise(0.5, 0.5, 0, 6000, 200); tone(70, 0.5, 'sawtooth', 0.22, 0, 30); tone(2400, 0.06, 'square', 0.06); },
@@ -2741,19 +2861,55 @@ function zoneHud() {
   let zr = Math.max(48, 96 - (S.turn || 1) * 3); if (S.stormCd != null && S.stormCd > 0) zr = Math.min(zr, 44 + S.stormCd * 14); if (sOn) zr = 26; if (S.over) zr = 94;
   pa.style.setProperty('--zr', zr);
 }
+const WORDS = [['CLEAN!', '#38bdf8'], ['BOOM!', '#fb923c'], ['NO SHOT!', '#a855f7'], ['EZ!', '#4ade80'], ['DELETED!', '#f87171'], ['SWEATY!', '#fde047'], ['CRACKED!', '#38bdf8'], ["LET'S GO!", '#fb923c'], ['TOO EASY', '#c084fc'], ['GG!', '#4ade80']];
+function elimWord(p) { if (RM()) return; const w = WORDS[rnd(WORDS.length)]; fxAdd('fx-word', `left:${Math.max(70, Math.min(app.clientWidth - 70, p.x))}px;top:${p.y + 22}px;--wc:${w[1]};--wr:${rnd(14) - 7}deg`, w[0], 950); }
+function heatHud() { const e = $('#hElims'); if (!e || !S) return; const n = S.turnElims || 0; e.classList.toggle('heat', n >= 2); e.classList.toggle('heat2', n >= 4); }
+/* variable-reward drops: Supply Drop (common) and Loot Llama (rare, smash 3x) */
+function maybeDrop() {
+  if (!S || U.dropT === S.turn) return; U.noDrop = (U.noDrop || 0) + 1; const r = Math.random(); let kind = null;
+  if (U.noDrop >= 6 || r < 0.15) kind = 'crate'; if (r < 0.035) kind = 'llama'; if (!kind) return;
+  U.noDrop = 0; U.dropT = S.turn; const s0 = S; setTimeout(() => { if (S === s0 && !S.over) spawnDrop(kind); }, 900);
+}
+function spawnDrop(kind) {
+  if (RM() || !S) return; const s0 = S, ll = kind === 'llama', old = $('.drop'); if (old) old.remove();
+  const el = document.createElement('div'); el.className = 'drop ' + kind; el.style.left = (30 + rnd(40)) + '%';
+  el.innerHTML = `<i class="chute"></i><b>${ll ? '🦙' : '📦'}</b><span>${ll ? 'SMASH! <u style="text-decoration:none">3</u>' : 'TAP TO OPEN'}</span>`;
+  app.appendChild(el); sfx('whoosh'); buzz([10, 40, 10]); medal(ll ? 'LOOT LLAMA' : 'SUPPLY DROP', 0, ll ? '#f472b6' : '#38bdf8', ll ? '🦙' : '📦');
+  let hits = ll ? 3 : 1, done = false; const col = ll ? ['#f472b6', '#fde047', '#38bdf8', '#4ade80'] : ['#38bdf8', '#fde047', '#e0f2fe'];
+  setTimeout(() => { if (!done) { el.classList.add('landed'); sfx('land', 2); buzz([22, 24, 32]); } }, 1250);
+  const pos = () => { const r = el.getBoundingClientRect(), a = app.getBoundingClientRect(); return { x: r.left - a.left + r.width / 2, y: r.top - a.top + r.height / 2 }; };
+  const open = () => {
+    if (done) return; done = true; const p = pos(); el.classList.add('open'); setTimeout(() => el.remove(), 480);
+    if (S !== s0 || S.over) return;
+    const vb = ll ? 350 + rnd(350) : 80 + rnd(170), sh = ll ? S.shieldMax : (Math.random() < 0.45 ? 1 : 0);
+    S.vbucks = (S.vbucks || 0) + vb; const before = S.shield; if (sh) S.shield = Math.min(S.shieldMax, S.shield + sh);
+    lbeam(p, ll ? '#f472b6' : '#fde047', 1300); ring(p, '#fde047', 4); particles(p, ll ? 30 : 18, col, ll ? 170 : 120);
+    banner(ll ? 'LOOT LLAMA!' : 'SUPPLY DROP!', `+${vb} V-Bucks` + (S.shield > before ? ` · +${S.shield - before} shield` : ''), 'team');
+    sfx('chime'); sfx('lvl'); setTimeout(() => sfx('sparkle'), 200); buzz(ll ? [40, 30, 40, 30, 60, 40, 140] : [30, 24, 30, 24, 80]); shake(ll ? 3 : 2);
+    renderGame(); popEl('#hVb', 'bump');
+  };
+  el.addEventListener('pointerdown', e => {
+    e.stopPropagation(); if (done || !el.classList.contains('landed')) return; hits--; el.classList.remove('hit'); void el.offsetWidth; el.classList.add('hit');
+    const u = $('u', el); if (u) u.textContent = Math.max(hits, 0); const p = pos(); particles(p, 8, col, 70); sfx('thump'); buzz(hits > 0 ? [18, 12, 26] : [30, 20, 30]);
+    if (hits <= 0) open();
+  });
+  setTimeout(() => { if (!done) { if (S === s0) open(); else { done = true; el.remove(); } } }, ll ? 9000 : 7000);
+}
 function feelFor(ev, pre) {
   switch (ev.t) {
     case 'clear': if (ev.card.kind === 'opp') {
         medal(ev.card.elite ? 'ELITE ELIMINATION' : 'ELIMINATION', ev.xp, ev.card.elite ? '#fde047' : '#38bdf8', ev.card.elite ? '👑' : '🎯');
-        { const r = rectOf('c' + ev.card.uid, pre); if (r.w) setTimeout(() => lbeam(ctr(r), ev.card.elite ? '#fde047' : (ev.card.maxHp >= 3 ? '#c084fc' : '#38bdf8'), 1300), 140); }
+        { const r = rectOf('c' + ev.card.uid, pre); if (r.w) { const p = ctr(r); setTimeout(() => lbeam(p, ev.card.elite ? '#fde047' : (ev.card.maxHp >= 3 ? '#c084fc' : '#38bdf8'), 1300), 140); setTimeout(() => elimWord(p), 200); } }
         [330, 400, 470].forEach(t => setTimeout(() => buzz(4), t));
+        setTimeout(heatHud, 60); if ((S.turnElims || 0) === 3) setTimeout(() => medal('ON FIRE', 0, '#fb923c', '🔥'), 450);
+        maybeDrop();
       } else medal('HAZARD CLEARED', ev.xp, '#a3e635', '🧹'); break;
     case 'combo': medal(ev.n >= 4 ? 'QUAD ELIMINATION' : ev.n === 3 ? 'TRIPLE ELIMINATION' : 'DOUBLE ELIMINATION', ev.xp, '#a855f7', '🔥'); setTimeout(() => hitstop(80), 380); break;
     case 'wipe': medal('SQUAD WIPE', ev.xp, '#ef4444', '💀'); setTimeout(() => { hitstop(120); letterbox(); }, 420); break;
     case 'revive': medal('REBOOT', ev.xp, '#22c55e', '🚐'); break;
-    case 'chestVb': medal('CHEST OPENED', 0, '#fde047', '🧰'); break;
+    case 'chestVb': { const a = ev.amt || 0, R = a >= 350 ? ['LEGENDARY', '#fde047'] : a >= 200 ? ['EPIC', '#c084fc'] : a >= 100 ? ['RARE', '#38bdf8'] : a >= 50 ? ['UNCOMMON', '#4ade80'] : ['COMMON', '#cbd5e1']; medal('CHEST · ' + R[0], 0, R[1], '🧰'); break; }
     case 'roll': {
-      const order = ev.dice.slice().sort((a, b) => a - b);
+      const order = ev.dice.slice().sort((a, b) => a - b); setTimeout(heatHud, 30);
       (ev.chests || []).forEach(i => { const k = order.indexOf(i); setTimeout(() => { const r = rectOf('d' + i); if (r.w) lbeam(ctr(r), '#fde047', 1300); }, k * 50 + 240); });
       setTimeout(() => buzz(22), order.length * 50 + 260);
       if (ev.chests && ev.chests.length) medal('CHEST FOUND', ev.xp, '#f59e0b', '🧰'); break; }
@@ -2786,7 +2942,7 @@ function renderTitle() {
   const crew = pickN(CHARS, 3);
   $('#scr-title').innerHTML = `
     <div class="bgart" style="background-image:url(${poiImg(titlePoi)})"></div>
-    <div class="ver">v8.5</div>
+    <div class="ver">v8.7</div>
     <div class="title-top"><button class="icon-btn mute-btn" aria-label="Sound">${AU.muted ? '🔇' : '🔊'}</button></div>
     <div class="crew">${crew.map(n => `<img src="${portrait(n)}" alt="">`).join('')}</div>
     <div class="logo h"><div class="l0">FORTNITE:</div><div class="l1">ZERO BUILD</div><div class="l2">D6</div><div class="tag">Roll. Assign. Survive the Storm. Last squad standing.</div></div>
@@ -3093,7 +3249,9 @@ function logEvents(evs) {
       case 'lobby': ev.kills.forEach(x => logAdd(`<b>${esc(x.k)}</b> eliminated <b>${esc(x.v)}</b> (elsewhere on the map).`, 'info')); break;
       case 'hold': break;
       case 'edown': logAdd(ev.by == null ? `<b>${lastDie != null ? owner(lastDie) : 'Squad'}</b> knocked <b>${nm(ev.uid)}</b>! Hit again to eliminate.` : `<b>${esc(ev.byName || 'An enemy')}</b> knocked <b>${nm(ev.uid)}</b>.`, 'shot'); break;
-      case 'erevive': logAdd(ev.by != null ? `<b>${nm(ev.by)}</b> revived <b>${nm(ev.uid)}</b> (1 HP).` : `<b>${nm(ev.uid)}</b> was revived by a teammate!`, 'dmg'); break;
+      case 'erevive': logAdd(ev.by != null ? `<b>${nm(ev.by)}</b> revived <b>${nm(ev.uid)}</b> (1 HP, last life).` : `<b>${nm(ev.uid)}</b> was revived by a teammate! (last life)`, 'dmg'); break;
+      case 'efinal': logAdd(`<b>${nm(ev.uid)}</b> was already restored once: eliminated.`, 'shot'); break;
+      case 'ovf': logAdd(`Overflow: <b>+${ev.amt}</b> damage carries over.`, 'shot'); break;
       case 'eheal': logAdd(ev.self ? `<b>${nm(ev.uid)}</b> healed herself +1.` : `<b>${nm(ev.uid)}</b> healed <b>${nm(ev.tgt)}</b> +1.`, 'dmg'); break;
       case 'ecover': logAdd(`<b>${nm(ev.uid)}</b> took cover: a new ??? slot (needs ${FI[ev.face].name}).`, 'dmg'); break;
       case 'epush': logAdd(`<b>${nm(ev.uid)}</b> pushed: a ??? slot is gone, +1 damage (now +${ev.pb})${ev.exposed ? '. She is EXPOSED!' : '.'}`, 'dmg'); break;
@@ -3193,7 +3351,7 @@ const ARROW_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5l7 7
 /* ---------- game screen skeleton ---------- */
 function buildGame() {
   $('#scr-game').innerHTML = `
-  <div id="gameBg"></div><div id="stormVig"></div>
+  <div id="gameBg"></div><div id="stormVig"><i></i><i></i><i></i><i></i><i></i><i></i></div><div id="stormFx" aria-hidden="true"><i class="hz"></i><i class="sv"></i><i class="lt"></i></div>
   <div id="shakeWrap" class="gw">
     <header class="hud2">
       <div class="logo2" aria-label="Fortnite Zero Build D6"><b>FORTNITE:</b><span>ZERO BUILD D6</span></div>
@@ -3334,17 +3492,17 @@ function passiveChips(c) {
 function oppHTML(c) {
   const tgts = U.sel != null ? U.targets.filter(t => t.uid === c.uid) : [];
   const cls = ['card', 'opp', 'v72', 'r-' + rarity(c)];
-  if (c.evade) cls.push('evade'); if (c.down) cls.push('down'); if (tgts.length) cls.push('tg');
+  if (c.evade) cls.push('evade'); if (c.down) cls.push('down'); if (c.restored && !c.down) cls.push('restored'); if (tgts.length) cls.push('tg'); else if (isOvfT(c)) cls.push('tg', 'ovft');
   if (U.dangerUids.has(c.uid)) cls.push(U.stormHit != null && c.a.includes(U.stormHit) ? 'danger' : 'dangerS');
   if (U.topUid === c.uid) cls.push('top'); if (c.elite) cls.push('elite');
   if (isLocked(c)) { cls.push('lockd'); if (U.sel != null && S.dice[U.sel].face === F.SHOOT && !U.targets.some(t => t.uid === c.uid)) cls.push('nogo'); }
   if (U.exposed.has(c.uid) && performance.now() - U.exposed.get(c.uid) < 1400) cls.push('exposed');
-  const face = U.sel != null ? S.dice[U.sel].face : null, g = face ? FI[face].color : '', tcol = teamC(c);
+  const face = U.sel != null ? S.dice[U.sel].face : null, g = face ? FI[face].color : isOvfT(c) ? '#fde047' : '', tcol = teamC(c);
   let h = `<div class="${cls.join(' ')}" data-k="card" data-uid="${c.uid}" role="button" aria-label="${esc(c.name)}${c.tname ? ', squad ' + esc(c.tname) : ''}${c.down ? ', downed' : ''}" style="${g ? '--g:' + g + ';' : ''}--team:${tcol[1]};"><i class="tstr" aria-hidden="true"></i>`;
-  h += `<div class="pt" data-tn=""><img src="${portrait(c.img)}" alt="">${c.elite ? `<b class="ecrown" aria-label="Crown: ${esc(c.etag || '')}">${ico('crown', 'cr')}</b>` : ''}${c.down ? '<b class="dtag">DOWNED</b>' : ''}</div>`;
+  h += `<div class="pt" data-tn=""><img src="${portrait(c.img)}" alt="">${c.elite ? `<b class="ecrown" aria-label="Crown: ${esc(c.etag || '')}">${ico('crown', 'cr')}</b>` : ''}${c.down ? '<b class="dtag">DOWNED</b>' : c.restored ? '<b class="dtag rtag">LAST LIFE</b>' : ''}</div>`;
   const tag = c.elite ? `<span class="otag el">👑 ELITE</span>` : U.topUid === c.uid ? `<span class="otag top">${ico('warning')}TOP</span>` : '';
   let hp;
-  if (c.down) hp = `<div class="drow"><div class="pips" aria-label="1 HP, downed"><i class="on"></i></div><div class="dbno"><b>${teamUpUI(c) ? 'REVIVE IN ' + Math.min(2, Math.max(1, c.rev || 0)) : 'BLEEDING OUT'}</b></div></div>`;
+  if (c.down) hp = `<div class="drow"><div class="pips" aria-label="1 HP, downed"><i class="on"></i></div><div class="dbno"><b>${teamUpUI(c) ? 'REVIVE IN ' + Math.min(3, Math.max(1, c.rev || 0)) : 'BLEEDING OUT'}</b></div></div>`;
   else if (c.maxHp > 0 && c.cov.length) hp = hpHTML(c);
   else hp = pipsHTML(c);
   h += `<div class="omid"><div class="onr">${tag}<span class="onm">${esc(c.name)}</span></div><div class="obody"><div class="oleft">${hp}${passiveChips(c)}</div>${actTableHTML(c)}</div></div>`;
@@ -3356,20 +3514,21 @@ function cardHTML(c) {
   const cls = ['card', c.kind, 'r-' + rarity(c)];
   if (c.evade) cls.push('evade');
   if (c.down) cls.push('down');
-  if (tgts.length) cls.push('tg');
+  if (tgts.length) cls.push('tg'); else if (isOvfT(c)) cls.push('tg', 'ovft');
+  if (c.restored && !c.down) cls.push('restored');
   if (U.dangerUids.has(c.uid)) cls.push('danger');
   if (U.topUid === c.uid) cls.push('top');
   if (c.elite) cls.push('elite');
   if (isLocked(c)) { cls.push('lockd'); if (U.sel != null && S.dice[U.sel].face === F.SHOOT && !U.targets.some(t => t.uid === c.uid)) cls.push('nogo'); }
   if (U.exposed.has(c.uid) && performance.now() - U.exposed.get(c.uid) < 1400) cls.push('exposed');
   const face = U.sel != null ? S.dice[U.sel].face : null;
-  const g = face ? FI[face].color : '';
+  const g = face ? FI[face].color : isOvfT(c) ? '#fde047' : '';
   const tcol = c.kind === 'opp' ? teamC(c) : null;
   let h = `<div class="${cls.join(' ')}" data-k="card" data-uid="${c.uid}" role="button" aria-label="${esc(c.name)}${c.tname ? ', squad ' + esc(c.tname) : ''}${c.down ? ', downed' : ''}" style="${g ? '--g:' + g + ';' : ''}${tcol ? '--team:' + tcol[1] + ';' : ''}${c.kind === 'haz' ? `--hz1:hsl(${hazHue(c.name)},75%,38%);--hz2:hsl(${(hazHue(c.name) + 60) % 360},60%,16%)` : ''}">`;
   if (tcol) h += '<i class="tstr" aria-hidden="true"></i>';
-  h += c.kind === 'opp' ? `<div class="pt" data-tn=""><img src="${portrait(c.img)}" alt="">${c.elite ? `<b class="ecrown" aria-label="Crown: ${esc(c.etag || '')}">${ico('crown', 'cr')}</b>` : ''}${c.down ? '<b class="dtag">DOWNED</b>' : ''}</div>` : `<div class="pt hz"><div class="stripes"></div>${c.ico ? `<span>${c.ico}</span>` : ico('warning')}</div>`;
+  h += c.kind === 'opp' ? `<div class="pt" data-tn=""><img src="${portrait(c.img)}" alt="">${c.elite ? `<b class="ecrown" aria-label="Crown: ${esc(c.etag || '')}">${ico('crown', 'cr')}</b>` : ''}${c.down ? '<b class="dtag">DOWNED</b>' : c.restored ? '<b class="dtag rtag">LAST LIFE</b>' : ''}</div>` : `<div class="pt hz"><div class="stripes"></div>${c.ico ? `<span>${c.ico}</span>` : ico('warning')}</div>`;
   h += `<div class="mid">${c.elite ? `<span class="eltag">👑 ${esc(c.etag || 'ELITE')}</span>` : U.topUid === c.uid ? `<span class="toptag">${ico('warning')}TOP THREAT</span>` : ''}<div class="nm">${esc(c.name)}</div>`;
-  if (c.down) h += `<div class="drow"><div class="pips" aria-label="1 HP, downed"><i class="on"></i></div><div class="dbno"><b>${teamUpUI(c) ? 'REVIVE IN ' + Math.min(2, Math.max(1, c.rev || 0)) : 'BLEEDING OUT'}</b></div></div>`;
+  if (c.down) h += `<div class="drow"><div class="pips" aria-label="1 HP, downed"><i class="on"></i></div><div class="dbno"><b>${teamUpUI(c) ? 'REVIVE IN ' + Math.min(3, Math.max(1, c.rev || 0)) : 'BLEEDING OUT'}</b></div></div>`;
   else if (c.kind === 'opp' && c.maxHp > 0 && c.cov.length) h += hpHTML(c);
   else if (c.maxHp > 0) { const ph = U.prevHp['c' + c.uid]; h += `<div class="pips" aria-label="${c.hp} of ${c.maxHp} HP">${Array.from({ length: c.maxHp }, (_, k) => `<i class="${k < c.hp ? 'on' : 'off'}${ph != null && k >= c.hp && k < ph ? ' lost' : ''}${ph != null && k < c.hp && k >= ph ? ' gain' : ''}"></i>`).join('')}</div>`; }
   h += `<div class="sub">`;
@@ -3426,7 +3585,7 @@ function renderGame() {
   $('#squad').innerHTML = s.squad.map(m => {
     const t = U.sel != null && U.targets.some(x => x.member === m.i);
     return `<div class="member t${m.i} ${m.hp <= 0 ? 'down' : ''} ${t ? 'tg' : ''}" style="${g}" data-k="member" data-m="${m.i}" role="button">
-      <div class="frame"><img class="pi" src="${portrait(m.img)}" alt=""><i class="shine"></i><div class="ov"><div class="mn">${esc(m.name)}</div>
+      <div class="frame"><img class="pi" src="${portrait(m.img)}" alt="">${m.hp <= 0 ? ico('heal', 'dnx') : ''}<i class="shine"></i><div class="ov"><div class="mn">${esc(m.name)}</div>
       <div class="hpb" aria-label="${m.hp} of ${m.max} HP"><div class="seg">${Array.from({ length: m.max }, (_, k) => { const ph = U.prevHp['m' + m.i]; return `<i class="${k < m.hp ? 'on' : ''}${ph != null && k >= m.hp && k < ph ? ' lost' : ''}${ph != null && k < m.hp && k >= ph ? ' gain' : ''}"></i>`; }).join('')}</div></div></div></div>
       <div class="mdice">${s.dice.filter(d => d.owner === m.i).map(d => dieHTML(d)).join('')}</div></div>`;
   }).join('') + domeHTML;
@@ -3460,18 +3619,21 @@ function pipsHTML(c) {
 function threatAttrs(c, extra) {
   const cls = ['card', c.kind === 'storm' ? 'zstorm' : c.kind, 'r-' + rarity(c)].concat(extra || []);
   if (c.evade) cls.push('evade');
-  if (U.sel != null && U.targets.some(t => t.uid === c.uid)) cls.push('tg');
+  if (U.sel != null && U.targets.some(t => t.uid === c.uid)) cls.push('tg'); else if (isOvfT(c)) cls.push('tg', 'ovft');
   if (U.dangerUids.has(c.uid)) cls.push('danger');
   if (U.topUid === c.uid) cls.push('top');
   if (isLocked(c)) { cls.push('lockd'); if (U.sel != null && S.dice[U.sel].face === F.SHOOT && !U.targets.some(t => t.uid === c.uid)) cls.push('nogo'); }
   if (U.exposed.has(c.uid) && performance.now() - U.exposed.get(c.uid) < 1400) cls.push('exposed');
-  const face = U.sel != null ? S.dice[U.sel].face : null, g = face ? FI[face].color : '';
+  const face = U.sel != null ? S.dice[U.sel].face : null, g = face ? FI[face].color : isOvfT(c) ? '#fde047' : '';
   const hz = c.kind === 'haz' ? `--hz1:hsl(${hazHue(c.name)},75%,38%);--hz2:hsl(${(hazHue(c.name) + 60) % 360},60%,16%)` : '';
   return `class="${cls.join(' ')}" data-k="card" data-uid="${c.uid}" role="button" aria-label="${esc(c.name)}${c.maxHp ? `, ${c.hp} of ${c.maxHp} HP` : ''}" style="${g ? '--g:' + g + ';' : ''}${hz}"`;
 }
 const actTxt = c => c.cond ? 'END' : c.shrink ? 'ALL' : c.a.length ? c.a.join('<i>·</i>') : 'ON';
 const covHTML = c => c.cov.length ? `<div class="cov">${c.cov.map(sl => `<i class="${sl.filled ? 'ok' : ''}" style="background-image:url(${faceIcon(sl.need[0])})"></i>`).join('')}</div>` : '';
 /* v5.5 armored threats: cover slots must be filled before Shoot can hit; HP stays hidden until then */
+/* v8.7 overflow targeting (only while no die is selected) */
+const ovfSet = () => (S && S.ovf && S.phase === 'assign' && !S.over && U.sel == null) ? new Set(E.ovfTargets(S, S.ovf.from).map(c => c.uid)) : null;
+const isOvfT = c => { const o = ovfSet(); return !!(o && o.has(c.uid)); };
 const isLocked = c => c.kind === 'opp' && !c.down && c.maxHp > 0 && c.cov.length > 0 && !c.cov.every(sl => sl.filled);
 const needTxt = c => c.cov.filter(sl => !sl.filled).map(sl => sl.need.map(f => FI[f].name).join('/')).join(' + ');
 function lockHTML(c) {
@@ -3574,6 +3736,7 @@ function renderHint() {
       t = n ? `Tap a die → tap a glowing target · <b>${n}</b> left` : 'No moves left: tap <b>END TURN</b>';
       if (s.poiClear) t = n ? `POI clear! Use your last dice, then <b>END TURN</b> to rotate` : 'POI clear! Tap <b>END TURN</b> to rotate';
       if (U.endArmed) t = `<b>${n}</b> dice still usable. Tap END TURN again to confirm`;
+      if (s.ovf) t = `<b class="ovfp">OVERFLOW +${s.ovf.amt}</b> tap a glowing target`;
     }
   }
   h.innerHTML = t ? '<span>' + t + '</span>' : '';
@@ -3653,6 +3816,7 @@ function cubes(p, n) {
 }
 function tracer(a, b, color) { const dx = b.x - a.x, dy = b.y - a.y, L = Math.hypot(dx, dy); fxAdd('fx-tracer', `left:${a.x}px;top:${a.y}px;width:${L}px;transform:rotate(${Math.atan2(dy, dx)}rad);--tc:${color}`, '', 400); }
 function impact(p, color) { fxAdd('fx-impact', `left:${p.x}px;top:${p.y}px;--ic:${color}`, '', 450); }
+function stormFlash() { fxAdd('fx-zflash', '', '', 700); shake(2); buzz([30, 25, 50, 25, 70]); } // v8.7: Storm damage resolves
 function flash(kind) { fxAdd('fx-flash ' + kind, '', '', 400); }
 function shake(l) { if (RM()) return; const w = $('#shakeWrap'); if (!w) return; w.classList.remove('shake1', 'shake2', 'shake3'); void w.offsetWidth; w.classList.add('shake' + Math.min(3, l)); }
 function banner(t, n, kind) { fxAdd('fx-banner' + (kind ? ' ' + kind : ''), '', `<span class="t">${esc(t)}</span>${n ? `<span class="n">${esc(n)}</span>` : ''}`, 1300); }
@@ -3706,6 +3870,7 @@ function critCheck() {
   g.classList.toggle('crit', crit);
   g.classList.toggle('stormwarn', !S.over && S.stormCd != null && S.stormCd > 0 && S.stormCd <= 2);
   g.classList.toggle('stormon', !S.over && S.board.some(c => c.kind === 'storm'));
+  { const cdOn = !S.over && !S.poiClear && !S.board.some(c => c.kind === 'storm') && S.stormCd != null && S.stormCd > 0; g.classList.toggle('stormcd', cdOn); if (cdOn) g.style.setProperty('--scd', String(Math.min(.6, .12 + .12 * Math.max(0, 5 - S.stormCd)))); } // v8.7: faint, growing during the countdown
   if (crit && (!U.wasCrit || U.critTurn !== S.turn) && S.phase !== 'over') { sfx('heartbeat'); buzz([40, 90, 40]); U.critTurn = S.turn; }
   U.wasCrit = crit; try { zoneHud(); addReticles(); } catch (e) {}
 }
@@ -3930,7 +4095,11 @@ function playEvents(evs, pre) {
       case 'cover': { const p = ctr(rectOf('c' + ev.uid, pre)); impact(p, FI[ev.face].color); const c = S.board.find(x => x.uid === ev.uid);
         if (c && c.kind === 'opp' && c.maxHp > 0 && !isLocked(c)) { U.exposed.set(c.uid, performance.now()); particles(p, 12, ['#e0f2fe', '#a5f3fc', '#fff']); sfx('expose'); buzz([12, 30, 25]); renderLane(); setTimeout(() => { if (S && S.board.includes(c)) renderLane(); }, 1450); }
         else { num(p, '✓ COVER', 'gr'); sfx('beep'); buzz(10); } break; }
-      case 'shot': { const a = ctr(dieRect(ev.die)), b = ctr(rectOf('c' + ev.uid, pre)); tracer(a, b, '#c084fc'); setTimeout(() => { impact(b, '#e879f9'); hitSpark(b); hitmarker(b, ev.amt >= 2); ring(b, ev.amt >= 2 ? '#fde047' : '#e879f9', ev.amt >= 2 ? 3.4 : 2.6); fxAdd('fx-dmg' + (ev.amt >= 2 ? ' crit' : ''), `left:${b.x + 26}px;top:${b.y - 8}px`, '-' + ev.amt, 700); particles(b, 6 + ev.amt * 3, ['#e9d5ff', '#a855f7', '#fff']); pipOut(ev.uid); sfx('pip'); sfx('hitmark'); }, 70); sfx('shoot', Math.max(0, (S.shots || 1) - 1)); shake(1); buzz(ev.amt >= 2 ? [18, 14, 22] : 15); break; }
+      case 'shot': { const go = () => { const fr = ev.ovf ? rectOf('c' + ev.from, pre) : null, a = ctr(fr && fr.w ? fr : dieRect(ev.die)), b = ctr(rectOf('c' + ev.uid, pre)); tracer(a, b, ev.ovf ? '#fde047' : '#c084fc'); setTimeout(() => { impact(b, '#e879f9'); hitSpark(b); hitmarker(b, ev.amt >= 2); ring(b, ev.amt >= 2 ? '#fde047' : '#e879f9', ev.amt >= 2 ? 3.4 : 2.6); fxAdd('fx-dmg' + (ev.amt >= 2 ? ' crit' : ''), `left:${b.x + 26}px;top:${b.y - 8}px`, '-' + ev.amt, 700); particles(b, 6 + ev.amt * 3, ['#e9d5ff', '#a855f7', '#fff']); pipOut(ev.uid); sfx('pip'); sfx('hitmark'); }, 70); sfx('shoot', Math.max(0, (S.shots || 1) - 1)); shake(1); buzz(ev.ovf ? [12, 16, 12, 16, 28] : ev.amt >= 2 ? [18, 14, 22] : 15); };
+        if (ev.ovf && ev.auto) { setTimeout(go, 330); delay = Math.max(delay, 700); } else go(); break; }
+      case 'ovf': { const fr = rectOf('c' + ev.from, pre), p = ctr(fr); setTimeout(() => { fxAdd('fx-ovf', `left:${Math.max(80, Math.min(app.clientWidth - 80, p.x + 40))}px;top:${p.y + 24}px`, `OVERFLOW +${ev.amt}`, 1150); sfx('sparkle'); buzz([10, 18, 10]); }, 380); delay = Math.max(delay, 500); break; }
+      case 'ovfLost': if (!ev.none) toast(`Overflow +${ev.amt} skipped`); break;
+      case 'efinal': { const p = ctr(rectOf('c' + ev.uid, pre)); setTimeout(() => num(p, 'NO 2ND LIFE', 'w'), 160); break; }
       case 'shield': { const r = rectOf('squad', pre), sq = $('#squad').getBoundingClientRect(), a = app.getBoundingClientRect(); fxAdd('fx-bubble', `left:${sq.left - a.left - 4}px;top:${sq.top - a.top - 4}px;width:${sq.width + 8}px;height:${sq.height + 8}px`, '', 700); num(ctr(rectOf('shield', pre)), 'SHIELDS FULL', 'b'); sfx('shield'); buzz(12); void r; break; }
       case 'evade': { const p = ctr(rectOf('c' + ev.uid, pre)); impact(p, '#7dd3fc'); num(p, '💨 EVADE', 'b'); sfx('evade'); buzz(10); break; }
       case 'heal': { const r = rectOf('m' + ev.member, pre); for (let k = 0; k < (RM() ? 1 : 3 + ev.amt * 2); k++) fxAdd('fx-plus', `left:${r.x + 10 + rnd(Math.max(1, r.w - 30))}px;top:${r.y + 10 + rnd(30)}px;animation-delay:${k * 35}ms`, '+', 900); num(ctr(r), '+' + ev.amt + ' HP', 'gr'); ring(ctr(r), '#ffffff', 3); sfx('heal', Math.max(0, (S.heals || 1) - 1)); buzz(10); break; }
@@ -4024,6 +4193,7 @@ function doAct(t) {
   if (!E.apply(S, act)) { renderGame(); sfx('err'); return; }
   afterAction(pre);
 }
+function doOvf(uid) { const pre = snapRects(); if (!E.overflow(S, uid)) { renderGame(); sfx('err'); return; } U.lastInput = performance.now(); afterAction(pre); }
 function tryTarget(el) {
   const opts = targetFor(el);
   if (!opts.length) return false;
@@ -4048,6 +4218,7 @@ function onTapEl(el) {
   if (U.sel != null && k === 'search' && U.targets.some(t => t.kind === 'search')) { toast('Tap the specific 🔒 locked die you want to free'); sfx('tap'); return; }
   if (U.sel != null && k === 'card') { const zc = S.board.find(x => x.uid === +el.dataset.uid); if (zc && zc.kind === 'storm') { toast('The Storm is immune. Clear this POI and it moves on'); sfx('err'); buzz([10, 30, 10]); return; } }
   if (U.sel != null && k === 'card' && S.dice[U.sel].face === F.SHOOT) { const c = S.board.find(x => x.uid === +el.dataset.uid); if (c && isLocked(c) && !U.targets.some(t => t.uid === c.uid)) { needHint(el, c); return; } }
+  if (U.sel == null && k === 'card' && S.ovf && isOvfT({ uid: +el.dataset.uid })) { doOvf(+el.dataset.uid); return; } // v8.7
   if (U.sel != null) { if (tryTarget(el)) return; deselect(); renderGame(); return; }
   openInfo(el);
 }
@@ -4123,10 +4294,11 @@ async function stormSequence() {
     ov.classList.remove('on');
     for (const uid of acts) {
       if (S.over) break;
+      const isZ = (S.board.find(x => x.uid === uid) || {}).kind === 'storm';
       pre = snapRects(); E.activate(S, uid, v); evs = S.ev.splice(0);
       U.dying = new Set(evs.filter(e => e.t === 'xelim').map(e => e.card.uid));
       U.dangerUids.delete(uid); renderGame(); U.dying = null; const el = cardEl(uid); ensureVis(el); if (el && evs.some(e => e.t === 'act')) el.classList.add('act');
-      playEvents(evs, pre);
+      playEvents(evs, pre); if (isZ) stormFlash();
       await wait(evs.some(e => e.t === 'poiClear') ? 900 : evs.some(e => e.t === 'down' || e.t === 'edown' || e.t === 'xelim') ? 480 : evs.some(e => ['eheal', 'ecover', 'epush', 'erevive', 'eretreat'].includes(e.t)) ? 520 : evs.some(e => e.t === 'infight') ? 360 : 240);
       if (!E.alive(S).length) { S.over = 'loss'; S.overReason = 'wiped'; S.phase = 'over'; break; }
     }
@@ -4184,7 +4356,7 @@ function openCardInfo(c, recon) {
   const kv = [];
   if (c.elite) kv.push(`👑 ELITE · ${esc(c.etag || '')} · pays ${fmtN(E.CFG.eliteVb + E.CFG.vbElim)} V-Bucks, ${E.CFG.eliteBars}+ bars and big XP · no teammates, so 0 HP = eliminated`);
   else if (c.kind === 'opp' && c.tname) kv.push(`👥 Squad: ${esc(c.tname)}`);
-  if (c.down) kv.push(teamUpUI(c) ? `DOWNED · revive in ${Math.min(2, Math.max(1, c.rev || 0))}` : 'DOWNED · bleeding out (no teammate up)');
+  if (c.down) kv.push(teamUpUI(c) ? `DOWNED · revive in ${Math.min(3, Math.max(1, c.rev || 0))}` : 'DOWNED · bleeding out (no teammate up)'); else if (c.restored) kv.push('LAST LIFE · already got back up once: her next down eliminates her');
   if (c.kind === 'storm') kv.push(`Immune · ${c.d} pierce dmg to EACH of your 3 + every enemy, first, every roll`);
   if (c.maxHp) kv.push(isLocked(c) ? '❤️ ??? · armored: can’t be shot until exposed (the Storm still hurts)' : c.down ? '❤️ 1 HP (downed)' : `❤️ ${c.hp}/${c.maxHp}`);
   if (c.vb) kv.push(`💰 carries ${c.vb} V-Bucks`);
@@ -4376,13 +4548,13 @@ window.addEventListener('pointerdown', e => {
   if (t.closest('#rollBtn')) { buzz([14, 22, 12]); return; }
   if (t.closest('#endBtn')) { buzz([10, 40, 22]); return; }
   if (t.closest('#bUndo')) { buzz([6, 24, 6]); return; }
-  if (t.closest('.die[data-k="die"]')) { buzz(5); return; }
-  if (t.closest('.tg')) { buzz([8, 14, 8]); return; }
-  if (t.closest('.btn,.icon-btn,.dchip,.act')) { sfx('tap'); buzz(6); }
+  if (t.closest('.die[data-k="die"]')) { buzz(5, 0); return; }
+  if (t.closest('.tg')) { buzz([8, 14, 8], 0); return; }
+  if (t.closest('.btn,.icon-btn,.dchip,.act')) { sfx('tap'); buzz(6, 0); }
 }, true);
 applyLayout();
 renderTitle(); show('scr-title');
-window.__fd5 = { medal, hitstop, questCheck, qGet, lightning, muzzle, critFX, lbeam, shieldPop, letterbox, playEvents: (evs, pre) => playEvents(evs, pre), stormSequence: () => stormSequence(), placeOf: s => placeOf(s || S), fieldOf: s => fieldOf(s || S), TRIOS, render: () => renderGame(), afterAction: () => afterAction(), showEnd: () => showEnd(), score: c => threatScore(c), locked: c => isLocked(c), cubes: (x, y) => cubes({ x, y }), xpInfo, ensureVis: el => ensureVis(el, false), get S() { return S; }, get busy() { return U.busy; }, get U() { return U; } };
+window.__fd5 = { medal, hitstop, questCheck, qGet, spawnDrop, elimWord, lightning, muzzle, critFX, lbeam, shieldPop, letterbox, playEvents: (evs, pre) => playEvents(evs, pre), stormSequence: () => stormSequence(), placeOf: s => placeOf(s || S), fieldOf: s => fieldOf(s || S), TRIOS, render: () => renderGame(), afterAction: () => afterAction(), showEnd: () => showEnd(), score: c => threatScore(c), locked: c => isLocked(c), cubes: (x, y) => cubes({ x, y }), xpInfo, ensureVis: el => ensureVis(el, false), get S() { return S; }, get busy() { return U.busy; }, get U() { return U; } };
 })();
 </script>
 
