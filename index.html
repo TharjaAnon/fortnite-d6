@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Fortnite D6">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>Fortnite: Zero Build D6 · v8.7</title>
+<title>Fortnite: Zero Build D6 · v8.8</title>
 <style>:root{
   --bg0:#0b0820;--bg1:#151036;--bg2:#1f1850;--line:rgba(255,255,255,.10);--txt:#f4f2ff;--mut:#a9a3cf;
   --c1:#f5b301;--c2:#a855f7;--c3:#38bdf8;--c4:#f1f5f9;--c5:#22c55e;--c6:#94a3b8;--red:#ef4444;--gold:#fde047;
@@ -1878,7 +1878,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   const FACE_INFO = {
     1: { key: 'chest', name: 'Chest', short: 'Wild', color: '#f5b301', desc: 'Wildcard. Tap it, then tap ANOTHER rolled die and pick a new face for that die (the Chest die is used up). Or reroll your other dice.' },
     2: { key: 'shoot', name: 'Shoot', short: 'Shoot', color: '#a855f7', desc: 'Damage an enemy: 1st shot each turn = 1, every next shot = 2.' },
-    3: { key: 'shield', name: 'Shield', short: 'Shield', color: '#38bdf8', desc: 'Refill squad shields to full, or make a threat Evade: it skips every attack this turn (Evade lasts one turn).' },
+    3: { key: 'shield', name: 'Shield', short: 'Shield', color: '#38bdf8', desc: 'Refill squad shields to full, or make a threat Evade: its attacks on your squad do nothing this turn, but it can still hit rival squads (Evade lasts one turn).' },
     4: { key: 'heal', name: 'Heal', short: 'Heal', color: '#f1f5f9', desc: 'Heal a squad member: 1st heal each turn = +1 HP, every next heal = +2 HP (max 4).' },
     5: { key: 'reboot', name: 'Reboot', short: 'Reboot', color: '#22c55e', desc: 'Revive a downed member, free all Knocked Out dice, or tap one locked Search die to free it.' },
     6: { key: 'search', name: 'Search', short: 'Search', color: '#94a3b8', desc: 'Locks onto the Search track automatically. 3 locks = a new threat drops and the dice return.' }
@@ -1887,7 +1887,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   const CFG = {
     memberHp: 4, shieldMax: 4, reviveHp: 2,
     deckOpp: 12, deckHaz: 5, startBoard: 2,
-    /* v6.6 trios + POI rounds · v7.1: one enemy per turn, no board trio cap */ infight: 0.45, oppReviveHp: 1, reviveTurns: 3, stormMax: 1, stormGrow: 3, stormDelay: 3,
+    /* v6.6 trios + POI rounds · v7.1: one enemy per turn, no board trio cap */ infight: 0.55, oppReviveHp: 1, reviveTurns: 3, stormMax: 1, stormGrow: 3, stormDelay: 3,
     /* v6.7 off-POI lobby feed */ lobbyChance: 0.85, lobbyIdle: 0.2, lobbyBurstMax: 3, lobbyTurnCap: 0.85,
     /* v6.8 V-Bucks economy */ vbElim: 100, vbWipe: 200, vbChest: 100, vbChestChance: 0.25,
     /* v6.8 elite */ eliteVb: 900, eliteBars: 500,
@@ -1907,7 +1907,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     { name: 'Zone Tick', ico: '☣️', hp: 4, a: [1], tick: 1, boom: 4, desc: 'Loses 1 HP each time it activates. If it ticks to 0 it explodes for 4. Shoot it first!' },
     { name: 'Friendly Fire', ico: '💥', instant: 'ff', desc: 'Instant: 2 of your dice are knocked out.' },
     { name: 'Nearby Gunfire', ico: '🔫', cov: [[3]], noShield: 1, desc: 'Shields cannot be refilled until cleared.' },
-    { name: 'Shieldbreaker EMP', ico: '📡', hp: 3, a: [1, 2, 3, 4, 5], d: 1, byp: 1, emp: 1, desc: 'Shields offline while it stands. 1 damage ignoring shields.' },
+    { name: 'Shieldbreaker EMP', ico: '📡', hp: 2, a: [1, 2, 3, 4, 5], d: 1, byp: 1, emp: 1, desc: 'Shields offline while it stands. 1 damage ignoring shields.' },
     { name: 'Low on Stamina', ico: '💨', cov: [[1], [3]], twice: 1, desc: 'While active the Storm die rolls twice.' },
     { name: 'Junk Rift', ico: '🏗️', a: [2], cov: [[1], [1]], mend: 1, desc: 'On 2: every enemy recovers 1 HP.' },
     { name: 'Bandage Shortage', ico: '🚫', cov: [[5]], block: 4, desc: 'You cannot use Heal dice.' },
@@ -1916,8 +1916,8 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     { name: 'Looted', ico: '🧰', cov: [[4]], block: 1, desc: 'You cannot use Chest dice.' },
     { name: 'Remote Explosive', ico: '💣', a: [1, 2, 3], cov: [[4]], knock: 1, desc: 'On 1-3: knock out 1 die.' },
     { name: 'Fall Damage', ico: '🪂', a: [4], cov: [[4]], d: 1, byp: 1, desc: 'On 4: 1 damage ignoring shields.' },
-    { name: 'Shaky Aim', ico: '🎯', cov: [[5]], block: 2, desc: 'You cannot use Shoot dice.' },
-    { name: 'Boogie Bomb', ico: '🪩', cov: [[3], [5]], boogie: 1, desc: 'Every roll, 1 die starts dancing (Knocked Out).' },
+    { name: 'Shaky Aim', ico: '🎯', cov: [[3, 5]], block: 2, desc: 'You cannot use Shoot dice.' },
+    { name: 'Boogie Bomb', ico: '🪩', cov: [[3, 5]], boogie: 1, desc: 'Every roll, 1 die starts dancing (Knocked Out).' },
     { name: 'Lag Spike', ico: '📶', cov: [[5]], lag: 1, desc: 'Roll 1 fewer die each turn.' },
     { name: 'Stink Cloud', ico: '🤢', a: [2, 5], cov: [[4], [3]], stink: 1, desc: 'On 2 or 5: weakest member takes 1, ignoring shields.' },
     { name: 'Storm Shrinks', ico: '🌀', cov: [[1], [5]], shrink: 1, desc: 'Every Storm phase: 1 damage ignoring shields.' },
@@ -2119,7 +2119,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   }
   /* ---- v7.2 enemy actions ----
      Resolution order when one Storm number triggers several actions on the same enemy (templates avoid overlaps, but the engine is safe):
-     REVIVE -> HEAL -> COVER -> PUSH -> KNOCK -> DAMAGE -> RETREAT. Evade cancels all of them. A downed enemy never acts. */
+     REVIVE -> HEAL -> COVER -> PUSH -> KNOCK -> DAMAGE -> RETREAT. Evade voids her damage and Knock against your squad; she still acts on rivals and her support actions still happen. A downed enemy never acts. */
   /* v7.8: when ONE Storm number matches several of an enemy's actions, they all fire in this fixed order: REVIVE, HEAL, COVER, PUSH, KNOCK, DAMAGE, RETREAT
      (support first so Cover/Push are in place before she shoots; Retreat last so she gets her shot off before leaving). */
   const ACT_ORDER = ['revive', 'heal', 'cover', 'push', 'knock', 'dmg', 'retreat'];
@@ -2128,7 +2128,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     heal: { name: 'HEAL', desc: 'Recovers 1 HP on herself first if she is hurt; otherwise on one hurt teammate on the board. Nothing if nobody is hurt.' },
     cover: { name: 'COVER', desc: 'Adds one ??? cover slot (max 3 unfilled). While any ??? slot is unfilled she can\u2019t be damaged. You fill it with a die face.' },
     revive: { name: 'REVIVE', desc: 'Instantly picks up a downed teammate on the board at 1 HP. That uses up her one get-up: her next down eliminates her. Nothing if no teammate is downed.' },
-    push: { name: 'PUSH', desc: 'Only works while she has a ??? slot: removes one and gives her +1 damage (stacks up to +2, lasts while she is on the board). With no ??? slot it does nothing.' },
+    push: { name: 'PUSH', desc: 'Only works while she has a ??? slot: removes one and gives her +1 damage (lasts while she is on the board). One-time: once a Push works it disappears from her loadout. With no ??? slot it does nothing and stays.' },
     knock: { name: 'KNOCK', desc: 'Knocks out 1 of your dice (it can\u2019t roll until a Reboot frees it). Deals no damage.' },
     retreat: { name: 'RETREAT', desc: 'Leaves the board and goes to the back of this POI\u2019s queue (keeps her HP, cover and Push bonus). The Storm waits for her. Can\u2019t retreat once the Storm is in.' }
   };
@@ -2174,6 +2174,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     });
   }
   function supportAct(s, c, k) {
+    if (c.evade && k === 'knock') { s.ev.push({ t: 'evaded', uid: c.uid }); return; } // v8.8: knocking your dice is an attack on you, void while evaded
     if (!canAct(s, c, k)) { s.ev.push({ t: 'enoop', uid: c.uid, k }); return; }
     switch (k) {
       case 'heal': { const t = c.hp < c.maxHp ? c : hurtTeammate(s, c); t.hp++; s.ev.push({ t: 'eheal', uid: c.uid, tgt: t.uid, self: t === c ? 1 : 0, hp: t.hp }); break; }
@@ -2182,13 +2183,14 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
         c.cov = c.cov.filter(x => !x.filled); c.cov.push({ need: [face], filled: 0 });
         s.ev.push({ t: 'ecover', uid: c.uid, face, n: c.cov.length }); break; }
       case 'revive': { const t = oppTeam(s, c).find(o => o.down); t.down = 0; t.rev = 0; t.hp = CFG.oppReviveHp; t.restored = 1; s.ev.push({ t: 'erevive', uid: t.uid, by: c.uid }); break; }
-      case 'push': { const i = c.cov.findIndex(x => !x.filled); c.cov.splice(i, 1); c.pb = (c.pb || 0) + 1; s.ev.push({ t: 'epush', uid: c.uid, pb: c.pb, exposed: coverDone(c) ? 1 : 0 }); break; }
+      case 'push': { const i = c.cov.findIndex(x => !x.filled); c.cov.splice(i, 1); c.pb = (c.pb || 0) + 1; c.acts = c.acts.filter(x => x.k !== 'push'); /* v8.8: Push is single-use, it leaves her loadout */ s.ev.push({ t: 'epush', uid: c.uid, pb: c.pb, exposed: coverDone(c) ? 1 : 0 }); break; }
       case 'knock': { s.activatedAny = true; s.ev.push({ t: 'act', uid: c.uid }); knockDice(s, 1, c); break; }
       case 'retreat': { const i = s.board.indexOf(c); s.board.splice(i, 1); c.evade = 0; c.ret = 1; s.deck.push(c); s.stormCd = null; s.ev.push({ t: 'eretreat', uid: c.uid, card: c }); break; }
     }
   }
   function attackOpp(s, c) {
     if (!c.elite && s.board.some(o => o.kind === 'opp' && o.team !== c.team && !lockedE(o) && !o.elite) && nextRand(s) < CFG.infight) { s.activatedAny = true; s.ev.push({ t: 'act', uid: c.uid }); infight(s, c); return; }
+    if (c.evade) { s.ev.push({ t: 'evaded', uid: c.uid }); return; } // v8.8: evaded -> her damage on your squad is void (she may still have shot a rival above)
     s.activatedAny = true;
     s.ev.push({ t: 'act', uid: c.uid });
     if (c.shred) s.shield = 0;
@@ -2584,7 +2586,7 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
   function activate(s, uid, v) { activate0(s, uid, v); checkWin(s); }
   function activate0(s, uid, v) {
     const c = s.board.find(x => x.uid === uid); if (!c || c.down) return;
-    if (c.evade) { s.ev.push({ t: 'evaded', uid }); return; } // one-turn Evade: stays on for the rest of this Storm phase
+    if (c.evade && c.kind !== 'opp') { s.ev.push({ t: 'evaded', uid }); return; } // v8.8: hazards are fully evaded; enemies still act, but nothing they do to YOUR squad lands (see attackOpp / supportAct)
     // v6.6: with 2+ trios on the board, enemies sometimes shoot another trio instead of you
     if (c.kind === 'storm') { stormStrike(s, c); return; } // v7.4
     if (c.kind === 'opp') { runActs(s, c, v); return; } // v7.2: every enemy action on this number, in fixed order
@@ -2942,7 +2944,7 @@ function renderTitle() {
   const crew = pickN(CHARS, 3);
   $('#scr-title').innerHTML = `
     <div class="bgart" style="background-image:url(${poiImg(titlePoi)})"></div>
-    <div class="ver">v8.7</div>
+    <div class="ver">v8.8</div>
     <div class="title-top"><button class="icon-btn mute-btn" aria-label="Sound">${AU.muted ? '🔇' : '🔊'}</button></div>
     <div class="crew">${crew.map(n => `<img src="${portrait(n)}" alt="">`).join('')}</div>
     <div class="logo h"><div class="l0">FORTNITE:</div><div class="l1">ZERO BUILD</div><div class="l2">D6</div><div class="tag">Roll. Assign. Survive the Storm. Last squad standing.</div></div>
@@ -3274,7 +3276,7 @@ function logEvents(evs) {
       case 'cover': logAdd(`Cover slot filled on <b>${nm(ev.uid)}</b> (${FI[ev.face].name}).`, 'shot'); break;
       case 'shot': logAdd(`<b>${owner(ev.die)}</b> shot <b>${nm(ev.uid)}</b> for ${ev.amt}.`, 'shot'); break;
       case 'shield': logAdd('Squad shields restored to full.', 'shield'); break;
-      case 'evade': logAdd(`<b>${nm(ev.uid)}</b> is evading: it skips its attacks this turn.`, 'shield'); break;
+      case 'evade': logAdd(`<b>${nm(ev.uid)}</b> is evading: its attacks on your squad do nothing this turn (rivals can still be hit).`, 'shield'); break;
       case 'evadeEnd': break;
       case 'heal': logAdd(`<b>${mem(ev.member)}</b> healed +${ev.amt} HP.`, 'heal'); break;
       case 'revive': logAdd(`<b>${mem(ev.member)}</b> rebooted! +${fmtN(ev.xp || 0)} XP`, 'heal'); break;
@@ -4199,7 +4201,7 @@ function tryTarget(el) {
   if (!opts.length) return false;
   const kinds = [...new Set(opts.map(o => o.kind))];
   if (kinds.length === 1) { doAct(opts[0]); return true; }
-  const lab = { cover: '🧱 Fill cover slot', evade: '💨 Evade (skips its attacks this turn)', shoot: `<img src="${faceIcon(2)}" alt="" style="width:1.1em;height:1.1em;vertical-align:-.2em"> Shoot` };
+  const lab = { cover: '🧱 Fill cover slot', evade: '💨 Evade (its attacks on you do nothing this turn)', shoot: `<img src="${faceIcon(2)}" alt="" style="width:1.1em;height:1.1em;vertical-align:-.2em"> Shoot` };
   openSheet('Use it how?', '<p>This die can do two things here.</p>', kinds.map(k => ({ label: lab[k] || k, cls: k === 'cover' ? 'pri' : 'blue', fn: () => { closeSheet(); doAct(opts.find(o => o.kind === k)); } })));
   return true;
 }
@@ -4364,7 +4366,7 @@ function openCardInfo(c, recon) {
   if (c.kind === 'opp' && c.pb) kv.push(`⏫ Push bonus +${c.pb} damage`);
   if (c.cond) kv.push('⏱ end of turn'); if (c.shrink) kv.push('⏱ every turn');
   if (c.kind === 'opp' && !c.down && S.squad[c.target]) kv.push('🎯 ' + S.squad[c.target].name);
-  if (c.evade) kv.push('💨 evading this turn (skips its attacks, then Evade ends)');
+  if (c.evade) kv.push('💨 evading this turn (its attacks on you do nothing, rivals can still be hit; then Evade ends)');
   const cov = c.cov.length ? `<p><b>Cover:</b> fill ${c.cov.map(sl => `${sl.filled ? '✅' : '⬜'} ${sl.need.map(f => FI[f].name).join(' or ')}`).join(', ')} ${c.maxHp ? 'to outskill it — then its HP is EXPOSED and Shoot dice can hit it' : 'to clear it'}.</p>` : '';
   openSheet((recon ? '🔭 Recon: ' : '') + esc(c.name), `<div class="info-hero"><div class="big" style="${bg}">${art}</div><div><div class="tag" style="font-size:11px;font-weight:900;color:var(--mut)">${c.kind === 'opp' ? 'ENEMY' : c.kind === 'storm' ? 'THE STORM' : 'HAZARD'}${recon ? ' · NEXT TO DROP' : ''}</div><div class="kv">${kv.map(x => `<span>${esc(x)}</span>`).join('')}</div></div></div><p>${esc(E.cardText(c))}</p>${actInfoHTML(c)}${c.down ? '<p><b>Downed:</b> one more hit eliminates. A standing teammate already on the board revives them at 1 HP when the countdown ends; otherwise they bleed out. Teammates still waiting to drop do not save them. Wipe the trio only after all 3 have spawned and been eliminated.</p>' : ''}${c.kind === 'opp' && !c.down ? '<p style="color:var(--mut)">At 0 HP an enemy is <b>Downed</b>, not out: hit them once more to eliminate. Enemies drop in one per turn; wipe the trio only after every member has spawned and been taken out.</p>' : ''}${cov}${c.maxHp ? '<p style="color:var(--mut)">Shoot: 1st shot each turn deals 1, then every next shot deals 2.</p>' : ''}`);
   U.sheetTap = true;
@@ -4397,7 +4399,7 @@ function openHowTo() {
   openSheet('How to play', `<div class="htp">
   <p>Your squad of 3 drops in. The run is a chain of <b>POIs</b>: each has its own enemy <b>trios</b> and hazards. Clear every POI to win the <b>Victory Royale</b>.</p>
   <h4>1 · Roll</h4><p>Each standing member rolls 2 dice. Everyone uses the same die:</p>${faceList()}
-  <h4>2 · Assign</h4><ul><li>Tap a die, then tap a glowing target, or drag the die onto it.</li><li><b>Chest</b> is wild: tap it, then tap <b>another</b> rolled die and pick a new face for that die. The Chest is used up. Or reroll your other dice.</li><li><b>Shoot</b> and <b>Heal</b> stack: the 1st each turn is 1, every next one is 2.</li><li><b>Reboot</b> revives a downed member, frees all <b>Knocked Out</b> dice, or frees one locked Search die: select the Reboot, then tap the 🔒 die you want back.</li><li>A <b>Shield</b> die refills shields or makes a threat <b>Evade</b> (it skips its next attack).</li><li>Dashed slots on a card are <b>cover</b>. Fill them with matching dice before you can shoot it.</li><li>↶ Undo any assignment this turn. Long-press anything for details.</li></ul>
+  <h4>2 · Assign</h4><ul><li>Tap a die, then tap a glowing target, or drag the die onto it.</li><li><b>Chest</b> is wild: tap it, then tap <b>another</b> rolled die and pick a new face for that die. The Chest is used up. Or reroll your other dice.</li><li><b>Shoot</b> and <b>Heal</b> stack: the 1st each turn is 1, every next one is 2.</li><li><b>Reboot</b> revives a downed member, frees all <b>Knocked Out</b> dice, or frees one locked Search die: select the Reboot, then tap the 🔒 die you want back.</li><li>A <b>Shield</b> die refills shields or makes a threat <b>Evade</b> (its attacks on you do nothing this turn; it can still hit rivals).</li><li>Dashed slots on a card are <b>cover</b>. Fill them with matching dice before you can shoot it.</li><li>↶ Undo any assignment this turn. Long-press anything for details.</li></ul>
   <h4>3 · Storm</h4><ul><li>Every POI opens with <b>3 threats</b> on the board. END TURN: exactly one more drops (one enemy or one hazard), then the Storm die rolls. Every threat showing that number acts.</li><li>Each enemy tile has an <b>action table</b>. Every line is one action with the colored Storm numbers that trigger it. Numbers are random per enemy and <b>can repeat across lines</b> (for example DAMAGE 1 4 · HEAL 4 · COVER 1 2). When the Storm die matches several lines, <b>all of them fire</b>, in this fixed order: <b>REVIVE → HEAL → COVER → PUSH → KNOCK → DAMAGE → RETREAT</b>. Lines: <b>DAMAGE</b> hits your squad · <b>KNOCK</b> knocks out 1 of your dice (no damage) · <b>HEAL</b> recovers 1 HP (herself first, else a hurt teammate) · <b>COVER</b> adds a ??? slot (max 3) · <b>REVIVE</b> picks up a downed teammate · <b>PUSH</b> removes a ??? slot for +1 damage (only if she has one) · <b>RETREAT</b> goes to the back of the queue.</li><li>Small chips under her HP are passives: <b>PIERCE</b> (her Damage ignores shields), <b>SHRED</b> (her Damage on the Storm die wipes all your shields first), <b>FOLLOW-UP</b> (+1 hit if your squad took damage), <b>AMBUSH</b> (2 damage if nothing else attacked), <b>FINISHER</b> (2 damage if your shields are empty). A dimmed line means it would do nothing right now.</li><li>Teammates share a colour stripe.</li><li><b>A few turns after a POI's last threat drops</b> (the Storm tile counts them down: 5, 4, 3 turns at the first POIs, fewer later), <b>The Storm</b> closes in (clear the POI before that and it never comes). It can't be damaged. Each roll it <b>strikes first</b>, ignoring shields and cover, for <b>1 damage to each of your 3 squad members</b> and to every enemy (no kill credit for you). It stays until every other threat there is down. Then you rotate to the next POI.</li></ul>
   <h4>Item Shop &amp; V-Bucks</h4><p>Buy skins in the dedicated 🛒 Item Shop (open it from the title or from the Ready to Drop screen): press and HOLD a skin's card until it fills to buy it; let go early or scroll to cancel. A skin you buy stays in your 🎒 Locker for good and is equipped if a squad slot is free. Open the Locker to equip, unequip or swap skins (squad full? tap the skin, then the slot) and filter All / Equipped / Owned. PLAY takes you to Ready to Drop, where you pick the difficulty or Daily and DROP with the 3 skins you equipped. Prices: Uncommon 800, Rare 1,200, Epic 1,500, Legendary 2,000 V-Bucks. The shop rotates every match. Earn V-Bucks from eliminations (+100, carriers pay more), team wipes (+200), Chest rolls (25% chance of +100) and your placement payout (200 to 1,000, +500 for a Victory Royale). Short on V-Bucks with fewer than 3 skins? A Supply Drop tops you up enough to buy your squad.</p>
   <h4>👑 The Elite</h4><p>Near the end of every match, at the final POI, one Elite drops: last match's winner, wearing a gold crown. Armored (4 cover dice: Shoot, Shield, Heal, Reboot), 4 HP, hits for 3, no teammates (0 HP = eliminated). Taking them out pays 1,000 V-Bucks, 500+ gold bars and huge XP.</p>
