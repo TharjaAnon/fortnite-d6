@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Fortnite D6">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>Fortnite: Zero Build D6 · v8.9</title>
+<title>Fortnite: Zero Build D6 · v9.0</title>
 <style>:root{
   --bg0:#0b0820;--bg1:#151036;--bg2:#1f1850;--line:rgba(255,255,255,.10);--txt:#f4f2ff;--mut:#a9a3cf;
   --c1:#f5b301;--c2:#a855f7;--c3:#38bdf8;--c4:#f1f5f9;--c5:#22c55e;--c6:#94a3b8;--red:#ef4444;--gold:#fde047;
@@ -651,7 +651,7 @@ body.aiming .dome-cap.tg~.dome,body.aiming .squad:has(.dome-cap.tg) .dome{border
 .fx-spark{position:absolute;font-size:26px;color:#fde047;text-shadow:0 0 10px #fde047,0 0 3px #fff;transform:translate(-50%,-50%);pointer-events:none;animation:fspark .38s ease-out forwards}
 @keyframes fspark{0%{transform:translate(-50%,-50%) scale(.3) rotate(0);opacity:1}100%{transform:translate(-50%,-90%) scale(1.4) rotate(90deg);opacity:0}}
 .btn:active,.icon-btn:active,#mainBtn:active{transform:scale(.93,.9)!important;transition:transform .06s}
-.die:active{transform:scale(.9)}
+.die:active:not(.sel):not(.tumble){transform:scale(.9)}
 #mainBtn.whoosh{animation:whoosh .28s ease-out}
 @keyframes whoosh{0%{transform:scale(.92,.88)}50%{transform:scale(1.05,1.08);filter:brightness(1.4)}100%{transform:none}}
 @media (prefers-reduced-motion:reduce){.die.tumble,.card .pips i.lost,.card .pips i.gain,.member .hpb .seg i.lost,.die.morph,#mainBtn.whoosh,.die.tg{animation:none!important}}
@@ -1888,6 +1888,17 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 .hdmeta .stm{color:#e9b8ff;text-shadow:0 0 6px rgba(192,132,252,.9)}
 .hdmeta .stm.on{color:#f0abfc}
 #app.compact #scr-game{padding-top:calc(var(--sat) + 4px)}
+
+/* ===== v9.0 dice selection: don't let toss/liveBob/:active leave a stuck transform on iOS ===== */
+@media (hover: none) {
+  .die:hover { transform: none; }
+  .die.sel:hover, .die.sel:active { transform: translateY(-6px) scale(1.1) !important; }
+}
+.die.sel, #squad .die.sel, .die.sel.live, .die.sel.nudge, .die.sel.tumble, .die.sel:active {
+  animation: none !important;
+  transform: translateY(-6px) scale(1.1) !important;
+  transition-property: box-shadow, opacity;
+}
 </style>
 </head><body>
 <div id="app" class="compact">
@@ -2985,7 +2996,7 @@ function show(id) { $$('.screen').forEach(s => s.classList.toggle('on', s.id ===
 
 /* ---------- best runs ---------- */
 function getBest() { return LS.get('fd5_best', { played: 0, wins: 0, fastest: 0, mostElims: 0, bestTurn: 0, recent: [] }); }
-function bestLine() { const b = getBest(); if (!b.played) return 'No runs yet. Drop in!'; return `🏆 ${b.wins}/${b.played} wins` + (b.fastest ? ` · ⚡ fastest T${b.fastest}` : '') + ` · 💀 best ${b.mostElims} elims`; }
+function bestLine() { const b = getBest(); if (!b.played) return 'No runs yet. Drop in!'; return (b.fastest ? `⚡ fastest T${b.fastest} · ` : '') + `💀 best ${b.mostElims} elims`; }
 
 /* ---------- title ---------- */
 let titlePoi = POIS[rnd(POIS.length)];
@@ -2993,7 +3004,7 @@ function renderTitle() {
   const crew = pickN(CHARS, 3);
   $('#scr-title').innerHTML = `
     <div class="bgart" style="background-image:url(${poiImg(titlePoi)})"></div>
-    <div class="ver">v8.9</div>
+    <div class="ver">v9.0</div>
     <div class="title-top"><button class="icon-btn mute-btn" aria-label="Sound">${AU.muted ? '🔇' : '🔊'}</button></div>
     <div class="crew">${crew.map(n => `<img src="${portrait(n)}" alt="">`).join('')}</div>
     <div class="logo h"><div class="l0">FORTNITE:</div><div class="l1">ZERO BUILD</div><div class="l2">D6</div><div class="tag">Roll. Assign. Survive the Storm. Last squad standing.</div></div>
@@ -3056,7 +3067,7 @@ const placePay = p => VB_PLACE.find(t => p <= t[0])[1];
     Item Shop: press and HOLD a skin card (HOLD_MS) to buy it. Release early / move > MOVE_PX / scroll cancels. The purchase (V-Bucks, ownership, auto-equip into a free slot)
     is saved the instant the hold completes. Locker: tap to equip / unequip / swap. PLAY -> Ready to Drop (difficulty, Daily, equipped squad) -> DROP. */
  const SK = { swapSkin: null, swapSlot: null, filter: 'all', pop: null, back: 'title' };
- const HOLD_MS = 1300, ARM_MS = 110, MOVE_PX = 10;
+ const HOLD_MS = 1000, ARM_MS = 110, MOVE_PX = 10;
  const eqSave = e => LS.set('fd8_eq', e.slice(0, 3));
  const tierName = n => PRICE_TIERS.find(t => t[0] === priceOf(n))[2];
  function skinState(n, wl) { if (eqGet().includes(n)) return 'equipped'; if (isOwned(n)) return 'owned'; return priceOf(n) <= wl ? 'afford' : 'cant'; }
@@ -3521,14 +3532,15 @@ function dieHTML(d, extra) {
   else if (d.st === 'search') { cls.push('f6'); inner = `<img src="${faceIcon(6)}" alt="Search">`; }
   else { cls.push('blank'); inner = d.st === 'ready' ? ico('die', 'rd') : d.st === 'infirmary' ? ico('crosshair', 'kox') : ''; }
   if (d.st !== 'rolled') cls.push(d.st === 'used' ? 'used' : 'st-' + d.st);
-  if (d.st === 'rolled') { if (E.blocked(S, d.face)) { cls.push('blocked'); inner += ico('blocked', 'bx'); } else if (!usable(d.i)) cls.push('nomove'); else cls.push('live'); }
+  if (d.st === 'rolled') { if (E.blocked(S, d.face)) { cls.push('blocked'); inner += ico('blocked', 'bx'); } else if (!usable(d.i)) cls.push('nomove'); else if (U.sel !== d.i) cls.push('live'); }
   if (U.sel === d.i) cls.push('sel');
   if (U.sel != null && U.sel !== d.i && U.targets.some(t => t.kind === 'convert' && t.die2 === d.i)) cls.push('tg');
   if (U.conv === d.i) cls.push('conv');
   if (U.sel != null && d.st === 'search' && U.targets.some(t => t.kind === 'search' && t.die2 === d.i)) cls.push('tg', 'unlock');
   let sty = '';
   const tk = (U.tumbleOrder || []).indexOf(d.i), tel = performance.now() - (U.tumbleT0 || 0);
-  if (tk >= 0 && tel < tk * 50 + 160 && d.st === 'rolled') { cls.push('tumble'); sty = ` style="--td:${Math.round(tk * 50 - tel)}ms"`; }
+  // v9.0: never start toss/liveBob on a selected die — cancelling a mid-flight transform animation on iOS can leave it floating out of the slot
+  if (U.sel !== d.i && tk >= 0 && tel < tk * 50 + 160 && d.st === 'rolled') { cls.push('tumble'); sty = ` style="--td:${Math.round(tk * 50 - tel)}ms"`; }
   return `<div class="${cls.join(' ')} ${extra || ''}"${sty} data-k="die" data-i="${d.i}" role="button" aria-label="${d.st === 'used' ? 'Spent' : d.face ? FI[d.face].name : d.st} die"></div>`.replace('></div>', `>${inner}</div>`);
 }
 const hazHue = n => { let h = 0; for (const ch of n) h = (h * 31 + ch.charCodeAt(0)) % 360; return h; };
@@ -3693,6 +3705,7 @@ function renderGame() {
   U.tumble.clear();
   critCheck(); U.opp = s.board.filter(c => c.kind === 'opp').length;
   U.prevHp = {}; s.board.forEach(c => { U.prevHp['c' + c.uid] = c.hp; }); s.squad.forEach(m => { U.prevHp['m' + m.i] = m.hp; });
+  settleDice();
 }
 function sizeDome() {
   const d = $('#squad .dome'), f = $('#squad .member'), q = $('#squad'); if (!d || !f || !q) return;
@@ -4261,6 +4274,23 @@ function afterAction(pre) {
 }
 
 /* ---------- interactions ---------- */
+function dropDiceGhosts() {
+  $$('.dragghost').forEach(e => e.remove());
+  $$('.drop-hover').forEach(e => e.classList.remove('drop-hover'));
+}
+/* v9.0: break any composited animation transform before the .sel lift is applied (WebKit can otherwise 'stick' mid-toss/liveBob). */
+function settleDice() {
+  dropDiceGhosts();
+  $$('#squad .die.sel').forEach(el => {
+    el.style.animation = 'none';
+    el.style.transition = 'none';
+    el.style.transform = 'translateY(-6px) scale(1.1)';
+    void el.offsetWidth;
+    el.style.animation = '';
+    el.style.transition = '';
+    el.style.transform = '';
+  });
+}
 function selectDie(i) {
   const d = S.dice[i];
   if (U.sel != null && d.st === 'search') { const t = U.targets.find(x => x.kind === 'search' && x.die2 === i); if (t) { doAct(t); return; } }
@@ -4275,7 +4305,7 @@ function selectDie(i) {
   else { sfx('tap'); buzz(8); }
   renderGame();
 }
-function deselect() { U.sel = null; U.conv = null; U.targets = []; }
+function deselect() { U.sel = null; U.conv = null; U.targets = []; dropDiceGhosts(); }
 function targetFor(el) {
   const k = el.dataset.k;
   if (k === 'card') return U.targets.filter(t => t.uid === +el.dataset.uid);
@@ -4321,11 +4351,13 @@ function onTapEl(el) {
   openInfo(el);
 }
 function bindPointer(root) {
+  if (root.dataset.ptrBound) return; root.dataset.ptrBound = '1';
   let P = null;
   root.addEventListener('pointerdown', e => {
     const el = e.target.closest('[data-k]'); if (!el || !root.contains(el) || U.busy) return;
     if (el.closest('#opz') && performance.now() - (U.scrollAt || 0) < 110) { P = null; return; }
     P = { el, x: e.clientX, y: e.clientY, id: e.pointerId, moved: false, lp: false, drag: null };
+    try { root.setPointerCapture(e.pointerId); } catch (err) {}
     P.timer = setTimeout(() => { if (P && !P.moved && P.el.dataset.k !== 'member') { P.lp = true; buzz(15); openInfo(P.el); } }, 480);
   });
   window.addEventListener('pointermove', e => {
@@ -4347,7 +4379,8 @@ function bindPointer(root) {
   const up = e => {
     if (!P || e.pointerId !== P.id) return;
     clearTimeout(P.timer); const p = P; P = null;
-    if (p.drag) { p.drag.remove(); $$('.drop-hover').forEach(x => x.classList.remove('drop-hover')); const over = document.elementFromPoint(e.clientX, e.clientY), t = over && over.closest('[data-k]'); if (t && U.sel != null) { if (t.dataset.k === 'die') { if (+t.dataset.i !== U.sel) selectDie(+t.dataset.i); return; } if (tryTarget(t)) return; } return; }
+    dropDiceGhosts();
+    if (p.drag) { p.drag = null; const over = document.elementFromPoint(e.clientX, e.clientY), t = over && over.closest('[data-k]'); if (t && U.sel != null) { if (t.dataset.k === 'die') { if (+t.dataset.i !== U.sel) selectDie(+t.dataset.i); return; } if (tryTarget(t)) return; } return; }
     if (p.lp) { U.sheetAt = performance.now(); return; }
     if (p.moved || e.type === 'pointercancel') return;
     onTapEl(p.el);
@@ -4509,7 +4542,7 @@ function openHowTo() {
 }
 function openBest() {
   const b = getBest();
-  openSheet('🏆 Best runs', b.played ? `<div class="kv"><span>Runs ${b.played}</span><span>Wins ${b.wins}</span><span>Win rate ${Math.round(b.wins / b.played * 100)}%</span>${b.fastest ? `<span>Fastest win T${b.fastest}</span>` : ''}<span>Most elims ${b.mostElims}</span><span>Best turn ${b.bestTurn} elims</span></div><h4 style="margin:12px 0 6px">Recent</h4>${b.recent.map(r => `<div class="shop-item" style="min-height:50px"><div class="ic">${r.win ? ico('crown', 'cr') : '💀'}</div><div class="tx"><b>${r.win ? 'Victory Royale' : 'Eliminated'} · T${r.turns}</b>${esc(r.squad.join(', '))} · ${r.elims} elims${r.diff && DIFFS[r.diff] ? ' · ' + DIFFS[r.diff].name : ''}${r.daily ? ' · 📅' : ''}</div></div>`).join('')}` : '<p>No runs yet. Drop in!</p>', [{ label: 'Close', cls: 'ghost', fn: closeSheet }, { label: '🗑 New Account', cls: 'danger', fn: () => confirmNewAccount() }]);
+  openSheet('🏆 Best runs', b.played ? `<div class="kv"><span>Runs ${b.played}</span>${b.fastest ? `<span>Fastest win T${b.fastest}</span>` : ''}<span>Most elims ${b.mostElims}</span><span>Best turn ${b.bestTurn} elims</span></div><h4 style="margin:12px 0 6px">Recent</h4>${b.recent.map(r => `<div class="shop-item" style="min-height:50px"><div class="ic">${r.win ? ico('crown', 'cr') : '💀'}</div><div class="tx"><b>${r.win ? 'Victory Royale' : 'Eliminated'} · T${r.turns}</b>${esc(r.squad.join(', '))} · ${r.elims} elims${r.diff && DIFFS[r.diff] ? ' · ' + DIFFS[r.diff].name : ''}${r.daily ? ' · 📅' : ''}</div></div>`).join('')}` : '<p>No runs yet. Drop in!</p>', [{ label: 'Close', cls: 'ghost', fn: closeSheet }, { label: '🗑 New Account', cls: 'danger', fn: () => confirmNewAccount() }]);
 }
 /* v7.4 New Account: erase every saved key of THIS game (fd#_*: best runs, last winner/Elite, V-Bucks wallet, shop rotation, run in progress, settings). Service worker cache is left alone. */
 function confirmNewAccount() {
