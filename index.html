@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="Fortnite D6">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<title>Fortnite: Zero Build D6 · v8.8</title>
+<title>Fortnite: Zero Build D6 · v8.9</title>
 <style>:root{
   --bg0:#0b0820;--bg1:#151036;--bg2:#1f1850;--line:rgba(255,255,255,.10);--txt:#f4f2ff;--mut:#a9a3cf;
   --c1:#f5b301;--c2:#a855f7;--c3:#38bdf8;--c4:#f1f5f9;--c5:#22c55e;--c6:#94a3b8;--red:#ef4444;--gold:#fde047;
@@ -1855,6 +1855,39 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
 @keyframes zFlash{0%{opacity:0}12%{opacity:1}30%{opacity:.35}42%{opacity:.8}100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){#stormFx i,.card.ovft,.member .frame .ico.dnx,#ovfChip.on{animation:none!important}.fx-zflash{animation-duration:.2s}}
 
+
+/* ===== v8.9 compact HUD: threats first, slim footer under the action bar ===== */
+#app.compact .thrpanel{order:0;flex:1;min-height:0}
+#app.compact .stations{order:1}
+#app.compact .picker{order:2}
+#app.compact .squadwrap{order:3;padding-top:8px}
+#app.compact .actionbar{order:4;position:relative;z-index:2}
+#app.compact .footslim{order:5;flex:none;display:flex;align-items:center;gap:5px;height:30px;padding:0 6px;border-radius:10px;
+  background:linear-gradient(180deg,rgba(20,30,98,.90),rgba(8,12,48,.94));border:1.5px solid var(--edge);box-shadow:inset 0 1px 0 rgba(255,255,255,.09),0 4px 12px rgba(0,0,0,.35)}
+#app.wide .footslim{display:none}
+#app.compact .poi{display:none!important}
+#app.compact .footslim .logo2{display:none!important}
+#app.compact .footslim #hShield,#app.compact .footslim #hLog{display:none}
+#app.compact .footslim .hud2{min-height:0;height:24px;padding:0;gap:3px;border:0;background:none;box-shadow:none;border-radius:0;flex:none;order:3}
+#app.compact .footslim .hchip{height:24px;min-width:32px;padding:0 4px;border-radius:6px}
+#app.compact .footslim .hchip small{font-size:5.5px}
+#app.compact .footslim .hchip b{font-size:11px;margin:0}
+#app.compact .footslim .hbtns .icon-btn{width:24px;height:24px;font-size:12px;border-radius:6px}
+#app.compact .footslim .xpstrip{flex:1;min-width:130px;height:16px;gap:4px;padding:0;order:2}
+#app.compact .footslim .xplv{height:16px;padding:0 5px;font-size:9px;line-height:14px;border-radius:4px}
+#app.compact .footslim .xpbar{height:8px;min-width:48px;flex:1}
+#app.compact .footslim .xptxt{display:none}
+#app.compact .footslim .elchip{margin:0;padding:0 5px;font-size:10px;height:16px;border-radius:4px}
+#app.compact .footslim #hVb{flex:none;order:1}
+#app.compact .footslim #hVb .ico{width:13px;height:13px}
+#app.compact .footslim #hPlace{font-size:12px;flex:none;order:1;min-width:3.2em;line-height:1}
+#app.compact .footslim #hPlace u{display:none}
+#app.compact .thrpanel .panelhd{height:20px;min-height:20px;gap:6px}
+#app.compact .panelhd > span:first-of-type{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.hdmeta{flex:1;min-width:0;font:800 10px/14px var(--hdr);font-style:italic;letter-spacing:.4px;color:#fde68a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase}
+.hdmeta .stm{color:#e9b8ff;text-shadow:0 0 6px rgba(192,132,252,.9)}
+.hdmeta .stm.on{color:#f0abfc}
+#app.compact #scr-game{padding-top:calc(var(--sat) + 4px)}
 </style>
 </head><body>
 <div id="app" class="compact">
@@ -1939,7 +1972,22 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     return p.slice(0, n).sort((x, y) => x - y);
   }
   const rollNums = (s, kind, min) => rollNumsR(() => nextRand(s), kind, min);
-  function randOpp(s, t) { const o = Object.assign({}, t); if (t.a && t.a.length) o.a = rollNums(s, 'dmg'); o.x = (t.x || []).map(x => [x[0], rollNums(s, x[0])]); return o; }
+  /* v8.9: every enemy has exactly 3 actions. DAMAGE is always one of them (trigger counts 2–5).
+     The other two are rolled, no duplicates, from Heal / Cover / Revive / Push / Retreat / Knock.
+     Trigger-number counts stay: Heal 2–3, Cover/Push/Retreat/Revive 1–3, Knock 1–2. Numbers may repeat across actions. Passives (pierce, shred, starting cover, …) stay on the template. */
+  const EXTRA_KINDS = ['heal', 'cover', 'revive', 'push', 'retreat', 'knock'];
+  function pickExtraKinds(r, n, exclude) {
+    const p = EXTRA_KINDS.filter(k => !(exclude || []).includes(k));
+    for (let i = p.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [p[i], p[j]] = [p[j], p[i]]; }
+    return p.slice(0, n);
+  }
+  function randOpp(s, t) {
+    const o = Object.assign({}, t);
+    delete o.cond; // Damage is always a numbered action now
+    o.a = rollNums(s, 'dmg');
+    o.x = pickExtraKinds(() => nextRand(s), 2).map(k => [k, rollNums(s, k)]);
+    return o;
+  }
   function shuffle(arr, r) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
 
   /* v6.6: the run is a chain of POIs. Each POI has a fixed roster of enemy trios + hazards.
@@ -1993,7 +2041,8 @@ button:focus-visible,[role=button]:focus-visible{outline:3px solid #fde047;outli
     // v6.8: one Elite (last match's winner) drops last at the final POI
     if (opts.elite && opts.elite.name) {
       const esh = shuffle([1, 2, 3, 4, 5, 6], rr), ea = rollNumsR(rr, 'dmg', 3); /* v8.2: Elite DAMAGE 3-5 */
-      const ec = mkCard(s, { kind: 'opp', name: opts.elite.name, img: opts.elite.name, team: 900, tname: opts.elite.name, hp: 4, a: ea, d: 3, cov: [[F.SHOOT], [F.SHIELD], [F.HEAL], [F.REBOOT]], x: [['cover', rollNumsR(rr, 'cover')], ['push', rollNumsR(rr, 'push')]], covMax: 4, pbMax: 1 }); // v7.2: Damage + Cover + Push // v6.9: 4 cover dice, hits for 3
+      const ex = pickExtraKinds(rr, 2, ['retreat']); /* v8.9: Elite also gets Damage + 2 random actions (Retreat never works on an Elite) */
+      const ec = mkCard(s, { kind: 'opp', name: opts.elite.name, img: opts.elite.name, team: 900, tname: opts.elite.name, hp: 4, a: ea, d: 3, cov: [[F.SHOOT], [F.SHIELD], [F.HEAL], [F.REBOOT]], x: ex.map(k => [k, rollNumsR(rr, k)]), covMax: 4, pbMax: 1 }); // v8.9 3-action loadout; v6.9: 4 cover dice, hits for 3
       ec.elite = 1; ec.etag = opts.elite.tag || 'WON LAST MATCH'; ec.vb = CFG.eliteVb; ec.hp = ec.maxHp = 4;
       (s.future.length ? s.future[s.future.length - 1] : s.deck).push(ec); s.field++;
     }
@@ -2944,7 +2993,7 @@ function renderTitle() {
   const crew = pickN(CHARS, 3);
   $('#scr-title').innerHTML = `
     <div class="bgart" style="background-image:url(${poiImg(titlePoi)})"></div>
-    <div class="ver">v8.8</div>
+    <div class="ver">v8.9</div>
     <div class="title-top"><button class="icon-btn mute-btn" aria-label="Sound">${AU.muted ? '🔇' : '🔊'}</button></div>
     <div class="crew">${crew.map(n => `<img src="${portrait(n)}" alt="">`).join('')}</div>
     <div class="logo h"><div class="l0">FORTNITE:</div><div class="l1">ZERO BUILD</div><div class="l2">D6</div><div class="tag">Roll. Assign. Survive the Storm. Last squad standing.</div></div>
@@ -3341,10 +3390,55 @@ function poiHud() {
   $('#poiRules').innerHTML = ruleChips();
   $('#thrCnt').textContent = `${s.board.length} on board · ${s.deck.length} in deck`;
   s.board.forEach(c => { LOGN[c.uid] = c.name; });
+  syncThreatHd();
 }
 function applyLayout() {
   const wide = LS.get('fd6_layout', 'auto') !== 'phone' && window.innerWidth >= 820 && window.innerWidth / window.innerHeight >= 1.15;
   app.classList.toggle('wide', wide); app.classList.toggle('compact', !wide);
+  layoutChrome();
+}
+/* v8.9 compact: POI + Storm countdown in the threats header; V-Bucks / place / XP / elims / deck / turn / menu in a slim footer under the action bar. */
+function syncThreatHd() {
+  const hd = document.querySelector('.thrpanel .panelhd');
+  if (!hd || !S) return;
+  let meta = hd.querySelector('.hdmeta');
+  if (!meta) {
+    meta = document.createElement('span'); meta.className = 'hdmeta';
+    const title = hd.querySelector('span');
+    if (title) title.after(meta); else hd.prepend(meta);
+  }
+  const poi = (typeof RUN !== 'undefined' && RUN && RUN.poi) ? RUN.poi : '';
+  const on = S.board.some(c => c.kind === 'storm');
+  const wait = stormWait(S);
+  meta.innerHTML = (poi ? esc(poi) : '') + (wait ? ' <b class="stm">STORM ' + S.stormCd + '</b>' : on ? ' <b class="stm on">STORM</b>' : '');
+}
+function layoutChrome() {
+  const gw = document.getElementById('shakeWrap'), foot = document.getElementById('footslim');
+  if (!gw || !foot) return;
+  const hud = document.querySelector('header.hud2'), xp = document.querySelector('.xpstrip');
+  const poi = document.getElementById('poiPlate') || document.querySelector('.poi');
+  const side = poi && poi.querySelector('.poiside');
+  const compact = app.classList.contains('compact');
+  const move = (sel, box, before) => {
+    const el = typeof sel === 'string' ? document.querySelector(sel) : sel;
+    if (!el || !box) return;
+    if (before && before.parentNode === box) box.insertBefore(el, before);
+    else if (el.parentNode !== box) box.appendChild(el);
+  };
+  if (compact) {
+    move('#hVb', foot, xp || hud);
+    move('#hPlace', foot, xp || hud);
+    move(xp, foot);
+    move(hud, foot);
+  } else {
+    if (hud && hud.parentNode !== gw) gw.insertBefore(hud, gw.firstChild);
+    if (xp) {
+      const nxt = hud && hud.nextSibling;
+      if (xp.parentNode !== gw || (nxt && nxt !== xp)) gw.insertBefore(xp, nxt);
+    }
+    if (side) { move('#hBars', side); move('#hVb', side); move('#hPlace', side); }
+  }
+  syncThreatHd();
 }
 const PTTL = '<div class="pttl">CHEST WILDCARD STATION</div>';
 const DICE_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4.5" fill="none" stroke="currentColor" stroke-width="2.2"/><g fill="currentColor"><circle cx="8.5" cy="8.5" r="1.7"/><circle cx="15.5" cy="8.5" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="8.5" cy="15.5" r="1.7"/><circle cx="15.5" cy="15.5" r="1.7"/></g></svg>';
@@ -3402,6 +3496,7 @@ function buildGame() {
       <button class="act end" id="endBtn" title="End turn (Space)"></button>
       <button class="icon-btn" id="bShop" aria-label="Shop" title="Shop (S)">🛒<small>SHOP</small><span class="badge" id="shopBadge"></span></button>
     </div>
+    <div class="footslim" id="footslim"></div>
   </div>`;
   $('#logList').innerHTML = LOG.items.map(logRow).join(''); logMiniRender(); $('#logMini').onclick = () => openLog();
   $('#hMute').onclick = () => setMuted(!AU.muted);
@@ -3413,6 +3508,7 @@ function buildGame() {
   $('#bShop').onclick = () => openShop();
   $('.xpstrip').onclick = () => { if (!U.busy) openLevels(); };
   bindPointer($('#scr-game'));
+  layoutChrome();
 }
 
 /* ---------- render ---------- */
@@ -3675,7 +3771,7 @@ function renderLane() {
   if (!s.board.length) lane.innerHTML = `<div class="empty">${s.poiClear ? (s.future.length ? `<b class="zc">ZONE CLEAR!</b><br>END TURN to rotate to <b>${esc(s.pois[s.poiIx + 1].name)}</b>` : 'Last threat down!') : s.deck.length ? `Board clear! Next threat drops at END TURN.` : 'Last threat down!'}</div>`;
   else {
     const H = lane.clientHeight, cap = app.classList.contains('wide') ? 112 : 108, rh = cap; void H; // v6.8: enemy rows keep one fixed size; the list scrolls instead of shrinking
-    lane.innerHTML = `<div class="opwrap"><div class="opz list cards${rh < 80 ? ' compact' : ''}${rh < 66 ? ' short' : ''}" id="opz" style="--ch:${rh}px;--hh:48px">${stormWait(s) ? stormNoticeHTML(s) : ''}${zs.map(stormChipHTML).join('')}${hz.map(hzChipHTML).join('')}${opps.map(cardHTML).join('')}</div><div class="sbar"><i></i></div><div class="morepill" aria-hidden="true"></div></div>`;
+    lane.innerHTML = `<div class="opwrap"><div class="opz list cards${rh < 80 ? ' compact' : ''}${rh < 66 ? ' short' : ''}" id="opz" style="--ch:${rh}px;--hh:48px">${zs.map(stormChipHTML).join('')}${hz.map(hzChipHTML).join('')}${opps.map(cardHTML).join('')}</div><div class="sbar"><i></i></div><div class="morepill" aria-hidden="true"></div></div>`; /* v8.9: countdown lives in the panel header, not a notice tile; the Storm card still renders when it is in play */
     const e = $('#opz'); e.scrollTop = keepTop; updList(e);
     if (stormWait(s)) { if (U.stormNote !== s.poiIx) { U.stormNote = s.poiIx; e.scrollTop = 0; } } else U.stormNote = null; // v7.6: show the Storm notice when the countdown starts
     e.addEventListener('scroll', () => { const n = performance.now(); if (U.lTouch || n - (U.lEnd || -1e9) < 1200) U.scrollAt = n; updList(e); }, { passive: true });
@@ -4400,14 +4496,14 @@ function openHowTo() {
   <p>Your squad of 3 drops in. The run is a chain of <b>POIs</b>: each has its own enemy <b>trios</b> and hazards. Clear every POI to win the <b>Victory Royale</b>.</p>
   <h4>1 · Roll</h4><p>Each standing member rolls 2 dice. Everyone uses the same die:</p>${faceList()}
   <h4>2 · Assign</h4><ul><li>Tap a die, then tap a glowing target, or drag the die onto it.</li><li><b>Chest</b> is wild: tap it, then tap <b>another</b> rolled die and pick a new face for that die. The Chest is used up. Or reroll your other dice.</li><li><b>Shoot</b> and <b>Heal</b> stack: the 1st each turn is 1, every next one is 2.</li><li><b>Reboot</b> revives a downed member, frees all <b>Knocked Out</b> dice, or frees one locked Search die: select the Reboot, then tap the 🔒 die you want back.</li><li>A <b>Shield</b> die refills shields or makes a threat <b>Evade</b> (its attacks on you do nothing this turn; it can still hit rivals).</li><li>Dashed slots on a card are <b>cover</b>. Fill them with matching dice before you can shoot it.</li><li>↶ Undo any assignment this turn. Long-press anything for details.</li></ul>
-  <h4>3 · Storm</h4><ul><li>Every POI opens with <b>3 threats</b> on the board. END TURN: exactly one more drops (one enemy or one hazard), then the Storm die rolls. Every threat showing that number acts.</li><li>Each enemy tile has an <b>action table</b>. Every line is one action with the colored Storm numbers that trigger it. Numbers are random per enemy and <b>can repeat across lines</b> (for example DAMAGE 1 4 · HEAL 4 · COVER 1 2). When the Storm die matches several lines, <b>all of them fire</b>, in this fixed order: <b>REVIVE → HEAL → COVER → PUSH → KNOCK → DAMAGE → RETREAT</b>. Lines: <b>DAMAGE</b> hits your squad · <b>KNOCK</b> knocks out 1 of your dice (no damage) · <b>HEAL</b> recovers 1 HP (herself first, else a hurt teammate) · <b>COVER</b> adds a ??? slot (max 3) · <b>REVIVE</b> picks up a downed teammate · <b>PUSH</b> removes a ??? slot for +1 damage (only if she has one) · <b>RETREAT</b> goes to the back of the queue.</li><li>Small chips under her HP are passives: <b>PIERCE</b> (her Damage ignores shields), <b>SHRED</b> (her Damage on the Storm die wipes all your shields first), <b>FOLLOW-UP</b> (+1 hit if your squad took damage), <b>AMBUSH</b> (2 damage if nothing else attacked), <b>FINISHER</b> (2 damage if your shields are empty). A dimmed line means it would do nothing right now.</li><li>Teammates share a colour stripe.</li><li><b>A few turns after a POI's last threat drops</b> (the Storm tile counts them down: 5, 4, 3 turns at the first POIs, fewer later), <b>The Storm</b> closes in (clear the POI before that and it never comes). It can't be damaged. Each roll it <b>strikes first</b>, ignoring shields and cover, for <b>1 damage to each of your 3 squad members</b> and to every enemy (no kill credit for you). It stays until every other threat there is down. Then you rotate to the next POI.</li></ul>
+  <h4>3 · Storm</h4><ul><li>Every POI opens with <b>3 threats</b> on the board. END TURN: exactly one more drops (one enemy or one hazard), then the Storm die rolls. Every threat showing that number acts.</li><li>Each enemy tile has an <b>action table</b> with exactly <b>3 actions</b>: <b>DAMAGE</b> is always one of them, and the other two are rolled (no duplicates) from Heal, Cover, Revive, Push, Retreat and Knock. Every line is one action with the colored Storm numbers that trigger it. Numbers are random per enemy and <b>can repeat across lines</b> (for example DAMAGE 1 4 · HEAL 4 · COVER 1 2). When the Storm die matches several lines, <b>all of them fire</b>, in this fixed order: <b>REVIVE → HEAL → COVER → PUSH → KNOCK → DAMAGE → RETREAT</b>. Lines: <b>DAMAGE</b> hits your squad · <b>KNOCK</b> knocks out 1 of your dice (no damage) · <b>HEAL</b> recovers 1 HP (herself first, else a hurt teammate) · <b>COVER</b> adds a ??? slot (max 3) · <b>REVIVE</b> picks up a downed teammate · <b>PUSH</b> removes a ??? slot for +1 damage (only if she has one) · <b>RETREAT</b> goes to the back of the queue.</li><li>Small chips under her HP are passives: <b>PIERCE</b> (her Damage ignores shields), <b>SHRED</b> (her Damage on the Storm die wipes all your shields first), <b>FOLLOW-UP</b> (+1 hit if your squad took damage), <b>AMBUSH</b> (2 damage if nothing else attacked), <b>FINISHER</b> (2 damage if your shields are empty). A dimmed line means it would do nothing right now.</li><li>Teammates share a colour stripe.</li><li><b>A few turns after a POI's last threat drops</b> (the Storm tile counts them down: 5, 4, 3 turns at the first POIs, fewer later), <b>The Storm</b> closes in (clear the POI before that and it never comes). It can't be damaged. Each roll it <b>strikes first</b>, ignoring shields and cover, for <b>1 damage to each of your 3 squad members</b> and to every enemy (no kill credit for you). It stays until every other threat there is down. Then you rotate to the next POI.</li></ul>
   <h4>Item Shop &amp; V-Bucks</h4><p>Buy skins in the dedicated 🛒 Item Shop (open it from the title or from the Ready to Drop screen): press and HOLD a skin's card until it fills to buy it; let go early or scroll to cancel. A skin you buy stays in your 🎒 Locker for good and is equipped if a squad slot is free. Open the Locker to equip, unequip or swap skins (squad full? tap the skin, then the slot) and filter All / Equipped / Owned. PLAY takes you to Ready to Drop, where you pick the difficulty or Daily and DROP with the 3 skins you equipped. Prices: Uncommon 800, Rare 1,200, Epic 1,500, Legendary 2,000 V-Bucks. The shop rotates every match. Earn V-Bucks from eliminations (+100, carriers pay more), team wipes (+200), Chest rolls (25% chance of +100) and your placement payout (200 to 1,000, +500 for a Victory Royale). Short on V-Bucks with fewer than 3 skins? A Supply Drop tops you up enough to buy your squad.</p>
   <h4>👑 The Elite</h4><p>Near the end of every match, at the final POI, one Elite drops: last match's winner, wearing a gold crown. Armored (4 cover dice: Shoot, Shield, Heal, Reboot), 4 HP, hits for 3, no teammates (0 HP = eliminated). Taking them out pays 1,000 V-Bucks, 500+ gold bars and huge XP.</p>
   <h4>The lobby</h4><p>99 players drop as 33 squads of 3: your squad plus 32 opponent squads. Most fight elsewhere on the map; their eliminations scroll in the kill feed. A squad's place is set when its last member falls, and the #X/33 in the header counts squads left. Outlast every squad for #1.</p>
   <h4>Trios</h4><ul><li>Every enemy belongs to a trio (the colored stripe). Rival trios sometimes shoot each other instead of you.</li><li>An enemy at 0 HP is <b>Downed</b>: hit them once more to eliminate. A teammate who is still up revives them after 2 turns.</li><li>Down the last standing member and the whole trio is out: <b>TEAM WIPE</b> bonus bars and XP.</li></ul>
   <h4>Lose</h4><ul><li>Whole squad down, or no dice left to roll (pinned).</li></ul>
   <h4>Bars 🪙</h4><p>100–500 per elimination + DOUBLE/TRIPLE/QUAD bonuses + level-ups. Spend them in the 🛒 shop (the 🔭 Recon Drone reveals the next threat).</p>
-  <h4>Levels ★</h4><p>XP from eliminations fills the bar under the header (tap it for the perk list). Even levels give +1 🪙, odd levels refill your shields.</p>
+  <h4>Levels ★</h4><p>XP from eliminations fills the bar at the bottom of the screen (tap it for the perk list). Even levels give +1 🪙, odd levels refill your shields.</p>
   <h4>Modes</h4><p><b>Rookie</b> is 3 POIs (7, 8, 9 threats), <b>Standard</b> 3 POIs (8, 11, 12 threats), <b>Veteran</b> 4 POIs (9, 12, 13, 14 threats). Threats keep stacking on the board; the list scrolls. Every POI opens with 3 threats already on the board. <b>📅 Daily</b> gives everyone the same POIs, trios and Storm today.</p>
   <h4>Keyboard</h4><ul><li><b>Space</b> roll / end turn · <b>1–6</b> pick a die · <b>Tab</b> cycle targets, <b>Enter</b> confirm</li><li><b>R</b> chest reroll · <b>Z</b> undo · <b>S</b> shop · <b>L</b> log · <b>M</b> mute · <b>Esc</b> cancel</li></ul></div>`);
 }
